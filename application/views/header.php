@@ -86,8 +86,18 @@ $menu = $nav[2];
         <a class="nav-link" href="<?php echo site_url() ?>">Home <span class="sr-only">(current)</span></a>
       </li>
    
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('users') ?>">User</a>
+    
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Master Data
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="<?php echo site_url('ruas') ?>">Data Ruas Saluran</a>
+
+          <a class="dropdown-item" href="<?php echo site_url('bangunan') ?>">Data Bangunan dan Tipenya</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="<?php echo site_url('users') ?>">Data Users</a>
+        </div>
       </li>
 
   
