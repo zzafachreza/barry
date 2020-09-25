@@ -16,6 +16,55 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`bikinap2_sijuet` /*!40100 DEFAULT CHARA
 
 USE `bikinap2_sijuet`;
 
+/*Table structure for table `data_bangunan` */
+
+DROP TABLE IF EXISTS `data_bangunan`;
+
+CREATE TABLE `data_bangunan` (
+  `id_bangunan` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_bangunan` varchar(200) DEFAULT NULL,
+  `id_ruas` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_bangunan`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+/*Data for the table `data_bangunan` */
+
+insert  into `data_bangunan`(`id_bangunan`,`nama_bangunan`,`id_ruas`) values (6,'Jembatan 1a',6),(7,'Bangunan Ukur 1b',6);
+
+/*Table structure for table `data_laporanhd` */
+
+DROP TABLE IF EXISTS `data_laporanhd`;
+
+CREATE TABLE `data_laporanhd` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `TANGGAL` date DEFAULT NULL,
+  `DAERAH_IRIGASI` varchar(200) DEFAULT NULL,
+  `LUAS_AREA_IRIGASI` float DEFAULT NULL,
+  `TINGKATAN_IRIGASI` varchar(100) DEFAULT NULL,
+  `KABUPATEN` varchar(200) DEFAULT NULL,
+  `RANTING` varchar(200) DEFAULT NULL,
+  `MANTRI` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+/*Data for the table `data_laporanhd` */
+
+insert  into `data_laporanhd`(`ID`,`TANGGAL`,`DAERAH_IRIGASI`,`LUAS_AREA_IRIGASI`,`TINGKATAN_IRIGASI`,`KABUPATEN`,`RANTING`,`MANTRI`) values (1,'2020-09-25','CIMANDIRI\r\n',1279,'T\r\n','SUKABUMI\r\n','CIMANDIRI\r\n','CIMANDIRI\r\n'),(6,'2020-09-05','12',22,'33','144','55','66');
+
+/*Table structure for table `data_ruas` */
+
+DROP TABLE IF EXISTS `data_ruas`;
+
+CREATE TABLE `data_ruas` (
+  `id_ruas` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_ruas` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id_ruas`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+/*Data for the table `data_ruas` */
+
+insert  into `data_ruas`(`id_ruas`,`nama_ruas`) values (6,'Hm 0 - Hm 1'),(8,'Hm 2 - Hm 3');
+
 /*Table structure for table `users` */
 
 DROP TABLE IF EXISTS `users`;

@@ -71,6 +71,14 @@
 
 $menu = $nav[2];
 
+
+function tglIndonesia($tgl){
+    $tgl = explode("-", $tgl);
+    return $tgl[2]."/".$tgl[1]."/".$tgl[0];
+  }
+
+
+
 ?>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">
@@ -82,7 +90,9 @@ $menu = $nav[2];
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-         <li class="nav-item <?php echo $menu=="" ? "active":"" ?>">
+
+
+       <li class="nav-item <?php echo $menu=="" ? "active":"" ?>">
         <a class="nav-link" href="<?php echo site_url() ?>">Home <span class="sr-only">(current)</span></a>
       </li>
    
@@ -100,9 +110,10 @@ $menu = $nav[2];
         </div>
       </li>
 
-  
+      <li class="nav-item <?php echo $menu=="" ? "active":"" ?>">
+        <a class="nav-link" href="<?php echo site_url('laporanhd') ?>">Laporan <span class="sr-only">(current)</span></a>
+      </li>
 
-  
     </ul>
     <ul class="navbar-nav ml-auto">
 
