@@ -16,6 +16,18 @@ $(function(){
 	
 
 	$(".tabza").DataTable();
+
+	$('#dtHorizontalVerticalExample').DataTable({
+		"scrollX": true,
+		"scrollY": 500,
+		"paging":false,
+		"searching":false,
+	     "fixedColumns":   {
+            "leftColumns": 3,
+            // "rightColumns": 1
+        }
+	});
+
 	// load menu header
 	$(".selectza").selectize();
 
@@ -140,3 +152,10 @@ function notify(text,type){
 
 
 
+
+
+function cekList(ID_LAPORANHD,ID_BANGUNAN,FIELD){
+	// alert(ID_LAPORANHD + ' - ' + ID_BANGUNAN);
+	$("#"+ID_BANGUNAN+FIELD).focus();
+
+}

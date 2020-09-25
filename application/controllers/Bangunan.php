@@ -10,6 +10,7 @@ class Bangunan extends CI_Controller{
 		parent::__construct();
 		$this->load->model('Bangunan_model');
 		$this->load->model('Ruas_model');
+		$this->load->model('Riwayat_model');
 
 		$this->dataTable = 'bangunan';
 	}
@@ -49,6 +50,7 @@ class Bangunan extends CI_Controller{
 		$nama_bangunan = $this->input->post('nama_bangunan');
 		$id_ruas = $this->input->post('id_ruas');
 		$this->Bangunan_model->insert($nama_bangunan,$id_ruas);
+		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA '.$nama_bangunan,'TAMBAH',strtoupper($_SESSION['username']));
 		redirect($this->dataTable);
 	}
 
@@ -69,6 +71,8 @@ class Bangunan extends CI_Controller{
 		$id = $this->input->post('id');
 		$nama_bangunan = $this->input->post('nama_bangunan');
 		$id_ruas = $this->input->post('id_ruas');
+
+		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA '.$nama_bangunan,'EDIT ',strtoupper($_SESSION['username']));
 		$this->Bangunan_model->update($id,$nama_bangunan,$id_ruas);
 		redirect($this->dataTable);
 	}
@@ -76,7 +80,9 @@ class Bangunan extends CI_Controller{
 
 	function delete(){
 		$id = $this->uri->segment(3);
+		$nama_bangunan = $this->uri->segment(4);
 		$this->Bangunan_model->delete($id);
+		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA '.$nama_bangunan,'HAPUS',strtoupper($_SESSION['username']));
 		redirect($this->dataTable);
 	}
 

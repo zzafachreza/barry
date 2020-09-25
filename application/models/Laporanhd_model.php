@@ -9,7 +9,9 @@ class Laporanhd_model extends CI_Model{
 
 
 	function getData(){
+		// $sql ="describe data_laporandt";
 		$sql ="SELECT * FROM data_laporanhd";
+
 		$data = $this->db->query($sql);
 		return $data;
 	}
@@ -17,7 +19,7 @@ class Laporanhd_model extends CI_Model{
 
 	 function insert($TANGGAL,$DAERAH_IRIGASI,$LUAS_AREA_IRIGASI,$TINGKATAN_IRIGASI,$KABUPATEN,$RANTING,$MANTRI){
 
-	 $sql ="INSERT INTO data_laporanhd(TANGGAL,DAERAH_IRIGASI,LUAS_AREA_IRIGASI,TINGKATAN_IRIGASI,KABUPATEN,RANTING,MANTRI) values('$TANGGAL','$DAERAH_IRIGASI','$LUAS_AREA_IRIGASI','$TINGKATAN_IRIGASI','$KABUPATEN','$RANTING','$MANTRI')";
+	 $sql ="INSERT INTO data_laporanhd(TANGGAL,DAERAH_IRIGASI,LUAS_AREA_IRIGASI,TINGKATAN_IRIGASI,KABUPATEN,RANTING,MANTRI,STATUS_LAPORANHD) values('$TANGGAL','$DAERAH_IRIGASI','$LUAS_AREA_IRIGASI','$TINGKATAN_IRIGASI','$KABUPATEN','$RANTING','$MANTRI','OPEN')";
 
 	 $this->db->query($sql);	
 	}
@@ -38,7 +40,6 @@ class Laporanhd_model extends CI_Model{
 
 	
     $sql= "UPDATE data_laporanhd SET TANGGAL='$TANGGAL',DAERAH_IRIGASI='$DAERAH_IRIGASI',LUAS_AREA_IRIGASI='$LUAS_AREA_IRIGASI',TINGKATAN_IRIGASI='$TINGKATAN_IRIGASI',KABUPATEN='$KABUPATEN',RANTING='$RANTING',MANTRI='$MANTRI'  WHERE ID='$id'";
-		
 		$this->db->query($sql);	
 	}
 

@@ -19,49 +19,61 @@
 	  </div>
 	  	<div class="card-body">
 	  		<form>
-	  
+	  		<center>
 
-			  <div class="form-group col col-sm-6">
+	  			<h4>LAPORAN KERUSAKAN JARINGAN IRIGASI</h4>
+  			<div class="form-group col col-sm-3">
 			    <label for="TANGGAL" class="AppLabel">TANGGAL</label>
 			    <i class="flaticon-event-calendar-symbol iconInput"></i>
 			    <input autocomplete="off" required="required" type="text" name="TANGGAL" class="AppInput tgl" id="TANGGAL" >
 			  </div>
+	  		</center>
+	  		
+	  
 
-			   <div class="form-group col col-sm-6">
+			
+
+		<div class="row">
+			<div class="col-sm-6">
+			 <div class="form-group col col-sm-12">
 			    <label for="DAERAH_IRIGASI" class="AppLabel">DAERAH_IRIGASI</label>
 			    <i class="flaticon2-position iconInput"></i>
 			    <input autocomplete="off" required="required" type="text" name="DAERAH_IRIGASI" class="AppInput" id="DAERAH_IRIGASI" >
 			  </div>
 
-			   <div class="form-group col col-sm-6">
+			   <div class="form-group col col-sm-12">
 			    <label for="LUAS_AREA_IRIGASI" class="AppLabel">LUAS_AREA_IRIGASI</label>
 			    <i class="flaticon2-arrow-1 iconInput"></i>
 			    <input autocomplete="off" required="required" type="text" name="LUAS_AREA_IRIGASI" class="AppInput" id="LUAS_AREA_IRIGASI" >
 			  </div>
 
-			  <div class="form-group col col-sm-6">
+			  <div class="form-group col col-sm-12">
 			    <label for="TINGKATAN_IRIGASI" class="AppLabel">TINGKATAN_IRIGASI</label>
 			    <i class="flaticon2-indent-dots iconInput"></i>
 			    <input autocomplete="off" required="required" type="text" name="TINGKATAN_IRIGASI" class="AppInput" id="TINGKATAN_IRIGASI" >
 			  </div>
-
-			  <div class="form-group col col-sm-6">
+			</div>
+			  <div class="col-sm-6">
+			  <div class="form-group col col-sm-12">
 			    <label for="KABUPATEN" class="AppLabel">KABUPATEN</label>
 			    <i class="flaticon2-menu-4 iconInput"></i>
 			    <input autocomplete="off" required="required" type="text" name="KABUPATEN" class="AppInput" id="KABUPATEN" >
 			  </div>
 
-			  <div class="form-group col col-sm-6">
+			  <div class="form-group col col-sm-12">
 			    <label for="RANTING" class="AppLabel">RANTING</label>
 			    <i class="flaticon2-console iconInput"></i>
 			    <input autocomplete="off" required="required" type="text" name="RANTING" class="AppInput" id="RANTING" >
 			  </div>
 
-			  <div class="form-group col col-sm-6">
+			  <div class="form-group col col-sm-12">
 			    <label for="MANTRI" class="AppLabel">MANTRI</label>
 			    <i class="flaticon2-user iconInput"></i>
 			    <input autocomplete="off" required="required" type="text" name="MANTRI" class="AppInput" id="MANTRI" >
 			  </div>
+			</div>
+			
+		</div>
 
 			</form>
 		  </div>

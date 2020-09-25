@@ -17,7 +17,7 @@
 	  	<div class="card-body">
 	  		 <div class="form-group">
 			    <label for="nama">TANGGAL</label>
-			    <h3><?php  echo $laporanhd['TANGGAL'] ?></h3>
+			    <h3><?php  echo tglIndonesia($laporanhd['TANGGAL']) ?></h3>
 			  </div>
 			  <div class="form-group">
 			    <label for="nama">DAERAH_IRIGASI</label>

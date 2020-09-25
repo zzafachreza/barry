@@ -9,6 +9,7 @@ class Ruas extends CI_Controller{
 
 		parent::__construct();
 		$this->load->model('Ruas_model');
+		$this->load->model('Riwayat_model');
 		$this->dataTable = 'ruas';
 
 	}
@@ -35,13 +36,18 @@ class Ruas extends CI_Controller{
 	function insert(){
 		$nama_ruas = $this->input->post('nama_ruas');
 		$this->Ruas_model->insert($nama_ruas);
+
+		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA '.$nama_ruas,'TAMBAH',strtoupper($_SESSION['username']));
+
 		redirect($this->dataTable);
 	}
 
 
 	function delete(){
 		$id = $this->uri->segment(3);
+		$nama_ruas = $this->uri->segment(4);
 		$this->Ruas_model->delete($id);
+		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA '.$nama_ruas,'HAPUS',strtoupper($_SESSION['username']));
 		redirect($this->dataTable);
 	}
 
@@ -73,6 +79,7 @@ class Ruas extends CI_Controller{
 	function update(){
 		$id = $this->input->post('id');
 		$nama_ruas = $this->input->post('nama_ruas');
+		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA '.$nama_ruas,'EDIT ',strtoupper($_SESSION['username']));
 		$this->Ruas_model->update($id,$nama_ruas);
 		redirect($this->dataTable);
 	}

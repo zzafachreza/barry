@@ -10,6 +10,7 @@
     <link href="<?php echo site_url() ?>assets/css/pagePreloaders.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo site_url() ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo site_url() ?>assets/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo site_url() ?>assets/css/fixedColumns.dataTables.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo site_url() ?>assets/css/selectize.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo site_url() ?>assets/css/app.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo site_url() ?>assets/css/flaticon/flaticon.css" rel="stylesheet" type="text/css" />
@@ -24,6 +25,7 @@
   <script type="text/javascript" src="<?php echo site_url() ?>assets/js/dataTables.min.js"></script>
 
   <script type="text/javascript" src="<?php echo site_url() ?>assets/js/dataTables.bootstrap4.min.js"></script>
+   <script type="text/javascript" src="<?php echo site_url() ?>assets/js/dataTables.fixedColumns.min.js"></script>
 
   <script type="text/javascript" src="<?php echo site_url() ?>assets/js/notify.js"></script>
 
@@ -107,6 +109,7 @@ function tglIndonesia($tgl){
           <a class="dropdown-item" href="<?php echo site_url('bangunan') ?>">Data Bangunan dan Tipenya</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="<?php echo site_url('users') ?>">Data Users</a>
+          <a class="dropdown-item" href="<?php echo site_url('riwayat') ?>">Riwayat Perubahan Data</a>
         </div>
       </li>
 

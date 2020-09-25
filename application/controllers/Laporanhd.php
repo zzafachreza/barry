@@ -11,6 +11,9 @@ class Laporanhd extends CI_Controller{
 		parent::__construct();
 
 		$this->load->model('Laporanhd_model');
+		$this->load->model('Riwayat_model');
+		$this->load->model('Bangunan_model');
+
 
 		$this->dataTable = 'laporanhd';
 		$this->judulHalaman = 'Laporan Kerusakan Jaringan Irigasi';
@@ -61,6 +64,8 @@ class Laporanhd extends CI_Controller{
 
 
 		$this->Laporanhd_model->insert($TANGGAL,$DAERAH_IRIGASI,$LUAS_AREA_IRIGASI,$TINGKATAN_IRIGASI,$KABUPATEN,$RANTING,$MANTRI);
+		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA '.$DAERAH_IRIGASI,'TAMBAH',strtoupper($_SESSION['username']));
+
 		redirect($this->dataTable);
 	}
 
@@ -70,6 +75,8 @@ class Laporanhd extends CI_Controller{
 		$data['title']='SI JUET | Edit - '.$this->judulHalaman;
 
 		$hasil = $this->Laporanhd_model->getId($id);
+		$data['bangunan'] = $this->Bangunan_model->getData();
+
 		$data[$this->dataTable] = $hasil->row_array();
 		$this->load->view('header',$data);
 		$this->load->view($this->dataTable.'/edit',$data);
@@ -88,13 +95,16 @@ class Laporanhd extends CI_Controller{
 		$MANTRI = $this->input->post('MANTRI');
 
 		$this->Laporanhd_model->update($id,$TANGGAL,$DAERAH_IRIGASI,$LUAS_AREA_IRIGASI,$TINGKATAN_IRIGASI,$KABUPATEN,$RANTING,$MANTRI);
+		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA '.$DAERAH_IRIGASI,'EDIT ',strtoupper($_SESSION['username']));
 		redirect($this->dataTable);
 	}
 
 
 	function delete(){
 		$id = $this->uri->segment(3);
+		$DAERAH_IRIGASI = $this->uri->segment(4);
 		$this->Laporanhd_model->delete($id);
+		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA '.$DAERAH_IRIGASI,'HAPUS',strtoupper($_SESSION['username']));
 		redirect($this->dataTable);
 	}
 

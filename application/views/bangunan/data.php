@@ -42,7 +42,7 @@
 
 		  					<a href="<?php echo site_url('bangunan/edit/'.$row->id_bangunan) ?>" class="AppButton-secondary"><i class="flaticon-edit"></i></a>
 
-		  					<a href="<?php echo site_url('bangunan/delete/'.$row->id_bangunan) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
+		  					<a href="<?php echo site_url('bangunan/delete/'.$row->id_bangunan.'/'.$row->nama_bangunan) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
 		  				</td>
 		  			</tr>
 
