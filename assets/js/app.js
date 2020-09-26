@@ -17,16 +17,7 @@ $(function(){
 
 	$(".tabza").DataTable();
 
-	$('#dtHorizontalVerticalExample').DataTable({
-		"scrollX": true,
-		"scrollY": 500,
-		"paging":false,
-		"searching":false,
-	     "fixedColumns":   {
-            "leftColumns": 3,
-            // "rightColumns": 1
-        }
-	});
+	
 
 	// load menu header
 	$(".selectza").selectize();
@@ -151,11 +142,76 @@ function notify(text,type){
 }
 
 
+function getDataDetail(url){
+	// alert(url);
+	$.ajax({
+	url:url,
+	beforeSend:function(){
+ 				$("#loader").fadeIn();
+			},
+	success:function(html){
+		$("#loader").fadeOut();
+		// console.log(html);
+		$("#dataLaporan").html(html)
+			$('#dtHorizontalVerticalExample').DataTable({
+			"scrollX": true,
+			"scrollY": 500,
+			"paging":false,
+			"searching":false,
+		     "fixedColumns":   {
+	            "leftColumns": 3,
+	            // "rightColumns": 1
+	        }
+		});
+	}
+})
+}
+
+
+// $("#dataLaporan").
 
 
 
-function cekList(ID_LAPORANHD,ID_BANGUNAN,FIELD){
+function cekList(ID_LAPORANHD,ID_LAPORANDT,FIELD,FIELD_ASAL,url){
 	// alert(ID_LAPORANHD + ' - ' + ID_BANGUNAN);
-	$("#"+ID_BANGUNAN+FIELD).focus();
 
+	var FIELD = FIELD;
+	
+	if ($("#"+ID_LAPORANDT+FIELD_ASAL).is(':checked')) {
+		$("#"+ID_LAPORANDT+FIELD).val("").focus();
+		// $("#"+ID_LAPORANDT+FIELD).focus();
+	}else{
+
+		$.ajax({
+		url:url,
+		type:'POST',
+		data:{
+			ID_LAPORANDT:ID_LAPORANDT,
+			KOLOM:FIELD,
+			TIPE:'DELETE'
+		},
+		success:function(data){
+			console.log(data);
+			}
+		})
+		$("#"+ID_LAPORANDT+FIELD).val("");
+	}
+
+
+	
+
+}
+
+function editData(ID_FORM,url){
+
+var data= $("#"+ID_FORM).serialize();
+
+	$.ajax({
+		url:url,
+		type:'POST',
+		data:data,
+		success:function(data){
+			console.log(data);
+		}
+	})
 }

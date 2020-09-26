@@ -8,7 +8,7 @@
 
 <?php
 
-print_r($laporanhd->result())
+// print_r($laporanhd->result())
 	
 ?>
 	<div class="card">
@@ -50,11 +50,11 @@ print_r($laporanhd->result())
 		  				<td><?php echo $row->MANTRI ?></td>
 		  				<td><?php echo $row->STATUS_LAPORANHD ?></td>
 		  				<td>
-		  					<a href="<?php echo site_url('laporanhd/detail/'.$row->ID) ?>" class="AppButton-primary"><i class="flaticon-eye"></i></a>
+		  					<a href="<?php echo site_url('laporanhd/detail/'.$row->ID_LAPORANHD) ?>" class="AppButton-primary"><i class="flaticon-eye"></i></a>
 
-		  					<a href="<?php echo site_url('laporanhd/edit/'.$row->ID) ?>" class="AppButton-secondary"><i class="flaticon-edit"></i></a>
+		  					<a href="<?php echo site_url('laporanhd/edit/'.$row->ID_LAPORANHD) ?>" class="AppButton-secondary"><i class="flaticon-edit"></i></a>
 
-		  					<a href="<?php echo site_url('laporanhd/delete/'.$row->ID.'/'.$row->DAERAH_IRIGASI) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
+		  					<a href="<?php echo site_url('laporanhd/delete/'.$row->ID_LAPORANHD.'/'.$row->DAERAH_IRIGASI) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
 		  				</td>
 		  			</tr>
 

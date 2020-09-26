@@ -52,7 +52,7 @@ class Laporanhd extends CI_Controller{
 	}
 
 	function insert(){
-
+		$ID_LAPORANHD = sha1(date('ymdhis'));
 		$TANGGAL = $this->input->post('TANGGAL');
 		$TANGGAL = $this->Laporanhd_model->tglSql($TANGGAL);
 		$DAERAH_IRIGASI = $this->input->post('DAERAH_IRIGASI');
@@ -63,7 +63,10 @@ class Laporanhd extends CI_Controller{
 		$MANTRI = $this->input->post('MANTRI');
 
 
-		$this->Laporanhd_model->insert($TANGGAL,$DAERAH_IRIGASI,$LUAS_AREA_IRIGASI,$TINGKATAN_IRIGASI,$KABUPATEN,$RANTING,$MANTRI);
+		$this->Laporanhd_model->insertLaporandt($ID_LAPORANHD);
+
+
+		$this->Laporanhd_model->insert($ID_LAPORANHD,$TANGGAL,$DAERAH_IRIGASI,$LUAS_AREA_IRIGASI,$TINGKATAN_IRIGASI,$KABUPATEN,$RANTING,$MANTRI);
 		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA '.$DAERAH_IRIGASI,'TAMBAH',strtoupper($_SESSION['username']));
 
 		redirect($this->dataTable);
@@ -74,8 +77,10 @@ class Laporanhd extends CI_Controller{
 		$id	= $this->uri->segment(3);
 		$data['title']='SI JUET | Edit - '.$this->judulHalaman;
 
+		 
 		$hasil = $this->Laporanhd_model->getId($id);
-		$data['bangunan'] = $this->Bangunan_model->getData();
+
+
 
 		$data[$this->dataTable] = $hasil->row_array();
 		$this->load->view('header',$data);
@@ -97,6 +102,40 @@ class Laporanhd extends CI_Controller{
 		$this->Laporanhd_model->update($id,$TANGGAL,$DAERAH_IRIGASI,$LUAS_AREA_IRIGASI,$TINGKATAN_IRIGASI,$KABUPATEN,$RANTING,$MANTRI);
 		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA '.$DAERAH_IRIGASI,'EDIT ',strtoupper($_SESSION['username']));
 		redirect($this->dataTable);
+	}
+
+
+	function edit_detail(){
+
+		$id	= $this->uri->segment(3);
+		$data['ID_LAPORANHD'] = $id;
+		$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
+		$this->load->view($this->dataTable.'/edit_detail',$data);
+	}
+
+	function update_detail(){
+
+
+		print_r($_POST);
+		// die();
+
+			if (isset($_POST['TIPE'])) {
+				# code...
+
+				echo $ID_LAPORANDT = $_POST['ID_LAPORANDT'];
+				echo  $KOLOM  = $_POST['KOLOM'];
+				echo $VALUE ='';
+				// $TIPE = $_POST[$KOLOM];
+
+			}else{
+				$ID_LAPORANDT = $_POST['ID_LAPORANDT'];
+				$KOLOM  = $_POST['KOLOM'];
+				$VALUE = $_POST[$KOLOM];
+			}
+
+		 $this->Laporanhd_model->update_detail($ID_LAPORANDT,$KOLOM,$VALUE);
+
+
 	}
 
 
