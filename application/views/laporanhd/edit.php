@@ -16,6 +16,8 @@
 
 		<button class="AppButton-secondary" type="RESET"><i class="flaticon2-refresh-button"></i> Reset</button>
   	<button class="AppButton-primary" type="SUBMIT"><i class="flaticon2-files-and-folders"></i> Simpan</button>
+
+  	<a href="<?php echo site_url('laporanhd') ?>/updae_status" class="btn btn-warning"><i class="flaticon-paper-plane"></i> Selesai</a>
 	  </div>
 	  	<div class="card-body">
 	  		<form>

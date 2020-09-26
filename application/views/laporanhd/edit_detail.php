@@ -46,7 +46,8 @@
 				  			<td><?php echo $row->nama_ruas; ?></td>
 				  			<td><?php echo $row->nama_bangunan; ?></td>
 				  			
-				  			
+
+				  			<!-- fitur ceklist -->
 							<td style="text-align: center;">
 							<label>
 									<input <?php echo $row->BOCORAN_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','BOCORAN_M','BOCORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>BOCORAN" class="form-control" type="checkbox" name="BOCORAN" style="width: 50px;">
@@ -62,130 +63,210 @@
 									<input value="<?php echo $row->BOCORAN_M ?>" id="<?php echo $row->ID_LAPORANDT; ?>BOCORAN_M" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN_M','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="BOCORAN_M" class="form-control" style="width: 90px;">
 								</form>
 							</td>
-
+								<!-- fitur ceklist -->
 							<td style="text-align: center;">
 							<label>
-									<input onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->id_bangunan; ?>','RUSAK_M')" class="form-control" type="checkbox" name="RUSAK" style="width: 50px;">
+									<input <?php echo $row->RUSAK_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','RUSAK_M','RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>RUSAK" class="form-control" type="checkbox" name="RUSAK" style="width: 50px;">
 							</label>
 
 							</td>
 							<td>
-								<form id="FORM<?php echo $row->id_bangunan; ?>RUSAK_M" onSubmit="alert('asd'); return false;">
-									<input id="<?php echo $row->id_bangunan; ?>RUSAK_M" type="text" name="RUSAK_M" class="form-control" style="width: 90px;">
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>RUSAK_M" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RUSAK_M','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="RUSAK_M">
+
+									<input value="<?php echo $row->RUSAK_M ?>" id="<?php echo $row->ID_LAPORANDT; ?>RUSAK_M" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RUSAK_M','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="RUSAK_M" class="form-control" style="width: 90px;">
 								</form>
 							</td>
 
+							<!-- fitur ceklist -->
 							<td style="text-align: center;">
 							<label>
-									<input onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->id_bangunan; ?>','LONGSORAN_M')" class="form-control" type="checkbox" name="LONGSORAN" style="width: 50px;">
+									<input <?php echo $row->LONGSORAN_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','LONGSORAN_M','LONGSORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>LONGSORAN" class="form-control" type="checkbox" name="LONGSORAN" style="width: 50px;">
 							</label>
 
 							</td>
 							<td>
-								<form id="FORM<?php echo $row->id_bangunan; ?>LONGSORAN_M" onSubmit="alert('asd'); return false;">
-									<input id="<?php echo $row->id_bangunan; ?>LONGSORAN_M" type="text" name="LONGSORAN_M" class="form-control" style="width: 90px;">
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN_M" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN_M','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="LONGSORAN_M">
+
+									<input value="<?php echo $row->LONGSORAN_M ?>" id="<?php echo $row->ID_LAPORANDT; ?>LONGSORAN_M" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN_M','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="LONGSORAN_M" class="form-control" style="width: 90px;">
 								</form>
 							</td>
+
+							<!-- fitur ceklist -->
+							<td style="text-align: center;">
+							<label>
+									<input <?php echo $row->TERSUMBAT_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','TERSUMBAT_M','TERSUMBAT','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT" class="form-control" type="checkbox" name="TERSUMBAT" style="width: 50px;">
+							</label>
+
+							</td>
+							<td>
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT_M" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT_M','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="TERSUMBAT_M">
+
+									<input value="<?php echo $row->TERSUMBAT_M ?>" id="<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT_M" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT_M','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="TERSUMBAT_M" class="form-control" style="width: 90px;">
+								</form>
+							</td>
+
+							<!-- fitur ceklist -->
+							<td style="text-align: center;">
+							<label>
+									<input <?php echo $row->RETAK_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','RETAK_M','RETAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>RETAK" class="form-control" type="checkbox" name="RETAK" style="width: 50px;">
+							</label>
+
+							</td>
+							<td>
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>RETAK_M" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RETAK_M','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="RETAK_M">
+
+									<input value="<?php echo $row->RETAK_M ?>" id="<?php echo $row->ID_LAPORANDT; ?>RETAK_M" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RETAK_M','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="RETAK_M" class="form-control" style="width: 90px;">
+								</form>
+							</td>
+							<!-- fitur ceklist -->
+							<td style="text-align: center;">
+							<label>
+									<input <?php echo $row->PINTU_RUSAK_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','PINTU_RUSAK_M','PINTU_RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK" class="form-control" type="checkbox" name="PINTU_RUSAK" style="width: 50px;">
+							</label>
+
+							</td>
+							<td>
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK_M" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK_M','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="PINTU_RUSAK_M">
+
+									<input value="<?php echo $row->PINTU_RUSAK_M ?>" id="<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK_M" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK_M','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="PINTU_RUSAK_M" class="form-control" style="width: 90px;">
+								</form>
+							</td>
+
+							<!-- fitur ceklist -->
+							<td style="text-align: center;">
+							<label>
+									<input <?php echo $row->SEDIMEN_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','SEDIMEN_M','SEDIMEN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>SEDIMEN" class="form-control" type="checkbox" name="SEDIMEN" style="width: 50px;">
+							</label>
+
+							</td>
+							<td>
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN_M" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN_M','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="SEDIMEN_M">
+
+									<input value="<?php echo $row->SEDIMEN_M ?>" id="<?php echo $row->ID_LAPORANDT; ?>SEDIMEN_M" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN_M','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="SEDIMEN_M" class="form-control" style="width: 90px;">
+								</form>
+							</td>
+				
+				
+
+
+
+
+
+
 							
-							<td style="text-align: center;">
-							<label>
-									<input onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->id_bangunan; ?>','TERSUMBAT_M')" class="form-control" type="checkbox" name="TERSUMBAT" style="width: 50px;">
-							</label>
-
-							</td>
 							<td>
-								<form id="FORM<?php echo $row->id_bangunan; ?>TERSUMBAT_M" onSubmit="alert('asd'); return false;">
-									<input id="<?php echo $row->id_bangunan; ?>TERSUMBAT_M" type="text" name="TERSUMBAT_M" class="form-control" style="width: 90px;">
-								</form>
-							</td>
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 
-							<td style="text-align: center;">
-							<label>
-									<input onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->id_bangunan; ?>','RETAK_M')" class="form-control" type="checkbox" name="RETAK" style="width: 50px;">
-							</label>
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="LAIN_LAIN">
 
-							</td>
-							<td>
-								<form id="FORM<?php echo $row->id_bangunan; ?>RETAK_M" onSubmit="alert('asd'); return false;">
-									<input id="<?php echo $row->id_bangunan; ?>RETAK_M" type="text" name="RETAK_M" class="form-control" style="width: 90px;">
+									<input value="<?php echo $row->LAIN_LAIN ?>" id="<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="LAIN_LAIN" class="form-control" style="width: 90px;">
 								</form>
 							</td>
 
 
-							<td style="text-align: center;">
-							<label>
-									<input onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->id_bangunan; ?>','PINTU_RUSAK_M')" class="form-control" type="checkbox" name="PINTU_RUSAK" style="width: 50px;">
-							</label>
-
-							</td>
 							<td>
-								<form id="FORM<?php echo $row->id_bangunan; ?>PINTU_RUSAK_M" onSubmit="alert('asd'); return false;">
-									<input id="<?php echo $row->id_bangunan; ?>PINTU_RUSAK_M" type="text" name="PINTU_RUSAK_M" class="form-control" style="width: 90px;">
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>DIKERJAKAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>DIKERJAKAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="DIKERJAKAN">
+
+									<input value="<?php echo $row->DIKERJAKAN ?>" id="<?php echo $row->ID_LAPORANDT; ?>DIKERJAKAN" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>DIKERJAKAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="DIKERJAKAN" class="form-control" style="width: 90px;">
 								</form>
 							</td>
 
 
-							
-							<td style="text-align: center;">
-							<label>
-									<input onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->id_bangunan; ?>','SEDIMEN_M')" class="form-control" type="checkbox" name="SEDIMEN" style="width: 50px;">
-							</label>
 
-							</td>
 							<td>
-								<form id="FORM<?php echo $row->id_bangunan; ?>SEDIMEN_M" onSubmit="alert('asd'); return false;">
-									<input id="<?php echo $row->id_bangunan; ?>SEDIMEN_M" type="text" name="SEDIMEN_M" class="form-control" style="width: 90px;">
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>USULAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>USULAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="USULAN">
+
+									<input value="<?php echo $row->USULAN ?>" id="<?php echo $row->ID_LAPORANDT; ?>USULAN" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>USULAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="USULAN" class="form-control" style="width: 90px;">
 								</form>
 							</td>
 
 							<td>
-								<form id="FORM<?php echo $row->id_bangunan; ?>LAIN_LAIN" onSubmit="alert('asd'); return false;">
-									<input id="<?php echo $row->id_bangunan; ?>LAIN_LAIN" type="text" name="LAIN_LAIN" class="form-control" style="width: 90px;">
-								</form>
-							</td>
-							<td>
-								<form id="FORM<?php echo $row->id_bangunan; ?>DIKERJAKAN" onSubmit="alert('asd'); return false;">
-									<input id="<?php echo $row->id_bangunan; ?>DIKERJAKAN" type="text" name="DIKERJAKAN" class="form-control" style="width: 90px;">
-								</form>
-							</td>
-							<td>
-								<form id="FORM<?php echo $row->id_bangunan; ?>USULAN" onSubmit="alert('asd'); return false;">
-									<input id="<?php echo $row->id_bangunan; ?>USULAN" type="text" name="USULAN" class="form-control" style="width: 90px;">
-								</form>
-							</td>
-							<td>
-								<form id="FORM<?php echo $row->id_bangunan; ?>LANJUTAN" onSubmit="alert('asd'); return false;">
-									<input id="<?php echo $row->id_bangunan; ?>LANJUTAN" type="text" name="LANJUTAN" class="form-control" style="width: 90px;">
-								</form>
-							</td>
-							<td>
-								<form id="FORM<?php echo $row->id_bangunan; ?>AREA_BAWAH" onSubmit="alert('asd'); return false;">
-									<input id="<?php echo $row->id_bangunan; ?>AREA_BAWAH" type="text" name="AREA_BAWAH" class="form-control" style="width: 90px;">
-								</form>
-							</td>
-							<td>
-								<form id="FORM<?php echo $row->id_bangunan; ?>DESA" onSubmit="alert('asd'); return false;">
-									<input id="<?php echo $row->id_bangunan; ?>DESA" type="text" name="DESA" class="form-control" style="width: 90px;">
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>LANJUTAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LANJUTAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="LANJUTAN">
+
+									<input value="<?php echo $row->LANJUTAN ?>" id="<?php echo $row->ID_LAPORANDT; ?>LANJUTAN" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LANJUTAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="LANJUTAN" class="form-control" style="width: 90px;">
 								</form>
 							</td>
 
 							<td>
-								<form id="FORM<?php echo $row->id_bangunan; ?>ESTIMASI_RUGI" onSubmit="alert('asd'); return false;">
-									<input id="<?php echo $row->id_bangunan; ?>ESTIMASI_RUGI" type="text" name="ESTIMASI_RUGI" class="form-control" style="width: 90px;">
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>AREA_BAWAH" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>AREA_BAWAH','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="AREA_BAWAH">
+
+									<input value="<?php echo $row->AREA_BAWAH ?>" id="<?php echo $row->ID_LAPORANDT; ?>AREA_BAWAH" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>AREA_BAWAH','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="AREA_BAWAH" class="form-control" style="width: 90px;">
 								</form>
 							</td>
 
 							<td>
-								<form id="FORM<?php echo $row->id_bangunan; ?>ESTIMASI_PERBAIKAN" onSubmit="alert('asd'); return false;">
-									<input id="<?php echo $row->id_bangunan; ?>ESTIMASI_PERBAIKAN" type="text" name="ESTIMASI_PERBAIKAN" class="form-control" style="width: 90px;">
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>DESA" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>DESA','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="DESA">
+
+									<input value="<?php echo $row->DESA ?>" id="<?php echo $row->ID_LAPORANDT; ?>DESA" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>DESA','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="DESA" class="form-control" style="width: 90px;">
 								</form>
 							</td>
 
+
 							<td>
-								<form id="FORM<?php echo $row->id_bangunan; ?>PRIORITAS" onSubmit="alert('asd'); return false;">
-									<input id="<?php echo $row->id_bangunan; ?>PRIORITAS" type="text" name="PRIORITAS" class="form-control" style="width: 90px;">
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>ESTIMASI_RUGI" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>ESTIMASI_RUGI','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="ESTIMASI_RUGI">
+
+									<input value="<?php echo $row->ESTIMASI_RUGI ?>" id="<?php echo $row->ID_LAPORANDT; ?>ESTIMASI_RUGI" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>ESTIMASI_RUGI','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="ESTIMASI_RUGI" class="form-control" style="width: 90px;">
 								</form>
 							</td>
+
+<td>
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>ESTIMASI_PERBAIKAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>ESTIMASI_PERBAIKAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="ESTIMASI_PERBAIKAN">
+
+									<input value="<?php echo $row->ESTIMASI_PERBAIKAN ?>" id="<?php echo $row->ID_LAPORANDT; ?>ESTIMASI_PERBAIKAN" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>ESTIMASI_PERBAIKAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="ESTIMASI_PERBAIKAN" class="form-control" style="width: 90px;">
+								</form>
+							</td>
+
+
+						<td>
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>PRIORITAS" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PRIORITAS','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="PRIORITAS">
+
+									<input value="<?php echo $row->PRIORITAS ?>" id="<?php echo $row->ID_LAPORANDT; ?>PRIORITAS" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PRIORITAS','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="PRIORITAS" class="form-control" style="width: 90px;">
+								</form>
+							</td>
+
 
 					
 
