@@ -12,7 +12,7 @@ $TGL = explode("-", $laporanhd['TANGGAL']);
 
 $html = '<table style="width: 100%" style="font-size: small;border:1px solid;border-collapse: collapse"><th style="border:1px solid;text-align:center"ead><tr>
 
-<td style="border:1px solid;text-align:center" colspan="14" style="border:1px solid;text-align:center">
+<td style="border:1px solid;text-align:center" colspan="15" style="border:1px solid;text-align:center">
 		              			<center>
 									<h1>LAPORAN KERUSAKAN JARINGAN IRIGASI</h1>
 				
@@ -21,35 +21,35 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 								</td>
 							<td style="border:1px solid;text-align:center" colspan="2" border="0">
 			              			<center>
-										<h2>Blanko 01 - P</h2>
+										<h2>Blanko 02 - P</h2>
 									</center>
 							</td>
 		            </tr>
 
 		            <tr>
 		            	<td style="border:1px solid;" border="0" colspan="4">DAERAH IRIGASI</td>
-		            	<td style="border:1px solid;" border="0" colspan="8">: '. $laporanhd['DAERAH_IRIGASI'] .'</td>
+		            	<td style="border:1px solid;" border="0" colspan="9">: '. $laporanhd['DAERAH_IRIGASI'] .'</td>
 
 		            	<td style="border:1px solid;" border="0" colspan="2">KABUPATEN</td>
 		            	<td style="border:1px solid;" border="0" colspan="2">: '. $laporanhd['KABUPATEN'] .'</td>
 		            </tr>
 		             <tr>
 		            	<td style="border:1px solid;" border="0" colspan="4">TOTAL LUAS AREAL DI</td>
-		            	<td style="border:1px solid;" border="0" colspan="8">: '. $laporanhd['LUAS_AREA_IRIGASI'] .' Ha</td>
+		            	<td style="border:1px solid;" border="0" colspan="9">: '. $laporanhd['LUAS_AREA_IRIGASI'] .' Ha</td>
 
 		            	<td style="border:1px solid;" border="0" colspan="2">PENGAMAT/RANTING</td>
 		            	<td style="border:1px solid;" border="0" colspan="2">: '. $laporanhd['RANTING'] .'</td>
 		            </tr>
 		             <tr>
 		            	<td style="border:1px solid;" border="0" colspan="4">TINGKATAN DI : T / ST / SD</td>
-		            	<td style="border:1px solid;" border="0" colspan="8">: '. $laporanhd['TINGKATAN_IRIGASI'] .'</td>
+		            	<td style="border:1px solid;" border="0" colspan="9">: '. $laporanhd['TINGKATAN_IRIGASI'] .'</td>
 
 		            	<td style="border:1px solid;" border="0" colspan="2">JURU/MANTRI</td>
 		            	<td style="border:1px solid;" border="0" colspan="2">: '. $laporanhd['MANTRI'] .'</td>
 		            </tr>
 		       
 		            <tr>
-		            	<td>
+		            	<td colspan="17">
 		            		&nbsp;
 		            	</td>
 		            </tr>
@@ -58,7 +58,8 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 						<th style="border:1px solid;text-align:center" rowspan="2">NAMA RUAS SALURAN</th>
 						<th style="border:1px solid;text-align:center" rowspan="2">NAMA BAGUNAN DAN TIPENYA</th>
 						<th style="border:1px solid;text-align:center" colspan="8">KEADAAN</th>
-						<th style="border:1px solid;text-align:center" colspan="2">TINDAKAN</th>
+						<th style="border:1px solid;text-align:center" colspan="2">PERKIRAAN BIAYA	</th>
+						<th style="border:1px solid;text-align:center" rowspan="2">PRIORITAS</th>
 						<th style="border:1px solid;text-align:center" rowspan="2">AREAL LAYANAN DI BAWAHNYA</th>
 						<th style="border:1px solid;text-align:center" rowspan="2">DESA / KECAMATAN</th>
 						<th style="border:1px solid;text-align:center" rowspan="2">FOTO_BEFORE</th>
@@ -72,10 +73,12 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 						<th style="border:1px solid;text-align:center">PINTU RUSAK (BH)</th>
 						<th style="border:1px solid;text-align:center">SEDIMEN/WALED (H)</th>
 						<th style="border:1px solid;text-align:center">MASUKAN LAIN - LAIN</th>
-						<th style="border:1px solid;text-align:center">DIKERJAKAN</th>
-						<th style="border:1px solid;text-align:center">USULAN TINDAK LANJUT</th>
+
+						<th style="border:1px solid;text-align:center">ESTIMASI_RUGI</th>
+						<th style="border:1px solid;text-align:center">ESTIMASI_PERBAIKAN</th>
+						
 					</tr>
-					<tr style="text-align: center;">
+					<tr sstyle="text-align: center;">
 						<td style="border:1px solid;text-align:center">1</td>
 						<td style="border:1px solid;text-align:center">2</td>
 						<td style="border:1px solid;text-align:center">3</td>
@@ -92,6 +95,7 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 						<td style="border:1px solid;text-align:center">14</td>
 						<td style="border:1px solid;text-align:center">15</td>
 						<td style="border:1px solid;text-align:center">16</td>
+						<td style="border:1px solid;text-align:center">17</td>
 
 
 					</tr>
@@ -116,8 +120,9 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 							<td style="border:1px solid;text-align:center">'. $row->RETAK_M .'</td>
 							<td style="border:1px solid;text-align:center">'. $row->SEDIMEN_M .'</td>
 							<td style="border:1px solid;text-align:center">'. $row->LAIN_LAIN .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->DIKERJAKAN .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->USULAN .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->ESTIMASI_RUGI .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->ESTIMASI_PERBAIKAN .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->PRIORITAS .'</td>
 							<td style="border:1px solid;text-align:center">'. $row->AREA_BAWAH .'</td>
 							<td style="border:1px solid;text-align:center">'. $row->DESA .'</td>
 							<td style="border:1px solid;text-align:center">';
@@ -138,7 +143,7 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 				}
 
 				$html .='<tr>
-							<td style="border:1px solid;text-align:left" colspan="13">
+							<td style="border:1px solid;text-align:left" colspan="14">
 								<p>Penjelasan : </p>
 								<ol>
 									<li>Diserahkan tiap tanggal 25 bulan ybs, walaupun tidak terjadi kerusakan pada bulan ybs</li>
@@ -149,15 +154,17 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 										dan harus dilaporkan apabila ada kerusakan baru atau kerusakan lama (yang pernah dilaporkan) berubah lagi.
 
 									</li>
-									<li>Kolom 12 dan 13 keterangan diisi jenis kerusakan yang sudah dikerjakan dan diusulkan</li>
-									<li>Kolom 14 diisi luas areal layanan dibawah/dihilir lokasi kerusakan yang menjadi oncorannya</li>
-									<li>Laporan bulanan : Mantri/Juru → Ranting/Pengamat/UPTD/SUP</li>
+									<li>Kolom 12 dan 13 keterangan diisi jenis perkiraan kerugian dan perbaikannya</li>
+									<li>Kolom 14 diisi dengan skala prioritasnya 1, 2 atau 3 (1 = segera; 2 = perlu; 3 = dapat ditangguhkan)</li>
+									<li>Kolom 15 diisi luas areal layanan dibawah/dihilir lokasi kerusakan yang menjadi daerah layanannya<br/>
+									Laporan bulanan : Ranting/Pengamat/UPTD/SUP→ Dinas Pengairan Kabupaten/Balai PSDA</li>
 								</ol>
 							</td>
 							<td style="border:1px solid;text-align:center" colspan="3">
 						
 								<center>
-									<h2>Juru/Mantri Cimandiri</h2>
+									<h3>'. $laporanhd['KABUPATEN'].", ".$TGL[2]."/".$TGL[1]."/".$TGL[0].'<br/>
+										Pengamat/Ranting/UPTD/SUP<br/>'.$laporanhd['RANTING'].'</h3>
 									<br/>
 									<br/>
 									<br/>

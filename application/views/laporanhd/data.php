@@ -43,7 +43,7 @@
 	  					# code...
 	  					 $STATUS_AKSI = "style='display:none'";
 	  				}
-	  				elseif ($row->STATUS_LAPORANHD==='PROSES' && $_SESSION['level']==='SUP') {
+	  				elseif ($row->STATUS_LAPORANHD==='DONE' && $_SESSION['level']==='SUP') {
 	  					# code...
 	  					 $STATUS_AKSI = "style='display:none'";
 	  				}
@@ -75,8 +75,10 @@
 
 		  					<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/edit/'.$row->ID_LAPORANHD) ?>" class="AppButton-secondary"><i class="flaticon-edit"></i></a>
 
-		  					<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/delete/'.$row->ID_LAPORANHD.'/'.$row->DAERAH_IRIGASI) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
+		  					<?php if ($_SESSION['level']==='ADMIN'): ?>
+		  						<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/delete/'.$row->ID_LAPORANHD.'/'.$row->DAERAH_IRIGASI) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
 
+		  					<?php endif ?>
 		  					<div style="margin-top: 10px"></div>
 
 		  					<a href="<?php echo site_url('laporanhd/detail_pdf/'.$row->ID_LAPORANHD) ?>" class="btn btn-danger"><i class="flaticon-file"></i> PDF </a>

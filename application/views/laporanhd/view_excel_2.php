@@ -1,5 +1,20 @@
 <?php
 
+header("Content-type: application/octet-stream");
+header("Content-Disposition: attachment; filename=Blanko 02 - P.xls");//ganti nama sesuai keperluan
+header("Pragma: no-cache");
+header("Expires: 0");
+error_reporting(0);
+// print_r($laporanhd);
+// // print_r($laporandt);
+
+
+?>
+
+
+
+<?php
+
 // header("Content-type: application/octet-stream");
 // header("Content-Disposition: attachment; filename=LAPORAN.xls");//ganti nama sesuai keperluan
 // header("Pragma: no-cache");
@@ -18,7 +33,7 @@ error_reporting(0);
               border="1">
 					<thead>
 					 <tr>
-              				<td colspan="15" border="0">
+              				<td colspan="14" border="0">
 		              			<center>
 									<h1>LAPORAN KERUSAKAN JARINGAN IRIGASI</h1>
 									<?php   $TGL = explode("-", $laporanhd['TANGGAL']) ?>
@@ -34,28 +49,28 @@ error_reporting(0);
 
 		            <tr>
 		            	<td border="0" colspan="4">DAERAH IRIGASI</td>
-		            	<td border="0" colspan="10">: <?php echo $laporanhd['DAERAH_IRIGASI'] ?></td>
+		            	<td border="0" colspan="9">: <?php echo $laporanhd['DAERAH_IRIGASI'] ?></td>
 
 		            	<td border="0" colspan="2">KABUPATEN</td>
 		            	<td border="0" colspan="2">: <?php echo $laporanhd['KABUPATEN'] ?></td>
 		            </tr>
 		             <tr>
 		            	<td border="0" colspan="4">TOTAL LUAS AREAL DI</td>
-		            	<td border="0" colspan="10">: <?php echo $laporanhd['LUAS_AREA_IRIGASI'] ?> Ha</td>
+		            	<td border="0" colspan="9">: <?php echo $laporanhd['LUAS_AREA_IRIGASI'] ?> Ha</td>
 
 		            	<td border="0" colspan="2">PENGAMAT/RANTING</td>
 		            	<td border="0" colspan="2">: <?php echo $laporanhd['RANTING'] ?></td>
 		            </tr>
 		             <tr>
 		            	<td border="0" colspan="4">TINGKATAN DI : T / ST / SD</td>
-		            	<td border="0" colspan="10">: <?php echo $laporanhd['TINGKATAN_IRIGASI'] ?></td>
+		            	<td border="0" colspan="9">: <?php echo $laporanhd['TINGKATAN_IRIGASI'] ?></td>
 
 		            	<td border="0" colspan="2">JURU/MANTRI</td>
 		            	<td border="0" colspan="2">: <?php echo $laporanhd['MANTRI'] ?></td>
 		            </tr>
 		       
 		            <tr>
-		            	<td colspan="18">
+		            	<td colspan="17">
 		            		&nbsp;
 		            	</td>
 		            </tr>
