@@ -38,8 +38,29 @@
 	  				$no=0;
 	  				foreach($laporanhd->result() as $row):
 	  				$no++;
+
+	  				if ($row->STATUS_LAPORANHD==='CEK' && $_SESSION['level']==='MANTRI') {
+	  					# code...
+	  					 $STATUS_AKSI = "style='display:none'";
+	  				}
+	  				elseif ($row->STATUS_LAPORANHD==='PROSES' && $_SESSION['level']==='SUP') {
+	  					# code...
+	  					 $STATUS_AKSI = "style='display:none'";
+	  				}
+
+	  				elseif ($row->STATUS_LAPORANHD==='DONE' && $_SESSION['level']!=='ADMIN') {
+	  					# code...
+	  					 $STATUS_AKSI = "";
+	  					 $STATUS_AKSI_BTN = "style='display:none'";
+
+	  				}
+
+	  				else{
+						$STATUS_AKSI="";
+						$STATUS_AKSI_BTN="";
+	  				}
 		  		?>
-		  			<tr>
+		  			<tr <?php echo $STATUS_AKSI ?>>
 		  				<td><?php echo $no ?></td>
 		  				<td><?php echo tglIndonesia($row->TANGGAL) ?></td>
 		  				<td><?php echo $row->DAERAH_IRIGASI ?></td>
@@ -52,9 +73,12 @@
 		  				<td>
 		  					<a href="<?php echo site_url('laporanhd/detail/'.$row->ID_LAPORANHD) ?>" class="AppButton-primary"><i class="flaticon-eye"></i></a>
 
-		  					<a href="<?php echo site_url('laporanhd/edit/'.$row->ID_LAPORANHD) ?>" class="AppButton-secondary"><i class="flaticon-edit"></i></a>
+		  					<a <?php echo $STATUS_AKSI_BTN ?> href="<?php echo site_url('laporanhd/edit/'.$row->ID_LAPORANHD) ?>" class="AppButton-secondary"><i class="flaticon-edit"></i></a>
 
-		  					<a href="<?php echo site_url('laporanhd/delete/'.$row->ID_LAPORANHD.'/'.$row->DAERAH_IRIGASI) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
+		  					<a <?php echo $STATUS_AKSI_BTN ?> href="<?php echo site_url('laporanhd/delete/'.$row->ID_LAPORANHD.'/'.$row->DAERAH_IRIGASI) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
+
+		  					<a href="<?php echo site_url('laporanhd/detail_pdf/'.$row->ID_LAPORANHD) ?>" class="btn btn-danger"><i class="flaticon-file"></i> PDF </a>
+
 		  				</td>
 		  			</tr>
 

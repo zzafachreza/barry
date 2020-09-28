@@ -37,10 +37,21 @@ class Laporanhd extends CI_Controller{
 		$data['title']='SI JUET | Detail - '.$this->judulHalaman;
 
 		$hasil = $this->Laporanhd_model->getId($id);
+		$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
 		$data[$this->dataTable] = $hasil->row_array();
-		$this->load->view('header',$data);
 		$this->load->view($this->dataTable.'/view',$data);
-		$this->load->view('footer');
+	
+	}
+
+		function detail_pdf(){
+		$id	= $this->uri->segment(3);
+		$data['title']='SI JUET | Detail - '.$this->judulHalaman;
+
+		$hasil = $this->Laporanhd_model->getId($id);
+		$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
+		$data[$this->dataTable] = $hasil->row_array();
+		$this->load->view($this->dataTable.'/view_pdf',$data);
+	
 	}
 
 	function add(){
@@ -111,6 +122,15 @@ class Laporanhd extends CI_Controller{
 		$data['ID_LAPORANHD'] = $id;
 		$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
 		$this->load->view($this->dataTable.'/edit_detail',$data);
+	}
+
+
+	function edit_detail_view(){
+
+		$id	= $this->uri->segment(3);
+		$data['ID_LAPORANHD'] = $id;
+		$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
+		$this->load->view($this->dataTable.'/edit_detail_view',$data);
 	}
 
 
@@ -238,9 +258,25 @@ class Laporanhd extends CI_Controller{
 	function delete(){
 		$id = $this->uri->segment(3);
 		$DAERAH_IRIGASI = $this->uri->segment(4);
+
 		$this->Laporanhd_model->delete($id);
 		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA '.$DAERAH_IRIGASI,'HAPUS',strtoupper($_SESSION['username']));
+
 		redirect($this->dataTable);
+	}
+
+
+	function update_status(){
+
+		$ID_LAPORANHD = $this->uri->segment(3);
+		$STATUS_LAPORANHD = $this->uri->segment(4);
+
+		$this->Laporanhd_model->update_status($ID_LAPORANHD,$STATUS_LAPORANHD);
+
+		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA ','SELESAI',strtoupper($_SESSION['username']));
+
+		redirect($this->dataTable);
+
 	}
 
 

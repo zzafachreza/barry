@@ -17,7 +17,28 @@
 		<button class="AppButton-secondary" type="RESET"><i class="flaticon2-refresh-button"></i> Reset</button>
   	<button class="AppButton-primary" type="SUBMIT"><i class="flaticon2-files-and-folders"></i> Simpan</button>
 
-  	<a href="<?php echo site_url('laporanhd') ?>/updae_status" class="btn btn-warning"><i class="flaticon-paper-plane"></i> Selesai</a>
+
+<?php if ($_SESSION['level']==='MANTRI'): ?>
+	<a onclick="return confirm('Apakah Anda sudah yakin selesaikan ini ?\nData jika sudah selesai tidak bisa diubah')" href="<?php echo site_url('laporanhd') ?>/update_status/<?php echo $ID_LAPORANHD = $laporanhd['ID_LAPORANHD'] ?>/CEK" class="btn btn-warning"><i class="flaticon-paper-plane"></i> Selesai</a>
+
+<?php endif ?>
+
+<?php if ($_SESSION['level']==='SUP'): ?>
+		<a onclick="return confirm('Apakah Anda sudah yakin selesaikan ini ?\nData jika sudah selesai tidak bisa diubah')" href="<?php echo site_url('laporanhd') ?>/update_status/<?php echo $ID_LAPORANHD = $laporanhd['ID_LAPORANHD'] ?>/DONE" class="btn btn-warning"><i class="flaticon-paper-plane"></i> Selesai</a>
+
+<?php endif ?>
+
+<?php if ($_SESSION['level']==='ADMIN'): ?>
+
+	<a onclick="return confirm('Apakah Anda sudah yakin selesaikan ini ?\nData jika sudah selesai tidak bisa diubah')" href="<?php echo site_url('laporanhd') ?>/update_status/<?php echo $ID_LAPORANHD = $laporanhd['ID_LAPORANHD'] ?>/CEK" class="btn btn-warning"><i class="flaticon-paper-plane"></i> Selesai MANTRI</a>
+
+		<a onclick="return confirm('Apakah Anda sudah yakin selesaikan ini ?\nData jika sudah selesai tidak bisa diubah')" href="<?php echo site_url('laporanhd') ?>/update_status/<?php echo $ID_LAPORANHD = $laporanhd['ID_LAPORANHD'] ?>/DONE" class="btn btn-primary"><i class="flaticon-paper-plane"></i> Selesai SUP</a>
+
+<?php endif ?>
+  	
+
+  
+
 	  </div>
 	  	<div class="card-body">
 	  		<form>
