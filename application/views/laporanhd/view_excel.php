@@ -1,9 +1,9 @@
 <?php
 
-// header("Content-type: application/octet-stream");
-// header("Content-Disposition: attachment; filename=LAPORAN.xls");//ganti nama sesuai keperluan
-// header("Pragma: no-cache");
-// header("Expires: 0");
+header("Content-type: application/octet-stream");
+header("Content-Disposition: attachment; filename=LAPORAN.xls");//ganti nama sesuai keperluan
+header("Pragma: no-cache");
+header("Expires: 0");
 error_reporting(0);
 // print_r($laporanhd);
 // // print_r($laporandt);

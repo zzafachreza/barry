@@ -143,12 +143,10 @@ function notify(text,type){
 
 
 function getDataDetail(url){
+	$("#loader").fadeIn();
 	// alert(url);
 	$.ajax({
 	url:url,
-	beforeSend:function(){
- 				$("#loader").fadeIn();
-			},
 	success:function(html){
 		$("#loader").fadeOut();
 		// console.log(html);

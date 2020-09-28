@@ -40,7 +40,9 @@
 						<th>DESA / KECAMATAN</th>
 
 						<th>FOTO_BEFORE</th>
+						<?php if ($_SESSION['level']==='SEKSI IRIGASI'): ?>
 						<th>FOTO_AFTER</th>
+						<?php endif ?>
 
 					</tr>
 					</thead>
@@ -295,15 +297,22 @@
 									<input type="hidden" name="KOLOM" value="FOTO_BEFORE">
 									<input type="hidden" name="FOTO_OLD" value="<?php echo $row->FOTO_BEFORE; ?>">
 									
-									<a href="<?php echo base_url().'/laporanhd/view_detail_foto/'.$row->ID_LAPORANDT.'/FOTO_BEFORE' ?>" target="_BLANK">LIHAT GAMBAR</a>	
+									<?php if (isset($row->FOTO_BEFORE)): ?>
+										<a href="<?php echo base_url().'/laporanhd/view_detail_foto/'.$row->ID_LAPORANDT.'/FOTO_BEFORE' ?>" target="_BLANK">
 
+										<img src="<?php echo base_url().'upload/'.$row->FOTO_BEFORE ?>" width="50">
+
+									</a>	
+
+									<?php endif ?>
 
 									<input type="file"  id="<?php echo $row->ID_LAPORANDT; ?>FOTO_BEFORE" onChange="editDataFoto('FORM<?php echo $row->ID_LAPORANDT; ?>FOTO_BEFORE','<?php echo base_url().'/laporanhd/update_detail_foto/'.$row->ID_LAPORANHD ?>','<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>','<?php echo $row->ID_LAPORANHD; ?>'); return false;"  name="FOTO_BEFORE"  style="width: 100px;">
-									<button type="submit" class="btn AppButton-primary">UPLOAD</button>
+									<!-- <button type="submit" class="btn AppButton-primary">UPLOAD</button> -->
 								</form>
 
 
 							</td>
+							<?php if ($_SESSION['level']==='SEKSI IRIGASI'): ?>
 							<td>
 									<form enctype="multipart/form-data" id="FORM<?php echo $row->ID_LAPORANDT; ?>FOTO_AFTER" onSubmit="editDataFoto('FORM<?php echo $row->ID_LAPORANDT; ?>FOTO_AFTER','<?php echo base_url().'/laporanhd/update_detail_foto/'.$row->ID_LAPORANHD ?>','<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>','<?php echo $row->ID_LAPORANHD; ?>'); return false;">
 
@@ -311,14 +320,20 @@
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 									<input type="hidden" name="KOLOM" value="FOTO_AFTER">
 									<input type="hidden" name="FOTO_OLD" value="<?php echo $row->FOTO_AFTER; ?>">
-									
-									<a href="<?php echo base_url().'/laporanhd/view_detail_foto/'.$row->ID_LAPORANDT.'/FOTO_AFTER' ?>" target="_BLANK">LIHAT GAMBAR</a>	
+										
+										<?php if (isset($row->FOTO_AFTER)): ?>
+									<a href="<?php echo base_url().'/laporanhd/view_detail_foto/'.$row->ID_LAPORANDT.'/FOTO_AFTER' ?>" target="_BLANK">
+										<img src="<?php echo base_url().'upload/'.$row->FOTO_AFTER ?>" width="50">
+									</a>	
+
+									<?php endif ?>
 
 
 									<input type="file"  id="<?php echo $row->ID_LAPORANDT; ?>FOTO_AFTER" onChange="editDataFoto('FORM<?php echo $row->ID_LAPORANDT; ?>FOTO_AFTER','<?php echo base_url().'/laporanhd/update_detail_foto/'.$row->ID_LAPORANHD ?>','<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>','<?php echo $row->ID_LAPORANHD; ?>'); return false;"  name="FOTO_AFTER"  style="width: 100px;">
-									<button type="submit" class="btn AppButton-primary">UPLOAD</button>
+									<!-- <button type="submit" class="btn AppButton-primary">UPLOAD</button> -->
 								</form>
 							</td>
+											<?php endif ?>
 
 
 					

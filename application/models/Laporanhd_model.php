@@ -31,6 +31,11 @@ class Laporanhd_model extends CI_Model{
 		 $this->db->query($sql);
 	}
 
+	function deleteDT($id){
+		$sql="DELETE FROM data_laporandt WHERE ID_LAPORANHD='$id'";
+		 $this->db->query($sql);
+	}
+
 	function getId($id){
 		$sql = "SELECT * FROM data_laporanhd WHERE  ID_LAPORANHD='$id'";
 		$data = $this->db->query($sql);
@@ -80,7 +85,7 @@ class Laporanhd_model extends CI_Model{
 	}
 
 	function getDataDetail($id){
-		$sql="SELECT*FROM `data_laporanhd` INNER JOIN `data_laporandt` ON (`data_laporanhd`.`ID_LAPORANHD` = `data_laporandt`.`ID_LAPORANHD`) INNER JOIN `data_bangunan` ON (`data_laporandt`.`ID_BANGUNAN` = `data_bangunan`.`id_bangunan`) INNER JOIN `data_ruas` ON (`data_bangunan`.`id_ruas` = `data_ruas`.`id_ruas`) WHERE data_laporandt.ID_LAPORANHD='$id';";
+		$sql="SELECT*FROM `data_laporanhd` INNER JOIN `data_laporandt` ON (`data_laporanhd`.`ID_LAPORANHD` = `data_laporandt`.`ID_LAPORANHD`) INNER JOIN `data_bangunan` ON (`data_laporandt`.`ID_BANGUNAN` = `data_bangunan`.`id_bangunan`) INNER JOIN `data_ruas` ON (`data_bangunan`.`id_ruas` = `data_ruas`.`id_ruas`) WHERE data_laporandt.ID_LAPORANHD='$id' limit 10;";
 		$data = $this->db->query($sql);
 		return $data;
 	}

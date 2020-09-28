@@ -39,7 +39,23 @@ class Laporanhd extends CI_Controller{
 		$hasil = $this->Laporanhd_model->getId($id);
 		$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
 		$data[$this->dataTable] = $hasil->row_array();
-		$this->load->view($this->dataTable.'/view',$data);
+
+		switch ($_SESSION['level']) {
+			case 'MANTRI':
+				# code...
+			$this->load->view($this->dataTable.'/view_1',$data);
+				break;
+			case 'SUP':
+				# code...
+			$this->load->view($this->dataTable.'/view_2',$data);
+				break;
+			
+			default:
+				# code...
+			$this->load->view($this->dataTable.'/view',$data);
+				break;
+		}
+		
 	
 	}
 
@@ -50,7 +66,50 @@ class Laporanhd extends CI_Controller{
 		$hasil = $this->Laporanhd_model->getId($id);
 		$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
 		$data[$this->dataTable] = $hasil->row_array();
-		$this->load->view($this->dataTable.'/view_pdf',$data);
+		
+
+		switch ($_SESSION['level']) {
+			case 'MANTRI':
+				# code...
+			$this->load->view($this->dataTable.'/view_pdf_1',$data);
+				break;
+			case 'SUP':
+				# code...
+			$this->load->view($this->dataTable.'/view_pdf_2',$data);
+				break;
+			
+			default:
+				# code...
+			$this->load->view($this->dataTable.'/view',$data);
+				break;
+		}
+	
+	}
+
+
+		function detail_excel(){
+		$id	= $this->uri->segment(3);
+		$data['title']='SI JUET | Detail - '.$this->judulHalaman;
+
+		$hasil = $this->Laporanhd_model->getId($id);
+		$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
+		$data[$this->dataTable] = $hasil->row_array();
+
+		switch ($_SESSION['level']) {
+			case 'MANTRI':
+				# code...
+			$this->load->view($this->dataTable.'/view_excel_1',$data);
+				break;
+			case 'SUP':
+				# code...
+			$this->load->view($this->dataTable.'/view_excel_2',$data);
+				break;
+			
+			default:
+				# code...
+			$this->load->view($this->dataTable.'/view_excel',$data);
+				break;
+		}
 	
 	}
 
@@ -260,6 +319,8 @@ class Laporanhd extends CI_Controller{
 		$DAERAH_IRIGASI = $this->uri->segment(4);
 
 		$this->Laporanhd_model->delete($id);
+		$this->Laporanhd_model->deleteDT($id);
+
 		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA '.$DAERAH_IRIGASI,'HAPUS',strtoupper($_SESSION['username']));
 
 		redirect($this->dataTable);

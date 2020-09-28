@@ -60,7 +60,7 @@
 						$STATUS_AKSI_BTN="";
 	  				}
 		  		?>
-		  			<tr <?php echo $STATUS_AKSI ?>>
+		  			<tr>
 		  				<td><?php echo $no ?></td>
 		  				<td><?php echo tglIndonesia($row->TANGGAL) ?></td>
 		  				<td><?php echo $row->DAERAH_IRIGASI ?></td>
@@ -73,11 +73,18 @@
 		  				<td>
 		  					<a href="<?php echo site_url('laporanhd/detail/'.$row->ID_LAPORANHD) ?>" class="AppButton-primary"><i class="flaticon-eye"></i></a>
 
-		  					<a <?php echo $STATUS_AKSI_BTN ?> href="<?php echo site_url('laporanhd/edit/'.$row->ID_LAPORANHD) ?>" class="AppButton-secondary"><i class="flaticon-edit"></i></a>
+		  					<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/edit/'.$row->ID_LAPORANHD) ?>" class="AppButton-secondary"><i class="flaticon-edit"></i></a>
 
-		  					<a <?php echo $STATUS_AKSI_BTN ?> href="<?php echo site_url('laporanhd/delete/'.$row->ID_LAPORANHD.'/'.$row->DAERAH_IRIGASI) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
+		  					<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/delete/'.$row->ID_LAPORANHD.'/'.$row->DAERAH_IRIGASI) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
+
+		  					<div style="margin-top: 10px"></div>
 
 		  					<a href="<?php echo site_url('laporanhd/detail_pdf/'.$row->ID_LAPORANHD) ?>" class="btn btn-danger"><i class="flaticon-file"></i> PDF </a>
+
+		  					<a href="<?php echo site_url('laporanhd/detail_excel/'.$row->ID_LAPORANHD) ?>" class="btn btn-success"><i class="flaticon-file"></i> Excel </a>
+
+		  					
+
 
 		  				</td>
 		  			</tr>

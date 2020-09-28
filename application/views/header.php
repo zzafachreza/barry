@@ -98,8 +98,8 @@ function tglIndonesia($tgl){
         <a class="nav-link" href="<?php echo site_url() ?>">Home <span class="sr-only">(current)</span></a>
       </li>
    
-    
-       <li class="nav-item dropdown">
+    <?php if ($_SESSION['level']==='ADMIN'): ?>
+           <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Master Data
         </a>
@@ -112,6 +112,8 @@ function tglIndonesia($tgl){
           <a class="dropdown-item" href="<?php echo site_url('riwayat') ?>">Riwayat Perubahan Data</a>
         </div>
       </li>
+    <?php endif ?>
+    
 
       <li class="nav-item <?php echo $menu=="" ? "active":"" ?>">
         <a class="nav-link" href="<?php echo site_url('laporanhd') ?>">Laporan <span class="sr-only">(current)</span></a>

@@ -129,6 +129,7 @@
 </div>
 
 	<script type="text/javascript">
+		
 				getDataDetail('<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>');
 			</script>
 
