@@ -37,6 +37,12 @@ class Laporanhd_model extends CI_Model{
 		return $data;
 	}
 
+	function getIdFoto($ID_LAPORANDT,$KOLOM){
+		$sql = "SELECT ".$KOLOM." FROM data_laporandt WHERE  ID_LAPORANDT='$ID_LAPORANDT'";
+		$data = $this->db->query($sql);
+		return $data;
+	}
+
 	function update($id,$TANGGAL,$DAERAH_IRIGASI,$LUAS_AREA_IRIGASI,$TINGKATAN_IRIGASI,$KABUPATEN,$RANTING,$MANTRI){
 
 	
@@ -51,6 +57,13 @@ class Laporanhd_model extends CI_Model{
 		$this->db->query($sql);	
 	}
 
+	function update_detail_foto($ID_LAPORANDT,$FIELD,$VALUE){
+	
+   		 $sql= "UPDATE data_laporandt SET $FIELD='$VALUE' WHERE ID_LAPORANDT='$ID_LAPORANDT'";
+		$this->db->query($sql);	
+		
+	}
+
 
 
 	function insertLaporandt($id){
@@ -59,7 +72,7 @@ class Laporanhd_model extends CI_Model{
 	}
 
 	function getDataDetail($id){
-		$sql="SELECT*FROM `data_laporanhd` INNER JOIN `data_laporandt` ON (`data_laporanhd`.`ID_LAPORANHD` = `data_laporandt`.`ID_LAPORANHD`) INNER JOIN `data_bangunan` ON (`data_laporandt`.`ID_BANGUNAN` = `data_bangunan`.`id_bangunan`) INNER JOIN `data_ruas` ON (`data_bangunan`.`id_ruas` = `data_ruas`.`id_ruas`) WHERE data_laporandt.ID_LAPORANHD='$id';";
+		$sql="SELECT*FROM `data_laporanhd` INNER JOIN `data_laporandt` ON (`data_laporanhd`.`ID_LAPORANHD` = `data_laporandt`.`ID_LAPORANHD`) INNER JOIN `data_bangunan` ON (`data_laporandt`.`ID_BANGUNAN` = `data_bangunan`.`id_bangunan`) INNER JOIN `data_ruas` ON (`data_bangunan`.`id_ruas` = `data_ruas`.`id_ruas`) WHERE data_laporandt.ID_LAPORANHD='$id' limit 1;";
 		$data = $this->db->query($sql);
 		return $data;
 	}

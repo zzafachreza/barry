@@ -113,6 +113,9 @@ class Laporanhd extends CI_Controller{
 		$this->load->view($this->dataTable.'/edit_detail',$data);
 	}
 
+
+
+
 	function update_detail(){
 
 
@@ -135,6 +138,99 @@ class Laporanhd extends CI_Controller{
 
 		 $this->Laporanhd_model->update_detail($ID_LAPORANDT,$KOLOM,$VALUE);
 
+
+	}
+
+
+	function update_detail_foto(){
+
+
+		// print_r($_FILES);
+		// print_r($_POST);
+
+	
+
+		$KOLOM  = $_POST['KOLOM'];
+		$TYPE = $_FILES[$KOLOM]['type'];
+		$TYPE = explode("/", $TYPE);
+
+		 $FOTO_OLD = 'upload/'.$_POST['FOTO_OLD'];
+
+	
+		unlink($FOTO_OLD);
+
+
+		$VALUE = sha1(date('ymdhis')).".".$TYPE[1];
+
+		$ID_LAPORANDT = $_POST['ID_LAPORANDT'];
+
+
+
+		// upload foto
+
+		$folder = "upload/";
+
+		$upload_image = $VALUE;
+		// tentukan ukuran width yang diharapkan
+		$width_size = 1000;
+		 
+		// tentukan di mana image akan ditempatkan setelah diupload
+		$filesave = $folder . $upload_image;
+		move_uploaded_file($_FILES[$KOLOM]['tmp_name'], $filesave);
+		
+		 
+		// menentukan nama image setelah dibuat
+		$resize_image = $folder . $upload_image;
+		 
+		// mendapatkan ukuran width dan height dari image
+		list( $width, $height ) = getimagesize($filesave);
+		 
+		// mendapatkan nilai pembagi supaya ukuran skala image yang dihasilkan sesuai dengan aslinya
+		$k = $width / $width_size;
+		 
+		// menentukan width yang baru
+		$newwidth = $width / $k;
+		 
+		// menentukan height yang baru
+		$newheight = $height / $k;
+		 
+		// fungsi untuk membuat image yang baru
+		$thumb = imagecreatetruecolor($newwidth, $newheight);
+		$source = imagecreatefromjpeg($filesave);
+		 
+		// men-resize image yang baru
+		imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		 
+		// menyimpan image yang baru
+		imagejpeg($thumb, $resize_image);
+		 
+		imagedestroy($thumb);
+		imagedestroy($source);
+		
+		$this->Laporanhd_model->update_detail_foto($ID_LAPORANDT,$KOLOM,$VALUE);
+
+		
+	
+
+		
+
+
+	}
+
+	function view_detail_foto(){
+		$ID_LAPORANDT = $this->uri->segment(3);
+		$KOLOM = $this->uri->segment(4);
+
+
+		$data['title']='SI JUET | Foto - '.$this->judulHalaman;
+		$data['KOLOM'] = $KOLOM;
+		 
+		$hasil = $this->Laporanhd_model->getIdFoto($ID_LAPORANDT,$KOLOM);
+		$data[$this->dataTable] = $hasil->row_array();
+
+		$this->load->view('header',$data);
+		$this->load->view($this->dataTable.'/foto',$data);
+		$this->load->view('footer');
 
 	}
 

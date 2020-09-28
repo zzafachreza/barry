@@ -215,3 +215,23 @@ var data= $("#"+ID_FORM).serialize();
 		}
 	})
 }
+
+function editDataFoto(ID_FORM,url,urlget,ID_LAPORANHD){
+
+var dataForm = $("#"+ID_FORM).serialize();
+
+	$.ajax({
+		url:url,
+		type:'POST',
+		data: new FormData(document.getElementById(ID_FORM)),// Data sent to server, a set of key/value pairs (i.e. form fields and values)
+		contentType: false,       // The content type used when sending data to the server.
+		cache: false,             // To unable request pages to be cached
+		processData:false, 
+		success:function(data){
+			// console.log(data);
+			alert('Foto Berhasil Di upload !');
+			window.location.href =ID_LAPORANHD;
+			// getDataDetail(urlget);
+		}
+	})
+}
