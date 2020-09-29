@@ -14,7 +14,11 @@
 	<div class="card">
 	  <div class="card-header">
 	  	<a href="<?php echo site_url() ?>" class="AppButton-secondary"><i class="flaticon2-left-arrow-1"></i> Kembali</a>
-	    <a href="<?php echo site_url('laporanhd/add') ?>" class="AppButton-primary"><i class="flaticon-add"></i> Tambah</a>
+
+	  	<?php if ($_SESSION['level']==='ADMIN' OR $_SESSION['level']==='MANTRI' ): ?>
+	  		 <a href="<?php echo site_url('laporanhd/add') ?>" class="AppButton-primary"><i class="flaticon-add"></i> Tambah</a>
+	  	<?php endif ?>
+	   	
 	  </div>
 	  <div class="card-body">
 
