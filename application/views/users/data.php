@@ -23,6 +23,7 @@
 	  			<tr>
 	  			<th>No</th>
 	  			<th>username</th>
+	  			<th>NIP</th>
 	  			<th>password</th>
 	  			<th>Nama Lengkap</th>
 	  			<th>Level</th>
@@ -38,6 +39,7 @@
 		  			<tr>
 		  				<td><?php echo $no ?></td>
 		  				<td><?php echo $row->username ?></td>
+		  				<td><?php echo $row->nip ?></td>
 		  				<td><?php echo "******" ?></td>
 		  				<td><?php echo $row->nama_lengkap ?></td>
 		  				<td><?php echo $row->level ?></td>

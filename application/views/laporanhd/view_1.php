@@ -150,11 +150,14 @@ error_reporting(0);
 							<td colspan="3">
 								<center>
 									<h2>Juru/Mantri Cimandiri</h2>
-
-									<p style="margin-top: 40%;font-weight: bold;font-size: x-large;"><u><?php echo $_SESSION['nama_lengkap'] ?></u></p>
-
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+									<p style="font-weight: bold;font-size: x-large;"><u><?php echo $_SESSION['nama_lengkap'] ?></u></p>
+									<p style="margin-top: 0%;font-size: large;">NIP : <?php echo $_SESSION['nip'] ?> </p>
 								</center>
-											<p style="margin-top: 0%;font-size: large;">NIP :</p>
+											
 							</td>
 						</tr>
 					</tbody>

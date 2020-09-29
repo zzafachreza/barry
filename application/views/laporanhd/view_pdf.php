@@ -117,8 +117,12 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 			  				foreach($laporandt->result() as $row){
 			  				$no++;
 
-				  		
-				  		$html .='<tr style="height:100px;text-align: center;">
+			  				if ($row->ID_LAPORANHD !== $laporanhd['ID_LAPORANHD']) {
+			  					# code...
+			  					
+
+			  				}else{
+			  					   $html .='<tr>
 				  			<td style="border:1px solid;text-align:center" >'. $no .'</td>
 				  			<td style="border:1px solid;text-align:center">'. $row->nama_bangunan.'<br/>'.$row->nama_ruas.' '.$row->DESA.'</td>
 				  			<td style="border:1px solid;text-align:center">'. $row->PENYEBAB_KERUSAKAN .'</td>
@@ -161,6 +165,10 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 						
 								
 				  $html.='</tr>';
+			  				}
+
+				  		
+				
 
 				}
 
@@ -193,7 +201,7 @@ Dicatat di Buku Catatan Pemeliharaan CD/CS/UPT/Pengamat Pengairan/SUP<br/><br/><
 									</center>
 
 							
-								<p style="margin-top: 0%;font-size: large;">NIP : 1615516116156</p>
+								<p style="margin-top: 0%;font-size: large;">NIP : '.$_SESSION['nip'] .'</p>
 							</td>
 						</tr>';
 

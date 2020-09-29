@@ -66,6 +66,7 @@
 						<th>BATU</th>
 						<th>BETON</th>
 						<th>PINTU_AIR</th>
+						<th>GORONG_GORONG</th>
 						<th>LAIN_LAIN_KERUSAKAN</th>
 						<th>LUAS_TERANCAM</th>
 						<th>TINDAKAN_PERBAIKAN</th>
@@ -83,9 +84,16 @@
 			  				$no=0;
 			  				foreach($laporandt->result() as $row):
 			  				$no++;
+
+			  				if ($row->ID_LAPORANHD != $ID_LAPORANHD) {
+			  					# code...
+			  					$splitya = 'style="display:none"';
+			  				}else{
+			  					$splitya = '';
+			  				}
 				  		?>
 
-				  		<tr>
+				  		<tr <?php echo $splitya; ?>>
 				  			<td><?php echo $no ?></td>
 				  			<td><?php echo $row->nama_ruas; ?></td>
 				  			<td><?php echo $row->nama_bangunan; ?></td>
@@ -407,7 +415,7 @@
 									<input  value="<?php echo $row->BATU ?>" id="<?php echo $row->ID_LAPORANDT; ?>BATU" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BATU','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="BATU" class="form-control" style="width: 100%;">
 								</form>
 							</td>
-						<td>
+							<td>
 								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>BETON" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BETON','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
@@ -416,7 +424,7 @@
 									<input  value="<?php echo $row->BETON ?>" id="<?php echo $row->ID_LAPORANDT; ?>BETON" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BETON','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="BETON" class="form-control" style="width: 100%;">
 								</form>
 							</td>
-						<td>
+							<td>
 								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_AIR" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_AIR','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
@@ -425,7 +433,19 @@
 									<input  value="<?php echo $row->PINTU_AIR ?>" id="<?php echo $row->ID_LAPORANDT; ?>PINTU_AIR" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_AIR','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="PINTU_AIR" class="form-control" style="width: 100%;">
 								</form>
 							</td>
-						<td>
+
+							<td>
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>GORONG_GORONG" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>GORONG_GORONG','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="GORONG_GORONG">
+
+									<input  value="<?php echo $row->GORONG_GORONG ?>" id="<?php echo $row->ID_LAPORANDT; ?>GORONG_GORONG" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>GORONG_GORONG','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="GORONG_GORONG" class="form-control" style="width: 100%;">
+								</form>
+							</td>
+
+
+							<td>
 								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN_KERUSAKAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN_KERUSAKAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">

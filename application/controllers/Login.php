@@ -32,6 +32,7 @@ class Login extends CI_Controller{
              $_SESSION['nama_lengkap'] = $i['nama_lengkap'];
              $_SESSION['username'] = $i['username'];
              $_SESSION['level'] = $i['level'];
+             $_SESSION['nip'] = $i['nip'];
                       
             echo 200;
         }

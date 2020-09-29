@@ -95,9 +95,9 @@
 		  				<td><?php echo $row->MANTRI ?></td>
 		  				<!-- <td><?php echo $row->STATUS_LAPORANHD ?></td> -->
 		  				<td><?php echo $row->STATUS_ALL ?></td>
-		  				<td><?php echo  tglIndonesia($row->TANGGAL_1) ?></td>
-		  				<td><?php echo  tglIndonesia($row->TANGGAL_2) ?></td>
-		  				<td><?php echo  tglIndonesia($row->TANGGAL_3) ?></td>
+		  				<td><?php echo  isset($row->TANGGAL_1) ? tglIndonesia($row->TANGGAL_1) : ''; ?></td>
+		  				<td><?php echo  isset($row->TANGGAL_2) ? tglIndonesia($row->TANGGAL_2) : ''; ?></td>
+		  				<td><?php echo  isset($row->TANGGAL_3) ? tglIndonesia($row->TANGGAL_3) : ''; ?></td>
 		  				<td>
 		  					<a href="<?php echo site_url('laporanhd/detail/'.$row->ID_LAPORANHD) ?>" class="AppButton-primary"><i class="flaticon-eye"></i></a>
 

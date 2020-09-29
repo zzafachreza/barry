@@ -27,6 +27,12 @@
 			  </div>
 
 			  <div class="form-group col col-sm-6">
+			    <label for="nip" class="AppLabel">nip</label>
+			      <i class="flaticon2-rocket iconInput"></i>
+			    <input autocomplete="off" required="required" value="<?php echo $users['nip'] ?>"  type="text" name="nip" class="AppInput" id="nip">
+			  </div>
+
+			  <div class="form-group col col-sm-6">
 			    <label for="username" class="AppLabel">Username</label>
 			      <i class="flaticon2-rocket iconInput"></i>
 			    <input autocomplete="off" required="required" value="<?php echo $users['username'] ?>"  type="text" name="username" class="AppInput" id="username">

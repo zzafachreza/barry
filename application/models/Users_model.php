@@ -8,9 +8,9 @@ class Users_model extends CI_Model{
 		return $data;
 	}
 
-	function insert($nama_lengkap,$username,$password,$level){
+	function insert($nama_lengkap,$username,$password,$level,$nip){
 
-	 $sql ="INSERT INTO users(nama_lengkap,username,password,level) values('$nama_lengkap','$username','$password','$level')";
+	 $sql ="INSERT INTO users(nama_lengkap,username,password,level,nip) values('$nama_lengkap','$username','$password','$level','$nip')";
 
 	 $this->db->query($sql);
 	}
@@ -26,12 +26,12 @@ class Users_model extends CI_Model{
 		return $data;
 	}
 
-	function update($id,$nama_lengkap,$username,$password,$level){
+	function update($id,$nama_lengkap,$username,$password,$level,$nip){
 
 		if(!empty($password)){
-			echo $sql= "UPDATE users SET nama_lengkap='$nama_lengkap',username='$username',password='".sha1($password)."',level='$level' WHERE id='$id'";
+			echo $sql= "UPDATE users SET nama_lengkap='$nama_lengkap',nip='$nip',username='$username',password='".sha1($password)."',level='$level' WHERE id='$id'";
 		}else{
-			echo $sql= "UPDATE users SET nama_lengkap='$nama_lengkap',username='$username',level='$level' WHERE id='$id'";
+			echo $sql= "UPDATE users SET nama_lengkap='$nama_lengkap',nip='$nip',username='$username',level='$level' WHERE id='$id'";
 		}
 		
 		$this->db->query($sql);	

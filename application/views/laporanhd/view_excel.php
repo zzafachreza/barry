@@ -124,8 +124,15 @@ error_reporting(0);
 			  				$no=0;
 			  				foreach($laporandt->result() as $row):
 			  				$no++;
+			  				
+			  				if ($row->ID_LAPORANHD !== $laporanhd['ID_LAPORANHD']) {
+			  					# code...
+			  					$splitya = 'style="display:none"';
+			  				}else{
+			  					$splitya = '';
+			  				}
 				  		?>
-				  		<tr style="height:100px;text-align: center;">
+				  		<tr <?php echo $splitya; ?>>
 				  			<td ><?php echo $no ?></td>
 				  			<td><?php echo $row->nama_bangunan; ?>
 				  				<?php echo $row->nama_ruas; ?>
@@ -188,7 +195,7 @@ Dicatat di Buku Catatan Pemeliharaan CD/CS/UPT/Pengamat Pengairan/SUP<br/><br/><
 									<p style="margin-top: 40%;font-weight: bold;font-size: x-large;"><u><?php echo $_SESSION['nama_lengkap'] ?></u></p>
 
 								</center>
-											<p style="margin-top: 0%;font-size: large;">NIP :</p>
+											<p style="margin-top: 0%;font-size: large;">NIP : <?php echo $_SESSION['nip'] ?></p></p>
 							</td>
 						</tr>
 					</tbody>

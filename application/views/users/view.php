@@ -19,6 +19,10 @@
 			    <label for="nama">Nama Lengkap</label>
 			    <h3><?php  echo $users['nama_lengkap'] ?></h3>
 			  </div>
+			   <div class="form-group">
+			    <label for="nama">nip</label>
+			    <h3><?php  echo $users['nip'] ?></h3>
+			  </div>
 			    <div class="form-group">
 			    <label for="nama">Username</label>
 			    <h3><?php  echo $users['username'] ?></h3>

@@ -174,7 +174,7 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 									</center>
 
 							
-								<p style="margin-top: 0%;font-size: large;">NIP : 1615516116156</p>
+								<p style="margin-top: 0%;font-size: large;">NIP : '.$_SESSION['nip'] .'</p>
 							</td>
 						</tr>';
 

@@ -10,6 +10,8 @@
 	<div class="card">
 			<?php
 
+			error_reporting(0);
+
 	  				if ($_SESSION['level']==='MANTRI') {
 	  					# code...
 	  					$KOLOM = 'TANGGAL_1';

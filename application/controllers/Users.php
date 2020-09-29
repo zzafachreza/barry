@@ -30,10 +30,11 @@ class Users extends CI_Controller{
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$level = $this->input->post('level');
+		$nip = $this->input->post('nip');
 
 		$passwordCrypt = sha1($password);
 
-		$this->Users_model->insert($nama_lengkap,$username,$passwordCrypt,$level);
+		$this->Users_model->insert($nama_lengkap,$username,$passwordCrypt,$level,$nip);
 		redirect('users');
 	}
 
@@ -77,7 +78,9 @@ class Users extends CI_Controller{
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$level = $this->input->post('level');
-		$this->Users_model->update($id,$nama_lengkap,$username,$password,$level);
+		$nip = $this->input->post('nip');
+
+		$this->Users_model->update($id,$nama_lengkap,$username,$password,$level,$nip);
 		redirect('users');
 	}
 }

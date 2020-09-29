@@ -53,7 +53,7 @@ error_reporting(0);
 		            </tr>
 		       
 		            <tr>
-		            	<td colspan="20">
+		            	<td colspan="16">
 		            		&nbsp;
 		            	</td>
 		            </tr>
@@ -164,7 +164,7 @@ error_reporting(0);
 									<p style="font-weight: bold;font-size: x-large;"><u><?php echo $_SESSION['nama_lengkap'] ?></u></p>
 
 								</center>
-											<p style="margin-top: 0%;font-size: large;">NIP :</p>
+											<p style="margin-top: 0%;font-size: large;">NIP : <?php echo $_SESSION['nip'] ?></p></p>
 							</td>
 						</tr>
 					</tbody>
