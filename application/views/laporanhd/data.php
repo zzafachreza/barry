@@ -29,13 +29,18 @@
 	  			<th>KABUPATEN</th>
 	  			<th>RANTING</th>
 	  			<th>MANTRI</th>
+	  			<!-- <th>STATUS</th> -->
 	  			<th>STATUS</th>
+	  			<th>TANGGAL BLANKO 1 </th>
+	  			<th>TANGGAL BLANKO 2</th>
+	  			<th>TANGGAL BLANKO 3</th>
 	  			<th>ACTION</th>
 	  		</tr>
 	  		</thead>
 	  		<tbody>
 	  			<?php
 	  				$no=0;
+	  				$p3 = '';
 	  				foreach($laporanhd->result() as $row):
 	  				$no++;
 
@@ -46,11 +51,29 @@
 	  				elseif ($row->STATUS_LAPORANHD==='DONE' && $_SESSION['level']==='SUP') {
 	  					# code...
 	  					 $STATUS_AKSI = "style='display:none'";
+	  					  $p3 = '3';
+
 	  				}
 
-	  				elseif ($row->STATUS_LAPORANHD==='DONE' && $_SESSION['level']!=='ADMIN') {
+	  				elseif ($row->STATUS_LAPORANHD==='DONE' && $_SESSION['level']==='SEKSI IRIGASI') {
 	  					# code...
 	  					 $STATUS_AKSI = "";
+	  					  $p3 = '3';
+
+	  				}
+
+	  				elseif ($row->STATUS_LAPORANHD==='OKE' && $_SESSION['level']==='SEKSI IRIGASI') {
+	  					# code...
+	  					$STATUS_AKSI = "style='display:none'";
+	  					 $STATUS_AKSI_BTN = "style='display:none'";
+
+	  					
+
+	  				}
+
+	  				elseif ($row->STATUS_LAPORANHD==='OKE' && $_SESSION['level']!=='ADMIN') {
+	  					# code...
+	  					$STATUS_AKSI = "style='display:none'";
 	  					 $STATUS_AKSI_BTN = "style='display:none'";
 
 	  				}
@@ -58,6 +81,7 @@
 	  				else{
 						$STATUS_AKSI="";
 						$STATUS_AKSI_BTN="";
+
 	  				}
 		  		?>
 		  			<tr>
@@ -69,11 +93,15 @@
 		  				<td><?php echo $row->KABUPATEN ?></td>
 		  				<td><?php echo $row->RANTING ?></td>
 		  				<td><?php echo $row->MANTRI ?></td>
-		  				<td><?php echo $row->STATUS_LAPORANHD ?></td>
+		  				<!-- <td><?php echo $row->STATUS_LAPORANHD ?></td> -->
+		  				<td><?php echo $row->STATUS_ALL ?></td>
+		  				<td><?php echo  tglIndonesia($row->TANGGAL_1) ?></td>
+		  				<td><?php echo  tglIndonesia($row->TANGGAL_2) ?></td>
+		  				<td><?php echo  tglIndonesia($row->TANGGAL_3) ?></td>
 		  				<td>
 		  					<a href="<?php echo site_url('laporanhd/detail/'.$row->ID_LAPORANHD) ?>" class="AppButton-primary"><i class="flaticon-eye"></i></a>
 
-		  					<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/edit/'.$row->ID_LAPORANHD) ?>" class="AppButton-secondary"><i class="flaticon-edit"></i></a>
+		  					<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/edit/'.$row->ID_LAPORANHD.'/'.$p3) ?>" class="AppButton-secondary"><i class="flaticon-edit"></i></a>
 
 		  					<?php if ($_SESSION['level']==='ADMIN'): ?>
 		  						<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/delete/'.$row->ID_LAPORANHD.'/'.$row->DAERAH_IRIGASI) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	

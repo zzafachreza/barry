@@ -35,13 +35,13 @@
   
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
-		      <img class="d-block w-100" src="./assets/images/back1.jpeg" alt="First slide">
+		      <img class="d-block w-100" src="./assets/images/1.jpeg" alt="First slide">
 		    </div>
 		    <div class="carousel-item">
-		      <img class="d-block w-100" src="./assets/images/back2.jpeg" alt="Second slide">
+		      <img class="d-block w-100" src="./assets/images/2.jpeg" alt="Second slide">
 		    </div>
 		    <div class="carousel-item">
-		      <img class="d-block w-100" src="./assets/images/back3.jpeg" alt="Third slide">
+		      <img class="d-block w-100" src="./assets/images/3.jpeg" alt="Third slide">
 		    </div>
 		  </div>
 		  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">

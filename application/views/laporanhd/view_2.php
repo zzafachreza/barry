@@ -21,7 +21,10 @@ error_reporting(0);
               				<td colspan="15" border="0">
 		              			<center>
 									<h1>LAPORAN KERUSAKAN JARINGAN IRIGASI</h1>
-									<?php   $TGL = explode("-", $laporanhd['TANGGAL']) ?>
+									<?php   $TGL = explode("-", $laporanhd['TANGGAL']);
+
+										$TGL2 = explode("-", $laporanhd['TANGGAL_2']) 
+									 ?>
 									<h3>Inspeksi Rutin <?php echo $TGL[2] ?> Tanggal  Bulan <?php echo $TGL[1] ?> Tahun <?php echo $TGL[0] ?></h2>
 								</center>
 								</td>
@@ -156,13 +159,13 @@ error_reporting(0);
 									<li>Kolom 12 dan 13 keterangan diisi jenis perkiraan kerugian dan perbaikannya</li>
 									<li>Kolom 14 diisi dengan skala prioritasnya 1, 2 atau 3 (1 = segera; 2 = perlu; 3 = dapat ditangguhkan)</li>
 									<li>Kolom 15 diisi luas areal layanan dibawah/dihilir lokasi kerusakan yang menjadi daerah layanannya<br/>
-									Laporan bulanan : Ranting/Pengamat/UPTD/SUP→ Dinas Pengairan Kabupaten/Balai PSDA</li>
+									</li>
 								</ol>
 							</td>
 							<td colspan="3">
 								<center>
 									<h3>
-										<?php echo $laporanhd['KABUPATEN'].", ".$TGL[2]."/".$TGL[1]."/".$TGL[0] ?><br/>
+										<?php echo $laporanhd['KABUPATEN'].", ".$TGL2[2]."/".$TGL2[1]."/".$TGL2[0] ?><br/>
 										Pengamat/Ranting/UPTD/SUP<br/>
 										<?php echo $laporanhd['RANTING'] ?>
 									</h3>

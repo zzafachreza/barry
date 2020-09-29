@@ -8,6 +8,62 @@
 <div class="container-fluid">
 
 	<div class="card">
+			<?php
+
+	  				if ($_SESSION['level']==='MANTRI') {
+	  					# code...
+	  					$KOLOM = 'TANGGAL_1';
+	  					$STATUS_LAPORANHD ='CEK';
+
+	  				}elseif($_SESSION['level']==='SUP'){
+						$KOLOM = 'TANGGAL_2';
+						$STATUS_LAPORANHD ='DONE';
+	  				}elseif($_SESSION['level']==='SEKSI IRIGASI'){
+							$KOLOM = 'TANGGAL_3';
+							$STATUS_LAPORANHD ='OKE';
+	  				}elseif($_SESSION['level']==='ADMIN'){
+							$KOLOM = 'TANGGAL_3';
+							$STATUS_LAPORANHD ='OKE';
+	  				}
+
+	  			?>
+<form action="<?php echo site_url('laporanhd/update_selesai') ?>" method="POST">
+	<div class="row">
+	
+	  			<div class="form-group col col-sm-3">
+				    <label for="nama_laporanhd" class="AppLabel">TANGGAL SELESAI</label>
+				    <input type="hidden" name="id" value="<?php echo $ID_LAPORANHD = $laporanhd['ID_LAPORANHD'] ?>">
+				    <i class="flaticon-event-calendar-symbol iconInput"></i>
+
+				    <input autocomplete="off" required="required" type="text" name="VALUE" class="AppInput tgl" value="<?php echo date('d/m/Y') ?>" >
+
+				    <input autocomplete="off" required="required" type="hidden" name="KOLOM" class="AppInput" value="<?php echo $KOLOM ?>" >
+
+				    <input autocomplete="off" required="required" type="hidden" name="STATUS_LAPORANHD" class="AppInput" value="<?php echo $STATUS_LAPORANHD ?>" >
+
+				  </div>
+				 <?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='ADMIN'): ?>
+				 	 <div class="form-group col col-sm-3">
+				    <label for="nama_laporanhd" class="AppLabel">STATUS LAPORAN</label>
+				
+				    <select name="STATUS_ALL" class="form-control">
+				    	<option>MENUNGGU PERSETUJUAN</option>
+				    	<option>DISETUJUI</option>
+				    	<option>DIKERJAKAN</option>
+				    	<option>SELESAI</option>
+				    </select>
+
+				  </div>
+
+				 <?php endif ?>
+
+				  <div class="form-group col col-sm-3">
+				  	<button type="SUBMIT" class="btn btn-danger" style="height: 100%;width: 100%"><i class="flaticon-paper-plane"></i> Selesai</button>
+				  </div>
+</div>
+
+</form>
+
 	  <div class="card-header">
 	  		
 	  <form action="<?php echo site_url('laporanhd/update') ?>" method="POST" >
@@ -18,23 +74,7 @@
   	<button class="AppButton-primary" type="SUBMIT"><i class="flaticon2-files-and-folders"></i> Simpan</button>
 
 
-<?php if ($_SESSION['level']==='MANTRI'): ?>
-	<a onclick="return confirm('Apakah Anda sudah yakin selesaikan ini ?\nData jika sudah selesai tidak bisa diubah')" href="<?php echo site_url('laporanhd') ?>/update_status/<?php echo $ID_LAPORANHD = $laporanhd['ID_LAPORANHD'] ?>/CEK" class="btn btn-warning"><i class="flaticon-paper-plane"></i> Selesai</a>
 
-<?php endif ?>
-
-<?php if ($_SESSION['level']==='SUP'): ?>
-		<a onclick="return confirm('Apakah Anda sudah yakin selesaikan ini ?\nData jika sudah selesai tidak bisa diubah')" href="<?php echo site_url('laporanhd') ?>/update_status/<?php echo $ID_LAPORANHD = $laporanhd['ID_LAPORANHD'] ?>/DONE" class="btn btn-warning"><i class="flaticon-paper-plane"></i> Selesai</a>
-
-<?php endif ?>
-
-<?php if ($_SESSION['level']==='ADMIN'): ?>
-
-	<a onclick="return confirm('Apakah Anda sudah yakin selesaikan ini ?\nData jika sudah selesai tidak bisa diubah')" href="<?php echo site_url('laporanhd') ?>/update_status/<?php echo $ID_LAPORANHD = $laporanhd['ID_LAPORANHD'] ?>/CEK" class="btn btn-warning"><i class="flaticon-paper-plane"></i> Selesai MANTRI</a>
-
-		<a onclick="return confirm('Apakah Anda sudah yakin selesaikan ini ?\nData jika sudah selesai tidak bisa diubah')" href="<?php echo site_url('laporanhd') ?>/update_status/<?php echo $ID_LAPORANHD = $laporanhd['ID_LAPORANHD'] ?>/DONE" class="btn btn-primary"><i class="flaticon-paper-plane"></i> Selesai SUP</a>
-
-<?php endif ?>
   	
 
   
@@ -42,6 +82,8 @@
 	  </div>
 	  	<div class="card-body">
 	  		<form>
+
+	  		
 
 	  			<center>
 
@@ -128,8 +170,16 @@
 
 </div>
 
+<?php if ($_SESSION['level']==='SEKSI IRIGASI'): ?>
 	<script type="text/javascript">
+		
+				getDataDetail('<?php echo site_url()."/laporanhd/edit_detail3/".$ID_LAPORANHD ?>');
+			</script>
+	
+<?php else: ?>
+			<script type="text/javascript">
 		
 				getDataDetail('<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>');
 			</script>
+<?php endif ?>
 

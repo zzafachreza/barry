@@ -33,25 +33,31 @@ class Laporanhd extends CI_Controller{
 	} 
 
 	function detail(){
+
 		$id	= $this->uri->segment(3);
 		$data['title']='SI JUET | Detail - '.$this->judulHalaman;
 
 		$hasil = $this->Laporanhd_model->getId($id);
-		$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
-		$data[$this->dataTable] = $hasil->row_array();
+		
 
 		switch ($_SESSION['level']) {
 			case 'MANTRI':
 				# code...
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
+			$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view_1',$data);
 				break;
 			case 'SUP':
 				# code...
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
+			$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view_2',$data);
 				break;
 			
 			default:
 				# code...
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetail3($id);
+			$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view',$data);
 				break;
 		}
@@ -64,23 +70,28 @@ class Laporanhd extends CI_Controller{
 		$data['title']='SI JUET | Detail - '.$this->judulHalaman;
 
 		$hasil = $this->Laporanhd_model->getId($id);
-		$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
-		$data[$this->dataTable] = $hasil->row_array();
+		
 		
 
 		switch ($_SESSION['level']) {
 			case 'MANTRI':
 				# code...
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
+		$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view_pdf_1',$data);
 				break;
 			case 'SUP':
 				# code...
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
+		$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view_pdf_2',$data);
 				break;
 			
 			default:
 				# code...
-			$this->load->view($this->dataTable.'/view',$data);
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetail3($id);
+		$data[$this->dataTable] = $hasil->row_array();
+			$this->load->view($this->dataTable.'/view_pdf',$data);
 				break;
 		}
 	
@@ -92,21 +103,26 @@ class Laporanhd extends CI_Controller{
 		$data['title']='SI JUET | Detail - '.$this->judulHalaman;
 
 		$hasil = $this->Laporanhd_model->getId($id);
-		$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
-		$data[$this->dataTable] = $hasil->row_array();
+		
 
 		switch ($_SESSION['level']) {
 			case 'MANTRI':
 				# code...
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
+		$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view_excel_1',$data);
 				break;
 			case 'SUP':
 				# code...
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
+		$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view_excel_2',$data);
 				break;
 			
 			default:
-				# code...
+				# code..
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetail3($id);
+		$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view_excel',$data);
 				break;
 		}
@@ -182,6 +198,15 @@ class Laporanhd extends CI_Controller{
 		$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
 		$this->load->view($this->dataTable.'/edit_detail',$data);
 	}
+
+	function edit_detail3(){
+
+		$id	= $this->uri->segment(3);
+		$data['ID_LAPORANHD'] = $id;
+		$data['laporandt'] = $this->Laporanhd_model->getDataDetail3($id);
+		$this->load->view($this->dataTable.'/edit_detail',$data);
+	}
+
 
 
 	function edit_detail_view(){
@@ -338,6 +363,26 @@ class Laporanhd extends CI_Controller{
 
 		redirect($this->dataTable);
 
+	}
+
+	function update_selesai(){
+
+		 print_r($_POST);
+		 $id = $this->input->post('id');
+		 $VALUE = $this->input->post('VALUE');
+			$KOLOM = $this->input->post('KOLOM');
+			$STATUS_ALL = $this->input->post('STATUS_ALL');
+			$STATUS_LAPORANHD = $this->input->post('STATUS_LAPORANHD');
+		    $VALUE = $this->Laporanhd_model->tglSql($VALUE);
+
+	    if (isset($STATUS_ALL)) {
+	    	# code...
+	    	$this->Laporanhd_model->update_selesai3($id,$STATUS_LAPORANHD,$STATUS_ALL,$KOLOM,$VALUE);
+	    }else{
+	    	$this->Laporanhd_model->update_selesai($id,$STATUS_LAPORANHD,$KOLOM,$VALUE);
+	    }
+
+	    redirect($this->dataTable);
 	}
 
 

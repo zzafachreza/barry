@@ -69,9 +69,18 @@ class Laporanhd_model extends CI_Model{
 		
 	}
 
-	function update_status($ID_LAPORANHD,$STATUS_LAPORANHD){
+	function update_selesai3($id,$STATUS_LAPORANHD,$STATUS_ALL,$KOLOM,$VALUE){
+
 	
-   		 $sql= "UPDATE data_laporanhd SET STATUS_LAPORANHD='$STATUS_LAPORANHD' WHERE ID_LAPORANHD='$ID_LAPORANHD'";
+   		echo $sql= "UPDATE data_laporanhd SET STATUS_LAPORANHD='$STATUS_LAPORANHD',STATUS_ALL='$STATUS_ALL',$KOLOM='$VALUE' WHERE ID_LAPORANHD='$id'";
+		$this->db->query($sql);	
+		
+	}
+
+	function update_selesai($id,$STATUS_LAPORANHD,$KOLOM,$VALUE){
+
+	
+   		echo $sql= "UPDATE data_laporanhd SET STATUS_LAPORANHD='$STATUS_LAPORANHD',$KOLOM='$VALUE' WHERE ID_LAPORANHD='$id'";
 		$this->db->query($sql);	
 		
 	}
@@ -89,5 +98,15 @@ class Laporanhd_model extends CI_Model{
 		$data = $this->db->query($sql);
 		return $data;
 	}
+
+	function getDataDetail3($id){
+		$sql="SELECT*FROM `data_laporanhd` INNER JOIN `data_laporandt` ON (`data_laporanhd`.`ID_LAPORANHD` = `data_laporandt`.`ID_LAPORANHD`) INNER JOIN `data_bangunan` ON (`data_laporandt`.`ID_BANGUNAN` = `data_bangunan`.`id_bangunan`) INNER JOIN `data_ruas` ON (`data_bangunan`.`id_ruas` = `data_ruas`.`id_ruas`) WHERE data_laporandt.ID_LAPORANHD='$id' AND BOCORAN_M > 0 OR RUSAK_M >0 OR LONGSORAN_M > 0 OR TERSUMBAT_M > 0 OR RETAK_M > 0 OR PINTU_RUSAK_M > 0 OR SEDIMEN_M > 0 limit 10;";
+		$data = $this->db->query($sql);
+		return $data;
+	}
+
+
+
+	
 
 }
