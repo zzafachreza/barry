@@ -99,8 +99,6 @@
 	  				if ($row->STATUS_LAPORANHD==='CEK' && $_SESSION['level']==='SEKSI IRIGASI') {
 	  					# code...
 	  					$STATUS_AKSI_TR = "style='display:none'";
-	  				}else{
-	  					$STATUS_AKSI_TR="";
 	  				}
 
 
