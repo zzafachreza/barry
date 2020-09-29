@@ -87,8 +87,25 @@
 						$STATUS_AKSI_BTN="";
 
 	  				}
+
+
+	  				if ($row->STATUS_LAPORANHD==='OPEN' && $_SESSION['level']!=='MANTRI') {
+	  					# code...
+	  					$STATUS_AKSI_TR = "style='display:none'";
+	  				}else{
+	  					$STATUS_AKSI_TR="";
+	  				}
+
+	  				if ($row->STATUS_LAPORANHD==='CEK' && $_SESSION['level']==='SEKSI IRIGASI') {
+	  					# code...
+	  					$STATUS_AKSI_TR = "style='display:none'";
+	  				}else{
+	  					$STATUS_AKSI_TR="";
+	  				}
+
+
 		  		?>
-		  			<tr>
+		  			<tr <?php echo $STATUS_AKSI_TR ?>>
 		  				<td><?php echo $no ?></td>
 		  				<td><?php echo tglIndonesia($row->TANGGAL) ?></td>
 		  				<td><?php echo $row->DAERAH_IRIGASI ?></td>
