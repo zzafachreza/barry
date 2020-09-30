@@ -107,6 +107,12 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 			  				foreach($laporandt->result() as $row){
 			  				$no++;
 
+			  				if ($row->ID_LAPORANHD !== $laporanhd['ID_LAPORANHD']) {
+			  					# code...
+			  					
+
+			  				}else{
+
 				  		
 				  		$html .='<tr style="height:100px;text-align: center;">
 				  			<td style="border:1px solid;text-align:center" >'. $no .'</td>
@@ -139,6 +145,8 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 						
 								
 				  $html.='</tr>';
+
+					}
 
 				}
 

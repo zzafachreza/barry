@@ -188,7 +188,7 @@
 
 </div>
 
-<?php if ($_SESSION['level']==='SEKSI IRIGASI'): ?>
+<?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='SUP'): ?>
 	<script type="text/javascript">
 		
 				getDataDetail('<?php echo site_url()."/laporanhd/edit_detail3/".$ID_LAPORANHD ?>');

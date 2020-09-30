@@ -49,7 +49,7 @@ class Laporanhd extends CI_Controller{
 				break;
 			case 'SUP':
 				# code...
-			$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetail3($id);
 			$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view_2',$data);
 				break;
@@ -82,7 +82,7 @@ class Laporanhd extends CI_Controller{
 				break;
 			case 'SUP':
 				# code...
-			$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetail3($id);
 		$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view_pdf_2',$data);
 				break;
@@ -114,7 +114,7 @@ class Laporanhd extends CI_Controller{
 				break;
 			case 'SUP':
 				# code...
-			$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
+	$data['laporandt'] = $this->Laporanhd_model->getDataDetail3($id);
 		$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view_excel_2',$data);
 				break;
@@ -377,11 +377,11 @@ class Laporanhd extends CI_Controller{
 
 	    if (isset($STATUS_ALL)) {
 	    	# code...
-	    	$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' -UPDATE STATUS ',$STATUS_ALL,strtoupper($_SESSION['username']));
+	    	$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - UPDATE STATUS ',$STATUS_ALL,strtoupper($_SESSION['username']));
 	    	$this->Laporanhd_model->update_selesai3($id,$STATUS_LAPORANHD,$STATUS_ALL,$KOLOM,$VALUE);
 	    }else{
 
-	    		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA ',$STATUS_LAPORANHD,strtoupper($_SESSION['username']));
+	    		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - UPDATE STATUS ','SELESAI',strtoupper($_SESSION['username']));
 	    	$this->Laporanhd_model->update_selesai($id,$STATUS_LAPORANHD,$KOLOM,$VALUE);
 	    }
 

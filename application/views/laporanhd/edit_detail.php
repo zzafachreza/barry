@@ -340,7 +340,7 @@
 									<?php if (isset($row->FOTO_BEFORE)): ?>
 										<a href="<?php echo base_url().'/laporanhd/view_detail_foto/'.$row->ID_LAPORANDT.'/FOTO_BEFORE' ?>" target="_BLANK">
 
-										<img src="<?php echo base_url().'upload/'.$row->FOTO_BEFORE ?>" width="50">
+										<img src="<?php echo base_url().'upload/'.$row->FOTO_BEFORE ?>" width="50" height="50">
 
 									</a>	
 
@@ -365,7 +365,7 @@
 										
 										<?php if (isset($row->FOTO_AFTER)): ?>
 									<a href="<?php echo base_url().'/laporanhd/view_detail_foto/'.$row->ID_LAPORANDT.'/FOTO_AFTER' ?>" target="_BLANK">
-										<img src="<?php echo base_url().'upload/'.$row->FOTO_AFTER ?>" width="50">
+										<img src="<?php echo base_url().'upload/'.$row->FOTO_AFTER ?>" width="50" height="50">
 									</a>	
 
 									<?php endif ?>

@@ -114,8 +114,14 @@ error_reporting(0);
 			  				$no=0;
 			  				foreach($laporandt->result() as $row):
 			  				$no++;
+				  		if ($row->ID_LAPORANHD !== $laporanhd['ID_LAPORANHD']) {
+			  					# code...
+			  					$splitya = 'style="display:none"';
+			  				}else{
+			  					$splitya = '';
+			  				}
 				  		?>
-				  		<tr style="height:100px;text-align: center;">
+				  		<tr <?php echo $splitya; ?>>
 				  			<td ><?php echo $no ?></td>
 				  			<td><?php echo $row->nama_ruas; ?></td>
 				  			<td><?php echo $row->nama_bangunan; ?></td>
