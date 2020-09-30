@@ -197,6 +197,8 @@
 	
 <?php else: ?>
 			<script type="text/javascript">
+
+				$("#loader").fadeIn('fast');
 		
 				getDataDetail('<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>');
 			</script>
