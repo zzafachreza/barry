@@ -142,6 +142,7 @@ function notify(text,type){
 }
 
 
+
 function getDataDetail(url){
 	$("#loader").fadeIn();
 	// alert(url);
@@ -233,3 +234,11 @@ var dataForm = $("#"+ID_FORM).serialize();
 		}
 	})
 }
+
+
+// function cekFotoAfter(x){
+// 	// alert(x);
+// 	var className = "."+x;
+// 	alert(className);
+// 	$("." + x).hide();
+// }

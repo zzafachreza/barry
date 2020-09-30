@@ -37,7 +37,15 @@
 				    <input type="hidden" name="id" value="<?php echo $ID_LAPORANHD = $laporanhd['ID_LAPORANHD'] ?>">
 				    <i class="flaticon-event-calendar-symbol iconInput"></i>
 
-				    <input autocomplete="off" required="required" type="text" name="VALUE" class="AppInput tgl" value="<?php echo date('d/m/Y') ?>" >
+				    <?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='ADMIN'): ?>
+				    	 <input autocomplete="off" required="required" type="text" name="VALUE" class="AppInput tgl" value="" >
+
+				    <?php else: ?>
+				    	 <input autocomplete="off" required="required" type="text" name="VALUE" class="AppInput tgl" value="<?php echo date('d/m/Y') ?>" >
+
+				    	
+				    <?php endif ?>
+				   
 
 				    <input autocomplete="off" required="required" type="hidden" name="KOLOM" class="AppInput" value="<?php echo $KOLOM ?>" >
 
@@ -48,11 +56,12 @@
 				 	 <div class="form-group col col-sm-3">
 				    <label for="nama_laporanhd" class="AppLabel">STATUS LAPORAN</label>
 				
-				    <select name="STATUS_ALL" class="form-control">
-				    	<option>MENUNGGU PERSETUJUAN</option>
-				    	<option>DISETUJUI</option>
-				    	<option>DIKERJAKAN</option>
-				    	<option>SELESAI</option>
+				    <select name="STATUS_ALL" class="form-control" required="required">
+				    	<option></option>
+				    	<option <?php echo $laporanhd['STATUS_ALL']==='MENUNGGU PERSETUJUAN'?'selected="selected"':'' ?> >MENUNGGU PERSETUJUAN</option>
+				    	<option <?php echo $laporanhd['STATUS_ALL']==='DISETUJUI'?'selected="selected"':'' ?> >DISETUJUI</option>
+				    	<option <?php echo $laporanhd['STATUS_ALL']==='DIKERJAKAN'?'selected="selected"':'' ?> >DIKERJAKAN</option>
+				    	<option <?php echo $laporanhd['STATUS_ALL']==='SELESAI'?'selected="selected"':'' ?> >SELESAI</option>
 				    </select>
 
 				  </div>
@@ -60,7 +69,14 @@
 				 <?php endif ?>
 
 				  <div class="form-group col col-sm-3">
-				  	<button type="SUBMIT" class="btn btn-danger" style="height: 100%;width: 100%"><i class="flaticon-paper-plane"></i> Selesai</button>
+				  	 <?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='ADMIN'): ?>
+
+				  	<button onclick="return confirm('Apakah Anda yakin akan menyimpan ini ? \n status jika belum selesai dapat diubah')" type="SUBMIT" class="btn btn-danger" style="height: 100%;width: 100%"><i class="flaticon-paper-plane"></i> Selesai</button>
+				  		
+				  	<?php else: ?>
+				  		<button onclick="return confirm('Apakah Anda yakin akan menyimpan ini ? \n data tidak dapat diubah lagi jika sudah selesai')" type="SUBMIT" class="btn btn-danger" style="height: 100%;width: 100%"><i class="flaticon-paper-plane"></i> Selesai</button>
+				  	<?php endif ?>
+
 				  </div>
 </div>
 
@@ -176,6 +192,7 @@
 	<script type="text/javascript">
 		
 				getDataDetail('<?php echo site_url()."/laporanhd/edit_detail3/".$ID_LAPORANHD ?>');
+				
 			</script>
 	
 <?php else: ?>

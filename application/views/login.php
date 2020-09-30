@@ -36,7 +36,7 @@
 
      <div class="form-group col-sm-9">
 
-        <button class="AppButton-secondary col-sm-12" onclick="window.location.href='./register'">Register</button>
+        <!-- <button class="AppButton-secondary col-sm-12" onclick="window.location.href='./register'">Register</button> -->
       </div>
 
   </div>

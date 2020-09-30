@@ -20,8 +20,8 @@
 	  	<?php endif ?>
 	   	
 	  </div>
-	  <div class="card-body">
-
+	  <div class="card-body" style="overflow: auto;">
+	 
 	  	<table class="table table-bordered table-striped table-hover tabza">
 	  		<thead>
 	  			<tr>
@@ -35,9 +35,9 @@
 	  			<th>MANTRI</th>
 	  			<!-- <th>STATUS</th> -->
 	  			<th>STATUS</th>
-	  			<th>TANGGAL BLANKO 1 </th>
+	  			<!-- <th>TANGGAL BLANKO 1 </th>
 	  			<th>TANGGAL BLANKO 2</th>
-	  			<th>TANGGAL BLANKO 3</th>
+	  			<th>TANGGAL BLANKO 3</th> -->
 	  			<th>ACTION</th>
 	  		</tr>
 	  		</thead>
@@ -99,7 +99,17 @@
 	  				if ($row->STATUS_LAPORANHD==='CEK' && $_SESSION['level']==='SEKSI IRIGASI') {
 	  					# code...
 	  					$STATUS_AKSI_TR = "style='display:none'";
+	  					$STATUS_AKSI="";
 	  				}
+	  				elseif($row->STATUS_LAPORANHD==='OKE' && $row->STATUS_ALL!=='SELESAI' && $_SESSION['level']==='SEKSI IRIGASI') {
+	  					# code...
+	  					$STATUS_AKSI_TR = "";
+	  					$STATUS_AKSI="";
+	  					
+	  				}
+
+
+
 
 
 		  		?>
@@ -114,13 +124,13 @@
 		  				<td><?php echo $row->MANTRI ?></td>
 		  				<!-- <td><?php echo $row->STATUS_LAPORANHD ?></td> -->
 		  				<td><?php echo $row->STATUS_ALL ?></td>
-		  				<td><?php echo  isset($row->TANGGAL_1) ? tglIndonesia($row->TANGGAL_1) : ''; ?></td>
+		  				<!-- <td><?php echo  isset($row->TANGGAL_1) ? tglIndonesia($row->TANGGAL_1) : ''; ?></td>
 		  				<td><?php echo  isset($row->TANGGAL_2) ? tglIndonesia($row->TANGGAL_2) : ''; ?></td>
-		  				<td><?php echo  isset($row->TANGGAL_3) ? tglIndonesia($row->TANGGAL_3) : ''; ?></td>
+		  				<td><?php echo  isset($row->TANGGAL_3) ? tglIndonesia($row->TANGGAL_3) : ''; ?></td> -->
 		  				<td>
 		  					<a href="<?php echo site_url('laporanhd/detail/'.$row->ID_LAPORANHD) ?>" class="AppButton-primary"><i class="flaticon-eye"></i></a>
 
-		  					<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/edit/'.$row->ID_LAPORANHD.'/'.$p3) ?>" class="AppButton-secondary"><i class="flaticon-edit"></i></a>
+		  					<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/edit/'.$row->ID_LAPORANHD.'/'.$p3) ?>" class="AppButton-secondary"><i class="flaticon-edit"></i> EDIT</a>
 
 		  					<?php if ($_SESSION['level']==='ADMIN'): ?>
 		  						<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/delete/'.$row->ID_LAPORANHD.'/'.$row->DAERAH_IRIGASI) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
