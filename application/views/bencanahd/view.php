@@ -5,8 +5,7 @@
 // header("Pragma: no-cache");
 // header("Expires: 0");
 error_reporting(0);
-print_r($laporanhd);
-print_r($laporandt);
+
 
 
 ?>
@@ -21,8 +20,8 @@ print_r($laporandt);
               				<td colspan="13" border="0">
 		              			<center>
 									<h1>LAPORAN KERUSAKAN AKIBAT BENCANA ALAM</h1>
-									<?php   $TGL = explode("-", $laporanhd['TANGGAL']);
-									$TGL3 = explode("-", $laporanhd['TANGGAL_3'])  ?>
+									<?php   $TGL = explode("-", $bencanahd['TANGGAL']);
+									$TGL3 = explode("-", $bencanahd['TANGGAL'])  ?>
 									<h3>Tanggal Kejadian <?php echo $TGL[2] ?>  Bulan <?php echo $TGL[1] ?> Tahun <?php echo $TGL[0] ?></h2>
 								</center>
 								</td>
@@ -35,21 +34,21 @@ print_r($laporandt);
 
 		            <tr>
 		            	<td border="0" colspan="4">DAERAH IRIGASI</td>
-		            	<td border="0" colspan="7">: <?php echo $laporanhd['DAERAH_IRIGASI'] ?></td>
+		            	<td border="0" colspan="7">: <?php echo $bencanahd['DAERAH_IRIGASI'] ?></td>
 
 		            	<td border="0" colspan="2">KABUPATEN</td>
-		            	<td border="0" colspan="2">: <?php echo $laporanhd['KABUPATEN'] ?></td>
+		            	<td border="0" colspan="2">: <?php echo $bencanahd['KABUPATEN'] ?></td>
 		            </tr>
 		             <tr>
 		            	<td border="0" colspan="4">TOTAL LUAS AREAL DI</td>
-		            	<td border="0" colspan="7">: <?php echo $laporanhd['LUAS_AREA_IRIGASI'] ?> Ha</td>
+		            	<td border="0" colspan="7">: <?php echo $bencanahd['LUAS_AREA_IRIGASI'] ?> Ha</td>
 
 		            	<td border="0" colspan="2">PENGAMAT/RANTING</td>
-		            	<td border="0" colspan="2">: <?php echo $laporanhd['RANTING'] ?></td>
+		            	<td border="0" colspan="2">: <?php echo $bencanahd['RANTING'] ?></td>
 		            </tr>
 		             <tr>
 		            	<td border="0" colspan="4">TINGKATAN DI : T / ST / SD</td>
-		            	<td border="0" colspan="11">: <?php echo $laporanhd['TINGKATAN_IRIGASI'] ?></td>
+		            	<td border="0" colspan="11">: <?php echo $bencanahd['TINGKATAN_IRIGASI'] ?></td>
 
 		            	
 		            </tr>
@@ -119,17 +118,12 @@ print_r($laporandt);
 					<tbody>
 						 <?php
 			  				$no=0;
-			  				foreach($laporandt->result() as $row):
+			  				foreach($bencanadt->result() as $row):
 			  				$no++;
 
-			  				if ($row->ID_LAPORANHD !== $laporanhd['ID_LAPORANHD']) {
-			  					# code...
-			  					$splitya = 'style="display:none"';
-			  				}else{
-			  					$splitya = '';
-			  				}
+			  			
 				  		?>
-				  		<tr <?php echo $splitya; ?>>
+				  		<tr>
 				  			<td ><?php echo $no ?></td>
 				  			<td><?php echo $row->nama_bangunan; ?>
 				  				<?php echo $row->nama_ruas; ?>
@@ -173,9 +167,9 @@ Dicatat di Buku Catatan Pemeliharaan CD/CS/UPT/Pengamat Pengairan/SUP<br/><br/><
 							<td colspan="3">
 								<center>
 									<h3>
-										<?php echo $laporanhd['KABUPATEN'].", ".$TGL3[2]."/".$TGL3[1]."/".$TGL3[0] ?><br/>
+										<?php echo $bencanahd['KABUPATEN'].", ".$TGL3[2]."/".$TGL3[1]."/".$TGL3[0] ?><br/>
 										Pengamat/Ranting/UPTD/SUP<br/>
-										<?php echo $laporanhd['RANTING'] ?>
+										<?php echo $bencanahd['RANTING'] ?>
 									</h3>
 
 									<p style="margin-top: 40%;font-weight: bold;font-size: x-large;"><u><?php echo $_SESSION['nama_lengkap'] ?></u></p>

@@ -47,6 +47,8 @@
 			    	<option>MANTRI</option>
 			    	<option>SUP</option>
 			    	<option>SEKSI IRIGASI</option>
+			    	<option>BIDANG PERENCANAAN</option>
+
 
 			    </select>
 			  </div>

@@ -106,6 +106,11 @@ class Laporanhd_model extends CI_Model{
 	}
 
 
+	function update_lampiran04($ID_LAPORANHD){
+		echo $sql = "SELECT ID_LAPORANDT,ID_LAPORANHD,BOCORAN,SUM(BOCORAN_M) AS BOCORAN_TOTAL FROM data_laporandt WHERE BOCORAN='SWAKELOLA' AND ID_LAPORANHD='$ID_LAPORANHD' GROUP BY BOCORAN";
+	}
+
+
 
 	
 

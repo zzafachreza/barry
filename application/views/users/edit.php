@@ -50,6 +50,7 @@
 			    	<option <?php echo $users['level']=='MANTRI' ? 'selected="selected"':'' ?>>MANTRI</option>
 			    	<option <?php echo $users['level']=='SUP' ? 'selected="selected"':'' ?>>SUP</option>
 			    	<option <?php echo $users['level']=='SEKSI IRIGASI' ? 'selected="selected"':'' ?>>SEKSI IRIGASI</option>
+			    	<option <?php echo $users['level']=='BIDANG PERENCANAAN' ? 'selected="selected"':'' ?>>BIDANG PERENCANAAN</option>
 			    </select>
 			  </div>
 			</form>

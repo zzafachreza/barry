@@ -22,7 +22,7 @@
 						<th>NAMA RUAS SALURAN</th>
 						<th>NAMA BAGUNAN DAN TIPENYA</th>
 
-						<?php if ($_SESSION['level']==='MANTRI' OR $_SESSION['level']==='SUP' OR $_SESSION['level']==='ADMIN'): ?>
+						<?php if ($_SESSION['level']==='MANTRI' OR $_SESSION['level']==='SUP' OR $_SESSION['level']==='ADMIN' OR $_SESSION['level']==='SEKSI IRIGASI' ): ?>
 						<th>BOCORAN</th>
 						<th>(M'/BH)</th>
 						<th>RUSAK/PUTUS</th>
@@ -39,7 +39,7 @@
 						<th>WALED (H)</th>
 						<th>MASUKAN LAIN - LAIN</th>
 
-							<?php endif ?>
+						<?php endif ?>
 
 						<?php if ($_SESSION['level']==='MANTRI' OR $_SESSION['level']==='ADMIN'): ?>
 							<th>DIKERJAKAN</th>
@@ -58,23 +58,7 @@
 						<th>DESA / KECAMATAN</th>
 
 						<th>FOTO_BEFORE</th>
-						<?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='ADMIN'): ?>
-						<th>FOTO_AFTER</th>
-						<th>PENYEBAB_KERUSAKAN</th>
-						<th>JENIS_KERUSAKAN</th>
-						<th>TANAH</th>
-						<th>BATU</th>
-						<th>BETON</th>
-						<th>PINTU_AIR</th>
-						<th>GORONG_GORONG</th>
-						<th>LAIN_LAIN_KERUSAKAN</th>
-						<th>LUAS_TERANCAM</th>
-						<th>TINDAKAN_PERBAIKAN</th>
-						<th>BIAYA_PERBAIKAN</th>
-						<th>DIKERJAKAN_OLEH</th>
-						<th>DIUSULKAN_OLEH</th>
-
-						<?php endif ?>
+						
 
 					</tr>
 					</thead>
@@ -97,10 +81,23 @@
 				  			<td><?php echo $no ?></td>
 				  			<td><?php echo $row->nama_ruas; ?></td>
 				  			<td><?php echo $row->nama_bangunan; ?></td>
-				  			<?php if ($_SESSION['level']==='MANTRI' OR $_SESSION['level']==='SUP' OR $_SESSION['level']==='ADMIN'): ?>
+				  			<?php if ($_SESSION['level']==='MANTRI' OR $_SESSION['level']==='SUP' OR $_SESSION['level']==='ADMIN' OR $_SESSION['level']==='SEKSI IRIGASI'): ?>
 
 				  			<!-- fitur ceklist -->
 							<td style="text-align: center;">
+
+								<?php if ($_SESSION['level']==='SEKSI IRIGASI'): ?>
+									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="BOCORAN">
+									<select style="width: 200px" class="form-control" name="BOCORAN"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+										<option></option>
+										<option <?php echo $row->BOCORAN==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
+										<option <?php echo $row->BOCORAN==='KONTRAKTUAL'?'selected="selected"':'' ?>>KONTRAKTUAL</option>
+									</select>
+								</form>
+								<?php endif ?>
+
 							<label>
 									<input <?php echo $CekDisable." ".$formDisable; ?> <?php echo $row->BOCORAN_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','BOCORAN_M','BOCORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>BOCORAN" class="form-control" type="checkbox" name="BOCORAN" style="width: 50px;">
 							</label>
@@ -117,6 +114,19 @@
 							</td>
 								<!-- fitur ceklist -->
 							<td style="text-align: center;">
+
+								<?php if ($_SESSION['level']==='SEKSI IRIGASI'): ?>
+									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>RUSAK" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="RUSAK">
+									<select style="width: 200px" class="form-control" name="RUSAK"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+										<option></option>
+										<option <?php echo $row->RUSAK==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
+										<option <?php echo $row->RUSAK==='KONTRAKTUAL'?'selected="selected"':'' ?>>KONTRAKTUAL</option>
+									</select>
+								</form>
+								<?php endif ?>
+
 							<label>
 									<input <?php echo $CekDisable." ".$formDisable; ?> <?php echo $row->RUSAK_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','RUSAK_M','RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>RUSAK" class="form-control" type="checkbox" name="RUSAK" style="width: 50px;">
 							</label>
@@ -134,6 +144,21 @@
 
 							<!-- fitur ceklist -->
 							<td style="text-align: center;">
+
+								<?php if ($_SESSION['level']==='SEKSI IRIGASI'): ?>
+									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="LONGSORAN">
+									<select style="width: 200px" class="form-control" name="LONGSORAN"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+										<option></option>
+										<option <?php echo $row->LONGSORAN==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
+										<option <?php echo $row->LONGSORAN==='KONTRAKTUAL'?'selected="selected"':'' ?>>KONTRAKTUAL</option>
+									</select>
+								</form>
+								<?php endif ?>
+
+
+
 							<label>
 									<input <?php echo $CekDisable." ".$formDisable; ?> <?php echo $row->LONGSORAN_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','LONGSORAN_M','LONGSORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>LONGSORAN" class="form-control" type="checkbox" name="LONGSORAN" style="width: 50px;">
 							</label>
@@ -151,6 +176,20 @@
 
 							<!-- fitur ceklist -->
 							<td style="text-align: center;">
+
+								<?php if ($_SESSION['level']==='SEKSI IRIGASI'): ?>
+									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="TERSUMBAT">
+									<select style="width: 200px" class="form-control" name="TERSUMBAT"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+										<option></option>
+										<option <?php echo $row->TERSUMBAT==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
+										<option <?php echo $row->TERSUMBAT==='KONTRAKTUAL'?'selected="selected"':'' ?>>KONTRAKTUAL</option>
+									</select>
+								</form>
+								<?php endif ?>
+
+
 							<label>
 									<input <?php echo $CekDisable." ".$formDisable; ?> <?php echo $row->TERSUMBAT_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','TERSUMBAT_M','TERSUMBAT','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT" class="form-control" type="checkbox" name="TERSUMBAT" style="width: 50px;">
 							</label>
@@ -168,6 +207,20 @@
 
 							<!-- fitur ceklist -->
 							<td style="text-align: center;">
+
+								<?php if ($_SESSION['level']==='SEKSI IRIGASI'): ?>
+									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>RETAK" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RETAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="RETAK">
+									<select style="width: 200px" class="form-control" name="RETAK"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RETAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+										<option></option>
+										<option <?php echo $row->RETAK==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
+										<option <?php echo $row->RETAK==='KONTRAKTUAL'?'selected="selected"':'' ?>>KONTRAKTUAL</option>
+									</select>
+								</form>
+								<?php endif ?>
+
+
 							<label>
 									<input <?php echo $CekDisable." ".$formDisable; ?> <?php echo $row->RETAK_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','RETAK_M','RETAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>RETAK" class="form-control" type="checkbox" name="RETAK" style="width: 50px;">
 							</label>
@@ -184,6 +237,19 @@
 							</td>
 							<!-- fitur ceklist -->
 							<td style="text-align: center;">
+
+									<?php if ($_SESSION['level']==='SEKSI IRIGASI'): ?>
+									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="PINTU_RUSAK">
+									<select style="width: 200px" class="form-control" name="PINTU_RUSAK"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+										<option></option>
+										<option <?php echo $row->PINTU_RUSAK==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
+										<option <?php echo $row->PINTU_RUSAK==='KONTRAKTUAL'?'selected="selected"':'' ?>>KONTRAKTUAL</option>
+									</select>
+								</form>
+								<?php endif ?>
+
 							<label>
 									<input <?php echo $CekDisable." ".$formDisable; ?> <?php echo $row->PINTU_RUSAK_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','PINTU_RUSAK_M','PINTU_RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK" class="form-control" type="checkbox" name="PINTU_RUSAK" style="width: 50px;">
 							</label>
@@ -201,6 +267,19 @@
 
 							<!-- fitur ceklist -->
 							<td style="text-align: center;">
+
+								<?php if ($_SESSION['level']==='SEKSI IRIGASI'): ?>
+									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="SEDIMEN">
+									<select style="width: 200px" class="form-control" name="SEDIMEN"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+										<option></option>
+										<option <?php echo $row->SEDIMEN==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
+										<option <?php echo $row->SEDIMEN==='KONTRAKTUAL'?'selected="selected"':'' ?>>KONTRAKTUAL</option>
+									</select>
+								</form>
+								<?php endif ?>
+
 							<label>
 									<input <?php echo $CekDisable." ".$formDisable; ?> <?php echo $row->SEDIMEN_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','SEDIMEN_M','SEDIMEN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>SEDIMEN" class="form-control" type="checkbox" name="SEDIMEN" style="width: 50px;">
 							</label>
@@ -225,13 +304,25 @@
 
 							
 							<td>
+
+								<?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='MANTRI'): ?>
 								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 									<input type="hidden" name="KOLOM" value="LAIN_LAIN">
 
-									<input <?php echo $CekDisable." ".$formDisable; ?> value="<?php echo $row->LAIN_LAIN ?>" id="<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="LAIN_LAIN" class="form-control" style="width: 100%">
+									<input value="<?php echo $row->LAIN_LAIN ?>" id="<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="LAIN_LAIN" class="form-control" style="width: 100%">
 								</form>
+								<?php endif ?>
+
+
+								<!-- <form id="FORM<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+
+									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
+									<input type="hidden" name="KOLOM" value="LAIN_LAIN">
+
+									<input <?php echo $CekDisable." ".$formDisable; ?> value="<?php echo $row->LAIN_LAIN ?>" id="<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="LAIN_LAIN" class="form-control" style="width: 100%">
+								</form> -->
 							</td>
 							<?php endif ?>
 
@@ -354,157 +445,9 @@
 
 
 							</td>
-							<?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='ADMIN'): ?>
-							<td>
-									<form enctype="multipart/form-data" id="FORM<?php echo $row->ID_LAPORANDT; ?>FOTO_AFTER" onSubmit="editDataFoto('FORM<?php echo $row->ID_LAPORANDT; ?>FOTO_AFTER','<?php echo base_url().'/laporanhd/update_detail_foto/'.$row->ID_LAPORANHD ?>','<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>','<?php echo $row->ID_LAPORANHD; ?>'); return false;">
 
 
-									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
-									<input type="hidden" name="KOLOM" value="FOTO_AFTER">
-									<input type="hidden" name="FOTO_OLD" value="<?php echo $row->FOTO_AFTER; ?>">
-										
-										<?php if (isset($row->FOTO_AFTER)): ?>
-									<a href="<?php echo base_url().'/laporanhd/view_detail_foto/'.$row->ID_LAPORANDT.'/FOTO_AFTER' ?>" target="_BLANK">
-										<img src="<?php echo base_url().'upload/'.$row->FOTO_AFTER ?>" width="50" height="50">
-									</a>	
-
-									<?php endif ?>
-
-
-									<input required="required" type="file"  id="<?php echo $row->ID_LAPORANDT; ?>FOTO_AFTER" onChange="editDataFoto('FORM<?php echo $row->ID_LAPORANDT; ?>FOTO_AFTER','<?php echo base_url().'/laporanhd/update_detail_foto/'.$row->ID_LAPORANHD ?>','<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>','<?php echo $row->ID_LAPORANHD; ?>'); return false;"  name="FOTO_AFTER"  style="width: 100px;">
-									<!-- <button type="submit" class="FOTOAFTER btn AppButton-primary">UPLOAD</button> -->
-								</form>
-							</td>
-
-
-							<td>
-								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>PENYEBAB_KERUSAKAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PENYEBAB_KERUSAKAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
-
-									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
-									<input type="hidden" name="KOLOM" value="PENYEBAB_KERUSAKAN">
-
-									<input  value="<?php echo $row->PENYEBAB_KERUSAKAN ?>" id="<?php echo $row->ID_LAPORANDT; ?>PENYEBAB_KERUSAKAN" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PENYEBAB_KERUSAKAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="PENYEBAB_KERUSAKAN" class="form-control" style="width: 100%;">
-								</form>
-							</td>
-
-							<td>
-								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>JENIS_KERUSAKAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>JENIS_KERUSAKAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
-
-									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
-									<input type="hidden" name="KOLOM" value="JENIS_KERUSAKAN">
-
-									<input  value="<?php echo $row->JENIS_KERUSAKAN ?>" id="<?php echo $row->ID_LAPORANDT; ?>JENIS_KERUSAKAN" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>JENIS_KERUSAKAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="JENIS_KERUSAKAN" class="form-control" style="width: 100%;">
-								</form>
-							</td>
-
-							<td>
-								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>TANAH" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>TANAH','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
-
-									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
-									<input type="hidden" name="KOLOM" value="TANAH">
-
-									<input  value="<?php echo $row->TANAH ?>" id="<?php echo $row->ID_LAPORANDT; ?>TANAH" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>TANAH','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="TANAH" class="form-control" style="width: 100%;">
-								</form>
-							</td>
-						<td>
-								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>BATU" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BATU','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
-
-									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
-									<input type="hidden" name="KOLOM" value="BATU">
-
-									<input  value="<?php echo $row->BATU ?>" id="<?php echo $row->ID_LAPORANDT; ?>BATU" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BATU','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="BATU" class="form-control" style="width: 100%;">
-								</form>
-							</td>
-							<td>
-								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>BETON" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BETON','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
-
-									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
-									<input type="hidden" name="KOLOM" value="BETON">
-
-									<input  value="<?php echo $row->BETON ?>" id="<?php echo $row->ID_LAPORANDT; ?>BETON" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BETON','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="BETON" class="form-control" style="width: 100%;">
-								</form>
-							</td>
-							<td>
-								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_AIR" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_AIR','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
-
-									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
-									<input type="hidden" name="KOLOM" value="PINTU_AIR">
-
-									<input  value="<?php echo $row->PINTU_AIR ?>" id="<?php echo $row->ID_LAPORANDT; ?>PINTU_AIR" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_AIR','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="PINTU_AIR" class="form-control" style="width: 100%;">
-								</form>
-							</td>
-
-							<td>
-								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>GORONG_GORONG" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>GORONG_GORONG','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
-
-									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
-									<input type="hidden" name="KOLOM" value="GORONG_GORONG">
-
-									<input  value="<?php echo $row->GORONG_GORONG ?>" id="<?php echo $row->ID_LAPORANDT; ?>GORONG_GORONG" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>GORONG_GORONG','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="GORONG_GORONG" class="form-control" style="width: 100%;">
-								</form>
-							</td>
-
-
-							<td>
-								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN_KERUSAKAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN_KERUSAKAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
-
-									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
-									<input type="hidden" name="KOLOM" value="LAIN_LAIN_KERUSAKAN">
-
-									<input  value="<?php echo $row->LAIN_LAIN_KERUSAKAN ?>" id="<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN_KERUSAKAN" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LAIN_LAIN_KERUSAKAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="LAIN_LAIN_KERUSAKAN" class="form-control" style="width: 100%;">
-								</form>
-							</td>
-						<td>
-								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>LUAS_TERANCAM" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LUAS_TERANCAM','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
-
-									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
-									<input type="hidden" name="KOLOM" value="LUAS_TERANCAM">
-
-									<input  value="<?php echo $row->LUAS_TERANCAM ?>" id="<?php echo $row->ID_LAPORANDT; ?>LUAS_TERANCAM" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LUAS_TERANCAM','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="LUAS_TERANCAM" class="form-control" style="width: 100%;">
-								</form>
-							</td>
-						<td>
-								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>TINDAKAN_PERBAIKAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>TINDAKAN_PERBAIKAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
-
-									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
-									<input type="hidden" name="KOLOM" value="TINDAKAN_PERBAIKAN">
-
-									<input  value="<?php echo $row->TINDAKAN_PERBAIKAN ?>" id="<?php echo $row->ID_LAPORANDT; ?>TINDAKAN_PERBAIKAN" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>TINDAKAN_PERBAIKAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="TINDAKAN_PERBAIKAN" class="form-control" style="width: 100%;">
-								</form>
-							</td>
-						<td>
-								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>BIAYA_PERBAIKAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BIAYA_PERBAIKAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
-
-									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
-									<input type="hidden" name="KOLOM" value="BIAYA_PERBAIKAN">
-
-									<input  value="<?php echo $row->BIAYA_PERBAIKAN ?>" id="<?php echo $row->ID_LAPORANDT; ?>BIAYA_PERBAIKAN" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BIAYA_PERBAIKAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="BIAYA_PERBAIKAN" class="form-control" style="width: 100%;">
-								</form>
-							</td>
-						<td>
-								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>DIKERJAKAN_OLEH" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>DIKERJAKAN_OLEH','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
-
-									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
-									<input type="hidden" name="KOLOM" value="DIKERJAKAN_OLEH">
-
-									<input  value="<?php echo $row->DIKERJAKAN_OLEH ?>" id="<?php echo $row->ID_LAPORANDT; ?>DIKERJAKAN_OLEH" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>DIKERJAKAN_OLEH','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="DIKERJAKAN_OLEH" class="form-control" style="width: 100%;">
-								</form>
-							</td>
-						<td>
-								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>DIUSULKAN_OLEH" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>DIUSULKAN_OLEH','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
-
-									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
-									<input type="hidden" name="KOLOM" value="DIUSULKAN_OLEH">
-
-									<input  value="<?php echo $row->DIUSULKAN_OLEH ?>" id="<?php echo $row->ID_LAPORANDT; ?>DIUSULKAN_OLEH" onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>DIUSULKAN_OLEH','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="DIUSULKAN_OLEH" class="form-control" style="width: 100%;">
-								</form>
-							</td>
 						
-						
-
-
-
-						<?php endif ?>
 
 
 					

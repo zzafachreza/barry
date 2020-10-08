@@ -58,7 +58,7 @@ class Laporanhd extends CI_Controller{
 				# code...
 			$data['laporandt'] = $this->Laporanhd_model->getDataDetail3($id);
 			$data[$this->dataTable] = $hasil->row_array();
-			$this->load->view($this->dataTable.'/view',$data);
+			$this->load->view($this->dataTable.'/view_3',$data);
 				break;
 		}
 		
@@ -368,6 +368,8 @@ class Laporanhd extends CI_Controller{
 	function update_selesai(){
 
 		 print_r($_POST);
+
+
 		 $id = $this->input->post('id');
 		 $VALUE = $this->input->post('VALUE');
 			$KOLOM = $this->input->post('KOLOM');
@@ -377,6 +379,11 @@ class Laporanhd extends CI_Controller{
 
 	    if (isset($STATUS_ALL)) {
 	    	# code...
+	    	if ($STATUS_ALL==='SELESAI') {
+	    		# code...
+	    		 redirect($this->dataTable.'/update_lampiran04/'.$id);
+
+	    	}
 	    	$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - UPDATE STATUS ',$STATUS_ALL,strtoupper($_SESSION['username']));
 	    	$this->Laporanhd_model->update_selesai3($id,$STATUS_LAPORANHD,$STATUS_ALL,$KOLOM,$VALUE);
 	    }else{
@@ -386,6 +393,13 @@ class Laporanhd extends CI_Controller{
 	    }
 
 	    redirect($this->dataTable);
+	}
+
+
+	function update_lampiran04(){
+		$ID_LAPORANHD = $this->uri->segment(3);
+
+		$this->Laporanhd_model->update_lampiran04($ID_LAPORANHD);
 	}
 
 
