@@ -78,6 +78,16 @@ class Bencanahd_model extends CI_Model{
 		$this->db->query($sql);
 	}
 
+	function update_lampiran4($ID_SWAKELOLA,$KOLOM,$VALUES){
+		if ($KOLOM==='BALAI') {
+			# code...
+			$sql="UPDATE data_swakelola SET $KOLOM='$VALUES' WHERE ID_LAPORANHD='$ID_SWAKELOLA'";
+		}else{
+			$sql="UPDATE data_swakelola SET $KOLOM='$VALUES' WHERE ID_SWAKELOLA='$ID_SWAKELOLA'";
+		}
+		$this->db->query($sql);
+	}
+
 
 	function add_05($ID_LAPORANHD){
 
@@ -134,6 +144,11 @@ class Bencanahd_model extends CI_Model{
 		$sql="SELECT * FROM data_swakelola GROUP BY ID_LAPORANHD";
 		$data = $this->db->query($sql);
 		return $data; 
+	}
+
+	function selesai_04($ID_LAPORANHD){
+		echo $sql= "UPDATE data_swakelola SET STATUS_SWAKELOLA='DONE' WHERE ID_LAPORANHD='$ID_LAPORANHD'";
+		$this->db->query($sql);
 	}
 
 

@@ -306,6 +306,42 @@ class Bencanahd extends CI_Controller{
 	}
 
 
+	function edit_lampiran04(){
+
+		$id =  $this->uri->segment(3);
+		$hasil = $this->Bencanahd_model->getId($id);
+
+		$data['lamp04'] = $this->Bencanahd_model->getDataDetail04($id);
+
+
+		$this->load->view('header',$data);
+		$data[$this->dataTable] = $hasil->row_array();
+	
+		$this->load->view($this->dataTable.'/edit_04',$data);
+	
+
+	}
+
+		function update_lampiran4(){
+
+		$ID_SWAKELOLA = $_POST['ID_SWAKELOLA'];
+		$KOLOM = $_POST['KOLOM'];
+		$VALUE = $_POST['VALUE'];
+
+		$this->Bencanahd_model->update_lampiran4($ID_SWAKELOLA,$KOLOM,$VALUE);
+
+
+	}
+
+	function selesai_04(){
+		$ID_LAPORANHD = $_POST['ID_LAPORANHD'];
+		$this->Bencanahd_model->selesai_04($ID_LAPORANHD);
+		redirect($this->dataTable.'/lampiran04');
+
+	}
+
+
+
 
 
 
