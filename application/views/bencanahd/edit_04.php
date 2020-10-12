@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 $dataLamp04 = $lamp04->result();
 
 ?>
@@ -7,7 +7,7 @@ $dataLamp04 = $lamp04->result();
 <hr/>
 <div class="container">
 	<form method="POST" action="<?php echo base_url().'bencanahd/selesai_04'; ?>">
-	<input type="hiddean" name="ID_LAPORANHD" value="<?php echo $dataLamp04[0]->ID_LAPORANHD ?>">
+	<input type="hidden" name="ID_LAPORANHD" value="<?php echo $dataLamp04[0]->ID_LAPORANHD ?>">
 
 	<button class="btn btn-success col-sm-4" onclick="return confirm('Apakah Anda yakin ?\n Data tidak dapat diubah jika sudah disimpan')">SELESAI</button>
 	
@@ -62,19 +62,131 @@ $dataLamp04 = $lamp04->result();
 				  		?>
 
 <tr>
+		
 		<td><?php echo $no ?></td>
 		<td><?php echo $row->DAERAH_IRIGASI ?></td>
-		<td><?php echo $row->NAMA_SALURAN ?></td>
-		<td><?php echo $row->LOKASI ?></td>
+		<td><?php echo $row->nama_bangunan ?><br/><?php echo $row->nama_ruas ?></td>
+		<td><?php echo $row->DESA ?><br/><?php echo $row->KABUPATEN ?></td>
 		<td>
+			<?php
 
-			<input id="JENIS<?php echo $row->ID_SWAKELOLA ?>" type="text" name="JENIS" value="<?php echo $row->JENIS ?>" onChange="editEuy2('<?php echo $row->ID_SWAKELOLA ?>','JENIS','JENIS<?php echo $row->ID_SWAKELOLA ?>')">
+			if ($row->BOCORAN==='SWAKELOLA' AND $row->BOCORAN_M > 0) {
+				echo "BOCORAN";
+			}else{
+				echo "";
+			}
 
+		
+
+			if ($row->RUSAK==='SWAKELOLA' AND $row->RUSAK_M > 0) {
+				echo "<br/>";
+				echo "RUSAK";
+			}else{
+				echo "";
+			}
+
+		
+
+			if ($row->LONGSORAN==='SWAKELOLA' AND $row->LONGSORAN_M > 0) {
+				echo "<br/>";
+				echo "LONGSORAN";
+			}else{
+				echo "";
+			}
+
+			if ($row->TERSUMBAT==='SWAKELOLA' AND $row->TERSUMBAT_M > 0) {
+				echo "<br/>";
+				echo "TERSUMBAT";
+			}else{
+				echo "";
+			}
+
+			if ($row->RETAK==='SWAKELOLA' AND $row->RETAK_M > 0) {
+				echo "<br/>";
+				echo "RETAK";
+			}else{
+				echo "";
+			}
+
+			if ($row->PINTU_RUSAK==='SWAKELOLA' AND $row->PINTU_RUSAK_M > 0) {
+				echo "<br/>";
+				echo "PINTU_RUSAK";
+			}else{
+				echo "";
+			}
+
+			if ($row->SEDIMEN==='SWAKELOLA' AND $row->SEDIMEN_M > 0) {
+				echo "<br/>";
+				echo "SEDIMEN";
+			}else{
+				echo "";
+			}
+
+
+
+
+			?>
 		</td>
 		<td>
-				<input id="TOLAK_UKUR<?php echo $row->ID_SWAKELOLA ?>" type="text" name="TOLAK_UKUR" value="<?php echo $row->TOLAK_UKUR ?>" onChange="editEuy2('<?php echo $row->ID_SWAKELOLA ?>','TOLAK_UKUR','TOLAK_UKUR<?php echo $row->ID_SWAKELOLA ?>')">
+			<?php
 
-			</td>
+
+
+			if ($row->BOCORAN==='SWAKELOLA' AND $row->BOCORAN_M > 0) {
+				echo $row->BOCORAN_M;
+			}else{
+				echo "";
+			}
+
+		
+
+			if ($row->RUSAK==='SWAKELOLA' AND $row->RUSAK_M > 0) {
+				echo "<br/>";
+				echo $row->RUSAK_M;
+			}else{
+				echo "";
+			}
+
+		
+
+			if ($row->LONGSORAN==='SWAKELOLA' AND $row->LONGSORAN_M > 0) {
+				echo "<br/>";
+				echo $row->LONGSORAN_M;
+			}else{
+				echo "";
+			}
+
+			if ($row->TERSUMBAT==='SWAKELOLA' AND $row->TERSUMBAT_M > 0) {
+				echo "<br/>";
+				echo $row->TERSUMBAT_M;
+			}else{
+				echo "";
+			}
+
+			if ($row->RETAK==='SWAKELOLA' AND $row->RETAK_M > 0) {
+				echo "<br/>";
+				echo $row->RETAK_M;
+			}else{
+				echo "";
+			}
+
+			if ($row->PINTU_RUSAK==='SWAKELOLA' AND $row->PINTU_RUSAK_M > 0) {
+				echo "<br/>";
+				echo $row->PINTU_RUSAK_M;
+			}else{
+				echo "";
+			}
+
+			if ($row->SEDIMEN==='SWAKELOLA' AND $row->SEDIMEN_M > 0) {
+				echo "<br/>";
+				echo $row->SEDIMEN_M;
+			}else{
+				echo "";
+			}
+
+
+			?>
+		</td>
 		<td>	
 
 			<input id="UPAH<?php echo $row->ID_SWAKELOLA ?>" type="text" name="UPAH" value="<?php echo $row->UPAH ?>" onChange="editEuy2('<?php echo $row->ID_SWAKELOLA ?>','UPAH','UPAH<?php echo $row->ID_SWAKELOLA ?>')">
@@ -85,11 +197,21 @@ $dataLamp04 = $lamp04->result();
 
 		</td>
 		<td>
+			<label><?php echo $row->ESTIMASI_PERBAIKAN ?><br/>(ESTIMASI PERBAIKAN)</label>
 			<input id="JUMLAH<?php echo $row->ID_SWAKELOLA ?>" type="text" name="JUMLAH" value="<?php echo $row->JUMLAH ?>" onChange="editEuy2('<?php echo $row->ID_SWAKELOLA ?>','JUMLAH','JUMLAH<?php echo $row->ID_SWAKELOLA ?>')">
 
 		</td>
 		<td>
-			<input id="TANGGAL_PELAKSANAAN<?php echo $row->ID_SWAKELOLA ?>" type="text" name="TANGGAL_PELAKSANAAN" value="<?php echo $row->TANGGAL_PELAKSANAAN ?>" onChange="editEuy2('<?php echo $row->ID_SWAKELOLA ?>','TANGGAL_PELAKSANAAN','TANGGAL_PELAKSANAAN<?php echo $row->ID_SWAKELOLA ?>')">
+			<label>
+				Dari
+				<input id="TANGGAL_AWAL<?php echo $row->ID_SWAKELOLA ?>" type="text" name="TANGGAL_AWAL" value="<?php echo TglIndonesia($row->TANGGAL_AWAL) ?>" onChange="editEuy2('<?php echo $row->ID_SWAKELOLA ?>','TANGGAL_AWAL','TANGGAL_AWAL<?php echo $row->ID_SWAKELOLA ?>')" class="tgl">
+			</label>
+			<br/>
+			<label>
+				Sampai
+				<input id="TANGGAL_AKHIR<?php echo $row->ID_SWAKELOLA ?>" type="text" name="TANGGAL_AKHIR" value="<?php echo TglIndonesia($row->TANGGAL_AKHIR) ?>" onChange="editEuy2('<?php echo $row->ID_SWAKELOLA ?>','TANGGAL_AKHIR','TANGGAL_AKHIR<?php echo $row->ID_SWAKELOLA ?>')" class="tgl">
+			</label>
+		
 		</td>
 		<td>
 			<input id="KETERANGAN<?php echo $row->ID_SWAKELOLA ?>" type="text" name="KETERANGAN" value="<?php echo $row->KETERANGAN ?>" onChange="editEuy2('<?php echo $row->ID_SWAKELOLA ?>','KETERANGAN','KETERANGAN<?php echo $row->ID_SWAKELOLA ?>')">
@@ -107,6 +229,7 @@ $dataLamp04 = $lamp04->result();
 	function editEuy2(ID_SWAKELOLA,K,V){
 		var VALUE = $("#"+V).val();
 		var KOLOM = K;
+
 
 		$.ajax({
 			url:'<?php echo base_url().'bencanahd/update_lampiran4'; ?>',

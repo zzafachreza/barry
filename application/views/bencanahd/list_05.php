@@ -16,8 +16,7 @@
 	  	<a href="<?php echo site_url() ?>" class="AppButton-secondary"><i class="flaticon2-left-arrow-1"></i> Kembali</a>
 
 
-
-	  		 <span style="margin-left: 5%;font-weight: bold;padding: 1%" class="btn-primary">05 P</span>
+	  		 <span style="margin-left: 5%;font-weight: bold;padding: 1%" class="btn-primary">05 P (DARI BENCANA ALAM)</span>
 	   	
 	  </div>
 	  <div class="card-body" style="overflow: auto;">

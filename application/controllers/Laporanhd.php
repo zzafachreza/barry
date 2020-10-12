@@ -400,7 +400,12 @@ class Laporanhd extends CI_Controller{
 		$ID_LAPORANHD = $this->uri->segment(3);
 
 		$this->Laporanhd_model->update_lampiran04($ID_LAPORANHD);
+		redirect($this->dataTable);
 	}
+
+
+
+	
 
 
 

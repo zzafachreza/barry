@@ -125,9 +125,7 @@ error_reporting(0);
 				  		?>
 				  		<tr>
 				  			<td ><?php echo $no ?></td>
-				  			<td><?php echo $row->nama_bangunan; ?>
-				  				<?php echo $row->nama_ruas; ?>
-				  				<?php echo $row->DESA; ?>
+				  			<td><?php echo $row->NAMA_SALURAN; ?>
 				  			</td>
 				  			<td><?php echo $row->PENYEBAB_KERUSAKAN ?></th>
 							<td><?php echo $row->JENIS_KERUSAKAN ?></th>

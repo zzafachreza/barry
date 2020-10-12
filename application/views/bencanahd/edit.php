@@ -164,9 +164,10 @@
 				  			<td>
 				  				<input type="hidden" name="ID_LAPORANHD" value="<?php echo $ID_LAPORANHD ?>">
 				  			</td>
-				  			<td><input type="text" id="NAMA_SALURAN" name="NAMA_SALURAN" class="form-control" required="required"></td>
-				  			<td><input type="text" name="PENYEBAB_KERUSAKAN" class="form-control"> </td>
-							<td><input type="text" name="JENIS_KERUSAKAN" class="form-control"> </td>
+				  			<td><textarea id="NAMA_SALURAN" name="NAMA_SALURAN" class="form-control" required="required"></textarea></td>
+				  			<td><textarea id="PENYEBAB_KERUSAKAN" name="PENYEBAB_KERUSAKAN" class="form-control" required="required"></textarea></td>
+				  			<td><textarea id="JENIS_KERUSAKAN" name="JENIS_KERUSAKAN" class="form-control" required="required"></textarea></td>
+				  			
 							<td><input type="text" name="TANAH" class="form-control"> </td>
 							<td><input type="text" name="BATU" class="form-control"> </td>
 							<td><input type="text" name="BETON" class="form-control"> </td>
@@ -202,9 +203,14 @@
 				  			<td ><?php echo $no ?><br/>
 				  					<a class="btn btn-danger" href="<?php echo site_url('bencanahd/hapus_detail/') ?><?php echo $row->ID_LAPORANHD ?>/<?php echo $row->ID_LAPORANDT ?>">HAPUS</a>
 				  			</td>
-				  			<td><?php echo $row->NAMA_SALURAN; ?></td>
-				  			<td><?php echo $row->PENYEBAB_KERUSAKAN ?></th>
-							<td><?php echo $row->JENIS_KERUSAKAN ?></th>
+				  			<td><?php echo str_replace("\n", "<br/>", $row->NAMA_SALURAN); ?></td>
+				  			<td>
+				  				<?php echo str_replace("\n", "<br/>", $row->PENYEBAB_KERUSAKAN); ?>
+				  			</th>
+				  			<td>
+				  				<?php echo str_replace("\n", "<br/>", $row->JENIS_KERUSAKAN); ?>
+				  			</th>
+					
 							<td><?php echo $row->TANAH ?></th>
 							<td><?php echo $row->BATU ?></th>
 							<td><?php echo $row->BETON ?></th>

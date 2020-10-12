@@ -164,9 +164,17 @@ class Bencanahd extends CI_Controller{
 
 	function update_lampiran6(){
 
+
 		$ID_LAPORANDT = $_POST['ID_LAPORANDT'];
 		$KOLOM = $_POST['KOLOM'];
-		$VALUE = $_POST['VALUE'];
+
+		if ($KOLOM==='TANGGAL_SELESAI') {
+			# code...
+			$VALUE = $this->Bencanahd_model->tglSql($_POST['VALUE']);
+		}else{
+			$VALUE = $_POST['VALUE'];
+		}
+
 
 		$this->Bencanahd_model->update_lampiran6($ID_LAPORANDT,$KOLOM,$VALUE);
 
@@ -297,7 +305,7 @@ class Bencanahd extends CI_Controller{
 
 		$data['lamp04'] = $this->Bencanahd_model->getDataDetail04($id);
 
-
+		$this->load->view('header',$data);
 		$data[$this->dataTable] = $hasil->row_array();
 	
 		$this->load->view($this->dataTable.'/view_04',$data);
@@ -326,7 +334,14 @@ class Bencanahd extends CI_Controller{
 
 		$ID_SWAKELOLA = $_POST['ID_SWAKELOLA'];
 		$KOLOM = $_POST['KOLOM'];
-		$VALUE = $_POST['VALUE'];
+		
+
+		if ($KOLOM==='TANGGAL_AWAL' OR $KOLOM==='TANGGAL_AKHIR') {
+			# code...
+			$VALUE = $this->Bencanahd_model->tglSql($_POST['VALUE']);
+		}else{
+			$VALUE = $_POST['VALUE'];
+		}
 
 		$this->Bencanahd_model->update_lampiran4($ID_SWAKELOLA,$KOLOM,$VALUE);
 
@@ -337,6 +352,77 @@ class Bencanahd extends CI_Controller{
 		$ID_LAPORANHD = $_POST['ID_LAPORANHD'];
 		$this->Bencanahd_model->selesai_04($ID_LAPORANHD);
 		redirect($this->dataTable.'/lampiran04');
+
+	}
+
+
+	function delete_swakelola(){
+
+		$ID_LAPORANHD =  $this->uri->segment(3);
+		$this->Bencanahd_model->delete_swakelola($ID_LAPORANHD);
+		redirect($this->dataTable.'/lampiran04');
+
+	}
+
+
+
+
+	function lampiran052(){
+
+		$data['data'] = $this->Bencanahd_model->getList052();
+		$this->load->view('header',$data);
+		$this->load->view($this->dataTable.'/list_052',$data);
+	
+
+	}
+
+	function view_lampiran052(){
+
+		$id =  $this->uri->segment(3);
+		$hasil = $this->Bencanahd_model->getId($id);
+
+		$data['lamp052'] = $this->Bencanahd_model->getDataDetail052($id);
+
+		$this->load->view('header',$data);
+		$data[$this->dataTable] = $hasil->row_array();
+	
+		$this->load->view($this->dataTable.'/view_052',$data);
+	
+
+	}
+
+	function edit_lampiran052(){
+
+		$id =  $this->uri->segment(3);
+		$hasil = $this->Bencanahd_model->getId($id);
+
+		$data['lamp04'] = $this->Bencanahd_model->getDataDetail052($id);
+
+
+		$this->load->view('header',$data);
+		$data[$this->dataTable] = $hasil->row_array();
+	
+		$this->load->view($this->dataTable.'/edit_052',$data);
+	
+
+	}
+
+
+		function update_lampiran52(){
+
+		$ID_KONTRAKTUAL2 = $_POST['ID_KONTRAKTUAL2'];
+		$KOLOM = $_POST['KOLOM'];
+		
+
+		if ($KOLOM==='TANGGAL_AWAL' OR $KOLOM==='TANGGAL_AKHIR') {
+			# code...
+			$VALUE = $this->Bencanahd_model->tglSql($_POST['VALUE']);
+		}else{
+			$VALUE = $_POST['VALUE'];
+		}
+
+		$this->Bencanahd_model->update_lampiran52($ID_KONTRAKTUAL2,$KOLOM,$VALUE);
+
 
 	}
 

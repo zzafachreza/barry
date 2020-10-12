@@ -61,10 +61,38 @@ class Bencanahd_model extends CI_Model{
 	}
 
 	function getDataDetail04($id){
-		$sql="SELECT*FROM data_swakelola WHERE ID_LAPORANHD='$id'";
+		$sql="SELECT *
+FROM
+    `data_swakelola`
+    INNER JOIN `data_laporandt` 
+        ON (`data_swakelola`.`ID_LAPORANHD` = `data_laporandt`.`ID_LAPORANHD`) AND (`data_swakelola`.`ID_LAPORANDT` = `data_laporandt`.`ID_LAPORANDT`)
+    INNER JOIN `data_laporanhd` 
+        ON (`data_laporandt`.`ID_LAPORANHD` = `data_laporanhd`.`ID_LAPORANHD`)
+    INNER JOIN `data_bangunan` 
+        ON (`data_laporandt`.`ID_BANGUNAN` = `data_bangunan`.`id_bangunan`)
+    INNER JOIN `data_ruas` 
+        ON (`data_bangunan`.`id_ruas` = `data_ruas`.`id_ruas`) WHERE data_swakelola.ID_LAPORANHD='$id'";
 		$data = $this->db->query($sql);
 		return $data;
 	}
+
+
+		function getDataDetail052($id){
+		$sql="SELECT *
+FROM
+    `data_kontraktual2`
+    INNER JOIN `data_laporandt` 
+        ON (`data_kontraktual2`.`ID_LAPORANHD` = `data_laporandt`.`ID_LAPORANHD`) AND (`data_kontraktual2`.`ID_LAPORANDT` = `data_laporandt`.`ID_LAPORANDT`)
+    INNER JOIN `data_laporanhd` 
+        ON (`data_laporandt`.`ID_LAPORANHD` = `data_laporanhd`.`ID_LAPORANHD`)
+    INNER JOIN `data_bangunan` 
+        ON (`data_laporandt`.`ID_BANGUNAN` = `data_bangunan`.`id_bangunan`)
+    INNER JOIN `data_ruas` 
+        ON (`data_bangunan`.`id_ruas` = `data_ruas`.`id_ruas`) WHERE data_kontraktual2.ID_LAPORANHD='$id'";
+		$data = $this->db->query($sql);
+		return $data;
+	}
+
 
 	function hapus_detail($ID_LAPORANHD,$ID_LAPORANDT){
 
@@ -79,7 +107,17 @@ class Bencanahd_model extends CI_Model{
 	}
 
 	function update_lampiran4($ID_SWAKELOLA,$KOLOM,$VALUES){
-		if ($KOLOM==='BALAI') {
+		if($KOLOM==='UPAH'){
+
+		 $sql="UPDATE data_swakelola SET $KOLOM='$VALUES',JUMLAH=$VALUES+BAHAN WHERE ID_SWAKELOLA='$ID_SWAKELOLA'";
+	
+		}
+		elseif($KOLOM==='BAHAN'){
+
+		 $sql="UPDATE data_swakelola SET $KOLOM='$VALUES',JUMLAH=$VALUES+UPAH WHERE ID_SWAKELOLA='$ID_SWAKELOLA'";
+	
+		}
+		elseif ($KOLOM==='BALAI') {
 			# code...
 			$sql="UPDATE data_swakelola SET $KOLOM='$VALUES' WHERE ID_LAPORANHD='$ID_SWAKELOLA'";
 		}else{
@@ -146,13 +184,46 @@ class Bencanahd_model extends CI_Model{
 		return $data; 
 	}
 
+	function getList052(){
+		$sql="SELECT * FROM data_kontraktual2 GROUP BY ID_LAPORANHD";
+		$data = $this->db->query($sql);
+		return $data; 
+	}
+
 	function selesai_04($ID_LAPORANHD){
-		echo $sql= "UPDATE data_swakelola SET STATUS_SWAKELOLA='DONE' WHERE ID_LAPORANHD='$ID_LAPORANHD'";
+		 $sql= "UPDATE data_swakelola SET STATUS_SWAKELOLA='DONE' WHERE ID_LAPORANHD='$ID_LAPORANHD'";
 		$this->db->query($sql);
 	}
 
 
+	function delete_swakelola($ID_LAPORANHD){
+
+		 $sql= "DELETE FROM data_swakelola WHERE ID_LAPORANHD='$ID_LAPORANHD'";
+		$this->db->query($sql);
+
+
+	}
+
+	function update_lampiran52($ID_KONTRAKTUAL2,$KOLOM,$VALUES){
+		if($KOLOM==='UPAH'){
+
+		 $sql="UPDATE data_kontraktual2 SET $KOLOM='$VALUES',JUMLAH=$VALUES+BAHAN WHERE ID_KONTRAKTUAL2='$ID_KONTRAKTUAL2'";
 	
+		}
+		elseif($KOLOM==='BAHAN'){
+
+		 $sql="UPDATE data_kontraktual2 SET $KOLOM='$VALUES',JUMLAH=$VALUES+UPAH WHERE ID_KONTRAKTUAL2='$ID_KONTRAKTUAL2'";
+	
+		}
+		elseif ($KOLOM==='BALAI') {
+			# code...
+			$sql="UPDATE data_kontraktual2 SET $KOLOM='$VALUES' WHERE ID_LAPORANHD='$ID_KONTRAKTUAL2'";
+		}else{
+			$sql="UPDATE data_kontraktual2 SET $KOLOM='$VALUES' WHERE ID_KONTRAKTUAL2='$ID_KONTRAKTUAL2'";
+		}
+		$this->db->query($sql);
+	}
+
 
 
 

@@ -88,7 +88,7 @@
 		</td>
 		<td>
 
-			<input id="TANGGAL_SELESAI<?php echo $row->ID_LAPORANDT ?>" type="text" name="TANGGAL_SELESAI" value="<?php echo $row->TANGGAL_SELESAI ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','TANGGAL_SELESAI','TANGGAL_SELESAI<?php echo $row->ID_LAPORANDT ?>')">
+			<input class="tgl" id="TANGGAL_SELESAI<?php echo $row->ID_LAPORANDT ?>" type="text" name="TANGGAL_SELESAI" value="<?php echo tglIndonesia($row->TANGGAL_SELESAI) ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','TANGGAL_SELESAI','TANGGAL_SELESAI<?php echo $row->ID_LAPORANDT ?>')">
 
 		</td>
 		<td><?php echo $row->JENIS_KERUSAKAN ?></td>

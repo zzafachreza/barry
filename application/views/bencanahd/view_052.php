@@ -1,0 +1,241 @@
+<?php
+
+$dataLamp052 = $lamp052->result();
+
+?>
+<div class="container-fluid">
+	<table border="1" width="100%">
+	<tr>
+		<th colspan="7">PROGRAM KERJA KONTRAKTUAL</th>
+		<th>BLANKO 05 - P</th>
+	</tr>
+	<tr>
+		<th colspan="8">Tahun <?php echo date('Y') ?></th>
+	</tr>
+	<tr>
+		<th colspan="8">&nbsp;</th>
+	</tr>
+	<tr>
+		<th>DINAS/BALAI PSDA</th>
+		<td>: <?php echo $dataLamp052[0]->BALAI ?></td>
+	</tr>
+	<tr>
+		<th colspan="8">&nbsp;</th>
+	</tr>
+	<tr>
+		<th>NO</th>
+		<th>DAERAH IRIGASI</th>
+		<th>NAMA SALURAN DAN BANGUNAN<br/>
+			LOKASI (KM)
+		</th>
+		<th>URAIAN<br/>
+			1. JENIS PEKERJAAN PEMELIHARAAN<br/>
+			2. KECAMATAN & KABUPATEN/KOTA
+		</th>
+		<th>
+			BANYAKNYA PEKERJAAN<br/>
+			(BH/KM)
+		</th>
+		<th>
+			BIAYA
+		</th>
+		<th>
+			JADWAL PELAKSANAAN
+		</th>
+		<th>KETERANGAN</th>
+	</tr>
+	<tr>
+		<th>1</th>
+		<th>2</th>
+		<th>3</th>
+		<th>4</th>
+		<th>5</th>
+		<th>6</th>
+		<th>7</th>
+		<th>8</th>
+	</tr>
+
+	<?php
+
+	$no=0;
+			  				foreach($lamp052->result() as $row):
+			  				$no++;
+
+			  			
+				  		?>
+
+<tr>
+		<td><?php echo $no ?></td>
+		<td><?php echo $row->DAERAH_IRIGASI ?></td>
+		<td><?php echo $row->nama_bangunan ?><br/>
+			<?php echo $row->nama_ruas ?></td>
+		<td>
+			<?php
+
+			if ($row->BOCORAN==='KONTRAKTUAL' AND $row->BOCORAN_M > 0) {
+				echo "BOCORAN";
+			}else{
+				echo "";
+			}
+
+		
+
+			if ($row->RUSAK==='KONTRAKTUAL' AND $row->RUSAK_M > 0) {
+				echo "<br/>";
+				echo "RUSAK";
+			}else{
+				echo "";
+			}
+
+		
+
+			if ($row->LONGSORAN==='KONTRAKTUAL' AND $row->LONGSORAN_M > 0) {
+				echo "<br/>";
+				echo "LONGSORAN";
+			}else{
+				echo "";
+			}
+
+			if ($row->TERSUMBAT==='KONTRAKTUAL' AND $row->TERSUMBAT_M > 0) {
+				echo "<br/>";
+				echo "TERSUMBAT";
+			}else{
+				echo "";
+			}
+
+			if ($row->RETAK==='KONTRAKTUAL' AND $row->RETAK_M > 0) {
+				echo "<br/>";
+				echo "RETAK";
+			}else{
+				echo "";
+			}
+
+			if ($row->PINTU_RUSAK==='KONTRAKTUAL' AND $row->PINTU_RUSAK_M > 0) {
+				echo "<br/>";
+				echo "PINTU_RUSAK";
+			}else{
+				echo "";
+			}
+
+			if ($row->SEDIMEN==='KONTRAKTUAL' AND $row->SEDIMEN_M > 0) {
+				echo "<br/>";
+				echo "SEDIMEN";
+			}else{
+				echo "";
+			}
+
+
+
+
+			?>
+
+			<hr/>
+			<?php echo $row->DESA ?>
+			<?php echo $row->KABUPATEN ?>
+
+		</td>
+		<td>
+			<?php
+
+
+
+			if ($row->BOCORAN==='KONTRAKTUAL' AND $row->BOCORAN_M > 0) {
+				echo $row->BOCORAN_M;
+			}else{
+				echo "";
+			}
+
+		
+
+			if ($row->RUSAK==='KONTRAKTUAL' AND $row->RUSAK_M > 0) {
+				echo "<br/>";
+				echo $row->RUSAK_M;
+			}else{
+				echo "";
+			}
+
+		
+
+			if ($row->LONGSORAN==='KONTRAKTUAL' AND $row->LONGSORAN_M > 0) {
+				echo "<br/>";
+				echo $row->LONGSORAN_M;
+			}else{
+				echo "";
+			}
+
+			if ($row->TERSUMBAT==='KONTRAKTUAL' AND $row->TERSUMBAT_M > 0) {
+				echo "<br/>";
+				echo $row->TERSUMBAT_M;
+			}else{
+				echo "";
+			}
+
+			if ($row->RETAK==='KONTRAKTUAL' AND $row->RETAK_M > 0) {
+				echo "<br/>";
+				echo $row->RETAK_M;
+			}else{
+				echo "";
+			}
+
+			if ($row->PINTU_RUSAK==='KONTRAKTUAL' AND $row->PINTU_RUSAK_M > 0) {
+				echo "<br/>";
+				echo $row->PINTU_RUSAK_M;
+			}else{
+				echo "";
+			}
+
+			if ($row->SEDIMEN==='KONTRAKTUAL' AND $row->SEDIMEN_M > 0) {
+				echo "<br/>";
+				echo $row->SEDIMEN_M;
+			}else{
+				echo "";
+			}
+
+
+			?>
+		</td>
+		<td><?php echo $row->JUMLAH ?></td>
+		<td>
+			<center>
+			<?php echo tglIndonesia($row->TANGGAL_AWAL) ?> sd <?php echo tglIndonesia($row->TANGGAL_AKHIR) ?>
+			<br/>
+
+			<strong><?php 
+
+			$tgl1 = new DateTime($row->TANGGAL_AWAL);
+			$tgl2 = new DateTime($row->TANGGAL_AKHIR);
+			$d = $tgl2->diff($tgl1)->days + 1;
+
+			echo $d." Hari";
+
+
+			?></strong></center>
+		</td>
+		<td><?php echo $row->KETERANGAN ?></td>
+	</tr>
+
+
+<?php endforeach; ?>
+</table>
+
+</div>
+<script type="text/javascript">
+	function editEuy2(ID_KONTRAKTUAL,K,V){
+		var VALUE = $("#"+V).val();
+		var KOLOM = K;
+
+		$.ajax({
+			url:'<?php echo base_url().'bencanahd/update_lampiran5'; ?>',
+			data:{
+				ID_KONTRAKTUAL:ID_KONTRAKTUAL,
+				KOLOM:KOLOM,
+				VALUE:VALUE
+			},
+			type:'POST',
+			success:function(html){
+				console.log(html);
+			}
+		})
+		
+	}
+</script>	

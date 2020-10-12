@@ -120,6 +120,14 @@ function tglIndonesia($tgl){
       <li class="nav-item <?php echo $menu=="laporanhd" ? "active":"" ?>">
         <a class="nav-link" href="<?php echo site_url('laporanhd') ?>">Laporan Kerusakan Irigasi <span class="sr-only">(current)</span></a>
       </li>
+         <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran052" ? "active":"" ?>">
+          <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran052') ?>">List 05 P (DARI KERUSAKAN IRIGASI) <span class="sr-only">(current)</span></a>
+        </li>
+
+
+         <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran04" ? "active":"" ?>">
+          <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran04') ?>">List 04 P <span class="sr-only">(current)</span></a>
+        </li>
 
       <?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='ADMIN'): ?>
 
@@ -133,13 +141,10 @@ function tglIndonesia($tgl){
         </li>
 
         <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran05" ? "active":"" ?>">
-          <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran05') ?>">List 05 P <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran05') ?>">List 05 P (DARI BENCANA ALAM) <span class="sr-only">(current)</span></a>
         </li>
 
-
-         <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran04" ? "active":"" ?>">
-          <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran04') ?>">List 04 P <span class="sr-only">(current)</span></a>
-        </li>
+      
         
       <?php endif ?>
 
