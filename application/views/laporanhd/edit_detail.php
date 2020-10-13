@@ -90,11 +90,13 @@
 									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 									<input type="hidden" name="KOLOM" value="BOCORAN">
+									<?php if ($row->BOCORAN_M > 0 ): ?>
 									<select style="width: 200px" class="form-control" name="BOCORAN"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 										<option></option>
 										<option <?php echo $row->BOCORAN==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
 										<option <?php echo $row->BOCORAN==='KONTRAKTUAL'?'selected="selected"':'' ?>>KONTRAKTUAL</option>
 									</select>
+									<?php endif ?>
 								</form>
 								<?php endif ?>
 
@@ -119,11 +121,13 @@
 									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>RUSAK" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 									<input type="hidden" name="KOLOM" value="RUSAK">
+									<?php if ($row->RUSAK_M > 0 ): ?>
 									<select style="width: 200px" class="form-control" name="RUSAK"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 										<option></option>
 										<option <?php echo $row->RUSAK==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
 										<option <?php echo $row->RUSAK==='KONTRAKTUAL'?'selected="selected"':'' ?>>KONTRAKTUAL</option>
 									</select>
+									<?php endif ?>
 								</form>
 								<?php endif ?>
 
@@ -149,11 +153,16 @@
 									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 									<input type="hidden" name="KOLOM" value="LONGSORAN">
-									<select style="width: 200px" class="form-control" name="LONGSORAN"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+
+
+									<?php if ($row->LONGSORAN_M > 0 ): ?>
+										<select style="width: 200px" class="form-control" name="LONGSORAN"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 										<option></option>
 										<option <?php echo $row->LONGSORAN==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
 										<option <?php echo $row->LONGSORAN==='KONTRAKTUAL'?'selected="selected"':'' ?>>KONTRAKTUAL</option>
 									</select>
+									<?php endif ?>
+									
 								</form>
 								<?php endif ?>
 
@@ -181,11 +190,13 @@
 									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 									<input type="hidden" name="KOLOM" value="TERSUMBAT">
+									<?php if ($row->TERSUMBAT_M > 0 ): ?>
 									<select style="width: 200px" class="form-control" name="TERSUMBAT"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 										<option></option>
 										<option <?php echo $row->TERSUMBAT==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
 										<option <?php echo $row->TERSUMBAT==='KONTRAKTUAL'?'selected="selected"':'' ?>>KONTRAKTUAL</option>
 									</select>
+									<?php endif ?>
 								</form>
 								<?php endif ?>
 
@@ -212,11 +223,13 @@
 									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>RETAK" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RETAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 									<input type="hidden" name="KOLOM" value="RETAK">
+									<?php if ($row->RETAK_M > 0 ): ?>
 									<select style="width: 200px" class="form-control" name="RETAK"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RETAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 										<option></option>
 										<option <?php echo $row->RETAK==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
 										<option <?php echo $row->RETAK==='KONTRAKTUAL'?'selected="selected"':'' ?>>KONTRAKTUAL</option>
 									</select>
+									<?php endif ?>
 								</form>
 								<?php endif ?>
 
@@ -242,11 +255,13 @@
 									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 									<input type="hidden" name="KOLOM" value="PINTU_RUSAK">
+									<?php if ($row->PINTU_RUSAK_M > 0 ): ?>
 									<select style="width: 200px" class="form-control" name="PINTU_RUSAK"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 										<option></option>
 										<option <?php echo $row->PINTU_RUSAK==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
 										<option <?php echo $row->PINTU_RUSAK==='KONTRAKTUAL'?'selected="selected"':'' ?>>KONTRAKTUAL</option>
 									</select>
+									<?php endif ?>
 								</form>
 								<?php endif ?>
 
@@ -272,11 +287,13 @@
 									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 									<input type="hidden" name="KOLOM" value="SEDIMEN">
+									<?php if ($row->SEDIMEN_M > 0 ): ?>
 									<select style="width: 200px" class="form-control" name="SEDIMEN"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 										<option></option>
 										<option <?php echo $row->SEDIMEN==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
 										<option <?php echo $row->SEDIMEN==='KONTRAKTUAL'?'selected="selected"':'' ?>>KONTRAKTUAL</option>
 									</select>
+									<?php endif ?>
 								</form>
 								<?php endif ?>
 

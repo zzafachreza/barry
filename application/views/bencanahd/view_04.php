@@ -6,20 +6,26 @@ error_reporting(0);
 // print_r($dataLamp04);
 
 ?>
+<style type="text/css">
+	.navbar{
+		display: none;
+	}
+</style>
 	<table border="1" width="100%">
-	<tr>
+	<tr class="text-center">
 		<th colspan="10">PROGRAM PEKERJAAN SWAKELOLA</th>
 		<th>BLANKO 04 - P</th>
 	</tr>
-	<tr>
-		<th colspan="11">Tahun <?php echo date('Y') ?></th>
+	<tr class="text-center">
+		<th colspan="10">Tahun <?php echo date('Y') ?></th>
+		<th></th>
 	</tr>
 	<tr>
 		<th colspan="11">&nbsp;</th>
 	</tr>
 	<tr>
 		<th>DINAS/BALAI PSDA</th>
-		<td>: <?php echo $dataLamp04[0]->BALAI ?></td>
+		<td colspan="10">: <?php echo $dataLamp04[0]->BALAI ?></td>
 	</tr>
 	<tr>
 		<th colspan="11">&nbsp;</th>
@@ -202,7 +208,7 @@ error_reporting(0);
 
 <?php endforeach; ?>
 <tr>
-	<tr>
+
 							<td colspan="8">
 								<p>Penjelasan : </p>
 								<ol>
@@ -216,6 +222,7 @@ error_reporting(0);
 							</td>
 							<td colspan="3">
 								<center>
+									<p><?php echo $dataLamp04[0]->KABUPATEN ?>, <?php echo tglIndonesia2($dataLamp04[0]->TANGGAL_SWAKELOLA) ?></p>
 									<strong>Kepala Dinas Pengairan Kab/Kota /Kepala Balai PSDA</strong>
 									<br/>
 									<br/>
@@ -227,5 +234,5 @@ error_reporting(0);
 											
 							</td>
 						</tr>
-</tr>
+
 </table>

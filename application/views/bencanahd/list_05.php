@@ -16,7 +16,7 @@
 	  	<a href="<?php echo site_url() ?>" class="AppButton-secondary"><i class="flaticon2-left-arrow-1"></i> Kembali</a>
 
 
-	  		 <span style="margin-left: 5%;font-weight: bold;padding: 1%" class="btn-primary">05 P (DARI BENCANA ALAM)</span>
+	  		 <span style="margin-left: 5%;font-weight: bold;padding: 1%" class="btn-primary">05 P PROGRAM KERJA KONTRAKTUAL (DARI BENCANA ALAM)</span>
 	   	
 	  </div>
 	  <div class="card-body" style="overflow: auto;">
@@ -45,19 +45,16 @@
 		  		?>
 		  			<tr >
 		  				<td><?php echo $no ?></td>
-		  				<td><?php echo tglIndonesia($row->TANGGAL_PELAKSANAAN) ?></td>
+		  				<td><?php echo tglIndonesia($row->TANGGAL_KONTRAKTUAL) ?></td>
 		  				<td><?php echo $row->STATUS_KONTRAKTUAL ?></td>
 		  				<td>
 		  					<a href="<?php echo site_url('bencanahd/view_lampiran05/'.$row->ID_LAPORANHD	) ?>" class="AppButton-primary"><i class="flaticon-eye"></i></a>
 
+		  					<?php if ($row->STATUS_KONTRAKTUAL!=='DONE' OR $_SESSION['level']==='ADMIN'): ?>
 		  						<a href="<?php echo site_url('bencanahd/edit_lampiran05/'.$row->ID_LAPORANHD	) ?>" class="btn btn-primary"><i class="flaticon-edit"></i> 05 P</a>
-
-
-		  				
-
 		  			
-		  						<a href="<?php echo site_url('bencanahd/delete/'.$row->ID_LAPORANHD.'/'.$row->DAERAH_IRIGASI) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
-
+		  						<a href="<?php echo site_url('bencanahd/delete_kontraktual/'.$row->ID_LAPORANHD.'') ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
+		  							<?php endif ?>
 		  			
 		  					<div style="margin-top: 10px"></div>
 
@@ -73,6 +70,8 @@
 		  				endforeach;
 		  		?>
 	  		</tbody>
+
+	  		
 	  	</table>
 
 	  </div>

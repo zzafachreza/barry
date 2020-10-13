@@ -17,7 +17,7 @@
 
 
 
-	  		 <span style="margin-left: 5%;font-weight: bold;padding: 1%" class="btn-success">04 P</span>
+	  		 <span style="margin-left: 5%;font-weight: bold;padding: 1%" class="btn-success">04 P PROGRAM PEKERJAAN SWAKELOLA</span>
 	   	
 	  </div>
 	  <div class="card-body" style="overflow: auto;">
@@ -50,16 +50,17 @@
 		  				<td>
 		  					<a href="<?php echo site_url('bencanahd/view_lampiran04/'.$row->ID_LAPORANHD	) ?>" class="AppButton-primary"><i class="flaticon-eye"></i></a>
 
-		  					<?php if ($row->STATUS_SWAKELOLA!=='DONE'): ?>
+		  					<?php if ($row->STATUS_SWAKELOLA!=='DONE' OR $_SESSION['level']==='ADMIN'): ?>
 		  							<a href="<?php echo site_url('bencanahd/edit_lampiran04/'.$row->ID_LAPORANHD	) ?>" class="btn btn-success"><i class="flaticon-edit"></i> 04 P</a>
+		  								<a onclick="return confirm('Apakah Anda yakin akan hapus ini ?')" href="<?php echo site_url('bencanahd/delete_swakelola/'.$row->ID_LAPORANHD) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
+
 		  					<?php endif ?>
 
 
 		  				
 
 		  			
-		  						<a onclick="return confirm('Apakah Anda yakin akan hapus ini ?')" href="<?php echo site_url('bencanahd/delete_swakelola/'.$row->ID_LAPORANHD) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
-
+		  					
 		  			
 		  					<div style="margin-top: 10px"></div>
 

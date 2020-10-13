@@ -146,7 +146,7 @@ class Bencanahd extends CI_Controller{
 
 		$data['bencanadt'] = $this->Bencanahd_model->getDataDetail($id);
 
-
+$this->load->view('header',$data);
 
 		$data[$this->dataTable] = $hasil->row_array();
 	
@@ -156,6 +156,39 @@ class Bencanahd extends CI_Controller{
 
 	}
 
+	function delete(){
+
+		$ID_LAPORANHD =  $this->uri->segment(3);
+		$this->Bencanahd_model->unpost_lampiran6($ID_LAPORANHD);
+		redirect($this->dataTable.'/lampiran06');
+	}
+
+	function delete_all(){
+
+		$ID_LAPORANHD =  $this->uri->segment(3);
+		$this->Bencanahd_model->delete_all($ID_LAPORANHD);
+		redirect($this->dataTable);
+	}
+
+
+	function delete_kontraktual(){
+
+		$ID_LAPORANHD =  $this->uri->segment(3);
+		$this->Bencanahd_model->delete_kontraktual($ID_LAPORANHD);
+		redirect($this->dataTable.'/lampiran05');
+	}
+
+		function delete_kontraktual2(){
+
+		$ID_LAPORANHD =  $this->uri->segment(3);
+		$this->Bencanahd_model->delete_kontraktual2($ID_LAPORANHD);
+		redirect($this->dataTable.'/lampiran052');
+	}
+
+
+
+
+
 	
 
 
@@ -164,6 +197,7 @@ class Bencanahd extends CI_Controller{
 
 	function update_lampiran6(){
 
+		// print_r($_POST);
 
 		$ID_LAPORANDT = $_POST['ID_LAPORANDT'];
 		$KOLOM = $_POST['KOLOM'];
@@ -192,7 +226,12 @@ class Bencanahd extends CI_Controller{
 
 		$ID_KONTRAKTUAL = $_POST['ID_KONTRAKTUAL'];
 		$KOLOM = $_POST['KOLOM'];
-		$VALUE = $_POST['VALUE'];
+		if ($KOLOM==='TANGGAL_AWAL' OR $KOLOM==='TANGGAL_AKHIR') {
+			# code...
+			$VALUE = $this->Bencanahd_model->tglSql($_POST['VALUE']);
+		}else{
+			$VALUE = $_POST['VALUE'];
+		}
 
 		$this->Bencanahd_model->update_lampiran5($ID_KONTRAKTUAL,$KOLOM,$VALUE);
 
@@ -203,6 +242,7 @@ class Bencanahd extends CI_Controller{
 
 	function lampiran06(){
 
+		$data['title']='SI JUET | Lampiran 06';
 		$data['data'] = $this->Bencanahd_model->getList06();
 		$this->load->view('header',$data);
 		$this->load->view($this->dataTable.'/list_06',$data);
@@ -216,7 +256,7 @@ class Bencanahd extends CI_Controller{
 
 		$data['bencanadt'] = $this->Bencanahd_model->getDataDetail($id);
 
-
+		$data['title']='SI JUET | Edit Lampiran 06';
 		$this->load->view('header',$data);
 		$data[$this->dataTable] = $hasil->row_array();
 	
@@ -232,7 +272,9 @@ class Bencanahd extends CI_Controller{
 
 		$data['data'] = $this->Bencanahd_model->getDataDetail($id);
 
+		$data['title']='SI JUET | Detail Lampiran 06';
 
+		$this->load->view('header',$data);
 	
 		$data[$this->dataTable] = $hasil->row_array();
 	
@@ -243,6 +285,8 @@ class Bencanahd extends CI_Controller{
 
 
 	function lampiran05(){
+
+		$data['title']='SI JUET | 05 P DARI BENCANA ALAM';
 
 		$data['data'] = $this->Bencanahd_model->getList05();
 		$this->load->view('header',$data);
@@ -258,7 +302,7 @@ class Bencanahd extends CI_Controller{
 
 		$data['lamp05'] = $this->Bencanahd_model->getDataDetail05($id);
 
-
+		$data['title']='SI JUET | Edit 05 P';
 		$this->load->view('header',$data);
 		$data[$this->dataTable] = $hasil->row_array();
 	
@@ -274,6 +318,29 @@ class Bencanahd extends CI_Controller{
 
 	}
 
+	function selesai_052(){
+
+		$ID_LAPORANHD = $_POST['ID_LAPORANHD'];
+		$this->Bencanahd_model->selesai_052($ID_LAPORANHD);
+		redirect($this->dataTable.'/lampiran052');
+
+
+	}
+
+	function selesai_06(){
+
+		$ID_LAPORANHD = $_POST['ID_LAPORANHD'];
+		$this->Bencanahd_model->selesai_06($ID_LAPORANHD);
+		redirect($this->dataTable.'/');
+
+
+	}
+
+	
+
+
+
+
 		function view_lampiran05(){
 
 		$id =  $this->uri->segment(3);
@@ -281,7 +348,8 @@ class Bencanahd extends CI_Controller{
 
 		$data['lamp05'] = $this->Bencanahd_model->getDataDetail05($id);
 
-
+		$this->load->view('header',$data);
+		$data['title']='SI JUET | Detail 05 P';
 		$data[$this->dataTable] = $hasil->row_array();
 	
 		$this->load->view($this->dataTable.'/view_05',$data);
@@ -290,6 +358,8 @@ class Bencanahd extends CI_Controller{
 	}
 
 	function lampiran04(){
+
+		$data['title']='SI JUET | 04 P SWAKELOLA';
 
 		$data['data'] = $this->Bencanahd_model->getList04();
 		$this->load->view('header',$data);
@@ -304,7 +374,7 @@ class Bencanahd extends CI_Controller{
 		$hasil = $this->Bencanahd_model->getId($id);
 
 		$data['lamp04'] = $this->Bencanahd_model->getDataDetail04($id);
-
+		$data['title']='SI JUET | Detail 04 P';
 		$this->load->view('header',$data);
 		$data[$this->dataTable] = $hasil->row_array();
 	
@@ -321,7 +391,7 @@ class Bencanahd extends CI_Controller{
 
 		$data['lamp04'] = $this->Bencanahd_model->getDataDetail04($id);
 
-
+		$data['title']='SI JUET | Edit 04 P';
 		$this->load->view('header',$data);
 		$data[$this->dataTable] = $hasil->row_array();
 	
@@ -368,7 +438,7 @@ class Bencanahd extends CI_Controller{
 
 
 	function lampiran052(){
-
+		$data['title']='SI JUET | 05 P DARI KERUSAKAN IRIGASI';
 		$data['data'] = $this->Bencanahd_model->getList052();
 		$this->load->view('header',$data);
 		$this->load->view($this->dataTable.'/list_052',$data);
@@ -383,6 +453,7 @@ class Bencanahd extends CI_Controller{
 
 		$data['lamp052'] = $this->Bencanahd_model->getDataDetail052($id);
 
+		$data['title']='SI JUET | Detail 05 P';
 		$this->load->view('header',$data);
 		$data[$this->dataTable] = $hasil->row_array();
 	
@@ -398,6 +469,7 @@ class Bencanahd extends CI_Controller{
 
 		$data['lamp04'] = $this->Bencanahd_model->getDataDetail052($id);
 
+		$data['title']='SI JUET | Edit 05 P';
 
 		$this->load->view('header',$data);
 		$data[$this->dataTable] = $hasil->row_array();

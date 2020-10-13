@@ -38,6 +38,7 @@ class Laporanhd extends CI_Controller{
 		$data['title']='SI JUET | Detail - '.$this->judulHalaman;
 
 		$hasil = $this->Laporanhd_model->getId($id);
+		$this->load->view('header',$data);
 		
 
 		switch ($_SESSION['level']) {
@@ -381,6 +382,8 @@ class Laporanhd extends CI_Controller{
 	    	# code...
 	    	if ($STATUS_ALL==='SELESAI') {
 	    		# code...
+	    		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - UPDATE STATUS ',$STATUS_ALL,strtoupper($_SESSION['username']));
+	    	$this->Laporanhd_model->update_selesai3($id,$STATUS_LAPORANHD,$STATUS_ALL,$KOLOM,$VALUE);
 	    		 redirect($this->dataTable.'/update_lampiran04/'.$id);
 
 	    	}

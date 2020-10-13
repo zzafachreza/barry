@@ -3,6 +3,11 @@
 error_reporting(0);
 
 ?>
+<style type="text/css">
+	.navbar{
+		display: none;
+	}
+</style>
 
 
 
@@ -14,8 +19,7 @@ error_reporting(0);
               				<td colspan="14" border="0">
 		              			<center>
 									<h1>LAPORAN KERUSAKAN JARINGAN IRIGASI</h1>
-									<?php   $TGL = explode("-", $laporanhd['TANGGAL']) ?>
-									<h3>Inspeksi Rutin <?php echo $TGL[2] ?> Tanggal  Bulan <?php echo $TGL[1] ?> Tahun <?php echo $TGL[0] ?></h2>
+									<h3>Inspeksi Rutin  Tanggal <?php echo tglIndonesia2($laporanhd['TANGGAL'])  ?></h3>
 								</center>
 								</td>
 							<td colspan="2" border="0">
@@ -149,6 +153,7 @@ error_reporting(0);
 							</td>
 							<td colspan="3">
 								<center>
+									<strong><?php echo $laporanhd['KABUPATEN'] ?>, <?php echo tglIndonesia2($laporanhd['TANGGAL'])  ?></strong>
 									<h2>Juru/Mantri Cimandiri</h2>
 									<br/>
 									<br/>

@@ -1,23 +1,31 @@
 <?php
 
 $dataLamp05 = $lamp05->result();
-
+error_reporting(0);
 ?>
+
+<style type="text/css">
+	.navbar{
+		display: none;
+	}
+</style>
+
 <div class="container-fluid">
 	<table border="1" width="100%">
 	<tr>
-		<th colspan="7">PROGRAM KERJA KONTRAKTUAL</th>
-		<th>BLANKO 05 - P</th>
+		<th colspan="7" class="text-center">PROGRAM KERJA KONTRAKTUAL</th>
+		<th class="text-center">BLANKO 05 - P</th>
 	</tr>
 	<tr>
-		<th colspan="8">Tahun <?php echo date('Y') ?></th>
+		<th colspan="7" class="text-center">Tahun <?php echo date('Y') ?></th>
+		<th></th>
 	</tr>
 	<tr>
 		<th colspan="8">&nbsp;</th>
 	</tr>
 	<tr>
 		<th>DINAS/BALAI PSDA</th>
-		<td>: <?php echo $dataLamp05[0]->BALAI ?></td>
+		<td colspan="7">: <?php echo $dataLamp05[0]->BALAI ?></td>
 	</tr>
 	<tr>
 		<th colspan="8">&nbsp;</th>
@@ -72,13 +80,54 @@ $dataLamp05 = $lamp05->result();
 			<?php echo $row->KABUPATEN ?>
 		</td>
 		<td><?php echo $row->BANYAKNYA_PEKERJAAN ?></td>
-		<td><?php echo $row->BIAYA ?></td>
-		<td><?php echo $row->TANGGAL_PELAKSANAAN ?></td>
+		<td><?php echo number_format($row->BIAYA) ?></td>
+		<td>
+			<center>
+			<?php echo tglIndonesia2($row->TANGGAL_AWAL) ?> sd <?php echo tglIndonesia2($row->TANGGAL_AKHIR) ?>
+			<br/>
+
+			<strong><?php 
+
+			$tgl1 = new DateTime($row->TANGGAL_AWAL);
+			$tgl2 = new DateTime($row->TANGGAL_AKHIR);
+			$d = $tgl2->diff($tgl1)->days + 1;
+
+			echo $d." Hari";
+
+
+			?></strong></center>
+		</td>
 		<td><?php echo $row->KETERANGAN ?></td>
 	</tr>
 
 
 <?php endforeach; ?>
+<tr>
+							<td colspan="6">
+								<p>Penjelasan : </p>
+								<ol>
+									<li>Lampiran dikirim setelah DSP (Blanko O&P disetujui</li>
+									<li>Kolom 3 : Nama saluran dan bangunan yang diprioritaskan</li>
+								</ol>
+								<ul type="none">
+									<li>*) Sesuai Kewenangannya</li>
+									<li>Laporan Tahunan : Dinas Sumber Daya Air / Balai PSDA →Kabupaten/Provinsi</li>
+								</ul>
+							</td>
+							<td colspan="2">
+								<center>
+									<p><?php echo $dataLamp05[0]->KABUPATEN ?>, <?php echo tglIndonesia2($dataLamp05[0]->TANGGAL_KONTRAKTUAL) ?></p>
+									<strong>Kepala Dinas Pengairan Kab/Balai PSDA Ws. Cisadea-Cibareno</strong>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+									<p style="font-weight: bold;font-size: x-large;"><u><?php echo $_SESSION['nama_lengkap'] ?></u></p>
+									<p style="margin-top: 0%;font-size: large;">NIP : <?php echo $_SESSION['nip'] ?> </p>
+								</center>
+											
+							</td>
+						</tr>
 </table>
 
 </div>

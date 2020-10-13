@@ -23,7 +23,7 @@ print_r($laporandt);
 									<h1>LAPORAN KERUSAKAN AKIBAT BENCANA ALAM</h1>
 									<?php   $TGL = explode("-", $laporanhd['TANGGAL']);
 									$TGL3 = explode("-", $laporanhd['TANGGAL_3'])  ?>
-									<h3>Tanggal Kejadian <?php echo $TGL[2] ?>  Bulan <?php echo $TGL[1] ?> Tahun <?php echo $TGL[0] ?></h2>
+									<h3>Inspeksi Rutin  Tanggal <?php echo tglIndonesia2($laporanhd['TANGGAL'])  ?></h3>
 								</center>
 								</td>
 							<td colspan="2" border="0">

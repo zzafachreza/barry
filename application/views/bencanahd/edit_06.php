@@ -1,14 +1,26 @@
-
-<hr/>
-<div class="container">
-	<form method="POST" action="<?php echo base_url().'bencanahd/add_05'; ?>">
-	<input type="hidden" name="ID_LAPORANHD" value="<?php echo $bencanahd['ID_LAPORANHD'] ?>">
-
-	<button class="btn btn-success col-sm-4" onclick="return confirm('Apakah Anda yakin ?\n Data tidak dapat diubah jika sudah disimpan')">SELESAI</button>
+<?php
 	
-</form>
+	error_reporting(0);
+?>
+<hr/>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col col-sm-2">
+			<a href="../lampiran06" class="btn btn-secondary col-sm-12">KEMBALI</a>
+		</div>
+		<div class="col col-sm-2">
+				<form method="POST" action="<?php echo base_url().'bencanahd/add_05'; ?>">
+				<input type="hidden" name="ID_LAPORANHD" value="<?php echo $bencanahd['ID_LAPORANHD'] ?>">
+
+				<button class="btn btn-warning col-sm-12" onclick="return confirm('Apakah Anda yakin ?\n Data tidak dapat diubah jika sudah disimpan')">SELESAI</button>
+				
+			</form>
+		</div>
+	</div>
 </div>
 <hr/>
+
 <div class="container-fluid">
 	<table class="table table-bordered" border="1" width="100%">
 	<tr>
@@ -82,7 +94,7 @@
 		<td><?php echo $row->NAMA_SALURAN ?></td>
 		<td>
 
-			<input id="TOLAK_UKUR<?php echo $row->ID_LAPORANDT ?>" type="text" name="TOLAK_UKUR" value="<?php echo $row->TOLAK_UKUR ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','TOLAK_UKUR','TANGGAL_SELESAI<?php echo $row->ID_LAPORANDT ?>')">
+			<input id="TOLAK_UKUR<?php echo $row->ID_LAPORANDT ?>" type="text" name="TOLAK_UKUR" value="<?php echo $row->TOLAK_UKUR ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','TOLAK_UKUR','TOLAK_UKUR<?php echo $row->ID_LAPORANDT ?>')">
 
 
 		</td>

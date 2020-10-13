@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<base href="">
-	<meta charset="utf-8" />
-	<title><?php echo $title ?></title>
-	<meta name="description" content="Fachreza Maulana Framework">
-	 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <base href="">
+  <meta charset="utf-8" />
+  <title><?php echo $title ?></title>
+  <meta name="description" content="Fachreza Maulana Framework">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- area css -->
     <link href="<?php echo site_url() ?>assets/css/pagePreloaders.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo site_url() ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -83,6 +83,18 @@ function tglIndonesia($tgl){
 
 
 
+# Fungsi untuk membalik tanggal dari format English (Y-m-d) -> Indo (d-m-Y)
+function tglIndonesia2($tanggal){
+  $namaBln = array("01" => "Januari", "02" => "Februari", "03" => "Maret", "04" => "April", "05" => "Mei", "06" => "Juni", 
+           "07" => "Juli", "08" => "Agustus", "09" => "September", "10" => "Oktober", "11" => "November", "12" => "Desember");
+           
+  $tgl=substr($tanggal,8,2);
+  $bln=substr($tanggal,5,2);
+  $thn=substr($tanggal,0,4);
+  $tanggal ="$tgl ".$namaBln[$bln]." $thn";
+  return $tanggal;
+}
+
 ?>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">
@@ -120,31 +132,38 @@ function tglIndonesia($tgl){
       <li class="nav-item <?php echo $menu=="laporanhd" ? "active":"" ?>">
         <a class="nav-link" href="<?php echo site_url('laporanhd') ?>">Laporan Kerusakan Irigasi <span class="sr-only">(current)</span></a>
       </li>
-         <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran052" ? "active":"" ?>">
+            <?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='ADMIN'): ?>
+<li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran052" ? "active":"" ?>">
           <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran052') ?>">List 05 P (DARI KERUSAKAN IRIGASI) <span class="sr-only">(current)</span></a>
         </li>
-
 
          <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran04" ? "active":"" ?>">
           <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran04') ?>">List 04 P <span class="sr-only">(current)</span></a>
         </li>
 
-      <?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='ADMIN'): ?>
+   
 
 
        <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=='' ? "active":"" ?>">
         <a class="nav-link" href="<?php echo site_url('bencanahd') ?>">Laporan Bencana Alam <span class="sr-only">(current)</span></a>
       </li>
 
-        <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran06"  ? "active":"" ?>">
-          <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran06') ?>">List Lamp 06 P <span class="sr-only">(current)</span></a>
-        </li>
+       
 
         <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran05" ? "active":"" ?>">
           <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran05') ?>">List 05 P (DARI BENCANA ALAM) <span class="sr-only">(current)</span></a>
         </li>
 
       
+        
+      <?php endif ?>
+
+
+      <?php if ($_SESSION['level']==='BIDANG PERENCANAAN' OR $_SESSION['level']==='ADMIN'):  ?>
+
+         <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran06"  ? "active":"" ?>">
+          <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran06') ?>">List Lamp 06 P <span class="sr-only">(current)</span></a>
+        </li>
         
       <?php endif ?>
 

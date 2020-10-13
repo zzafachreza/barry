@@ -5,7 +5,27 @@
 	    <li class="breadcrumb-item active" aria-current="page">Edit</li>
 	  </ol>
 </nav>
+
 <div class="container-fluid">
+	<div class="row">
+		<div class="col col-sm-2">
+			<a href="<?php echo site_url('bencanahd') ?>" class="btn btn-secondary col-sm-12">KEMBALI</a>
+		</div>
+		<div class="col col-sm-2">
+				<form method="POST" action="<?php echo base_url().'bencanahd/selesai_06'; ?>">
+				<input type="hidden" name="ID_LAPORANHD" value="<?php echo $bencanahd['ID_LAPORANHD'] ?>">
+
+				<button class="btn btn-warning col-sm-12" onclick="return confirm('Apakah Anda yakin ?\n Data tidak dapat diubah jika sudah disimpan')">SELESAI</button>
+				
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<div class="container-fluid">
+
+
 
 	<div class="card">
 		
@@ -13,7 +33,6 @@
 	  		
 	  <form action="<?php echo site_url('bencanahd/update') ?>" method="POST" >
 
-	<a href="<?php echo site_url('bencanahd') ?>" class="AppButton-dark"><i class="flaticon2-left-arrow-1"></i> Kembali</a>
 
 		<button class="AppButton-secondary" type="RESET"><i class="flaticon2-refresh-button"></i> Reset</button>
   	<button class="AppButton-primary" type="SUBMIT"><i class="flaticon2-files-and-folders"></i> Simpan</button>
@@ -27,6 +46,8 @@
 	  </div>
 	  	<div class="card-body">
 	
+
+
 
 	  		
 
@@ -81,7 +102,7 @@
 
 				    <div class="form-group col col-sm-12">
 				
-				    <a href="#" id="bukaHilang" class="btn btn-danger">TAMBAH DETAIL LAPORAN</a>
+				    <a href="#" id="bukaHilang" class="btn btn-warning">TAMBAH DETAIL LAPORAN</a>
 				   
 				  </div>
 
@@ -219,7 +240,7 @@
 							<td><?php echo $row->LAIN_LAIN_KERUSAKAN ?></th>
 							<td><?php echo $row->LUAS_TERANCAM ?></th>
 							<td><?php echo $row->TINDAKAN_PERBAIKAN ?></th>
-							<td><?php echo $row->BIAYA_PERBAIKAN ?></th>
+							<td><?php echo number_format($row->BIAYA_PERBAIKAN) ?></th>
 							<td><?php echo $row->DIKERJAKAN_OLEH ?></th>
 							<td><?php echo $row->DIUSULKAN_OLEH ?></th>
 

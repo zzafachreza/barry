@@ -102,7 +102,7 @@ FROM
 	}
 
 	function update_lampiran6($ID_LAPORANDT,$KOLOM,$VALUES){
-		$sql="UPDATE data_bencanadt SET $KOLOM='$VALUES' WHERE ID_LAPORANDT='$ID_LAPORANDT'";
+		 $sql="UPDATE data_bencanadt SET $KOLOM='$VALUES' WHERE ID_LAPORANDT='$ID_LAPORANDT'";
 		$this->db->query($sql);
 	}
 
@@ -138,8 +138,8 @@ FROM
              `JENIS`,
              `KABUPATEN`,
              `BIAYA`,
-             `KETERANGAN`)
-				SELECT data_bencanadt.ID_LAPORANHD,DAERAH_IRIGASI,NAMA_SALURAN,JENIS_KERUSAKAN,KABUPATEN,BIAYA_PERBAIKAN,KETERANGAN FROM `data_bencanadt` INNER JOIN `data_bencanahd` ON (`data_bencanahd`.`ID_LAPORANHD` = `data_bencanadt`.`ID_LAPORANHD`) 
+             `KETERANGAN`,`TANGGAL_KONTRAKTUAL`)
+				SELECT data_bencanadt.ID_LAPORANHD,DAERAH_IRIGASI,NAMA_SALURAN,JENIS_KERUSAKAN,KABUPATEN,BIAYA_PERBAIKAN,KETERANGAN,NOW() FROM `data_bencanadt` INNER JOIN `data_bencanahd` ON (`data_bencanahd`.`ID_LAPORANHD` = `data_bencanadt`.`ID_LAPORANHD`) 
 				WHERE data_bencanadt.ID_LAPORANHD='$ID_LAPORANHD'";
 				$this->db->query($sql);
 				$this->db->query($sql2);
@@ -164,6 +164,53 @@ FROM
 		$this->db->query($sql);
 
 	}
+
+
+		function selesai_052($ID_LAPORANHD){
+		# code...
+
+		$sql= "UPDATE data_kontraktual2 SET STATUS_KONTRAKTUAL2='DONE' WHERE ID_LAPORANHD='$ID_LAPORANHD'";
+		$this->db->query($sql);
+
+	}
+
+		function selesai_06($ID_LAPORANHD){
+		# code...
+
+		$sql= "UPDATE data_bencanahd SET STATUS_LAPORANHD='OKE' WHERE ID_LAPORANHD='$ID_LAPORANHD'";
+		$this->db->query($sql);
+
+	}
+
+	function unpost_lampiran6($ID_LAPORANHD){
+		 $sql= "UPDATE data_bencanahd SET STATUS_LAPORANHD='OPEN' WHERE ID_LAPORANHD='$ID_LAPORANHD'";
+		$this->db->query($sql);
+	}
+
+
+		function delete_all($ID_LAPORANHD){
+		 $sql= "DELETE FROM data_bencanahd  WHERE ID_LAPORANHD='$ID_LAPORANHD'";
+		 $sql2= "DELETE FROM data_bencanadt  WHERE ID_LAPORANHD='$ID_LAPORANHD'";
+		$this->db->query($sql);
+		$this->db->query($sql2);
+
+}
+
+
+		function delete_kontraktual($ID_LAPORANHD){
+		 $sql= "DELETE FROM data_kontraktual  WHERE ID_LAPORANHD='$ID_LAPORANHD'";
+		$this->db->query($sql);
+	}
+
+		function delete_kontraktual2($ID_LAPORANHD){
+		 $sql= "DELETE FROM data_kontraktual2  WHERE ID_LAPORANHD='$ID_LAPORANHD'";
+		$this->db->query($sql);
+	}
+
+
+
+
+	
 
 
 	function getList06(){

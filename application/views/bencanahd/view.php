@@ -9,7 +9,11 @@ error_reporting(0);
 
 
 ?>
-
+<style type="text/css">
+	.navbar{
+		display: none;
+	}
+</style>
 
 
 <table style="width: 100%"
@@ -20,9 +24,9 @@ error_reporting(0);
               				<td colspan="13" border="0">
 		              			<center>
 									<h1>LAPORAN KERUSAKAN AKIBAT BENCANA ALAM</h1>
-									<?php   $TGL = explode("-", $bencanahd['TANGGAL']);
-									$TGL3 = explode("-", $bencanahd['TANGGAL'])  ?>
-									<h3>Tanggal Kejadian <?php echo $TGL[2] ?>  Bulan <?php echo $TGL[1] ?> Tahun <?php echo $TGL[0] ?></h2>
+									
+									
+									<h3>Tanggal Kejadian <?php echo tglIndonesia2($bencanahd['TANGGAL'])  ?></h2>
 								</center>
 								</td>
 							<td colspan="2" border="0">
@@ -125,10 +129,13 @@ error_reporting(0);
 				  		?>
 				  		<tr>
 				  			<td ><?php echo $no ?></td>
-				  			<td><?php echo $row->NAMA_SALURAN; ?>
-				  			</td>
-				  			<td><?php echo $row->PENYEBAB_KERUSAKAN ?></th>
-							<td><?php echo $row->JENIS_KERUSAKAN ?></th>
+				  			<td><?php echo str_replace("\n", "<br/>", $row->NAMA_SALURAN); ?></td>
+				  			<td>
+				  				<?php echo str_replace("\n", "<br/>", $row->PENYEBAB_KERUSAKAN); ?>
+				  			</th>
+				  			<td>
+				  				<?php echo str_replace("\n", "<br/>", $row->JENIS_KERUSAKAN); ?>
+				  			</th>
 							<td><?php echo $row->TANAH ?></th>
 							<td><?php echo $row->BATU ?></th>
 							<td><?php echo $row->BETON ?></th>
@@ -137,7 +144,7 @@ error_reporting(0);
 							<td><?php echo $row->LAIN_LAIN_KERUSAKAN ?></th>
 							<td><?php echo $row->LUAS_TERANCAM ?></th>
 							<td><?php echo $row->TINDAKAN_PERBAIKAN ?></th>
-							<td><?php echo $row->BIAYA_PERBAIKAN ?></th>
+							<td><?php echo number_format($row->BIAYA_PERBAIKAN) ?></th>
 							<td><?php echo $row->DIKERJAKAN_OLEH ?></th>
 							<td><?php echo $row->DIUSULKAN_OLEH ?></th>
 
@@ -164,16 +171,19 @@ Dicatat di Buku Catatan Pemeliharaan CD/CS/UPT/Pengamat Pengairan/SUP<br/><br/><
 							</td>
 							<td colspan="3">
 								<center>
-									<h3>
-										<?php echo $bencanahd['KABUPATEN'].", ".$TGL3[2]."/".$TGL3[1]."/".$TGL3[0] ?><br/>
+									<h6>
+										<?php echo $bencanahd['KABUPATEN'].", "; ?>
+										<?php echo tglIndonesia2($bencanahd['TANGGAL'])  ?>
+
+										<br/>
 										Pengamat/Ranting/UPTD/SUP<br/>
 										<?php echo $bencanahd['RANTING'] ?>
-									</h3>
+									</h6>
 
 									<p style="margin-top: 40%;font-weight: bold;font-size: x-large;"><u><?php echo $_SESSION['nama_lengkap'] ?></u></p>
 
 								</center>
-											<p style="margin-top: 0%;font-size: large;">NIP :</p>
+											<p style="margin-top: 0%;font-size: large;">NIP : <?php echo $_SESSION['nip'] ?></p>
 							</td>
 						</tr>
 					</tbody>

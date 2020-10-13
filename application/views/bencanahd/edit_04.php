@@ -5,13 +5,26 @@ $dataLamp04 = $lamp04->result();
 ?>
 
 <hr/>
-<div class="container">
-	<form method="POST" action="<?php echo base_url().'bencanahd/selesai_04'; ?>">
-	<input type="hidden" name="ID_LAPORANHD" value="<?php echo $dataLamp04[0]->ID_LAPORANHD ?>">
 
-	<button class="btn btn-success col-sm-4" onclick="return confirm('Apakah Anda yakin ?\n Data tidak dapat diubah jika sudah disimpan')">SELESAI</button>
-	
-</form>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col col-sm-2">
+			<a href="../lampiran04" class="btn btn-secondary col-sm-12">KEMBALI</a>
+		</div>
+		<div class="col col-sm-2">
+				<form method="POST" action="<?php echo base_url().'bencanahd/selesai_04'; ?>">
+				<input type="hidden" name="ID_LAPORANHD" value="<?php echo $dataLamp04[0]->ID_LAPORANHD ?>">
+
+				<button class="btn btn-success col-sm-12" onclick="return confirm('Apakah Anda yakin ?\n Data tidak dapat diubah jika sudah disimpan')">SELESAI</button>
+				
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+
 
 </div>
 <hr/>

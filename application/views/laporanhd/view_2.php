@@ -10,6 +10,11 @@ error_reporting(0);
 
 
 ?>
+<style type="text/css">
+	.navbar{
+		display: none;
+	}
+</style>
 
 
 
@@ -21,11 +26,8 @@ error_reporting(0);
               				<td colspan="15" border="0">
 		              			<center>
 									<h1>LAPORAN KERUSAKAN JARINGAN IRIGASI</h1>
-									<?php   $TGL = explode("-", $laporanhd['TANGGAL']);
-
-										$TGL2 = explode("-", $laporanhd['TANGGAL_2']) 
-									 ?>
-									<h3>Inspeksi Rutin <?php echo $TGL[2] ?> Tanggal  Bulan <?php echo $TGL[1] ?> Tahun <?php echo $TGL[0] ?></h2>
+									
+										<h3>Inspeksi Rutin  Tanggal <?php echo tglIndonesia2($laporanhd['TANGGAL'])  ?></h2>
 								</center>
 								</td>
 							<td colspan="3" border="0">
@@ -133,8 +135,8 @@ error_reporting(0);
 							<td><?php echo $row->RETAK_M; ?></td>
 							<td><?php echo $row->SEDIMEN_M; ?></td>
 							<td><?php echo $row->LAIN_LAIN; ?></td>
-							<td><?php echo $row->ESTIMASI_RUGI; ?></td>
-							<td><?php echo $row->ESTIMASI_PERBAIKAN; ?></td>
+							<td><?php echo number_format($row->ESTIMASI_RUGI); ?></td>
+							<td><?php echo number_format($row->ESTIMASI_PERBAIKAN); ?></td>
 							<td><?php echo $row->PRIORITAS; ?></td>
 							<td><?php echo $row->AREA_BAWAH; ?></td>
 							<td><?php echo $row->DESA; ?></td>
@@ -170,11 +172,11 @@ error_reporting(0);
 							</td>
 							<td colspan="3">
 								<center>
-									<h3>
-										<?php echo $laporanhd['KABUPATEN'].", ".$TGL2[2]."/".$TGL2[1]."/".$TGL2[0] ?><br/>
+									<h6>
+										<strong><?php echo $laporanhd['KABUPATEN'] ?>, <?php echo tglIndonesia2($laporanhd['TANGGAL'])  ?></strong><br/>
 										Pengamat/Ranting/UPTD/SUP<br/>
 										<?php echo $laporanhd['RANTING'] ?>
-									</h3>
+									</h6>
 
 									<br/>
 									<br/>

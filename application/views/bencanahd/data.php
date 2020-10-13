@@ -18,7 +18,7 @@
 
 	  		 <a href="<?php echo site_url('bencanahd/add') ?>" class="AppButton-primary"><i class="flaticon-add"></i> Tambah</a>
 
-	  		 <span style="margin-left: 5%;font-weight: bold;padding: 1%" class="btn-danger">LAPORAN KERUSAKAN AKIBAT BENCANA ALAM</span>
+	  		 <span style="margin-left: 5%;font-weight: bold;padding: 1%" class="btn-danger">03 P | LAPORAN KERUSAKAN AKIBAT BENCANA ALAM</span>
 	   	
 	  </div>
 	  <div class="card-body" style="overflow: auto;">
@@ -60,18 +60,15 @@
 		  				<td><?php echo $row->STATUS_LAPORANHD ?></td>
 		  				<td>
 		  					<a href="<?php echo site_url('bencanahd/detail/'.$row->ID_LAPORANHD	) ?>" class="AppButton-primary"><i class="flaticon-eye"></i></a>
-<!-- 
-		  						<a href="<?php echo site_url('bencanahd/lampiran6/'.$row->ID_LAPORANHD	) ?>" class="btn btn-warning"><i class="flaticon-edit"></i> Lampiran 6</a> -->
-
-
-		  						<!-- <a href="<?php echo site_url('bencanahd/lamp05/'.$row->ID_LAPORANHD	) ?>" class="btn btn-primary"><i class="flaticon-edit"></i> 05 P</a>
- -->
+<?php if ($row->STATUS_LAPORANHD!=='OKE' OR $_SESSION['level']==='ADMIN'): ?>
 
 		  					<a  href="<?php echo site_url('bencanahd/edit/'.$row->ID_LAPORANHD	.'/'.$p3) ?>" class="AppButton-secondary"><i class="flaticon-edit"></i> EDIT</a>
 
 		  			
-		  						<a href="<?php echo site_url('bencanahd/delete/'.$row->ID_LAPORANHD.'/'.$row->DAERAH_IRIGASI) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
+		  						<a href="<?php echo site_url('bencanahd/delete_all/'.$row->ID_LAPORANHD.'') ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
 
+		  							
+		  						<?php endif ?>
 		  			
 		  					<div style="margin-top: 10px"></div>
 
