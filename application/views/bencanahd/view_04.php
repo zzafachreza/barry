@@ -11,7 +11,7 @@ error_reporting(0);
 		display: none;
 	}
 </style>
-	<table border="1" width="100%">
+		<table class="table table-bordered">
 	<tr class="text-center">
 		<th colspan="10">PROGRAM PEKERJAAN SWAKELOLA</th>
 		<th>BLANKO 04 - P</th>

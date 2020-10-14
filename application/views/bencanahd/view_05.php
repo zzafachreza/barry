@@ -11,7 +11,7 @@ error_reporting(0);
 </style>
 
 <div class="container-fluid">
-	<table border="1" width="100%">
+	<table class="table table-bordered">
 	<tr>
 		<th colspan="7" class="text-center">PROGRAM KERJA KONTRAKTUAL</th>
 		<th class="text-center">BLANKO 05 - P</th>

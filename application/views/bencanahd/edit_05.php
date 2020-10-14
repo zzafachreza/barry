@@ -26,7 +26,7 @@ $dataLamp05 = $lamp05->result();
 	}
 </style>
 <div class="container-fluid">
-	<table border="1" width="100%">
+	<table class="table table-bordered">
 	<tr>
 		<th colspan="7">PROGRAM KERJA KONTRAKTUAL</th>
 		<th>BLANKO 05 - P</th>
@@ -39,7 +39,7 @@ $dataLamp05 = $lamp05->result();
 	</tr>
 	<tr>
 		<th>DINAS/BALAI PSDA</th>
-		<td>: 	<input id="BALAI<?php echo $dataLamp05[0]->ID_LAPORANHD ?>" type="text" name="BALAI" value="<?php echo $dataLamp05[0]->BALAI ?>" onChange="editEuy2('<?php echo $dataLamp05[0]->ID_LAPORANHD ?>','BALAI','BALAI<?php echo $dataLamp05[0]->ID_LAPORANHD ?>')"></td>
+		<td><input class="form-control" id="BALAI<?php echo $dataLamp05[0]->ID_LAPORANHD ?>" type="text" name="BALAI" value="<?php echo $dataLamp05[0]->BALAI ?>" onChange="editEuy2('<?php echo $dataLamp05[0]->ID_LAPORANHD ?>','BALAI','BALAI<?php echo $dataLamp05[0]->ID_LAPORANHD ?>')"></td>
 	</tr>
 	<tr>
 		<th colspan="8">&nbsp;</th>
@@ -94,24 +94,24 @@ $dataLamp05 = $lamp05->result();
 			<?php echo $row->KABUPATEN ?>
 		</td>
 		<td>
-			<input id="BANYAKNYA_PEKERJAAN<?php echo $row->ID_KONTRAKTUAL ?>" type="text" name="BANYAKNYA_PEKERJAAN" value="<?php echo $row->BANYAKNYA_PEKERJAAN ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL ?>','BANYAKNYA_PEKERJAAN','BANYAKNYA_PEKERJAAN<?php echo $row->ID_KONTRAKTUAL ?>')">
+			<input class="form-control" id="BANYAKNYA_PEKERJAAN<?php echo $row->ID_KONTRAKTUAL ?>" type="text" name="BANYAKNYA_PEKERJAAN" value="<?php echo $row->BANYAKNYA_PEKERJAAN ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL ?>','BANYAKNYA_PEKERJAAN','BANYAKNYA_PEKERJAAN<?php echo $row->ID_KONTRAKTUAL ?>')">
 		</td>
 		<td>
-				<input id="BIAYA<?php echo $row->ID_KONTRAKTUAL ?>" type="text" name="BIAYA" value="<?php echo $row->BIAYA ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL ?>','BIAYA','BIAYA<?php echo $row->ID_KONTRAKTUAL ?>')">
+				<input class="form-control" id="BIAYA<?php echo $row->ID_KONTRAKTUAL ?>" type="text" name="BIAYA" value="<?php echo $row->BIAYA ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL ?>','BIAYA','BIAYA<?php echo $row->ID_KONTRAKTUAL ?>')">
 		</td>
 		<td>
 			<label>
 				Dari
-				<input id="TANGGAL_AWAL<?php echo $row->ID_KONTRAKTUAL ?>" type="text" name="TANGGAL_AWAL" value="<?php echo TglIndonesia($row->TANGGAL_AWAL) ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL ?>','TANGGAL_AWAL','TANGGAL_AWAL<?php echo $row->ID_KONTRAKTUAL ?>')" class="tgl">
+				<input id="TANGGAL_AWAL<?php echo $row->ID_KONTRAKTUAL ?>" type="text" name="TANGGAL_AWAL" value="<?php echo TglIndonesia($row->TANGGAL_AWAL) ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL ?>','TANGGAL_AWAL','TANGGAL_AWAL<?php echo $row->ID_KONTRAKTUAL ?>')" class="tgl form-control">
 			</label>
 			<br/>
 			<label>
 				Sampai
-				<input id="TANGGAL_AKHIR<?php echo $row->ID_KONTRAKTUAL ?>" type="text" name="TANGGAL_AKHIR" value="<?php echo TglIndonesia($row->TANGGAL_AKHIR) ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL ?>','TANGGAL_AKHIR','TANGGAL_AKHIR<?php echo $row->ID_KONTRAKTUAL ?>')" class="tgl">
+				<input id="TANGGAL_AKHIR<?php echo $row->ID_KONTRAKTUAL ?>" type="text" name="TANGGAL_AKHIR" value="<?php echo TglIndonesia($row->TANGGAL_AKHIR) ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL ?>','TANGGAL_AKHIR','TANGGAL_AKHIR<?php echo $row->ID_KONTRAKTUAL ?>')" class="tgl form-control">
 			</label>
 		</td>
 		<td>
-			<input id="KETERANGAN<?php echo $row->ID_KONTRAKTUAL ?>" type="text" name="KETERANGAN" value="<?php echo $row->KETERANGAN ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL ?>','KETERANGAN','KETERANGAN<?php echo $row->ID_KONTRAKTUAL ?>')">
+			<input class="form-control" id="KETERANGAN<?php echo $row->ID_KONTRAKTUAL ?>" type="text" name="KETERANGAN" value="<?php echo $row->KETERANGAN ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL ?>','KETERANGAN','KETERANGAN<?php echo $row->ID_KONTRAKTUAL ?>')">
 		</td>
 	</tr>
 

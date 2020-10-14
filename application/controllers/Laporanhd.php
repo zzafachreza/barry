@@ -407,6 +407,21 @@ class Laporanhd extends CI_Controller{
 	}
 
 
+	function hapus_foto(){
+		$ID_LAPORANHD = $this->uri->segment(3);
+		$FOTO = $this->uri->segment(4);
+		$ID_LAPORANDT = $this->uri->segment(5);
+		$KOLOM = $this->uri->segment(6);
+		$this->Laporanhd_model->hapus_foto($ID_LAPORANHD,$FOTO,$ID_LAPORANDT,$KOLOM);
+		$FOTO_OLD = 'upload/'.$FOTO;
+		unlink($FOTO_OLD);
+
+		redirect($this->dataTable.'/edit/'.$ID_LAPORANHD);
+
+
+	}
+
+
 
 	
 

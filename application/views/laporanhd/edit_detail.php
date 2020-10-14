@@ -450,14 +450,20 @@
 
 										<img src="<?php echo base_url().'upload/'.$row->FOTO_BEFORE ?>" width="50" height="50">
 
-									</a>	
+									</a>
 
+
+
+									<?php endif ?>
+
+									<?php if ($_SESSION['level']==='ADMIN'): ?>
+										<a onclick="return confirm('Apakah Anda yakin hapus foto ini ?')" href="<?php echo base_url().'laporanhd/hapus_foto/'.$ID_LAPORANHD.'/'.$row->FOTO_BEFORE.'/'.$row->ID_LAPORANDT.'/FOTO_BEFORE'; ?>" class="btn btn-danger">HAPUS FOTO</a>	
 									<?php endif ?>
 
 									<?php if ($_SESSION['level']==='MANTRI' OR $_SESSION['level']==='ADMIN'): ?>
 										<input  type="file"  id="<?php echo $row->ID_LAPORANDT; ?>FOTO_BEFORE" onChange="editDataFoto('FORM<?php echo $row->ID_LAPORANDT; ?>FOTO_BEFORE','<?php echo base_url().'/laporanhd/update_detail_foto/'.$row->ID_LAPORANHD ?>','<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>','<?php echo $row->ID_LAPORANHD; ?>'); return false;"  name="FOTO_BEFORE"  style="width: 100px;">
 									<?php endif ?>
-									<!-- <button type="submit" class="btn AppButton-primary">UPLOAD</button> -->
+									
 								</form>
 
 

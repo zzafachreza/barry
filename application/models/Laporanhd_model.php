@@ -115,6 +115,13 @@ class Laporanhd_model extends CI_Model{
 
 	}
 
+	function hapus_foto($ID_LAPORANHD,$FOTO,$ID_LAPORANDT,$KOLOM){
+
+		    $sql="UPDATE data_laporandt SET $KOLOM='' WHERE ID_LAPORANDT='$ID_LAPORANDT' AND $KOLOM='$FOTO'";
+			$data = $this->db->query($sql);
+
+	}
+
 
 
 	

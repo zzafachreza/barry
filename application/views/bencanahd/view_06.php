@@ -4,7 +4,7 @@
 	}
 </style>
 <div class="container-fluid">
-	<table class="table table-bordered" border="1" width="100%">
+	<table class="table table-bordered">
 	<tr class="text-center">
 		<th rowspan="4">DINAS/BALAI<br/>KAB/KOTA<br/><?php echo $bencanahd['KABUPATEN'] ?></th>
 		<th colspan="8">LAPORAN : HASIL PENGUKURAN DESAIN PEKERJAAN</th>

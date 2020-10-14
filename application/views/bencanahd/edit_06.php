@@ -22,7 +22,7 @@
 <hr/>
 
 <div class="container-fluid">
-	<table class="table table-bordered" border="1" width="100%">
+	<table class="table table-bordered">
 	<tr>
 		<th rowspan="4">DINAS/BALAI<br/>KAB/KOTA<br/><?php echo $bencanahd['KABUPATEN'] ?></th>
 		<th colspan="8">LAPORAN : HASIL PENGUKURAN DESAIN PEKERJAAN</th>
@@ -94,39 +94,39 @@
 		<td><?php echo $row->NAMA_SALURAN ?></td>
 		<td>
 
-			<input id="TOLAK_UKUR<?php echo $row->ID_LAPORANDT ?>" type="text" name="TOLAK_UKUR" value="<?php echo $row->TOLAK_UKUR ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','TOLAK_UKUR','TOLAK_UKUR<?php echo $row->ID_LAPORANDT ?>')">
+			<input class="form-control" id="TOLAK_UKUR<?php echo $row->ID_LAPORANDT ?>" type="text" name="TOLAK_UKUR" value="<?php echo $row->TOLAK_UKUR ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','TOLAK_UKUR','TOLAK_UKUR<?php echo $row->ID_LAPORANDT ?>')">
 
 
 		</td>
 		<td>
 
-			<input class="tgl" id="TANGGAL_SELESAI<?php echo $row->ID_LAPORANDT ?>" type="text" name="TANGGAL_SELESAI" value="<?php echo tglIndonesia($row->TANGGAL_SELESAI) ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','TANGGAL_SELESAI','TANGGAL_SELESAI<?php echo $row->ID_LAPORANDT ?>')">
+			<input class="tgl form-control" id="TANGGAL_SELESAI<?php echo $row->ID_LAPORANDT ?>" type="text" name="TANGGAL_SELESAI" value="<?php echo tglIndonesia($row->TANGGAL_SELESAI) ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','TANGGAL_SELESAI','TANGGAL_SELESAI<?php echo $row->ID_LAPORANDT ?>')">
 
 		</td>
 		<td><?php echo $row->JENIS_KERUSAKAN ?></td>
 		<td>
-			<input id="SATUAN<?php echo $row->ID_LAPORANDT ?>" type="text" name="SATUAN" value="<?php echo $row->SATUAN ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','SATUAN','SATUAN<?php echo $row->ID_LAPORANDT ?>')">
+			<input class="form-control" id="SATUAN<?php echo $row->ID_LAPORANDT ?>" type="text" name="SATUAN" value="<?php echo $row->SATUAN ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','SATUAN','SATUAN<?php echo $row->ID_LAPORANDT ?>')">
 
 		</td>
 		<td>
 
-			<input id="VOLUME<?php echo $row->ID_LAPORANDT ?>" type="text" name="VOLUME" value="<?php echo $row->VOLUME ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','VOLUME','VOLUME<?php echo $row->ID_LAPORANDT ?>')">
+			<input class="form-control" id="VOLUME<?php echo $row->ID_LAPORANDT ?>" type="text" name="VOLUME" value="<?php echo $row->VOLUME ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','VOLUME','VOLUME<?php echo $row->ID_LAPORANDT ?>')">
 
 
 		</td>
 		<td>
 	
-				<input id="BIAYA_PERBAIKAN<?php echo $row->ID_LAPORANDT ?>" type="text" name="BIAYA_PERBAIKAN" value="<?php echo $row->BIAYA_PERBAIKAN ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','BIAYA_PERBAIKAN','BIAYA_PERBAIKAN<?php echo $row->ID_LAPORANDT ?>')">
+				<input class="form-control" id="BIAYA_PERBAIKAN<?php echo $row->ID_LAPORANDT ?>" type="text" name="BIAYA_PERBAIKAN" value="<?php echo $row->BIAYA_PERBAIKAN ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','BIAYA_PERBAIKAN','BIAYA_PERBAIKAN<?php echo $row->ID_LAPORANDT ?>')">
 
 
 		</td>
 		<td>
-				<input id="RENCANA<?php echo $row->ID_LAPORANDT ?>" type="text" name="RENCANA" value="<?php echo $row->RENCANA ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','RENCANA','RENCANA<?php echo $row->ID_LAPORANDT ?>')">
+				<input class="form-control" id="RENCANA<?php echo $row->ID_LAPORANDT ?>" type="text" name="RENCANA" value="<?php echo $row->RENCANA ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','RENCANA','RENCANA<?php echo $row->ID_LAPORANDT ?>')">
 
 		</td>
 		<td>
 
-			<input id="KETERANGAN<?php echo $row->ID_LAPORANDT ?>" type="text" name="KETERANGAN" value="<?php echo $row->KETERANGAN ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','KETERANGAN','KETERANGAN<?php echo $row->ID_LAPORANDT ?>')">
+			<input class="form-control" id="KETERANGAN<?php echo $row->ID_LAPORANDT ?>" type="text" name="KETERANGAN" value="<?php echo $row->KETERANGAN ?>" onChange="editEuy('<?php echo $row->ID_LAPORANDT ?>','KETERANGAN','KETERANGAN<?php echo $row->ID_LAPORANDT ?>')">
 	
 
 		</td>

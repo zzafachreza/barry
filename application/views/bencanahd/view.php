@@ -16,9 +16,7 @@ error_reporting(0);
 </style>
 
 
-<table style="width: 100%"
-              style="font-size: small"
-              border="1">
+	<table class="table table-bordered">
 					<thead>
 					 <tr>
               				<td colspan="13" border="0">
