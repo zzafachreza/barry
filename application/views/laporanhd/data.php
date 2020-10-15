@@ -34,7 +34,7 @@
 	  			<th>RANTING</th>
 	  			<th>MANTRI</th>
 	  			<!-- <th>STATUS</th> -->
-	  			<th>STATUS</th>
+	  			<!-- <th>STATUS</th> -->
 	  			<!-- <th>TANGGAL BLANKO 1 </th>
 	  			<th>TANGGAL BLANKO 2</th>
 	  			<th>TANGGAL BLANKO 3</th> -->
@@ -123,7 +123,7 @@
 		  				<td><?php echo $row->RANTING ?></td>
 		  				<td><?php echo $row->MANTRI ?></td>
 		  				<!-- <td><?php echo $row->STATUS_LAPORANHD ?></td> -->
-		  				<td><?php echo $row->STATUS_ALL ?></td>
+		  				<!-- <td><?php echo $row->STATUS_ALL ?></td> -->
 		  				<!-- <td><?php echo  isset($row->TANGGAL_1) ? tglIndonesia($row->TANGGAL_1) : ''; ?></td>
 		  				<td><?php echo  isset($row->TANGGAL_2) ? tglIndonesia($row->TANGGAL_2) : ''; ?></td>
 		  				<td><?php echo  isset($row->TANGGAL_3) ? tglIndonesia($row->TANGGAL_3) : ''; ?></td> -->

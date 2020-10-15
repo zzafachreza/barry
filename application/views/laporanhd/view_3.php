@@ -11,12 +11,10 @@ error_reporting(0);
 
 
 
-<table style="width: 100%"
-              style="font-size: small"
-              border="1">
+<table class="table table-bordered table-responsive">
 					<thead>
 					 <tr>
-              				<td colspan="14" border="0">
+              				<td colspan="15" border="0">
 		              			<center>
 									<h1>LAPORAN KERUSAKAN JARINGAN IRIGASI</h1>
 									<h3>Inspeksi Rutin  Tanggal <?php echo tglIndonesia2($laporanhd['TANGGAL'])  ?></h3>
@@ -31,28 +29,28 @@ error_reporting(0);
 
 		            <tr>
 		            	<td border="0" colspan="4">DAERAH IRIGASI</td>
-		            	<td border="0" colspan="8">: <?php echo $laporanhd['DAERAH_IRIGASI'] ?></td>
+		            	<td border="0" colspan="9">: <?php echo $laporanhd['DAERAH_IRIGASI'] ?></td>
 
 		            	<td border="0" colspan="2">KABUPATEN</td>
 		            	<td border="0" colspan="2">: <?php echo $laporanhd['KABUPATEN'] ?></td>
 		            </tr>
 		             <tr>
 		            	<td border="0" colspan="4">TOTAL LUAS AREAL DI</td>
-		            	<td border="0" colspan="8">: <?php echo $laporanhd['LUAS_AREA_IRIGASI'] ?> Ha</td>
+		            	<td border="0" colspan="9">: <?php echo $laporanhd['LUAS_AREA_IRIGASI'] ?> Ha</td>
 
 		            	<td border="0" colspan="2">PENGAMAT/RANTING</td>
 		            	<td border="0" colspan="2">: <?php echo $laporanhd['RANTING'] ?></td>
 		            </tr>
 		             <tr>
 		            	<td border="0" colspan="4">TINGKATAN DI : T / ST / SD</td>
-		            	<td border="0" colspan="8">: <?php echo $laporanhd['TINGKATAN_IRIGASI'] ?></td>
+		            	<td border="0" colspan="9">: <?php echo $laporanhd['TINGKATAN_IRIGASI'] ?></td>
 
 		            	<td border="0" colspan="2">JURU/MANTRI</td>
 		            	<td border="0" colspan="2">: <?php echo $laporanhd['MANTRI'] ?></td>
 		            </tr>
 		       
 		            <tr>
-		            	<td colspan="20">
+		            	<td colspan="21">
 		            		&nbsp;
 		            	</td>
 		            </tr>
@@ -65,6 +63,7 @@ error_reporting(0);
 						<th rowspan="2">AREAL LAYANAN DI BAWAHNYA</th>
 						<th rowspan="2">DESA / KECAMATAN</th>
 						<th rowspan="2">FOTO_BEFORE</th>
+						<th rowspan="2">FOTO_AFTER</th>
 					</tr>
 					<tr>
 						<th>BOCORAN (M'/BH)</th>
@@ -95,6 +94,7 @@ error_reporting(0);
 						<td>14</td>
 						<td>15</td>
 						<td>16</td>
+						<td>17</td>
 
 
 					</tr>
@@ -109,23 +109,49 @@ error_reporting(0);
 				  			<td ><?php echo $no ?></td>
 				  			<td><?php echo $row->nama_ruas; ?></td>
 				  			<td><?php echo $row->nama_bangunan; ?></td>
-							<td><?php echo $row->BOCORAN_M; ?> <br/> <?php echo $row->BOCORAN ?> </td>
-							<td><?php echo $row->RUSAK_M; ?> <br/> <?php echo $row->RUSAK ?> </td>
-							<td><?php echo $row->LONGSORAN_M; ?> <br/> <?php echo $row->LONGSORAN ?> </td>
-							<td><?php echo $row->TERSUMBAT_M; ?> <br/> <?php echo $row->TERSUMBAT ?> </td>
-							<td><?php echo $row->RETAK_M; ?> <br/> <?php echo $row->RETAK ?> </td>
-							<td><?php echo $row->RETAK_M; ?> <br/> <?php echo $row->RETAK ?> </td>
-							<td><?php echo $row->SEDIMEN_M; ?> <br/> <?php echo $row->SEDIMEN ?> </td>
+							<td><?php echo $row->BOCORAN_M; ?> <br/>
+									<?php echo $row->RETAK_M>0 ? '( '.$row->BOCORAN_T.' )':''; ?>
+								 <br/> <?php echo $row->BOCORAN ?> </td>
+							<td><?php echo $row->RUSAK_M; ?> <br/>
+									<?php echo $row->RETAK_M>0 ? '( '.$row->RUSAK_T.' )':''; ?>
+								 <br/> <?php echo $row->RUSAK ?> </td>
+							<td><?php echo $row->LONGSORAN_M; ?> <br/>
+									<?php echo $row->RETAK_M>0 ? '( '.$row->LONGSORAN_T.' )':''; ?>
+								 <br/> <?php echo $row->LONGSORAN ?> </td>
+							<td><?php echo $row->TERSUMBAT_M; ?> <br/>
+									<?php echo $row->RETAK_M>0 ? '( '.$row->TERSUMBAT_T.' )':''; ?>
+								 <br/> <?php echo $row->TERSUMBAT ?> </td>
+							<td><?php echo $row->RETAK_M; ?> <br/>
+									<?php echo $row->RETAK_M>0 ? '( '.$row->RETAK_T.' )':''; ?>
+								 <br/> <?php echo $row->RETAK ?> </td>
+							<td><?php echo $row->RETAK_M; ?> <br/>
+									<?php echo $row->RETAK_M>0 ? '( '.$row->RETAK_T.' )':''; ?>
+								 <br/> <?php echo $row->RETAK ?> </td>
+							<td><?php echo $row->SEDIMEN_M; ?> <br/>
+									<?php echo $row->RETAK_M>0 ? '( '.$row->SEDIMEN_T.' )':''; ?>
+								 <br/> <?php echo $row->SEDIMEN ?> </td>
 							<td><?php echo $row->LAIN_LAIN; ?></td>
 							<td><?php echo $row->DIKERJAKAN; ?></td>
 							<td><?php echo $row->USULAN; ?></td>
 							<td><?php echo $row->AREA_BAWAH; ?></td>
 							<td><?php echo $row->DESA; ?></td>
 							<td>
-								<?php if (isset($row->FOTO_BEFORE)): ?>
+								<?php $gambar =$row->FOTO_BEFORE; ?>
+								<?php if (strlen($row->FOTO_BEFORE) > 0 ): ?>
 									<center>
-										<img height="100" src="<?php echo site_url().'upload/'.$row->FOTO_BEFORE; ?>">
+										<img height="100" src="<?php echo site_url().'upload/'.$row->$gambar; ?>">
 									</center>
+
+								<?php endif ?>
+								
+							</td>
+							<td>
+								<?php $gambar2 =$row->FOTO_AFTER; ?>
+								<?php if (strlen($row->FOTO_AFTER) > 0 ): ?>
+									<center>
+										<img height="100" src="<?php echo site_url().'upload/'.$row->$gambar2; ?>">
+									</center>
+
 								<?php endif ?>
 								
 							</td>
@@ -135,7 +161,7 @@ error_reporting(0);
 				  		</tr>
 						<?php endforeach; ?>
 						<tr>
-							<td colspan="13">
+							<td colspan="14">
 								<p>Penjelasan : </p>
 								<ol>
 									<li>Diserahkan tiap tanggal 25 bulan ybs, walaupun tidak terjadi kerusakan pada bulan ybs</li>

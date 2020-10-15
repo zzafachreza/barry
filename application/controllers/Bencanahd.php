@@ -40,6 +40,7 @@ class Bencanahd extends CI_Controller{
 	}
 
 	function insert(){
+
 		$ID_LAPORANHD = sha1(date('ymdhis'));
 		$TANGGAL = $this->input->post('TANGGAL');
 		$TANGGAL = $this->Bencanahd_model->tglSql($TANGGAL);
@@ -113,8 +114,120 @@ class Bencanahd extends CI_Controller{
 		$BIAYA_PERBAIKAN = $this->input->post('BIAYA_PERBAIKAN');
 		$DIKERJAKAN_OLEH = $this->input->post('DIKERJAKAN_OLEH');
 		$DIUSULKAN_OLEH = $this->input->post('DIUSULKAN_OLEH');
+		$FOTO_BENCANA = $this->input->post('FOTO_BENCANA');
 
-		$this->Bencanahd_model->insert_detail($ID_LAPORANHD,$NAMA_SALURAN,$PENYEBAB_KERUSAKAN,$JENIS_KERUSAKAN,$TANAH,$BATU,$BETON,$PINTU_AIR,$GORONG_GORONG,$LAIN_LAIN_KERUSAKAN,$LUAS_TERANCAM,$TINDAKAN_PERBAIKAN,$BIAYA_PERBAIKAN,$DIKERJAKAN_OLEH,$DIUSULKAN_OLEH);
+
+
+		$TYPEFOTO_BENCANA1 = $_FILES['FOTO_BENCANA1']['type'];
+		$TYPEFOTO_BENCANA1 = explode("/", $TYPEFOTO_BENCANA1);
+		$VALUEFOTO_BENCANA1 = sha1(date('ymdhis'))."FOTO_BENCANA1.".$TYPEFOTO_BENCANA1[1];
+		$folder = "upload/";
+		$upload_image = $VALUEFOTO_BENCANA1;
+		$width_size = 1000;
+		$filesave = $folder . $upload_image;
+		move_uploaded_file($_FILES['FOTO_BENCANA1']['tmp_name'], $filesave);
+		$resize_image = $folder . $upload_image;
+		list( $width, $height ) = getimagesize($filesave);
+		$k = $width / $width_size;
+		$newwidth = $width / $k;
+		$newheight = $height / $k;
+		$thumb = imagecreatetruecolor($newwidth, $newheight);
+		$source = imagecreatefromjpeg($filesave);
+		imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		imagejpeg($thumb, $resize_image);
+		imagedestroy($thumb);
+		imagedestroy($source);
+
+
+
+		$TYPEFOTO_BENCANA2 = $_FILES['FOTO_BENCANA2']['type'];
+		$TYPEFOTO_BENCANA2 = explode("/", $TYPEFOTO_BENCANA2);
+		$VALUEFOTO_BENCANA2 = sha1(date('ymdhis'))."FOTO_BENCANA2.".$TYPEFOTO_BENCANA2[1];
+		$folder = "upload/";
+		$upload_image = $VALUEFOTO_BENCANA2;
+		$width_size = 1000;
+		$filesave = $folder . $upload_image;
+		move_uploaded_file($_FILES['FOTO_BENCANA2']['tmp_name'], $filesave);
+		$resize_image = $folder . $upload_image;
+		list( $width, $height ) = getimagesize($filesave);
+		$k = $width / $width_size;
+		$newwidth = $width / $k;
+		$newheight = $height / $k;
+		$thumb = imagecreatetruecolor($newwidth, $newheight);
+		$source = imagecreatefromjpeg($filesave);
+		imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		imagejpeg($thumb, $resize_image);
+		imagedestroy($thumb);
+		imagedestroy($source);
+
+
+		$TYPEFOTO_BENCANA3 = $_FILES['FOTO_BENCANA3']['type'];
+		$TYPEFOTO_BENCANA3 = explode("/", $TYPEFOTO_BENCANA3);
+		$VALUEFOTO_BENCANA3 = sha1(date('ymdhis'))."FOTO_BENCANA3.".$TYPEFOTO_BENCANA3[1];
+		$folder = "upload/";
+		$upload_image = $VALUEFOTO_BENCANA3;
+		$width_size = 1000;
+		$filesave = $folder . $upload_image;
+		move_uploaded_file($_FILES['FOTO_BENCANA3']['tmp_name'], $filesave);
+		$resize_image = $folder . $upload_image;
+		list( $width, $height ) = getimagesize($filesave);
+		$k = $width / $width_size;
+		$newwidth = $width / $k;
+		$newheight = $height / $k;
+		$thumb = imagecreatetruecolor($newwidth, $newheight);
+		$source = imagecreatefromjpeg($filesave);
+		imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		imagejpeg($thumb, $resize_image);
+		imagedestroy($thumb);
+		imagedestroy($source);
+
+
+		$TYPEFOTO_BENCANA4 = $_FILES['FOTO_BENCANA4']['type'];
+		$TYPEFOTO_BENCANA4 = explode("/", $TYPEFOTO_BENCANA4);
+		$VALUEFOTO_BENCANA4 = sha1(date('ymdhis'))."FOTO_BENCANA4.".$TYPEFOTO_BENCANA4[1];
+		$folder = "upload/";
+		$upload_image = $VALUEFOTO_BENCANA4;
+		$width_size = 1000;
+		$filesave = $folder . $upload_image;
+		move_uploaded_file($_FILES['FOTO_BENCANA4']['tmp_name'], $filesave);
+		$resize_image = $folder . $upload_image;
+		list( $width, $height ) = getimagesize($filesave);
+		$k = $width / $width_size;
+		$newwidth = $width / $k;
+		$newheight = $height / $k;
+		$thumb = imagecreatetruecolor($newwidth, $newheight);
+		$source = imagecreatefromjpeg($filesave);
+		imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		imagejpeg($thumb, $resize_image);
+		imagedestroy($thumb);
+		imagedestroy($source);
+
+		$TYPEFOTO_BENCANA5 = $_FILES['FOTO_BENCANA5']['type'];
+		$TYPEFOTO_BENCANA5 = explode("/", $TYPEFOTO_BENCANA5);
+		$VALUEFOTO_BENCANA5 = sha1(date('ymdhis'))."FOTO_BENCANA5.".$TYPEFOTO_BENCANA5[1];
+		$folder = "upload/";
+		$upload_image = $VALUEFOTO_BENCANA5;
+		$width_size = 1000;
+		$filesave = $folder . $upload_image;
+		move_uploaded_file($_FILES['FOTO_BENCANA5']['tmp_name'], $filesave);
+		$resize_image = $folder . $upload_image;
+		list( $width, $height ) = getimagesize($filesave);
+		$k = $width / $width_size;
+		$newwidth = $width / $k;
+		$newheight = $height / $k;
+		$thumb = imagecreatetruecolor($newwidth, $newheight);
+		$source = imagecreatefromjpeg($filesave);
+		imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		imagejpeg($thumb, $resize_image);
+		imagedestroy($thumb);
+		imagedestroy($source);
+	
+
+
+
+		$this->Bencanahd_model->insert_detail($ID_LAPORANHD,$NAMA_SALURAN,$PENYEBAB_KERUSAKAN,$JENIS_KERUSAKAN,$TANAH,$BATU,$BETON,$PINTU_AIR,$GORONG_GORONG,$LAIN_LAIN_KERUSAKAN,$LUAS_TERANCAM,$TINDAKAN_PERBAIKAN,$BIAYA_PERBAIKAN,$DIKERJAKAN_OLEH,$DIUSULKAN_OLEH,$FOTO_BENCANA,$VALUEFOTO_BENCANA1,$VALUEFOTO_BENCANA2,$VALUEFOTO_BENCANA3,$VALUEFOTO_BENCANA4,$VALUEFOTO_BENCANA5);
+
+
 		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA '.$DAERAH_IRIGASI,'EDIT ',strtoupper($_SESSION['username']));
 
 		redirect($this->dataTable.'/edit/'.$ID_LAPORANHD);
@@ -127,6 +240,16 @@ class Bencanahd extends CI_Controller{
 
 		$ID_LAPORANHD	= $this->uri->segment(3);
 		$ID_LAPORANDT	= $this->uri->segment(4);
+		$FOTO_BENCANA1	= 'upload/'.$this->uri->segment(5);
+		unlink($FOTO_BENCANA1);
+		$FOTO_BENCANA2	= 'upload/'.$this->uri->segment(6);
+		unlink($FOTO_BENCANA2);
+		$FOTO_BENCANA3	= 'upload/'.$this->uri->segment(7);
+		unlink($FOTO_BENCANA3);
+		$FOTO_BENCANA4	= 'upload/'.$this->uri->segment(8);
+		unlink($FOTO_BENCANA4);
+		$FOTO_BENCANA5	= 'upload/'.$this->uri->segment(9);
+		unlink($FOTO_BENCANA5);
 
 		$this->Bencanahd_model->hapus_detail($ID_LAPORANHD,$ID_LAPORANDT);
 

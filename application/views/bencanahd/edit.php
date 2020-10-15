@@ -135,6 +135,8 @@
 						<th colspan="7">PERINCIAN KERUSAKAN</th>
 						<th colspan="2">TANGGAP DARURAT</th>
 						<th colspan="2">PERBAIKAN YANG DIPERLUKAN</th>
+						<th rowspan="3">FOTO
+						</th>
 		            </tr>
 
 
@@ -173,12 +175,13 @@
 						<td>13</td>
 						<td>14</td>
 						<td>15</td>
+						<td>16</td>
 
 					</tr>
 					</thead>
 					<tbody>
 
-						<form id="dataForm" action="<?php echo site_url('bencanahd/insert_detail') ?>" method="POST">
+						<form id="dataForm" action="<?php echo site_url('bencanahd/insert_detail') ?>" method="POST" enctype="multipart/form-data">
 						
 
 						<tr class="hilang" style="display: none;">
@@ -200,6 +203,45 @@
 							<td><input type="text" name="BIAYA_PERBAIKAN" class="form-control"> </td>
 							<td><input type="text" name="DIKERJAKAN_OLEH" class="form-control"> </td>
 							<td><input type="text" name="DIUSULKAN_OLEH" class="form-control"> </td>
+
+						
+
+				  		</tr>
+				  		<tr class="hilang" style="display: none;">
+				  				<td colspan="2">
+				  					<label>FOTO_BENCANA1
+				  					<input type="file" name="FOTO_BENCANA1"></label>
+				  				</td>
+				  				<td>
+				  					<label>FOTO_BENCANA2
+				  					<input type="file" name="FOTO_BENCANA2"></label>
+				  				</td>
+				  				<td>
+				  					<label>FOTO_BENCANA3
+				  					<input type="file" name="FOTO_BENCANA3"></label>
+				  				</td>
+				  				<td colspan="3">
+				  					<label>FOTO_BENCANA4
+				  					<input type="file" name="FOTO_BENCANA4"></label>
+				  				</td>
+				  				<td colspan="2">
+				  					<label>FOTO_BENCANA5
+				  					<input type="file" name="FOTO_BENCANA5"></label>
+				  				</td>
+				  					<td colspan="2">
+				  					<label>DEFAULT_BENCANA
+				  					<select class="form-control" name="FOTO_BENCANA" required="required">
+				  						<option></option>
+				  						<option>FOTO_BENCANA1</option>
+				  						<option>FOTO_BENCANA2</option>
+				  						<option>FOTO_BENCANA3</option>
+				  						<option>FOTO_BENCANA4</option>
+				  						<option>FOTO_BENCANA5</option>
+				  					</select>
+				  				</td>
+
+
+
 				  		</tr>
 				  		<tr class="hilang" style="display: none;">
 				  			<td colspan="15">
@@ -222,7 +264,7 @@
 				  		?>
 				  		<tr>
 				  			<td ><?php echo $no ?><br/>
-				  					<a class="btn btn-danger" href="<?php echo site_url('bencanahd/hapus_detail/') ?><?php echo $row->ID_LAPORANHD ?>/<?php echo $row->ID_LAPORANDT ?>">HAPUS</a>
+				  					<a class="btn btn-danger" href="<?php echo site_url('bencanahd/hapus_detail/') ?><?php echo $row->ID_LAPORANHD ?>/<?php echo $row->ID_LAPORANDT ?>/<?php echo $row->FOTO_BENCANA1 ?>/<?php echo $row->FOTO_BENCANA2 ?>/<?php echo $row->FOTO_BENCANA3 ?>/<?php echo $row->FOTO_BENCANA4 ?>/<?php echo $row->FOTO_BENCANA5 ?>">HAPUS</a>
 				  			</td>
 				  			<td><?php echo str_replace("\n", "<br/>", $row->NAMA_SALURAN); ?></td>
 				  			<td>
@@ -243,6 +285,18 @@
 							<td><?php echo number_format($row->BIAYA_PERBAIKAN) ?></th>
 							<td><?php echo $row->DIKERJAKAN_OLEH ?></th>
 							<td><?php echo $row->DIUSULKAN_OLEH ?></th>
+							<td>
+								<?php $gambar =$row->FOTO_BENCANA; ?>
+								<?php if (strlen($row->FOTO_BENCANA) > 0 ): ?>
+									<center>
+										<img height="100" src="<?php echo site_url().'upload/'.$row->$gambar; ?>">
+									</center>
+
+								<?php endif ?>
+
+
+							</th>
+
 
 					
 								

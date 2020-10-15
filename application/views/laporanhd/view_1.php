@@ -10,9 +10,8 @@ error_reporting(0);
 	}
 </style>
 
-<table style="width: 100%"
-              style="font-size: small"
-              border="1">
+
+<table class="table table-bordered table-reponsive">
 					<thead>
 					 <tr>
               				<td colspan="14" border="0">
@@ -109,23 +108,39 @@ error_reporting(0);
 				  			<td ><?php echo $no ?></td>
 				  			<td><?php echo $row->nama_ruas; ?></td>
 				  			<td><?php echo $row->nama_bangunan; ?></td>
-							<td><?php echo $row->BOCORAN_M; ?></td>
-							<td><?php echo $row->RUSAK_M; ?></td>
-							<td><?php echo $row->LONGSORAN_M; ?></td>
-							<td><?php echo $row->TERSUMBAT_M; ?></td>
-							<td><?php echo $row->RETAK_M; ?></td>
-							<td><?php echo $row->RETAK_M; ?></td>
-							<td><?php echo $row->SEDIMEN_M; ?></td>
+							<td><?php echo $row->BOCORAN_M; ?><br/>
+								<?php echo $row->RETAK_M>0 ? '( '.$row->BOCORAN_T.' )':''; ?>
+							</td>
+							<td><?php echo $row->RUSAK_M; ?><br/>
+								<?php echo $row->RETAK_M>0 ? '( '.$row->RUSAK_T.' )':''; ?>
+							</td>
+							<td><?php echo $row->LONGSORAN_M; ?><br/>
+								<?php echo $row->RETAK_M>0 ? '( '.$row->LONGSORAN_T.' )':''; ?>
+							</td>
+							<td><?php echo $row->TERSUMBAT_M; ?><br/>
+								<?php echo $row->RETAK_M>0 ? '( '.$row->TERSUMBAT_T.' )':''; ?>
+							</td>
+							<td><?php echo $row->RETAK_M; ?><br/>
+								<?php echo $row->RETAK_M>0 ? '( '.$row->RETAK_T.' )':''; ?>
+							</td>
+							<td><?php echo $row->RETAK_M; ?><br/>
+								<?php echo $row->RETAK_M>0 ? '( '.$row->RETAK_T.' )':''; ?>
+							</td>
+							<td><?php echo $row->SEDIMEN_M; ?><br/>
+								<?php echo $row->RETAK_M>0 ? '( '.$row->SEDIMEN_T.' )':''; ?>
+							</td>
 							<td><?php echo $row->LAIN_LAIN; ?></td>
 							<td><?php echo $row->DIKERJAKAN; ?></td>
 							<td><?php echo $row->USULAN; ?></td>
 							<td><?php echo $row->AREA_BAWAH; ?></td>
 							<td><?php echo $row->DESA; ?></td>
-							<td>
-								<?php if (isset($row->FOTO_BEFORE)): ?>
+							<td>	
+								<?php $gambar =$row->FOTO_BEFORE; ?>
+								<?php if (strlen($row->FOTO_BEFORE) > 0 ): ?>
 									<center>
-										<img height="100" src="<?php echo site_url().'upload/'.$row->FOTO_BEFORE; ?>">
+										<img height="100" src="<?php echo site_url().'upload/'.$row->$gambar; ?>">
 									</center>
+
 								<?php endif ?>
 								
 							</td>
