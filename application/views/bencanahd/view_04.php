@@ -182,9 +182,9 @@ error_reporting(0);
 
 			?>
 		</td>
-		<td><?php echo $row->UPAH ?></td>
-		<td><?php echo $row->BAHAN ?></td>
-		<td><?php echo $row->JUMLAH ?></td>
+		<td><?php echo number_format($row->UPAH) ?></td>
+		<td><?php echo number_format($row->BAHAN) ?></td>
+		<td><?php echo number_format($row->JUMLAH) ?></td>
 		<td>
 			<center>
 			<?php echo tglIndonesia($row->TANGGAL_AWAL) ?> sd <?php echo tglIndonesia($row->TANGGAL_AKHIR) ?>

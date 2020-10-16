@@ -128,7 +128,7 @@ error_reporting(0);
 									<?php echo $row->RETAK_M>0 ? '( '.$row->RETAK_T.' )':''; ?>
 								 <br/> <?php echo $row->RETAK ?> </td>
 							<td><?php echo $row->SEDIMEN_M; ?> <br/>
-									<?php echo $row->RETAK_M>0 ? '( '.$row->SEDIMEN_T.' )':''; ?>
+									<?php echo $row->SEDIMEN_M>0 ? '( '.$row->SEDIMEN_T.' )':''; ?>
 								 <br/> <?php echo $row->SEDIMEN ?> </td>
 							<td><?php echo $row->LAIN_LAIN; ?></td>
 							<td><?php echo $row->DIKERJAKAN; ?></td>

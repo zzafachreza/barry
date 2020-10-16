@@ -32,7 +32,7 @@
 	  			<th>TINGKATAN_IRIGASI</th>
 	  			<th>KABUPATEN</th>
 	  			<th>RANTING</th>>
-	  			<th>STATUS</th>
+	  			<!-- <th>STATUS</th> -->
 	  			<th>ACTION</th>
 	  		</tr>
 	  		</thead>
@@ -62,15 +62,15 @@
 		  				<td><?php echo $row->TINGKATAN_IRIGASI ?></td>
 		  				<td><?php echo $row->KABUPATEN ?></td>
 		  				<td><?php echo $row->RANTING ?></td>
-		  				<td><?php echo $row->STATUS_LAPORANHD ?></td>
+		  				<!-- <td><?php echo $row->STATUS_LAPORANHD ?></td> -->
 		  				<td>
-		  					<a href="<?php echo site_url('bencanahd/view_lampiran06/'.$row->ID_LAPORANHD	) ?>" class="AppButton-primary"><i class="flaticon-eye"></i></a>
+		  					<a href="<?php echo site_url('bencanahd/view_lampiran06/'.$row->ID_LAPORANHD	) ?>" class="btn btn-primary btn-sm"><i class="flaticon-eye"></i></a>
 
 		  					<?php if ($row->STATUS_LAPORANHD ==='OKE' OR $_SESSION['level']==='ADMIN'): ?>
-		  							<a href="<?php echo site_url('bencanahd/edit_lampiran06/'.$row->ID_LAPORANHD	) ?>" class="btn btn-warning"><i class="flaticon-edit"></i> Lamp 06 P</a>
+		  							<a href="<?php echo site_url('bencanahd/edit_lampiran06/'.$row->ID_LAPORANHD	) ?>" class="btn btn-warning btn-sm"><i class="flaticon-edit"></i> Lamp 06 P</a>
 
 
-		  						<a href="<?php echo site_url('bencanahd/delete/'.$row->ID_LAPORANHD.'/'.$row->DAERAH_IRIGASI) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
+		  						<a href="<?php echo site_url('bencanahd/delete/'.$row->ID_LAPORANHD.'/'.$row->DAERAH_IRIGASI) ?>" class="btn btn-danger btn-sm"><i class="flaticon-delete"></i></a>	
 		  					<?php endif ?>
 
 		  			

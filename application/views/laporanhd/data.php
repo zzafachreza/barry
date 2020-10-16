@@ -4,7 +4,7 @@
 	    <li class="breadcrumb-item active" aria-current="page"><?php echo ucfirst('laporanhd') ?></li>
 	  </ol>
 </nav>
-<div class="container-fluid">
+<div class="container-fluid" style="font-size: small;">
 
 <?php
 
@@ -28,8 +28,8 @@
 	  			<th>NO</th>
 	  			<th>TANGGAL</th>
 	  			<th>DAERAH_IRIGASI</th>
-	  			<th>LUAS_AREA_IRIGASI</th>
-	  			<th>TINGKATAN_IRIGASI</th>
+	  			<th>LUAS_AREA</th>
+	  			<th>TINGKATAN</th>
 	  			<th>KABUPATEN</th>
 	  			<th>RANTING</th>
 	  			<th>MANTRI</th>
@@ -128,15 +128,15 @@
 		  				<td><?php echo  isset($row->TANGGAL_2) ? tglIndonesia($row->TANGGAL_2) : ''; ?></td>
 		  				<td><?php echo  isset($row->TANGGAL_3) ? tglIndonesia($row->TANGGAL_3) : ''; ?></td> -->
 		  				<td>
-		  					<a href="<?php echo site_url('laporanhd/detail/'.$row->ID_LAPORANHD) ?>" class="AppButton-primary"><i class="flaticon-eye"></i></a>
+		  					<a href="<?php echo site_url('laporanhd/detail/'.$row->ID_LAPORANHD) ?>" class="btn btn-primary btn-sm "><i class="flaticon-eye"></i></a>
 
-		  					<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/edit/'.$row->ID_LAPORANHD.'/'.$p3) ?>" class="AppButton-secondary"><i class="flaticon-edit"></i> EDIT</a>
+		  					<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/edit/'.$row->ID_LAPORANHD.'/'.$p3) ?>" class=" btn-sm btn btn-secondary"><i class="flaticon-edit"></i> EDIT</a>
 
 		  					<?php if ($_SESSION['level']==='ADMIN'): ?>
-		  						<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/delete/'.$row->ID_LAPORANHD.'') ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>	
+		  						<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/delete/'.$row->ID_LAPORANHD.'') ?>" class=" btn-sm btn btn-danger"><i class="flaticon-delete"></i></a>	
 
 		  					<?php endif ?>
-		  					<div style="margin-top: 10px"></div>
+
 
 		  				<!-- 	<a href="<?php echo site_url('laporanhd/detail_pdf/'.$row->ID_LAPORANHD) ?>" class="btn btn-danger"><i class="flaticon-file"></i> PDF </a>
 
