@@ -47,11 +47,11 @@
 		  				<td><?php echo tglIndonesia($row->TANGGAL_KONTRAKTUAL2) ?></td>
 		  				<td><?php echo $row->STATUS_KONTRAKTUAL2 ?></td>
 		  				<td>
-		  					<a href="<?php echo site_url('bencanahd/view_lampiran052/'.$row->ID_LAPORANHD	) ?>" class="AppButton-primary"><i class="flaticon-eye"></i></a>
+		  					<a href="<?php echo site_url('bencanahd/view_lampiran052/'.$row->ID_LAPORANHD	) ?>" class="btn btn-primary btn-sm"><i class="flaticon-eye"></i></a>
 
 		  					<?php if ($row->STATUS_KONTRAKTUAL2!=='DONE' OR $_SESSION['level']==='ADMIN'): ?>
 		  							<a href="<?php echo site_url('bencanahd/edit_lampiran052/'.$row->ID_LAPORANHD	) ?>" class="btn btn-info btn-sm"><i class="flaticon-edit"></i> 05 P</a>
-		  							<a onclick="return confirm('Apakah Anda yakin akan hapus ini ?')" href="<?php echo site_url('bencanahd/delete_kontraktual2/'.$row->ID_LAPORANHD) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>
+		  							<a onclick="return confirm('Apakah Anda yakin akan hapus ini ?')" href="<?php echo site_url('bencanahd/delete_kontraktual2/'.$row->ID_LAPORANHD) ?>" class="btn btn-danger btn-sm"><i class="flaticon-delete"></i></a>
 		  					<?php endif ?>
 
 

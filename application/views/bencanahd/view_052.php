@@ -68,10 +68,18 @@ error_reporting(0);
 			  				foreach($lamp052->result() as $row):
 			  				$no++;
 
+
+			  				if ($row->BOCORAN==='SWAKELOLA' AND $row->RUSAK==='SWAKELOLA' AND $row->LONGSORAN==='SWAKELOLA' AND $row->TERSUMBAT==='SWAKELOLA' AND $row->RETAK==='SWAKELOLA' AND $row->PINTU_RUSAK==='SWAKELOLA' AND $row->SEDIMEN==='SWAKELOLA') {
+			  					# code...
+			  					$style='style="display:none"';
+			  				}else{
+			  					$style='';
+			  				}
+
 			  			
 				  		?>
 
-<tr>
+<tr <?php echo $style ?>>
 		<td><?php echo $no ?></td>
 		<td><?php echo $row->DAERAH_IRIGASI ?></td>
 		<td><?php echo $row->nama_bangunan ?><br/>

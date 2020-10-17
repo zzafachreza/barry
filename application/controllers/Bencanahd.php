@@ -104,6 +104,7 @@ class Bencanahd extends CI_Controller{
 		$NAMA_SALURAN = $this->input->post('NAMA_SALURAN');
 		$PENYEBAB_KERUSAKAN = $this->input->post('PENYEBAB_KERUSAKAN');
 		$JENIS_KERUSAKAN = $this->input->post('JENIS_KERUSAKAN');
+
 		$TANAH = $this->input->post('TANAH');
 		$BATU = $this->input->post('BATU');
 		$BETON = $this->input->post('BETON');
@@ -111,6 +112,15 @@ class Bencanahd extends CI_Controller{
 		$GORONG_GORONG = $this->input->post('GORONG_GORONG');
 		$LAIN_LAIN_KERUSAKAN = $this->input->post('LAIN_LAIN_KERUSAKAN');
 		$LUAS_TERANCAM = $this->input->post('LUAS_TERANCAM');
+
+		$TANAH_B = $this->input->post('TANAH_B');
+		$BATU_B = $this->input->post('BATU_B');
+		$BETON_B = $this->input->post('BETON_B');
+		$PINTU_AIR_B = $this->input->post('PINTU_AIR_B');
+		$GORONG_GORONG_B = $this->input->post('GORONG_GORONG_B');
+		$LAIN_LAIN_KERUSAKAN_B = $this->input->post('LAIN_LAIN_KERUSAKAN_B');
+		$LUAS_TERANCAM_B = $this->input->post('LUAS_TERANCAM_B');
+
 		$TINDAKAN_PERBAIKAN = $this->input->post('TINDAKAN_PERBAIKAN');
 		$BIAYA_PERBAIKAN = $this->input->post('BIAYA_PERBAIKAN');
 		$DIKERJAKAN_OLEH = $this->input->post('DIKERJAKAN_OLEH');
@@ -253,7 +263,7 @@ class Bencanahd extends CI_Controller{
 
 
 
-		$this->Bencanahd_model->insert_detail($ID_LAPORANHD,$NAMA_SALURAN,$PENYEBAB_KERUSAKAN,$JENIS_KERUSAKAN,$TANAH,$BATU,$BETON,$PINTU_AIR,$GORONG_GORONG,$LAIN_LAIN_KERUSAKAN,$LUAS_TERANCAM,$TINDAKAN_PERBAIKAN,$BIAYA_PERBAIKAN,$DIKERJAKAN_OLEH,$DIUSULKAN_OLEH,$FOTO_BENCANA,$VALUEFOTO_BENCANA1,$VALUEFOTO_BENCANA2,$VALUEFOTO_BENCANA3,$VALUEFOTO_BENCANA4,$VALUEFOTO_BENCANA5);
+		$this->Bencanahd_model->insert_detail($ID_LAPORANHD,$NAMA_SALURAN,$PENYEBAB_KERUSAKAN,$JENIS_KERUSAKAN,$TANAH,$BATU,$BETON,$PINTU_AIR,$GORONG_GORONG,$LAIN_LAIN_KERUSAKAN,$LUAS_TERANCAM,$TINDAKAN_PERBAIKAN,$BIAYA_PERBAIKAN,$DIKERJAKAN_OLEH,$DIUSULKAN_OLEH,$FOTO_BENCANA,$VALUEFOTO_BENCANA1,$VALUEFOTO_BENCANA2,$VALUEFOTO_BENCANA3,$VALUEFOTO_BENCANA4,$VALUEFOTO_BENCANA5,$TANAH_B,$BATU_B,$BETON_B,$PINTU_AIR_B,$GORONG_GORONG_B,$LAIN_LAIN_KERUSAKAN_B,$LUAS_TERANCAM_B);
 
 
 		$this->Riwayat_model->insert('TABLE '.strtoupper($this->dataTable).' - DATA '.$DAERAH_IRIGASI,'EDIT ',strtoupper($_SESSION['username']));

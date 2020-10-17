@@ -104,10 +104,20 @@ error_reporting(0);
 			  				$no=0;
 			  				foreach($laporandt->result() as $row):
 			  				$no++;
+
+			  				if ($laporanhd['ID_LAPORANHD']!==$row->ID_LAPORANHD) {
+			  					# code...
+			  					$style='style="display:none"';
+			  				}else{
+			  					$style='style="height:100px;text-align: center;"';
+			  				}
+
 				  		?>
-				  		<tr style="height:100px;text-align: center;">
+				  		<tr <?php echo $style ?> >
 				  			<td ><?php echo $no ?></td>
-				  			<td><?php echo $row->nama_ruas; ?></td>
+				  			<td><?php echo $row->nama_ruas; ?>
+		
+				  			</td>
 				  			<td><?php echo $row->nama_bangunan; ?></td>
 							<td><?php echo $row->BOCORAN_M; ?> <br/>
 									<?php echo $row->RETAK_M>0 ? '( '.$row->BOCORAN_T.' )':''; ?>

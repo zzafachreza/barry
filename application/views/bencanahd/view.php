@@ -120,9 +120,12 @@ error_reporting(0);
 					<tbody>
 						 <?php
 			  				$no=0;
+			  				$TOTAL_BIAYA_PERBAIKAN=0;
 			  				foreach($bencanadt->result() as $row):
 			  				$no++;
 
+
+			  				$TOTAL_BIAYA_PERBAIKAN += $row->BIAYA_PERBAIKAN;
 			  			
 				  		?>
 				  		<tr>
@@ -150,6 +153,16 @@ error_reporting(0);
 								
 				  		</tr>
 						<?php endforeach; ?>
+						<tr style="text-align: center;">
+						<td colspan="12">Total</td>
+						
+						<td><h5><?php echo number_format($TOTAL_BIAYA_PERBAIKAN) ?></h5> </td>
+						<td colspan="2"></td>
+				
+				
+
+
+					</tr>
 
 							<tr>
 							<td colspan="14">

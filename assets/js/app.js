@@ -235,6 +235,21 @@ var dataForm = $("#"+ID_FORM).serialize();
 	})
 }
 
+function editDataBiaya(ID_FORM,url){
+
+var data= $("#"+ID_FORM).serialize();
+
+	$.ajax({
+		url:url,
+		type:'POST',
+		data:data,
+		success:function(data){
+			console.log(data);
+			window.location.reload();
+		}
+	})
+}
+
 
 // function cekFotoAfter(x){
 // 	// alert(x);

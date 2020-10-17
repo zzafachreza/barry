@@ -55,9 +55,17 @@ error_reporting(0);
 			  				$no++;
 
 			  			
+							if ($row->BOCORAN==='KONTRAKTUAL' AND $row->RUSAK==='KONTRAKTUAL' AND $row->LONGSORAN==='KONTRAKTUAL' AND $row->TERSUMBAT==='KONTRAKTUAL' AND $row->RETAK==='KONTRAKTUAL' AND $row->PINTU_RUSAK==='KONTRAKTUAL' AND $row->SEDIMEN==='KONTRAKTUAL') {
+										  					# code...
+			  					$style='style="display:none"';
+			  				}else{
+			  					$style='';
+			  				}
+
+			  			
 				  		?>
 
-<tr>
+<tr <?php echo $style ?>>
 		<td><?php echo $no ?></td>
 		<td><?php echo $row->DAERAH_IRIGASI ?></td>
 		<td><?php echo $row->nama_bangunan ?><br/><?php echo $row->nama_ruas ?></td>

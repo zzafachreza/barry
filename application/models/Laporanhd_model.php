@@ -60,12 +60,17 @@ class Laporanhd_model extends CI_Model{
 	
    		echo $sql= "UPDATE data_laporandt SET $FIELD='$VALUE' WHERE ID_LAPORANDT='$ID_LAPORANDT'";
 		$this->db->query($sql);	
+		 echo $sql2a= "UPDATE data_laporandt SET ESTIMASI_PERBAIKAN=(BOCORAN_B + RUSAK_B + LONGSORAN_B + TERSUMBAT_B + RETAK_B + PINTU_RUSAK_B + SEDIMEN_B) WHERE ID_LAPORANDT='$ID_LAPORANDT'";
+			$this->db->query($sql2a);	
 	}
 
 	function update_detail_foto($ID_LAPORANDT,$FIELD,$VALUE){
 	
    		 $sql= "UPDATE data_laporandt SET $FIELD='$VALUE' WHERE ID_LAPORANDT='$ID_LAPORANDT'";
 		$this->db->query($sql);	
+	
+
+		
 		
 	}
 

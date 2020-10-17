@@ -25,27 +25,25 @@
     <p class="lead">Aplikasi berbasis web yang dapat melakukan Integrasi Pelaporan Data Pemeliharaan Irigasi</p>
 
 </div>
-<div class="container" style="padding-left: 20%;padding-right: 20%" >
+<div class="container" style="padding-left: 10%;padding-right: 10%" >
 		<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
  	 <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
   </ol>
   
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
-		      <img class="d-block w-100" src="./assets/images/4.jpeg" alt="First slide">
+		      <img class="d-block w-100" src="./assets/images/back1.jpg" alt="First slide" style="height: 100%">
 		    </div>
 		    <div class="carousel-item">
-		      <img class="d-block w-100" src="./assets/images/2.jpeg" alt="Second slide">
+		      <img class="d-block w-100" src="./assets/images/back2.jpg" alt="Second slide" style="height: 100%">
 		    </div>
 		    <div class="carousel-item">
-		      <img class="d-block w-100" src="./assets/images/3.jpeg" alt="Third slide">
+		      <img class="d-block w-100" src="./assets/images/3.jpeg" alt="Third slide" style="height: 100%">
 		    </div>
 		     <div class="carousel-item">
-		      <img class="d-block w-100" src="./assets/images/1.jpeg" alt="Fourd slide">
+		      <img class="d-block w-100" src="./assets/images/1.jpeg" alt="Fourd slide" style="height: 100%">
 		    </div>
 		  </div>
 		  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">

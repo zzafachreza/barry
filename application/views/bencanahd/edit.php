@@ -44,7 +44,7 @@
   
 
 	  </div>
-	  	<div class="card-body">
+	  	<div class="card-body" >
 	
 
 
@@ -116,12 +116,12 @@
 
 			<hr/>
 
-			<div>
+			<div style="overflow: auto">
 
 		
-					<table class="table table-bordered">
+					<table class="table table-bordered" style="width: 2000px">
 
-					<thead style="background-color: orange">
+					<thead style="background-color: orange;">
 				
 
 		            <tr>
@@ -192,15 +192,38 @@
 				  			<td><textarea id="PENYEBAB_KERUSAKAN" name="PENYEBAB_KERUSAKAN" class="form-control" required="required"></textarea></td>
 				  			<td><textarea id="JENIS_KERUSAKAN" name="JENIS_KERUSAKAN" class="form-control" required="required"></textarea></td>
 				  			
-							<td><input type="text" name="TANAH" class="form-control"> </td>
-							<td><input type="text" name="BATU" class="form-control"> </td>
-							<td><input type="text" name="BETON" class="form-control"> </td>
-							<td><input type="text" name="PINTU_AIR" class="form-control"> </td>
-							<td><input type="text" name="GORONG_GORONG" class="form-control"> </td>
-							<td><input type="text" name="LAIN_LAIN_KERUSAKAN" class="form-control"> </td>
-							<td><input type="text" name="LUAS_TERANCAM" class="form-control"> </td>
-							<td><input type="text" name="TINDAKAN_PERBAIKAN" class="form-control"> </td>
-							<td><input type="text" name="BIAYA_PERBAIKAN" class="form-control"> </td>
+							<td><input style="width: 120px" type="text" name="TANAH" class="form-control"> 
+
+								<input style="width: 120px;margin-top: 5%" type="text" name="TANAH_B" class="form-control"> 
+								<span>BIAYA TANAH</span>
+
+							</td>
+							<td><input style="width: 120px" type="text" name="BATU" class="form-control">
+								<input style="width: 120px;margin-top: 5%" type="text" name="BATU_B" class="form-control"> 
+								<span>BIAYA TANAH</span>
+							 </td>
+							<td><input style="width: 120px" type="text" name="BETON" class="form-control">
+								<input style="width: 120px;margin-top: 5%" type="text" name="BETON_B" class="form-control"> 
+								<span>BIAYA TANAH</span>
+							 </td>
+							<td><input style="width: 120px" type="text" name="PINTU_AIR" class="form-control">
+								<input style="width: 120px;margin-top: 5%" type="text" name="PINTU_AIR_B" class="form-control"> 
+								<span>BIAYA TANAH</span>
+							 </td>
+							<td><input style="width: 120px" type="text" name="GORONG_GORONG" class="form-control">
+								<input style="width: 120px;margin-top: 5%" type="text" name="GORONG_GORONG_B" class="form-control"> 
+								<span>BIAYA TANAH</span>
+							 </td>
+							<td><input style="width: 120px" type="text" name="LAIN_LAIN_KERUSAKAN" class="form-control">
+								<input style="width: 120px;margin-top: 5%" type="text" name="LAIN_LAIN_KERUSAKAN_B" class="form-control"> 
+								<span>BIAYA TANAH</span>
+							 </td>
+							<td><input style="width: 120px" type="text" name="LUAS_TERANCAM" class="form-control">
+								<input style="width: 120px;margin-top: 5%" type="text" name="LUAS_TERANCAM_B" class="form-control"> 
+								<span>BIAYA TANAH</span>
+							 </td>
+							<td><input style="width: 120px" type="text" name="TINDAKAN_PERBAIKAN" class="form-control"> </td>
+							<td><input readonly="readonly" type="text" name="BIAYA_PERBAIKAN" class="form-control"> </td>
 							<td><input type="text" name="DIKERJAKAN_OLEH" class="form-control"> </td>
 							<td><input type="text" name="DIUSULKAN_OLEH" class="form-control"> </td>
 

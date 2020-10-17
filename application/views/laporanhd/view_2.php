@@ -112,6 +112,7 @@ error_reporting(0);
 					<tbody>
 						 <?php
 			  				$no=0;
+			  				$ESTIMASI_PERBAIKAN_TOTAL =0;
 			  				foreach($laporandt->result() as $row):
 			  				$no++;
 				  		if ($row->ID_LAPORANHD !== $laporanhd['ID_LAPORANHD']) {
@@ -119,6 +120,8 @@ error_reporting(0);
 			  					$splitya = 'style="display:none"';
 			  				}else{
 			  					$splitya = '';
+			  					$ESTIMASI_PERBAIKAN_TOTAL += $row->ESTIMASI_PERBAIKAN;
+			  					$ESTIMASI_RUGI_TOTAL += $row->ESTIMASI_RUGI;
 			  				}
 				  		?>
 				  		<tr <?php echo $splitya; ?>>
@@ -165,6 +168,15 @@ error_reporting(0);
 				
 				  		</tr>
 						<?php endforeach; ?>
+						<tr style="text-align: center;">
+						<td colspan="11">Total</td>
+
+						<td><h6><?php echo number_format($ESTIMASI_RUGI_TOTAL) ?></h6></td>
+						<td><h6><?php echo number_format($ESTIMASI_PERBAIKAN_TOTAL) ?></h6></td>
+						<td colspan="4"></td>
+
+
+					</tr>
 
 							<tr>
 							<td colspan="14">
