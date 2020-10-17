@@ -37,14 +37,11 @@
 				    <input type="hidden" name="id" value="<?php echo $ID_LAPORANHD = $laporanhd['ID_LAPORANHD'] ?>">
 				    <i class="flaticon-event-calendar-symbol iconInput"></i>
 
-				    <?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='ADMIN'): ?>
-				    	 <input autocomplete="off" required="required" type="text" name="VALUE" class="AppInput tgl" value="" >
-
-				    <?php else: ?>
+				
 				    	 <input autocomplete="off" required="required" type="text" name="VALUE" class="AppInput tgl" value="<?php echo date('d/m/Y') ?>" >
 
 				    	
-				    <?php endif ?>
+				
 				   
 
 				    <input autocomplete="off" required="required" type="hidden" name="KOLOM" class="AppInput" value="<?php echo $KOLOM ?>" >
@@ -53,18 +50,10 @@
 
 				  </div>
 				 <?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='ADMIN'): ?>
-				 	 <div class="form-group col col-sm-3">
-				    <label for="nama_laporanhd" class="AppLabel">STATUS LAPORAN</label>
-				
-				    <select name="STATUS_ALL" class="form-control" required="required">
-				    	<option></option>
-				    	<option <?php echo $laporanhd['STATUS_ALL']==='MENUNGGU PERSETUJUAN'?'selected="selected"':'' ?> >MENUNGGU PERSETUJUAN</option>
-				    	<option <?php echo $laporanhd['STATUS_ALL']==='DISETUJUI'?'selected="selected"':'' ?> >DISETUJUI</option>
-				    	<option <?php echo $laporanhd['STATUS_ALL']==='DIKERJAKAN'?'selected="selected"':'' ?> >DIKERJAKAN</option>
-				    	<option <?php echo $laporanhd['STATUS_ALL']==='SELESAI'?'selected="selected"':'' ?> >SELESAI</option>
-				    </select>
 
-				  </div>
+				 	<input type="hidden" name="STATUS_ALL" value="SELESAI">
+				 	
+			
 
 				 <?php endif ?>
 

@@ -5,12 +5,6 @@
 	  </ol>
 </nav>
 <div class="container-fluid">
-
-<?php
-
-// print_r($bencanahd->result())
-	
-?>
 	<div class="card">
 	  <div class="card-header">
 	  	<a href="<?php echo site_url() ?>" class="AppButton-secondary"><i class="flaticon2-left-arrow-1"></i> Kembali</a>
@@ -26,8 +20,11 @@
 	  		<thead>
 	  			<tr class="btn-info">
 	  			<th>NO</th>
-	  			<th>STATUS</th>
+	  			
+	  			<th>DAERAH_IRIGASI</th>
+	  			<th>KOTA/KABUPATEN</th>
 	  			<th>TANGGAL</th>
+	  			<th>STATUS</th>
 	  			<th>ACTION</th>
 	  		</tr>
 	  		</thead>
@@ -45,13 +42,15 @@
 		  		?>
 		  			<tr >
 		  				<td><?php echo $no ?></td>
+		  				<td><?php echo $row->DAERAH_IRIGASI ?></td>
+		  				<td><?php echo $row->KABUPATEN ?></td>
 		  				<td><?php echo tglIndonesia($row->TANGGAL_KONTRAKTUAL2) ?></td>
 		  				<td><?php echo $row->STATUS_KONTRAKTUAL2 ?></td>
 		  				<td>
 		  					<a href="<?php echo site_url('bencanahd/view_lampiran052/'.$row->ID_LAPORANHD	) ?>" class="AppButton-primary"><i class="flaticon-eye"></i></a>
 
 		  					<?php if ($row->STATUS_KONTRAKTUAL2!=='DONE' OR $_SESSION['level']==='ADMIN'): ?>
-		  							<a href="<?php echo site_url('bencanahd/edit_lampiran052/'.$row->ID_LAPORANHD	) ?>" class="btn btn-info"><i class="flaticon-edit"></i> 05 P</a>
+		  							<a href="<?php echo site_url('bencanahd/edit_lampiran052/'.$row->ID_LAPORANHD	) ?>" class="btn btn-info btn-sm"><i class="flaticon-edit"></i> 05 P</a>
 		  							<a onclick="return confirm('Apakah Anda yakin akan hapus ini ?')" href="<?php echo site_url('bencanahd/delete_kontraktual2/'.$row->ID_LAPORANHD) ?>" class="AppButton-dark"><i class="flaticon-delete"></i></a>
 		  					<?php endif ?>
 

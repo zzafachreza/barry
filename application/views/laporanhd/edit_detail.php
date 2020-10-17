@@ -24,19 +24,19 @@
 
 						<?php if ($_SESSION['level']==='MANTRI' OR $_SESSION['level']==='SUP' OR $_SESSION['level']==='ADMIN' OR $_SESSION['level']==='SEKSI IRIGASI' ): ?>
 						<th>BOCORAN</th>
-						<th>(M'/BH)</th>
+						<th>(M'/BH)&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						<th>RUSAK/PUTUS</th>
-						<th>(M')</th>
+						<th>(M')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						<th>LONGSORAN/</th>
 						<th>TONJOLAN(M')</th>
 						<th>TERSUMBAT</th>
-						<th>(M'/BH)</th>
+						<th>(M'/BH))&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						<th>RETAK</th>
-						<th>(M')</th>
+						<th>(M')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						<th>PINTU RUSAK</th>
-						<th>(BH)</th>
+						<th>(BH)&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						<th>SEDIMEN/</th>
-						<th>WALED (H)</th>
+						<th>WALED (H)&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						<th>MASUKAN LAIN - LAIN</th>
 
 						<?php endif ?>

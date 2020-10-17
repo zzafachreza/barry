@@ -241,13 +241,33 @@ FROM
 	}
 
 	function getList04(){
-		$sql="SELECT * FROM data_swakelola GROUP BY ID_LAPORANHD";
+		$sql="SELECT *
+FROM
+    `data_swakelola`
+    INNER JOIN `data_laporandt` 
+        ON (`data_swakelola`.`ID_LAPORANHD` = `data_laporandt`.`ID_LAPORANHD`) AND (`data_swakelola`.`ID_LAPORANDT` = `data_laporandt`.`ID_LAPORANDT`)
+    INNER JOIN `data_laporanhd` 
+        ON (`data_laporandt`.`ID_LAPORANHD` = `data_laporanhd`.`ID_LAPORANHD`)
+    INNER JOIN `data_bangunan` 
+        ON (`data_laporandt`.`ID_BANGUNAN` = `data_bangunan`.`id_bangunan`)
+    INNER JOIN `data_ruas` 
+        ON (`data_bangunan`.`id_ruas` = `data_ruas`.`id_ruas`) GROUP BY data_swakelola.ID_LAPORANHD";
 		$data = $this->db->query($sql);
 		return $data; 
 	}
 
 	function getList052(){
-		$sql="SELECT * FROM data_kontraktual2 GROUP BY ID_LAPORANHD";
+		$sql="SELECT *
+FROM
+    `data_kontraktual2`
+    INNER JOIN `data_laporandt` 
+        ON (`data_kontraktual2`.`ID_LAPORANHD` = `data_laporandt`.`ID_LAPORANHD`) AND (`data_kontraktual2`.`ID_LAPORANDT` = `data_laporandt`.`ID_LAPORANDT`)
+    INNER JOIN `data_laporanhd` 
+        ON (`data_laporandt`.`ID_LAPORANHD` = `data_laporanhd`.`ID_LAPORANHD`)
+    INNER JOIN `data_bangunan` 
+        ON (`data_laporandt`.`ID_BANGUNAN` = `data_bangunan`.`id_bangunan`)
+    INNER JOIN `data_ruas` 
+        ON (`data_bangunan`.`id_ruas` = `data_ruas`.`id_ruas`) GROUP BY data_kontraktual2.ID_LAPORANHD";
 		$data = $this->db->query($sql);
 		return $data; 
 	}

@@ -134,7 +134,7 @@ function tglIndonesia2($tanggal){
       </li>
             <?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='ADMIN'): ?>
 <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran052" ? "active":"" ?>">
-          <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran052') ?>">List 05 P (DARI KERUSAKAN IRIGASI) <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran052') ?>">List 05 P  <br/>(DARI KERUSAKAN IRIGASI) <span class="sr-only">(current)</span></a>
         </li>
 
          <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran04" ? "active":"" ?>">
@@ -151,7 +151,7 @@ function tglIndonesia2($tanggal){
        
 
         <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran05" ? "active":"" ?>">
-          <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran05') ?>">List 05 P (DARI BENCANA ALAM) <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran05') ?>">List 05 P <br/>(DARI BENCANA ALAM) <span class="sr-only">(current)</span></a>
         </li>
 
       
@@ -171,7 +171,7 @@ function tglIndonesia2($tanggal){
     <ul class="navbar-nav ml-auto">
 
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Hallo Selamat datang,<strong> <?php echo $_SESSION['nama_lengkap']." ( ".$_SESSION['level']." )" ?></strong></a>
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Hallo,<strong> <?php echo $_SESSION['nama_lengkap']." ( ".$_SESSION['level']." )" ?></strong></a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="<?php echo site_url() ?>login/logout">Logout</a>
       </div>
@@ -185,4 +185,11 @@ function tglIndonesia2($tanggal){
 ?>
 
 
-
+<style type="text/css">
+  body{
+    font-size: small;
+  }
+    table{
+    font-size: x-small;
+  }
+</style>

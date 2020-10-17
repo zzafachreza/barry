@@ -20,12 +20,12 @@
 	}
 
 </style>
-<div class="container" style="color: #FFF">
-	<h1 class="display-4">SI JUET</h1>
-    <p class="lead">"SI JUET" adalah aplikasi berbasis web yang dapat melakukan Integrasi Pelaporan Data Pemeliharaan Irigasi</p>
+<div class="container" style="color: #FFF;padding-top: 2%;text-align: center;">
+	<h3>SI JUET</h3>
+    <p class="lead">Aplikasi berbasis web yang dapat melakukan Integrasi Pelaporan Data Pemeliharaan Irigasi</p>
 
 </div>
-<div class="container" style="padding-left: 5%;padding-right: 5%" >
+<div class="container" style="padding-left: 20%;padding-right: 20%" >
 		<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
  	 <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

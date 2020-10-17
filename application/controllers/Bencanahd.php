@@ -98,6 +98,7 @@ class Bencanahd extends CI_Controller{
 
 	function insert_detail(){
 	
+	error_reporting(0);
 
 		$ID_LAPORANHD = $this->input->post('ID_LAPORANHD');
 		$NAMA_SALURAN = $this->input->post('NAMA_SALURAN');
@@ -118,69 +119,88 @@ class Bencanahd extends CI_Controller{
 
 
 
-		$TYPEFOTO_BENCANA1 = $_FILES['FOTO_BENCANA1']['type'];
-		$TYPEFOTO_BENCANA1 = explode("/", $TYPEFOTO_BENCANA1);
-		$VALUEFOTO_BENCANA1 = sha1(date('ymdhis'))."FOTO_BENCANA1.".$TYPEFOTO_BENCANA1[1];
-		$folder = "upload/";
-		$upload_image = $VALUEFOTO_BENCANA1;
-		$width_size = 1000;
-		$filesave = $folder . $upload_image;
-		move_uploaded_file($_FILES['FOTO_BENCANA1']['tmp_name'], $filesave);
-		$resize_image = $folder . $upload_image;
-		list( $width, $height ) = getimagesize($filesave);
-		$k = $width / $width_size;
-		$newwidth = $width / $k;
-		$newheight = $height / $k;
-		$thumb = imagecreatetruecolor($newwidth, $newheight);
-		$source = imagecreatefromjpeg($filesave);
-		imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-		imagejpeg($thumb, $resize_image);
-		imagedestroy($thumb);
-		imagedestroy($source);
+		if (!empty($_FILES['FOTO_BENCANA1'])) {
+
+			$TYPEFOTO_BENCANA1 = $_FILES['FOTO_BENCANA1']['type'];
+			$TYPEFOTO_BENCANA1 = explode("/", $TYPEFOTO_BENCANA1);
+			$VALUEFOTO_BENCANA1 = sha1(date('ymdhis'))."FOTO_BENCANA1.".$TYPEFOTO_BENCANA1[1];
+			$folder = "upload/";
+			$upload_image = $VALUEFOTO_BENCANA1;
+			$width_size = 1000;
+			$filesave = $folder . $upload_image;
+			move_uploaded_file($_FILES['FOTO_BENCANA1']['tmp_name'], $filesave);
+			$resize_image = $folder . $upload_image;
+			list( $width, $height ) = getimagesize($filesave);
+			$k = $width / $width_size;
+			$newwidth = $width / $k;
+			$newheight = $height / $k;
+			$thumb = imagecreatetruecolor($newwidth, $newheight);
+			$source = imagecreatefromjpeg($filesave);
+			imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+			imagejpeg($thumb, $resize_image);
+			imagedestroy($thumb);
+			imagedestroy($source);
+			# code...
+		}else{
+		$VALUEFOTO_BENCANA1="";
+	}
+	
 
 
 
-		$TYPEFOTO_BENCANA2 = $_FILES['FOTO_BENCANA2']['type'];
-		$TYPEFOTO_BENCANA2 = explode("/", $TYPEFOTO_BENCANA2);
-		$VALUEFOTO_BENCANA2 = sha1(date('ymdhis'))."FOTO_BENCANA2.".$TYPEFOTO_BENCANA2[1];
-		$folder = "upload/";
-		$upload_image = $VALUEFOTO_BENCANA2;
-		$width_size = 1000;
-		$filesave = $folder . $upload_image;
-		move_uploaded_file($_FILES['FOTO_BENCANA2']['tmp_name'], $filesave);
-		$resize_image = $folder . $upload_image;
-		list( $width, $height ) = getimagesize($filesave);
-		$k = $width / $width_size;
-		$newwidth = $width / $k;
-		$newheight = $height / $k;
-		$thumb = imagecreatetruecolor($newwidth, $newheight);
-		$source = imagecreatefromjpeg($filesave);
-		imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-		imagejpeg($thumb, $resize_image);
-		imagedestroy($thumb);
-		imagedestroy($source);
+		if (!empty($_FILES['FOTO_BENCANA2'])) {
+			$TYPEFOTO_BENCANA2 = $_FILES['FOTO_BENCANA2']['type'];
+			$TYPEFOTO_BENCANA2 = explode("/", $TYPEFOTO_BENCANA2);
+			$VALUEFOTO_BENCANA2 = sha1(date('ymdhis'))."FOTO_BENCANA2.".$TYPEFOTO_BENCANA2[1];
+			$folder = "upload/";
+			$upload_image = $VALUEFOTO_BENCANA2;
+			$width_size = 1000;
+			$filesave = $folder . $upload_image;
+			move_uploaded_file($_FILES['FOTO_BENCANA2']['tmp_name'], $filesave);
+			$resize_image = $folder . $upload_image;
+			list( $width, $height ) = getimagesize($filesave);
+			$k = $width / $width_size;
+			$newwidth = $width / $k;
+			$newheight = $height / $k;
+			$thumb = imagecreatetruecolor($newwidth, $newheight);
+			$source = imagecreatefromjpeg($filesave);
+			imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+			imagejpeg($thumb, $resize_image);
+			imagedestroy($thumb);
+			imagedestroy($source);
+		}else{
+		$VALUEFOTO_BENCANA2="";
+	}
+	
 
 
-		$TYPEFOTO_BENCANA3 = $_FILES['FOTO_BENCANA3']['type'];
-		$TYPEFOTO_BENCANA3 = explode("/", $TYPEFOTO_BENCANA3);
-		$VALUEFOTO_BENCANA3 = sha1(date('ymdhis'))."FOTO_BENCANA3.".$TYPEFOTO_BENCANA3[1];
-		$folder = "upload/";
-		$upload_image = $VALUEFOTO_BENCANA3;
-		$width_size = 1000;
-		$filesave = $folder . $upload_image;
-		move_uploaded_file($_FILES['FOTO_BENCANA3']['tmp_name'], $filesave);
-		$resize_image = $folder . $upload_image;
-		list( $width, $height ) = getimagesize($filesave);
-		$k = $width / $width_size;
-		$newwidth = $width / $k;
-		$newheight = $height / $k;
-		$thumb = imagecreatetruecolor($newwidth, $newheight);
-		$source = imagecreatefromjpeg($filesave);
-		imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-		imagejpeg($thumb, $resize_image);
-		imagedestroy($thumb);
-		imagedestroy($source);
+		if (!empty($_FILES['FOTO_BENCANA3'])) {
+			$TYPEFOTO_BENCANA3 = $_FILES['FOTO_BENCANA3']['type'];
+			$TYPEFOTO_BENCANA3 = explode("/", $TYPEFOTO_BENCANA3);
+			$VALUEFOTO_BENCANA3 = sha1(date('ymdhis'))."FOTO_BENCANA3.".$TYPEFOTO_BENCANA3[1];
+			$folder = "upload/";
+			$upload_image = $VALUEFOTO_BENCANA3;
+			$width_size = 1000;
+			$filesave = $folder . $upload_image;
+			move_uploaded_file($_FILES['FOTO_BENCANA3']['tmp_name'], $filesave);
+			$resize_image = $folder . $upload_image;
+			list( $width, $height ) = getimagesize($filesave);
+			$k = $width / $width_size;
+			$newwidth = $width / $k;
+			$newheight = $height / $k;
+			$thumb = imagecreatetruecolor($newwidth, $newheight);
+			$source = imagecreatefromjpeg($filesave);
+			imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+			imagejpeg($thumb, $resize_image);
+			imagedestroy($thumb);
+			imagedestroy($source);
+		}else{
+		$VALUEFOTO_BENCANA3="";
+	}
+	
 
+
+		if (!empty($_FILES['FOTO_BENCANA4'])) {
 
 		$TYPEFOTO_BENCANA4 = $_FILES['FOTO_BENCANA4']['type'];
 		$TYPEFOTO_BENCANA4 = explode("/", $TYPEFOTO_BENCANA4);
@@ -201,7 +221,12 @@ class Bencanahd extends CI_Controller{
 		imagejpeg($thumb, $resize_image);
 		imagedestroy($thumb);
 		imagedestroy($source);
+	}else{
+		$VALUEFOTO_BENCANA4="";
+	}
+	
 
+	if (!empty($_FILES['FOTO_BENCANA5'])) {
 		$TYPEFOTO_BENCANA5 = $_FILES['FOTO_BENCANA5']['type'];
 		$TYPEFOTO_BENCANA5 = explode("/", $TYPEFOTO_BENCANA5);
 		$VALUEFOTO_BENCANA5 = sha1(date('ymdhis'))."FOTO_BENCANA5.".$TYPEFOTO_BENCANA5[1];
@@ -221,6 +246,9 @@ class Bencanahd extends CI_Controller{
 		imagejpeg($thumb, $resize_image);
 		imagedestroy($thumb);
 		imagedestroy($source);
+	}else{
+		$VALUEFOTO_BENCANA5="";
+	}
 	
 
 

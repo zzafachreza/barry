@@ -144,7 +144,7 @@ error_reporting(0);
 								<?php echo $row->RETAK_M>0 ? '( '.$row->RETAK_T.' )':''; ?>
 							</td>
 							<td><?php echo $row->SEDIMEN_M; ?><br/>
-								<?php echo $row->RETAK_M>0 ? '( '.$row->SEDIMEN_T.' )':''; ?>
+								<?php echo $row->SEDIMEN_M>0 ? '( '.$row->SEDIMEN_T.' )':''; ?>
 							</td>
 							<td><?php echo $row->LAIN_LAIN; ?></td>
 							<td><?php echo number_format($row->ESTIMASI_RUGI); ?></td>
@@ -152,11 +152,13 @@ error_reporting(0);
 							<td><?php echo $row->PRIORITAS; ?></td>
 							<td><?php echo $row->AREA_BAWAH; ?></td>
 							<td><?php echo $row->DESA; ?></td>
-							<td>
-								<?php if (isset($row->FOTO_BEFORE)): ?>
+						<td>	
+								<?php $gambar =$row->FOTO_BEFORE; ?>
+								<?php if (strlen($row->FOTO_BEFORE) > 0 ): ?>
 									<center>
-										<img height="100" src="<?php echo site_url().'upload/'.$row->FOTO_BEFORE; ?>">
+										<img height="100" src="<?php echo site_url().'upload/'.$row->$gambar; ?>">
 									</center>
+
 								<?php endif ?>
 								
 							</td>
