@@ -58,9 +58,9 @@ class Laporanhd_model extends CI_Model{
 
 	function update_detail($ID_LAPORANDT,$FIELD,$VALUE){
 	
-   		echo $sql= "UPDATE data_laporandt SET $FIELD='$VALUE' WHERE ID_LAPORANDT='$ID_LAPORANDT'";
+   		 $sql= "UPDATE data_laporandt SET $FIELD='$VALUE' WHERE ID_LAPORANDT='$ID_LAPORANDT'";
 		$this->db->query($sql);	
-		 echo $sql2a= "UPDATE data_laporandt SET ESTIMASI_PERBAIKAN=(BOCORAN_B + RUSAK_B + LONGSORAN_B + TERSUMBAT_B + RETAK_B + PINTU_RUSAK_B + SEDIMEN_B) WHERE ID_LAPORANDT='$ID_LAPORANDT'";
+		  $sql2a= "UPDATE data_laporandt SET ESTIMASI_PERBAIKAN=(BOCORAN_B + RUSAK_B + LONGSORAN_B + TERSUMBAT_B + RETAK_B + PINTU_RUSAK_B + SEDIMEN_B) WHERE ID_LAPORANDT='$ID_LAPORANDT'";
 			$this->db->query($sql2a);	
 	}
 
@@ -99,7 +99,7 @@ class Laporanhd_model extends CI_Model{
 	}
 
 	function getDataDetail($id){
-		$sql="SELECT*FROM `data_laporanhd` INNER JOIN `data_laporandt` ON (`data_laporanhd`.`ID_LAPORANHD` = `data_laporandt`.`ID_LAPORANHD`) INNER JOIN `data_bangunan` ON (`data_laporandt`.`ID_BANGUNAN` = `data_bangunan`.`id_bangunan`) INNER JOIN `data_ruas` ON (`data_bangunan`.`id_ruas` = `data_ruas`.`id_ruas`) WHERE data_laporandt.ID_LAPORANHD='$id' limit 3;";
+		$sql="SELECT*FROM `data_laporanhd` INNER JOIN `data_laporandt` ON (`data_laporanhd`.`ID_LAPORANHD` = `data_laporandt`.`ID_LAPORANHD`) INNER JOIN `data_bangunan` ON (`data_laporandt`.`ID_BANGUNAN` = `data_bangunan`.`id_bangunan`) INNER JOIN `data_ruas` ON (`data_bangunan`.`id_ruas` = `data_ruas`.`id_ruas`) WHERE data_laporandt.ID_LAPORANHD='$id' limit 10;";
 		$data = $this->db->query($sql);
 		return $data;
 	}
@@ -112,10 +112,10 @@ class Laporanhd_model extends CI_Model{
 
 
 	function update_lampiran04($ID_LAPORANHD){
-		 $sql = "INSERT INTO data_swakelola(ID_LAPORANHD,ID_LAPORANDT,TANGGAL_SWAKELOLA) SELECT ID_LAPORANHD,ID_LAPORANDT,NOW() FROM data_laporandt WHERE ID_LAPORANHD='$ID_LAPORANHD' AND BOCORAN_M > 0 OR RUSAK_M >0 OR LONGSORAN_M > 0 OR TERSUMBAT_M > 0 OR RETAK_M > 0 OR PINTU_RUSAK_M > 0 OR SEDIMEN_M > 0" ;
+		 $sql = "INSERT INTO data_swakelola(ID_LAPORANHD,ID_LAPORANDT,TANGGAL_SWAKELOLA,JUMLAH) SELECT ID_LAPORANHD,ID_LAPORANDT,NOW(),ESTIMASI_PERBAIKAN FROM data_laporandt WHERE ID_LAPORANHD='$ID_LAPORANHD' AND BOCORAN_M > 0 OR RUSAK_M >0 OR LONGSORAN_M > 0 OR TERSUMBAT_M > 0 OR RETAK_M > 0 OR PINTU_RUSAK_M > 0 OR SEDIMEN_M > 0" ;
 		 	$data = $this->db->query($sql);
 
-		 	$sql2 = "INSERT INTO data_kontraktual2(ID_LAPORANHD,ID_LAPORANDT,TANGGAL_KONTRAKTUAL2) SELECT ID_LAPORANHD,ID_LAPORANDT,NOW() FROM data_laporandt WHERE ID_LAPORANHD='$ID_LAPORANHD' AND BOCORAN_M > 0 OR RUSAK_M >0 OR LONGSORAN_M > 0 OR TERSUMBAT_M > 0 OR RETAK_M > 0 OR PINTU_RUSAK_M > 0 OR SEDIMEN_M > 0" ;
+		 	$sql2 = "INSERT INTO data_kontraktual2(ID_LAPORANHD,ID_LAPORANDT,TANGGAL_KONTRAKTUAL2,JUMLAH) SELECT ID_LAPORANHD,ID_LAPORANDT,NOW(),ESTIMASI_PERBAIKAN FROM data_laporandt WHERE ID_LAPORANHD='$ID_LAPORANHD' AND BOCORAN_M > 0 OR RUSAK_M >0 OR LONGSORAN_M > 0 OR TERSUMBAT_M > 0 OR RETAK_M > 0 OR PINTU_RUSAK_M > 0 OR SEDIMEN_M > 0" ;
 		 	$data = $this->db->query($sql2);
 
 	}

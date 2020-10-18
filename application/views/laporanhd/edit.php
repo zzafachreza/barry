@@ -58,13 +58,9 @@
 				 <?php endif ?>
 
 				  <div class="form-group col col-sm-3">
-				  	 <?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='ADMIN'): ?>
-
-				  	<button onclick="return confirm('Apakah Anda yakin akan menyimpan ini ? \n status jika belum selesai dapat diubah')" type="SUBMIT" class="btn btn-danger" style="height: 100%;width: 100%"><i class="flaticon-paper-plane"></i> Selesai</button>
-				  		
-				  	<?php else: ?>
-				  		<button onclick="return confirm('Apakah Anda yakin akan menyimpan ini ? \n data tidak dapat diubah lagi jika sudah selesai')" type="SUBMIT" class="btn btn-danger" style="height: 100%;width: 100%"><i class="flaticon-paper-plane"></i> Selesai</button>
-				  	<?php endif ?>
+		
+				  		<button onclick="CEK_KOLOM();return confirm('Apakah Anda yakin akan menyimpan ini ? \nData tidak dapat diubah lagi jika sudah selesai')" type="SUBMIT" class="btn btn-danger" style="height: 100%;width: 100%"><i class="flaticon-paper-plane"></i> Selesai</button>
+				
 
 				  </div>
 </div>
@@ -176,6 +172,23 @@
 
 
 </div>
+
+<?php if ($_SESSION['level']==='SEKSI IRIGASI'): ?>
+	<script type="text/javascript">
+		function CEK_KOLOM(){
+			
+			$(".FORM_BOCORAN").submit();
+			// alert(data);
+
+			// var data = $('.CEK_KOSONG').val();
+
+			// if(data.length > 0 ) {
+			// 	alert('MSIH ADA YANG KOSSONG')
+			// }
+			
+		}
+	</script>
+<?php endif ?>
 
 <?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='SUP'): ?>
 	<script type="text/javascript">

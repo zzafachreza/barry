@@ -28,21 +28,21 @@ $dataLamp05 = $lamp05->result();
 <div class="container-fluid">
 	<table class="table table-bordered">
 	<tr>
-		<th colspan="7">PROGRAM KERJA KONTRAKTUAL</th>
+		<th colspan="8">PROGRAM KERJA KONTRAKTUAL</th>
 		<th>BLANKO 05 - P</th>
 	</tr>
 	<tr>
-		<th colspan="8">Tahun <?php echo date('Y') ?></th>
+		<th colspan="9">Tahun <?php echo date('Y') ?></th>
 	</tr>
 	<tr>
-		<th colspan="8">&nbsp;</th>
+		<th colspan="9">&nbsp;</th>
 	</tr>
 	<tr>
 		<th>DINAS/BALAI PSDA</th>
-		<td><input class="form-control" id="BALAI<?php echo $dataLamp05[0]->ID_LAPORANHD ?>" type="text" name="BALAI" value="<?php echo $dataLamp05[0]->BALAI ?>" onChange="editEuy2('<?php echo $dataLamp05[0]->ID_LAPORANHD ?>','BALAI','BALAI<?php echo $dataLamp05[0]->ID_LAPORANHD ?>')"></td>
+		<td ><input class="form-control" id="BALAI<?php echo $dataLamp05[0]->ID_LAPORANHD ?>" type="text" name="BALAI" value="<?php echo $dataLamp05[0]->BALAI ?>" onChange="editEuy2('<?php echo $dataLamp05[0]->ID_LAPORANHD ?>','BALAI','BALAI<?php echo $dataLamp05[0]->ID_LAPORANHD ?>')"></td>
 	</tr>
 	<tr>
-		<th colspan="8">&nbsp;</th>
+		<th colspan="9">&nbsp;</th>
 	</tr>
 	<tr>
 		<th>NO</th>
@@ -65,6 +65,7 @@ $dataLamp05 = $lamp05->result();
 			JADWAL PELAKSANAAN
 		</th>
 		<th>KETERANGAN</th>
+		<th>STATUS</th>
 	</tr>
 	<tr>
 		<th>1</th>
@@ -75,6 +76,7 @@ $dataLamp05 = $lamp05->result();
 		<th>6</th>
 		<th>7</th>
 		<th>8</th>
+		<th>9</th>
 	</tr>
 
 	<?php
@@ -97,7 +99,8 @@ $dataLamp05 = $lamp05->result();
 			<input class="form-control" id="BANYAKNYA_PEKERJAAN<?php echo $row->ID_KONTRAKTUAL ?>" type="text" name="BANYAKNYA_PEKERJAAN" value="<?php echo $row->BANYAKNYA_PEKERJAAN ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL ?>','BANYAKNYA_PEKERJAAN','BANYAKNYA_PEKERJAAN<?php echo $row->ID_KONTRAKTUAL ?>')">
 		</td>
 		<td>
-				<input class="form-control" id="BIAYA<?php echo $row->ID_KONTRAKTUAL ?>" type="text" name="BIAYA" value="<?php echo $row->BIAYA ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL ?>','BIAYA','BIAYA<?php echo $row->ID_KONTRAKTUAL ?>')">
+		<?php echo number_format($row->BIAYA) ?>	
+			<!-- 	<input class="form-control" id="BIAYA<?php echo $row->ID_KONTRAKTUAL ?>" type="text" name="BIAYA" value="<?php echo $row->BIAYA ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL ?>','BIAYA','BIAYA<?php echo $row->ID_KONTRAKTUAL ?>')"> -->
 		</td>
 		<td>
 			<label>
@@ -113,6 +116,18 @@ $dataLamp05 = $lamp05->result();
 		<td>
 			<input class="form-control" id="KETERANGAN<?php echo $row->ID_KONTRAKTUAL ?>" type="text" name="KETERANGAN" value="<?php echo $row->KETERANGAN ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL ?>','KETERANGAN','KETERANGAN<?php echo $row->ID_KONTRAKTUAL ?>')">
 		</td>
+		<td>
+			<center>
+				<strong><?php echo $row->STATUS_D ?></strong>
+			</center>
+				
+				<select style="width: 250px" id="STATUS_D<?php echo $row->ID_KONTRAKTUAL ?>" class="form-control" name="STATUS_D"  onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL ?>','STATUS_D','STATUS_D<?php echo $row->ID_KONTRAKTUAL ?>')">
+					<option></option>
+					<option <?php echo $row->STATUS_D==='MENUNGGU KONFIRMASI'?'selected="selected"':'' ?>>MENUNGGU KONFIRMASI</option>
+					<option <?php echo $row->STATUS_D==='DIKERJAKAN'?'selected="selected"':'' ?>>DIKERJAKAN</option>
+					<option <?php echo $row->STATUS_D==='DISETUJUI'?'selected="selected"':'' ?>>DISETUJUI</option>
+				</select>
+			</td>
 	</tr>
 
 
@@ -135,6 +150,7 @@ $dataLamp05 = $lamp05->result();
 			type:'POST',
 			success:function(html){
 				console.log(html);
+				window.location.reload();
 			}
 		})
 		

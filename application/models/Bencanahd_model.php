@@ -175,7 +175,7 @@ FROM
 	function selesai_05($ID_LAPORANHD){
 		# code...
 
-		$sql= "UPDATE data_kontraktual SET STATUS_KONTRAKTUAL='DONE' WHERE ID_LAPORANHD='$ID_LAPORANHD'";
+		$sql= "UPDATE data_kontraktual SET STATUS_KONTRAKTUAL='DONE',STATUS_D='SELESAI' WHERE ID_LAPORANHD='$ID_LAPORANHD'";
 		$this->db->query($sql);
 
 	}
@@ -184,7 +184,7 @@ FROM
 		function selesai_052($ID_LAPORANHD){
 		# code...
 
-		$sql= "UPDATE data_kontraktual2 SET STATUS_KONTRAKTUAL2='DONE' WHERE ID_LAPORANHD='$ID_LAPORANHD'";
+		$sql= "UPDATE data_kontraktual2 SET STATUS_KONTRAKTUAL2='DONE',STATUS_D='SELESAI' WHERE ID_LAPORANHD='$ID_LAPORANHD'";
 		$this->db->query($sql);
 
 	}
@@ -273,7 +273,7 @@ FROM
 	}
 
 	function selesai_04($ID_LAPORANHD){
-		 $sql= "UPDATE data_swakelola SET STATUS_SWAKELOLA='DONE' WHERE ID_LAPORANHD='$ID_LAPORANHD'";
+		 $sql= "UPDATE data_swakelola SET STATUS_SWAKELOLA='DONE',STATUS_D='SELESAI' WHERE ID_LAPORANHD='$ID_LAPORANHD'";
 		$this->db->query($sql);
 	}
 

@@ -48,11 +48,25 @@ error_reporting(0);
 		<th>BAHAN</th>
 		<th>JUMLAH</th>
 	</tr>
+	<tr>
+		<th>1</th>
+		<th>2</th>
+		<th>3</th>
+		<th>4</th>
+		<th>5</th>
+		<th>6</th>
+		<th>7</th>
+		<th>8</th>
+		<th>9</th>
+		<th>10</th>
+		<th>11</th>
+	</tr>
 	<?php
-
+			  				$BIAYA = 0;
 	$no=0;
 			  				foreach($lamp04->result() as $row):
 			  				$no++;
+
 
 			  			
 							if ($row->BOCORAN==='KONTRAKTUAL' AND $row->RUSAK==='KONTRAKTUAL' AND $row->LONGSORAN==='KONTRAKTUAL' AND $row->TERSUMBAT==='KONTRAKTUAL' AND $row->RETAK==='KONTRAKTUAL' AND $row->PINTU_RUSAK==='KONTRAKTUAL' AND $row->SEDIMEN==='KONTRAKTUAL') {
@@ -60,6 +74,7 @@ error_reporting(0);
 			  					$style='style="display:none"';
 			  				}else{
 			  					$style='';
+			  					$BIAYA += $row->JUMLAH;
 			  				}
 
 			  			
@@ -215,6 +230,12 @@ error_reporting(0);
 
 
 <?php endforeach; ?>
+	<tr>
+		<th colspan="8"></th>
+
+		<th><?php echo number_format($BIAYA) ?></th>
+		<th colspan="2"></th>
+	</tr>
 <tr>
 
 							<td colspan="8">

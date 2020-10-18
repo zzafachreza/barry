@@ -200,27 +200,27 @@
 							</td>
 							<td><input style="width: 120px" type="text" name="BATU" class="form-control">
 								<input style="width: 120px;margin-top: 5%" type="text" name="BATU_B" class="form-control"> 
-								<span>BIAYA TANAH</span>
+								<span>BIAYA BATU</span>
 							 </td>
 							<td><input style="width: 120px" type="text" name="BETON" class="form-control">
 								<input style="width: 120px;margin-top: 5%" type="text" name="BETON_B" class="form-control"> 
-								<span>BIAYA TANAH</span>
+								<span>BIAYA BETON</span>
 							 </td>
 							<td><input style="width: 120px" type="text" name="PINTU_AIR" class="form-control">
 								<input style="width: 120px;margin-top: 5%" type="text" name="PINTU_AIR_B" class="form-control"> 
-								<span>BIAYA TANAH</span>
+								<span>BIAYA PINTU AIR</span>
 							 </td>
 							<td><input style="width: 120px" type="text" name="GORONG_GORONG" class="form-control">
 								<input style="width: 120px;margin-top: 5%" type="text" name="GORONG_GORONG_B" class="form-control"> 
-								<span>BIAYA TANAH</span>
+								<span>BIAYA GORONG<sup>2</sup></span>
 							 </td>
 							<td><input style="width: 120px" type="text" name="LAIN_LAIN_KERUSAKAN" class="form-control">
 								<input style="width: 120px;margin-top: 5%" type="text" name="LAIN_LAIN_KERUSAKAN_B" class="form-control"> 
-								<span>BIAYA TANAH</span>
+								<span>BIAYA LAIN-LAIN</span>
 							 </td>
 							<td><input style="width: 120px" type="text" name="LUAS_TERANCAM" class="form-control">
 								<input style="width: 120px;margin-top: 5%" type="text" name="LUAS_TERANCAM_B" class="form-control"> 
-								<span>BIAYA TANAH</span>
+								<span>BIAYA LUAS TERANCAM</span>
 							 </td>
 							<td><input style="width: 120px" type="text" name="TINDAKAN_PERBAIKAN" class="form-control"> </td>
 							<td><input readonly="readonly" type="text" name="BIAYA_PERBAIKAN" class="form-control"> </td>
@@ -297,13 +297,34 @@
 				  				<?php echo str_replace("\n", "<br/>", $row->JENIS_KERUSAKAN); ?>
 				  			</th>
 					
-							<td><?php echo $row->TANAH ?></th>
-							<td><?php echo $row->BATU ?></th>
-							<td><?php echo $row->BETON ?></th>
-							<td><?php echo $row->PINTU_AIR ?></th>
-							<td><?php echo $row->GORONG_GORONG ?></th>
-							<td><?php echo $row->LAIN_LAIN_KERUSAKAN ?></th>
-							<td><?php echo $row->LUAS_TERANCAM ?></th>
+							<td><?php echo $row->TANAH ?><br/>
+								<strong><?php echo number_format($row->TANAH_B) ?></strong>
+
+							</th>
+							<td><?php echo $row->BATU ?><br/>
+								<strong><?php echo number_format($row->BATU_B) ?></strong>
+
+							</th>
+							<td><?php echo $row->BETON ?><br/>
+								<strong><?php echo number_format($row->BETON_B) ?></strong>
+
+							</th>
+							<td><?php echo $row->PINTU_AIR ?><br/>
+								<strong><?php echo number_format($row->PINTU_AIR_B) ?></strong>
+
+							</th>
+							<td><?php echo $row->GORONG_GORONG ?><br/>
+								<strong><?php echo number_format($row->GORONG_GORONG_B) ?></strong>
+
+							</th>
+							<td><?php echo $row->LAIN_LAIN_KERUSAKAN ?><br/>
+								<strong><?php echo number_format($row->LAIN_LAIN_KERUSAKAN_B) ?></strong>
+
+							</th>
+							<td><?php echo $row->LUAS_TERANCAM ?><br/>
+								<strong><?php echo number_format($row->LUAS_TERANCAM_B) ?></strong>
+
+							</th>
 							<td><?php echo $row->TINDAKAN_PERBAIKAN ?></th>
 							<td><?php echo number_format($row->BIAYA_PERBAIKAN) ?></th>
 							<td><?php echo $row->DIKERJAKAN_OLEH ?></th>

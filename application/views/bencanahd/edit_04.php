@@ -31,21 +31,21 @@ $dataLamp04 = $lamp04->result();
 <div class="container-fluid">
 		<table class="table table-bordered">
 	<tr>
-		<th colspan="10">PROGRAM PEKERJAAN SWAKELOLA</th>
+		<th colspan="11">PROGRAM PEKERJAAN SWAKELOLA</th>
 		<th>BLANKO 04 - P</th>
 	</tr>
 	<tr>
-		<th colspan="11">Tahun <?php echo date('Y') ?></th>
+		<th colspan="12">Tahun <?php echo date('Y') ?></th>
 	</tr>
 	<tr>
-		<th colspan="11">&nbsp;</th>
+		<th colspan="12">&nbsp;</th>
 	</tr>
 	<tr>
 		<th>DINAS/BALAI PSDA</th>
 		<td><input id="BALAI<?php echo $dataLamp04[0]->ID_LAPORANHD ?>" type="text" name="BALAI" value="<?php echo $dataLamp04[0]->BALAI ?>" onChange="editEuy2('<?php echo $dataLamp04[0]->ID_LAPORANHD ?>','BALAI','BALAI<?php echo $dataLamp04[0]->ID_LAPORANHD ?>')" class="form-control"></td>
 	</tr>
 	<tr>
-		<th colspan="11">&nbsp;</th>
+		<th colspan="12">&nbsp;</th>
 	</tr>
 	<tr>
 		<th rowspan="2">NO</th>
@@ -56,6 +56,7 @@ $dataLamp04 = $lamp04->result();
 		<th colspan="3">BIAYA</th>
 		<th rowspan="2">JADWAL PELAKSANAAN</th>
 		<th rowspan="2">KETERANGAN</th>
+		<th rowspan="2">STATUS</th>
 
 	</tr>
 	<tr>
@@ -217,8 +218,11 @@ $dataLamp04 = $lamp04->result();
 
 		</td>
 		<td>
-			<label><?php echo $row->ESTIMASI_PERBAIKAN ?><br/>(ESTIMASI PERBAIKAN)</label>
-			<input id="JUMLAH<?php echo $row->ID_SWAKELOLA ?>" type="text" name="JUMLAH" value="<?php echo $row->JUMLAH ?>" onChange="editEuy2('<?php echo $row->ID_SWAKELOLA ?>','JUMLAH','JUMLAH<?php echo $row->ID_SWAKELOLA ?>')" class="form-control">
+			<?php echo number_format($row->JUMLAH) ?>
+		<!-- 	<label>
+			<br/>(ESTIMASI PERBAIKAN)
+		   </label>
+			<input id="JUMLAH<?php echo $row->ID_SWAKELOLA ?>" type="text" name="JUMLAH" value="<?php echo $row->JUMLAH ?>" onChange="editEuy2('<?php echo $row->ID_SWAKELOLA ?>','JUMLAH','JUMLAH<?php echo $row->ID_SWAKELOLA ?>')" class="form-control"> -->
 
 		</td>
 		<td>
@@ -237,6 +241,18 @@ $dataLamp04 = $lamp04->result();
 			<input id="KETERANGAN<?php echo $row->ID_SWAKELOLA ?>" type="text" name="KETERANGAN" value="<?php echo $row->KETERANGAN ?>" onChange="editEuy2('<?php echo $row->ID_SWAKELOLA ?>','KETERANGAN','KETERANGAN<?php echo $row->ID_SWAKELOLA ?>')" class="form-control">
 
 		</td>
+		<td>
+			<center>
+				<strong><?php echo $row->STATUS_D ?></strong>
+			</center>
+				
+				<select style="width: 250px" id="STATUS_D<?php echo $row->ID_SWAKELOLA ?>" class="form-control" name="STATUS_D"  onChange="editEuy2('<?php echo $row->ID_SWAKELOLA ?>','STATUS_D','STATUS_D<?php echo $row->ID_SWAKELOLA ?>')">
+					<option></option>
+					<option <?php echo $row->STATUS_D==='MENUNGGU KONFIRMASI'?'selected="selected"':'' ?>>MENUNGGU KONFIRMASI</option>
+					<option <?php echo $row->STATUS_D==='DIKERJAKAN'?'selected="selected"':'' ?>>DIKERJAKAN</option>
+					<option <?php echo $row->STATUS_D==='DISETUJUI'?'selected="selected"':'' ?>>DISETUJUI</option>
+				</select>
+			</td>
 	</tr>
 
 
@@ -260,7 +276,8 @@ $dataLamp04 = $lamp04->result();
 			},
 			type:'POST',
 			success:function(html){
-				console.log(html);
+				// console.log(html);
+				window.location.reload();
 			}
 		})
 		

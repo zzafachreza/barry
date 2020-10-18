@@ -120,11 +120,11 @@
 
 
 								<?php if ($_SESSION['level']==='SEKSI IRIGASI'): ?>
-									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+									<form class="FORM_BOCORAN" id="FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 									<input type="hidden" name="KOLOM" value="BOCORAN">
 									<?php if ($row->BOCORAN_M > 0 ): ?>
-									<select style="width: 200px" class="form-control" name="BOCORAN"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+									<select  required="required" style="width: 200px" class="form-control CEK_KOSONG" name="BOCORAN"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 										<option></option>
 										<option <?php echo $row->BOCORAN==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
 										<option <?php echo $row->BOCORAN==='KONTRAKTUAL'?'selected="selected"':'' ?>>KONTRAKTUAL</option>
@@ -157,11 +157,11 @@
 
 
 										
-										<form id="FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN_T" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+										<form  id="FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN_T" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 											<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 											<input type="hidden" name="KOLOM" value="BOCORAN_T">
 									
-											<select  <?php echo $CekDisable." ".$formDisable; ?> style="width: 90px;margin-top: 3%" class="form-control" name="BOCORAN_T"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+											<select <?php echo $CekDisable." ".$formDisable; ?> style="width: 90px;margin-top: 3%" class="form-control" name="BOCORAN_T"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 												<option></option>
 												<option <?php echo $row->BOCORAN_T==='R'?'selected="selected"':'' ?>>R</option>
 												<option <?php echo $row->BOCORAN_T==='S'?'selected="selected"':'' ?>>S</option>

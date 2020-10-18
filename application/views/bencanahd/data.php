@@ -32,7 +32,7 @@
 	  			<th>LUAS_AREA_IRIGASI</th>
 	  			<th>TINGKATAN_IRIGASI</th>
 	  			<th>KABUPATEN</th>
-	  			<th>RANTING</th>>
+	  			<th>RANTING</th>
 	  			<!-- <th>STATUS</th> -->
 	  			<th>ACTION</th>
 	  		</tr>

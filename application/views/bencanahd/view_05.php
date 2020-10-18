@@ -65,9 +65,14 @@ error_reporting(0);
 
 	<?php
 
+	$TOTAL_BIAYA=0;
+	$TOTAL_BANYAKNYA_PEKERJAAN=0;
 	$no=0;
 			  				foreach($lamp05->result() as $row):
 			  				$no++;
+
+			  				$TOTAL_BIAYA += $row->BIAYA;
+			  				$TOTAL_BANYAKNYA_PEKERJAAN +=$row->BANYAKNYA_PEKERJAAN;
 
 			  			
 				  		?>
@@ -102,6 +107,12 @@ error_reporting(0);
 
 
 <?php endforeach; ?>
+<tr>
+		<th colspan="5"></th>
+		<!-- <th><?php echo  number_format($TOTAL_BANYAKNYA_PEKERJAAN ) ?></th> -->
+		<th><?php echo  number_format($TOTAL_BIAYA ) ?></th>
+		<th colspan="2"></th>
+	</tr>
 <tr>
 							<td colspan="6">
 								<p>Penjelasan : </p>

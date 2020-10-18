@@ -135,8 +135,8 @@ error_reporting(0);
 							<td><?php echo $row->AREA_BAWAH; ?></td>
 							<td><?php echo $row->DESA; ?></td>
 							<td>	
-								<?php $gambar =$row->FOTO_BEFORE; ?>
-								<?php if (strlen($row->FOTO_BEFORE) > 0 ): ?>
+								<?php $gambar = $row->FOTO_BEFORE; ?>
+								<?php if (strlen($row->$gambar) > 0 ): ?>
 									<center>
 										<img height="100" src="<?php echo site_url().'upload/'.$row->$gambar; ?>">
 									</center>

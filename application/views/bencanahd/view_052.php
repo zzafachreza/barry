@@ -63,10 +63,12 @@ error_reporting(0);
 	</tr>
 
 	<?php
-
-	$no=0;
+				  				$TOTAL_BANYAKNYA_PEKERJAAN=0;
+			  				$BIAYA=0;
+		$no=0;
 			  				foreach($lamp052->result() as $row):
 			  				$no++;
+
 
 
 			  				if ($row->BOCORAN==='SWAKELOLA' AND $row->RUSAK==='SWAKELOLA' AND $row->LONGSORAN==='SWAKELOLA' AND $row->TERSUMBAT==='SWAKELOLA' AND $row->RETAK==='SWAKELOLA' AND $row->PINTU_RUSAK==='SWAKELOLA' AND $row->SEDIMEN==='SWAKELOLA') {
@@ -74,6 +76,9 @@ error_reporting(0);
 			  					$style='style="display:none"';
 			  				}else{
 			  					$style='';
+			  					$BIAYA += $row->ESTIMASI_PERBAIKAN;
+			  				
+
 			  				}
 
 			  			
@@ -209,7 +214,7 @@ error_reporting(0);
 
 			?>
 		</td>
-		<td><?php echo number_format($row->JUMLAH )?></td>
+		<td><?php echo number_format($row->ESTIMASI_PERBAIKAN)?></td>
 		<td>
 			<center>
 			<?php echo tglIndonesia2($row->TANGGAL_AWAL) ?> sd <?php echo tglIndonesia2($row->TANGGAL_AKHIR) ?>
@@ -231,6 +236,12 @@ error_reporting(0);
 
 
 <?php endforeach; ?>
+
+	<tr>
+		<th colspan="5"></th>
+		<th><?php echo $BIAYA ?></th>
+		<th colspan="2"></th>
+	</tr>
 
 
 	<tr>

@@ -224,7 +224,17 @@ class Laporanhd extends CI_Controller{
 	function update_detail(){
 
 
-		print_r($_POST);
+		$KOLOM  = $_POST['KOLOM'];
+		$VALUE = $_POST[$KOLOM];
+
+		// if (	$KOLOM==='BOCORAN' AND $VALUE==="") {
+		// 	# code...
+		// 	echo "ADA YANG KOSONG, SWAKELOLA DAN KONTRAKTUAL WAJIB DIISI";
+		// 	die();
+
+		// }
+
+
 		// die();
 
 			if (isset($_POST['TIPE'])) {

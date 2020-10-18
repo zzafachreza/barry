@@ -25,21 +25,21 @@ $dataLamp04 = $lamp04->result();
 <div class="container-fluid">
 <table class="table table-bordered">
 	<tr>
-		<th colspan="8">PROGRAM PEKERJAAN KONTRAKTUAL</th>
+		<th colspan="9">PROGRAM PEKERJAAN KONTRAKTUAL</th>
 		<th>BLANKO 05 - P</th>
 	</tr>
 	<tr>
-		<th colspan="10">Tahun <?php echo date('Y') ?></th>
+		<th colspan="11">Tahun <?php echo date('Y') ?></th>
 	</tr>
 	<tr>
-		<th colspan="10">&nbsp;</th>
+		<th colspan="11">&nbsp;</th>
 	</tr>
 	<tr>
 		<th>DINAS/BALAI PSDA</th>
 		<td><input id="BALAI<?php echo $dataLamp04[0]->ID_LAPORANHD ?>" type="text" name="BALAI" value="<?php echo $dataLamp04[0]->BALAI ?>" onChange="editEuy2('<?php echo $dataLamp04[0]->ID_LAPORANHD ?>','BALAI','BALAI<?php echo $dataLamp04[0]->ID_LAPORANHD ?>')" class="form-control"></td>
 	</tr>
 	<tr>
-		<th colspan="10">&nbsp;</th>
+		<th colspan="11">&nbsp;</th>
 	</tr>
 	<tr>
 		<th rowspan="2">NO</th>
@@ -50,6 +50,7 @@ $dataLamp04 = $lamp04->result();
 		<th colspan="1" rowspan="2">BIAYA</th>
 		<th rowspan="2">JADWAL PELAKSANAAN</th>
 		<th rowspan="2">KETERANGAN</th>
+		<th rowspan="2">STATUS</th>
 
 	</tr>
 	<tr>
@@ -201,9 +202,11 @@ if ($row->BOCORAN==='SWAKELOLA' AND $row->RUSAK==='SWAKELOLA' AND $row->LONGSORA
 		</td>
 	
 		<td>
-			<label><?php echo $row->ESTIMASI_PERBAIKAN ?><br/>(ESTIMASI PERBAIKAN)</label>
-			<input id="JUMLAH<?php echo $row->ID_KONTRAKTUAL2 ?>" type="text" name="JUMLAH" value="<?php echo $row->JUMLAH ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL2 ?>','JUMLAH','JUMLAH<?php echo $row->ID_KONTRAKTUAL2 ?>')" class="form-control">
-
+			<label><?php echo number_format($row->ESTIMASI_PERBAIKAN) ?>
+			<!-- <br/>(ESTIMASI PERBAIKAN) -->
+		</label>
+<!-- 			<input id="JUMLAH<?php echo $row->ID_KONTRAKTUAL2 ?>" type="text" name="JUMLAH" value="<?php echo $row->JUMLAH ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL2 ?>','JUMLAH','JUMLAH<?php echo $row->ID_KONTRAKTUAL2 ?>')" class="form-control">
+ -->
 		</td>
 		<td>
 			<label>
@@ -221,6 +224,18 @@ if ($row->BOCORAN==='SWAKELOLA' AND $row->RUSAK==='SWAKELOLA' AND $row->LONGSORA
 			<input id="KETERANGAN<?php echo $row->ID_KONTRAKTUAL2 ?>" type="text" name="KETERANGAN" value="<?php echo $row->KETERANGAN ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL2 ?>','KETERANGAN','KETERANGAN<?php echo $row->ID_KONTRAKTUAL2 ?>')" class="form-control">
 
 		</td>
+				<td>
+			<center>
+				<strong><?php echo $row->STATUS_D ?></strong>
+			</center>
+				
+				<select style="width: 250px" id="STATUS_D<?php echo $row->ID_KONTRAKTUAL2 ?>" class="form-control" name="STATUS_D"  onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL2 ?>','STATUS_D','STATUS_D<?php echo $row->ID_KONTRAKTUAL2 ?>')">
+					<option></option>
+					<option <?php echo $row->STATUS_D==='MENUNGGU KONFIRMASI'?'selected="selected"':'' ?>>MENUNGGU KONFIRMASI</option>
+					<option <?php echo $row->STATUS_D==='DIKERJAKAN'?'selected="selected"':'' ?>>DIKERJAKAN</option>
+					<option <?php echo $row->STATUS_D==='DISETUJUI'?'selected="selected"':'' ?>>DISETUJUI</option>
+				</select>
+			</td>
 	</tr>
 
 
@@ -245,6 +260,7 @@ if ($row->BOCORAN==='SWAKELOLA' AND $row->RUSAK==='SWAKELOLA' AND $row->LONGSORA
 			type:'POST',
 			success:function(html){
 				console.log(html);
+				window.location.reload();
 			}
 		})
 		
