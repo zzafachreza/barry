@@ -173,22 +173,7 @@
 
 </div>
 
-<?php if ($_SESSION['level']==='SEKSI IRIGASI'): ?>
-	<script type="text/javascript">
-		function CEK_KOLOM(){
-			
-			$(".FORM_BOCORAN").submit();
-			// alert(data);
 
-			// var data = $('.CEK_KOSONG').val();
-
-			// if(data.length > 0 ) {
-			// 	alert('MSIH ADA YANG KOSSONG')
-			// }
-			
-		}
-	</script>
-<?php endif ?>
 
 <?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='SUP'): ?>
 	<script type="text/javascript">

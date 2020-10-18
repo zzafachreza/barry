@@ -194,36 +194,36 @@
 				  			
 							<td><input style="width: 120px" type="text" name="TANAH" class="form-control"> 
 
-								<input style="width: 120px;margin-top: 5%" type="text" name="TANAH_B" class="form-control"> 
+								<input style="width: 120px;margin-top: 5%" type="text" name="TANAH_B" id="TANAH_B" value="0" onchange="totalBiaya()" class="form-control"> 
 								<span>BIAYA TANAH</span>
 
 							</td>
 							<td><input style="width: 120px" type="text" name="BATU" class="form-control">
-								<input style="width: 120px;margin-top: 5%" type="text" name="BATU_B" class="form-control"> 
+								<input style="width: 120px;margin-top: 5%" type="text" name="BATU_B" value="0" id="BATU_B" onchange="totalBiaya()" class="form-control"> 
 								<span>BIAYA BATU</span>
 							 </td>
 							<td><input style="width: 120px" type="text" name="BETON" class="form-control">
-								<input style="width: 120px;margin-top: 5%" type="text" name="BETON_B" class="form-control"> 
+								<input style="width: 120px;margin-top: 5%" type="text" name="BETON_B" value="0" id="BETON_B" onchange="totalBiaya()" class="form-control"> 
 								<span>BIAYA BETON</span>
 							 </td>
 							<td><input style="width: 120px" type="text" name="PINTU_AIR" class="form-control">
-								<input style="width: 120px;margin-top: 5%" type="text" name="PINTU_AIR_B" class="form-control"> 
+								<input style="width: 120px;margin-top: 5%" type="text" name="PINTU_AIR_B" value="0" id="PINTU_AIR_B" onchange="totalBiaya()" class="form-control"> 
 								<span>BIAYA PINTU AIR</span>
 							 </td>
 							<td><input style="width: 120px" type="text" name="GORONG_GORONG" class="form-control">
-								<input style="width: 120px;margin-top: 5%" type="text" name="GORONG_GORONG_B" class="form-control"> 
+								<input style="width: 120px;margin-top: 5%" type="text" name="GORONG_GORONG_B" value="0" id="GORONG_GORONG_B" onchange="totalBiaya()" class="form-control"> 
 								<span>BIAYA GORONG<sup>2</sup></span>
 							 </td>
 							<td><input style="width: 120px" type="text" name="LAIN_LAIN_KERUSAKAN" class="form-control">
-								<input style="width: 120px;margin-top: 5%" type="text" name="LAIN_LAIN_KERUSAKAN_B" class="form-control"> 
+								<input style="width: 120px;margin-top: 5%" type="text" name="LAIN_LAIN_KERUSAKAN_B" value="0" id="LAIN_LAIN_KERUSAKAN_B" onchange="totalBiaya()" class="form-control"> 
 								<span>BIAYA LAIN-LAIN</span>
 							 </td>
 							<td><input style="width: 120px" type="text" name="LUAS_TERANCAM" class="form-control">
-								<input style="width: 120px;margin-top: 5%" type="text" name="LUAS_TERANCAM_B" class="form-control"> 
+								<input style="width: 120px;margin-top: 5%" type="text" name="LUAS_TERANCAM_B" value="0" id="LUAS_TERANCAM_B" onchange="totalBiaya()" class="form-control"> 
 								<span>BIAYA LUAS TERANCAM</span>
 							 </td>
 							<td><input style="width: 120px" type="text" name="TINDAKAN_PERBAIKAN" class="form-control"> </td>
-							<td><input readonly="readonly" type="text" name="BIAYA_PERBAIKAN" class="form-control"> </td>
+							<td><input readonly="readonly" type="text" id="BIAYA_PERBAIKAN" name="BIAYA_PERBAIKAN" class="form-control"> </td>
 							<td><input type="text" name="DIKERJAKAN_OLEH" class="form-control"> </td>
 							<td><input type="text" name="DIUSULKAN_OLEH" class="form-control"> </td>
 
@@ -373,6 +373,19 @@
 </div>
 
 <script type="text/javascript">
+
+
+	function totalBiaya(){
+		var TANAH_B = parseFloat($("#TANAH_B").val().toString());
+		var BATU_B = parseFloat($("#BATU_B").val().toString());
+		var BETON_B = parseFloat($("#BETON_B").val().toString());
+		var PINTU_AIR_B = parseFloat($("#PINTU_AIR_B").val().toString());
+		var GORONG_GORONG_B = parseFloat($("#GORONG_GORONG_B").val().toString());
+		var LAIN_LAIN_KERUSAKAN_B = parseFloat($("#LAIN_LAIN_KERUSAKAN_B").val().toString());
+		var LUAS_TERANCAM_B = parseFloat($("#LUAS_TERANCAM_B").val().toString());
+		var BIAYA_PERBAIKAN = TANAH_B + BATU_B + BETON_B + PINTU_AIR_B + GORONG_GORONG_B + LAIN_LAIN_KERUSAKAN_B + LUAS_TERANCAM_B;
+		$("#BIAYA_PERBAIKAN").val(BIAYA_PERBAIKAN);
+	}
 
 
 

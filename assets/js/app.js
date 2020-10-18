@@ -245,7 +245,24 @@ var data= $("#"+ID_FORM).serialize();
 		data:data,
 		success:function(data){
 			console.log(data);
-			window.location.reload();
+
+			var	BOCORAN_B = parseFloat($("#"+data+"BOCORAN_B").val().toString());
+			var RUSAK_B = parseFloat($("#"+data+"RUSAK_B").val().toString());
+			var LONGSORAN_B = parseFloat($("#"+data+"LONGSORAN_B").val().toString());
+			var TERSUMBAT_B = parseFloat($("#"+data+"TERSUMBAT_B").val().toString());
+			var RETAK_B = parseFloat($("#"+data+"RETAK_B").val().toString());
+			var PINTU_RUSAK_B = parseFloat($("#"+data+"PINTU_RUSAK_B").val().toString());
+			var SEDIMEN_B = parseFloat($("#"+data+"SEDIMEN_B").val().toString());
+
+
+			var ESTIMASI_PERBAIKAN =  BOCORAN_B + RUSAK_B + LONGSORAN_B + TERSUMBAT_B + RETAK_B + PINTU_RUSAK_B + SEDIMEN_B ;
+
+			// console.log(ESTIMASI_PERBAIKAN);
+
+			 // + parseFloat($("#"+data+"LONGSORAN_B").val()) + parseFloat($("#"+data+"TERSUMBAT_B").val()) + parseFloat($("#"+data+"RETAK_B").val()) + parseFloat($("#"+data+"PINTU_RUSAK_B").val()) + parseFloat($("#"+data+"SEDIMEN_B").val()));
+
+			$("#"+data+"ESTIMASI_PERBAIKAN").val(parseFloat(ESTIMASI_PERBAIKAN));
+			// window.location.reload();
 		}
 	})
 }

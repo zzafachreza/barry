@@ -61,6 +61,7 @@ $dataLamp04 = $lamp04->result();
 	<?php
 
 	$no=0;
+	$ESTIMASI_PERBAIKAN=0;
 			  				foreach($lamp04->result() as $row):
 			  				$no++;
 
@@ -147,6 +148,7 @@ if ($row->BOCORAN==='SWAKELOLA' AND $row->RUSAK==='SWAKELOLA' AND $row->LONGSORA
 
 			if ($row->BOCORAN==='KONTRAKTUAL' AND $row->BOCORAN_M > 0) {
 				echo $row->BOCORAN_M;
+				$ESTIMASI_PERBAIKAN += $row->BOCORAN_B;
 			}else{
 				echo "";
 			}
@@ -156,6 +158,7 @@ if ($row->BOCORAN==='SWAKELOLA' AND $row->RUSAK==='SWAKELOLA' AND $row->LONGSORA
 			if ($row->RUSAK==='KONTRAKTUAL' AND $row->RUSAK_M > 0) {
 				echo "<br/>";
 				echo $row->RUSAK_M;
+				$ESTIMASI_PERBAIKAN += $row->RUSAK_B;
 			}else{
 				echo "";
 			}
@@ -165,6 +168,7 @@ if ($row->BOCORAN==='SWAKELOLA' AND $row->RUSAK==='SWAKELOLA' AND $row->LONGSORA
 			if ($row->LONGSORAN==='KONTRAKTUAL' AND $row->LONGSORAN_M > 0) {
 				echo "<br/>";
 				echo $row->LONGSORAN_M;
+				$ESTIMASI_PERBAIKAN += $row->LONGSORAN_B;
 			}else{
 				echo "";
 			}
@@ -172,6 +176,7 @@ if ($row->BOCORAN==='SWAKELOLA' AND $row->RUSAK==='SWAKELOLA' AND $row->LONGSORA
 			if ($row->TERSUMBAT==='KONTRAKTUAL' AND $row->TERSUMBAT_M > 0) {
 				echo "<br/>";
 				echo $row->TERSUMBAT_M;
+				$ESTIMASI_PERBAIKAN += $row->TERSUMBAT_B;
 			}else{
 				echo "";
 			}
@@ -179,6 +184,7 @@ if ($row->BOCORAN==='SWAKELOLA' AND $row->RUSAK==='SWAKELOLA' AND $row->LONGSORA
 			if ($row->RETAK==='KONTRAKTUAL' AND $row->RETAK_M > 0) {
 				echo "<br/>";
 				echo $row->RETAK_M;
+					$ESTIMASI_PERBAIKAN += $row->RETAK_B;
 			}else{
 				echo "";
 			}
@@ -186,6 +192,7 @@ if ($row->BOCORAN==='SWAKELOLA' AND $row->RUSAK==='SWAKELOLA' AND $row->LONGSORA
 			if ($row->PINTU_RUSAK==='KONTRAKTUAL' AND $row->PINTU_RUSAK_M > 0) {
 				echo "<br/>";
 				echo $row->PINTU_RUSAK_M;
+				$ESTIMASI_PERBAIKAN += $row->PINTU_RUSAK_B;
 			}else{
 				echo "";
 			}
@@ -193,16 +200,19 @@ if ($row->BOCORAN==='SWAKELOLA' AND $row->RUSAK==='SWAKELOLA' AND $row->LONGSORA
 			if ($row->SEDIMEN==='KONTRAKTUAL' AND $row->SEDIMEN_M > 0) {
 				echo "<br/>";
 				echo $row->SEDIMEN_M;
+				$ESTIMASI_PERBAIKAN += $row->SEDIMEN_B;
 			}else{
 				echo "";
 			}
+
+			$BIAYA +=$ESTIMASI_PERBAIKAN;
 
 
 			?>
 		</td>
 	
 		<td>
-			<label><?php echo number_format($row->ESTIMASI_PERBAIKAN) ?>
+			<label><?php echo number_format($ESTIMASI_PERBAIKAN) ?>
 			<!-- <br/>(ESTIMASI PERBAIKAN) -->
 		</label>
 <!-- 			<input id="JUMLAH<?php echo $row->ID_KONTRAKTUAL2 ?>" type="text" name="JUMLAH" value="<?php echo $row->JUMLAH ?>" onChange="editEuy2('<?php echo $row->ID_KONTRAKTUAL2 ?>','JUMLAH','JUMLAH<?php echo $row->ID_KONTRAKTUAL2 ?>')" class="form-control">

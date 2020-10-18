@@ -227,12 +227,7 @@ class Laporanhd extends CI_Controller{
 		$KOLOM  = $_POST['KOLOM'];
 		$VALUE = $_POST[$KOLOM];
 
-		// if (	$KOLOM==='BOCORAN' AND $VALUE==="") {
-		// 	# code...
-		// 	echo "ADA YANG KOSONG, SWAKELOLA DAN KONTRAKTUAL WAJIB DIISI";
-		// 	die();
-
-		// }
+	
 
 
 		// die();
@@ -246,7 +241,7 @@ class Laporanhd extends CI_Controller{
 				// $TIPE = $_POST[$KOLOM];
 
 			}else{
-				$ID_LAPORANDT = $_POST['ID_LAPORANDT'];
+				echo $ID_LAPORANDT = $_POST['ID_LAPORANDT'];
 				$KOLOM  = $_POST['KOLOM'];
 				$VALUE = $_POST[$KOLOM];
 			}

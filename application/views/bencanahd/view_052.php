@@ -64,6 +64,7 @@ error_reporting(0);
 
 	<?php
 				  				$TOTAL_BANYAKNYA_PEKERJAAN=0;
+				  				$ESTIMASI_PERBAIKAN=0;
 			  				$BIAYA=0;
 		$no=0;
 			  				foreach($lamp052->result() as $row):
@@ -76,7 +77,7 @@ error_reporting(0);
 			  					$style='style="display:none"';
 			  				}else{
 			  					$style='';
-			  					$BIAYA += $row->ESTIMASI_PERBAIKAN;
+			  					
 			  				
 
 			  				}
@@ -161,6 +162,8 @@ error_reporting(0);
 
 			if ($row->BOCORAN==='KONTRAKTUAL' AND $row->BOCORAN_M > 0) {
 				echo $row->BOCORAN_M;
+
+				$ESTIMASI_PERBAIKAN += $row->BOCORAN_B;
 			}else{
 				echo "";
 			}
@@ -170,6 +173,7 @@ error_reporting(0);
 			if ($row->RUSAK==='KONTRAKTUAL' AND $row->RUSAK_M > 0) {
 				echo "<br/>";
 				echo $row->RUSAK_M;
+				$ESTIMASI_PERBAIKAN += $row->RUSAK_B;
 			}else{
 				echo "";
 			}
@@ -179,6 +183,7 @@ error_reporting(0);
 			if ($row->LONGSORAN==='KONTRAKTUAL' AND $row->LONGSORAN_M > 0) {
 				echo "<br/>";
 				echo $row->LONGSORAN_M;
+				$ESTIMASI_PERBAIKAN += $row->LONGSORAN_B;
 			}else{
 				echo "";
 			}
@@ -186,6 +191,7 @@ error_reporting(0);
 			if ($row->TERSUMBAT==='KONTRAKTUAL' AND $row->TERSUMBAT_M > 0) {
 				echo "<br/>";
 				echo $row->TERSUMBAT_M;
+				$ESTIMASI_PERBAIKAN += $row->TERSUMBAT_B;
 			}else{
 				echo "";
 			}
@@ -193,6 +199,7 @@ error_reporting(0);
 			if ($row->RETAK==='KONTRAKTUAL' AND $row->RETAK_M > 0) {
 				echo "<br/>";
 				echo $row->RETAK_M;
+				$ESTIMASI_PERBAIKAN += $row->RETAK_B;
 			}else{
 				echo "";
 			}
@@ -200,6 +207,7 @@ error_reporting(0);
 			if ($row->PINTU_RUSAK==='KONTRAKTUAL' AND $row->PINTU_RUSAK_M > 0) {
 				echo "<br/>";
 				echo $row->PINTU_RUSAK_M;
+				$ESTIMASI_PERBAIKAN += $row->PINTU_RUSAK_B;
 			}else{
 				echo "";
 			}
@@ -207,14 +215,16 @@ error_reporting(0);
 			if ($row->SEDIMEN==='KONTRAKTUAL' AND $row->SEDIMEN_M > 0) {
 				echo "<br/>";
 				echo $row->SEDIMEN_M;
+				$ESTIMASI_PERBAIKAN += $row->SEDIMEN_B;
 			}else{
 				echo "";
 			}
 
+			$BIAYA += $ESTIMASI_PERBAIKAN;
 
 			?>
 		</td>
-		<td><?php echo number_format($row->ESTIMASI_PERBAIKAN)?></td>
+		<td><?php echo number_format($ESTIMASI_PERBAIKAN)?></td>
 		<td>
 			<center>
 			<?php echo tglIndonesia2($row->TANGGAL_AWAL) ?> sd <?php echo tglIndonesia2($row->TANGGAL_AKHIR) ?>

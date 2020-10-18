@@ -63,6 +63,7 @@ error_reporting(0);
 	</tr>
 	<?php
 			  				$BIAYA = 0;
+			  				$JUMLAH = 0;
 	$no=0;
 			  				foreach($lamp04->result() as $row):
 			  				$no++;
@@ -74,7 +75,7 @@ error_reporting(0);
 			  					$style='style="display:none"';
 			  				}else{
 			  					$style='';
-			  					$BIAYA += $row->JUMLAH;
+			  					
 			  				}
 
 			  			
@@ -90,7 +91,9 @@ error_reporting(0);
 
 			if ($row->BOCORAN==='SWAKELOLA' AND $row->BOCORAN_M > 0) {
 				echo "BOCORAN";
+				$JUMLAH += $row->BOCORAN_B;
 			}else{
+			
 				echo "";
 			}
 
@@ -99,6 +102,7 @@ error_reporting(0);
 			if ($row->RUSAK==='SWAKELOLA' AND $row->RUSAK_M > 0) {
 				echo "<br/>";
 				echo "RUSAK";
+				$JUMLAH += $row->RUSAK_B;
 			}else{
 				echo "";
 			}
@@ -108,6 +112,7 @@ error_reporting(0);
 			if ($row->LONGSORAN==='SWAKELOLA' AND $row->LONGSORAN_M > 0) {
 				echo "<br/>";
 				echo "LONGSORAN";
+				$JUMLAH += $row->LONGSORAN_B;
 			}else{
 				echo "";
 			}
@@ -115,6 +120,7 @@ error_reporting(0);
 			if ($row->TERSUMBAT==='SWAKELOLA' AND $row->TERSUMBAT_M > 0) {
 				echo "<br/>";
 				echo "TERSUMBAT";
+				$JUMLAH += $row->TERSUMBAT_B;
 			}else{
 				echo "";
 			}
@@ -122,6 +128,7 @@ error_reporting(0);
 			if ($row->RETAK==='SWAKELOLA' AND $row->RETAK_M > 0) {
 				echo "<br/>";
 				echo "RETAK";
+				$JUMLAH += $row->RETAK_B;
 			}else{
 				echo "";
 			}
@@ -129,6 +136,7 @@ error_reporting(0);
 			if ($row->PINTU_RUSAK==='SWAKELOLA' AND $row->PINTU_RUSAK_M > 0) {
 				echo "<br/>";
 				echo "PINTU_RUSAK";
+				$JUMLAH += $row->PINTU_RUSAK_B;
 			}else{
 				echo "";
 			}
@@ -136,6 +144,7 @@ error_reporting(0);
 			if ($row->SEDIMEN==='SWAKELOLA' AND $row->SEDIMEN_M > 0) {
 				echo "<br/>";
 				echo "SEDIMEN";
+				$JUMLAH += $row->SEDIMEN_B;
 			}else{
 				echo "";
 			}
@@ -202,12 +211,13 @@ error_reporting(0);
 				echo "";
 			}
 
+			$BIAYA +=$JUMLAH;
 
 			?>
 		</td>
 		<td><?php echo number_format($row->UPAH) ?></td>
 		<td><?php echo number_format($row->BAHAN) ?></td>
-		<td><?php echo number_format($row->JUMLAH) ?></td>
+		<td><?php echo number_format($JUMLAH) ?></td>
 		<td>
 			<center>
 			<?php echo tglIndonesia($row->TANGGAL_AWAL) ?> sd <?php echo tglIndonesia($row->TANGGAL_AKHIR) ?>

@@ -102,6 +102,8 @@ CREATE TABLE `data_bencanahd` (
 
 LOCK TABLES `data_bencanahd` WRITE;
 
+insert  into `data_bencanahd`(`ID_LAPORANHD`,`TANGGAL`,`DAERAH_IRIGASI`,`LUAS_AREA_IRIGASI`,`TINGKATAN_IRIGASI`,`KABUPATEN`,`RANTING`,`STATUS_LAPORANHD`) values ('e923ac22262bc08133cf6776afbd7f0802b93365','2020-10-01','CIMANDIRI',14,'T','SUKABUMI','DIDIN','DONE');
+
 UNLOCK TABLES;
 
 /*Table structure for table `data_kontraktual` */
