@@ -59,7 +59,7 @@
 
 				  <div class="form-group col col-sm-3">
 		
-				  		<button onclick="CEK_KOLOM();return confirm('Apakah Anda yakin akan menyimpan ini ? \nData tidak dapat diubah lagi jika sudah selesai')" type="SUBMIT" class="btn btn-danger" style="height: 100%;width: 100%"><i class="flaticon-paper-plane"></i> Selesai</button>
+				  		<button onclick="return confirm('Apakah Anda yakin akan menyimpan ini ? \nData tidak dapat diubah lagi jika sudah selesai')" type="SUBMIT" class="btn btn-danger" style="height: 100%;width: 100%"><i class="flaticon-paper-plane"></i> Selesai</button>
 				
 
 				  </div>
