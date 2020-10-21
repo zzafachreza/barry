@@ -3,6 +3,10 @@
 		display: none;
 	}
 </style>
+<?php
+	
+	error_reporting(0);
+?>
 <div class="container-fluid">
 	<table class="table table-bordered">
 	<tr class="text-center">

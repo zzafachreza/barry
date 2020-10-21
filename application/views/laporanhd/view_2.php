@@ -129,25 +129,32 @@ error_reporting(0);
 				  			<td><?php echo $row->nama_ruas; ?></td>
 				  			<td><?php echo $row->nama_bangunan; ?></td>
 							<td><?php echo $row->BOCORAN_M; ?><br/>
-								<?php echo $row->RETAK_M>0 ? '( '.$row->BOCORAN_T.' )':''; ?>
+								<?php echo $row->BOCORAN_M>0 ? '( '.$row->BOCORAN_T.' )':''; ?><br/>
+								<strong><?php echo $row->BOCORAN_M>0 ? '( '.number_format($row->BOCORAN_B).' )':''; ?></strong>
 							</td>
 							<td><?php echo $row->RUSAK_M; ?><br/>
-								<?php echo $row->RETAK_M>0 ? '( '.$row->RUSAK_T.' )':''; ?>
+								<?php echo $row->RUSAK_M>0 ? '( '.$row->RUSAK_T.' )':''; ?><br/>
+								<strong><?php echo $row->RUSAK_M>0 ? '( '.number_format($row->RUSAK_B).' )':''; ?></strong>
 							</td>
 							<td><?php echo $row->LONGSORAN_M; ?><br/>
-								<?php echo $row->RETAK_M>0 ? '( '.$row->LONGSORAN_T.' )':''; ?>
+								<?php echo $row->LONGSORAN_M>0 ? '( '.$row->LONGSORAN_T.' )':''; ?><br/>
+								<strong><?php echo $row->LONGSORAN_M>0 ? '( '.number_format($row->LONGSORAN_B).' )':''; ?></strong>
 							</td>
 							<td><?php echo $row->TERSUMBAT_M; ?><br/>
-								<?php echo $row->RETAK_M>0 ? '( '.$row->TERSUMBAT_T.' )':''; ?>
+								<?php echo $row->TERSUMBAT_M>0 ? '( '.$row->TERSUMBAT_T.' )':''; ?><br/>
+								<strong><?php echo $row->TERSUMBAT_M>0 ? '( '.number_format($row->TERSUMBAT_B).' )':''; ?></strong>
 							</td>
 							<td><?php echo $row->RETAK_M; ?><br/>
-								<?php echo $row->RETAK_M>0 ? '( '.$row->RETAK_T.' )':''; ?>
+								<?php echo $row->RETAK_M>0 ? '( '.$row->RETAK_T.' )':''; ?><br/>
+									<strong><?php echo $row->RETAK_M>0 ? '( '.number_format($row->RETAK_B).' )':''; ?></strong>
 							</td>
-							<td><?php echo $row->RETAK_M; ?><br/>
-								<?php echo $row->RETAK_M>0 ? '( '.$row->RETAK_T.' )':''; ?>
+							<td><?php echo $row->PINTU_RUSAK_M; ?><br/>
+								<?php echo $row->PINTU_RUSAK_M>0 ? '( '.$row->PINTU_RUSAK_T.' )':''; ?><br/>
+								<strong><?php echo $row->PINTU_RUSAK_M>0 ? '( '.number_format($row->PINTU_RUSAK_B).' )':''; ?></strong>
 							</td>
 							<td><?php echo $row->SEDIMEN_M; ?><br/>
-								<?php echo $row->SEDIMEN_M>0 ? '( '.$row->SEDIMEN_T.' )':''; ?>
+								<?php echo $row->SEDIMEN_M>0 ? '( '.$row->SEDIMEN_T.' )':''; ?><br/>
+								<strong><?php echo $row->SEDIMEN_M>0 ? '( '.number_format($row->SEDIMEN_B).' )':''; ?></strong>
 							</td>
 							<td><?php echo $row->LAIN_LAIN; ?></td>
 							<td><?php echo number_format($row->ESTIMASI_RUGI); ?></td>

@@ -72,7 +72,7 @@ error_reporting(0);
 
 
 
-			  				if ($row->BOCORAN==='SWAKELOLA' AND $row->RUSAK==='SWAKELOLA' AND $row->LONGSORAN==='SWAKELOLA' AND $row->TERSUMBAT==='SWAKELOLA' AND $row->RETAK==='SWAKELOLA' AND $row->PINTU_RUSAK==='SWAKELOLA' AND $row->SEDIMEN==='SWAKELOLA') {
+			  				if ($row->BOCORAN!=='KONTRAKTUAL' AND $row->RUSAK!=='KONTRAKTUAL' AND $row->LONGSORAN!=='KONTRAKTUAL' AND $row->TERSUMBAT!=='KONTRAKTUAL' AND $row->RETAK!=='KONTRAKTUAL' AND $row->PINTU_RUSAK!=='KONTRAKTUAL' AND $row->SEDIMEN!=='KONTRAKTUAL') {
 			  					# code...
 			  					$style='style="display:none"';
 			  				}else{
@@ -249,7 +249,7 @@ error_reporting(0);
 
 	<tr>
 		<th colspan="5"></th>
-		<th><?php echo $BIAYA ?></th>
+		<th><?php echo number_format($BIAYA) ?></th>
 		<th colspan="2"></th>
 	</tr>
 

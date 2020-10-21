@@ -196,7 +196,8 @@ class Laporanhd extends CI_Controller{
 
 		$id	= $this->uri->segment(3);
 		$data['ID_LAPORANHD'] = $id;
-		$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
+		$list = $this->uri->segment(4);
+		$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id,$list);
 		$this->load->view($this->dataTable.'/edit_detail',$data);
 	}
 

@@ -65,7 +65,7 @@ $dataLamp04 = $lamp04->result();
 			  				foreach($lamp04->result() as $row):
 			  				$no++;
 
-if ($row->BOCORAN==='SWAKELOLA' AND $row->RUSAK==='SWAKELOLA' AND $row->LONGSORAN==='SWAKELOLA' AND $row->TERSUMBAT==='SWAKELOLA' AND $row->RETAK==='SWAKELOLA' AND $row->PINTU_RUSAK==='SWAKELOLA' AND $row->SEDIMEN==='SWAKELOLA') {
+							if ($row->BOCORAN!=='KONTRAKTUAL' AND $row->RUSAK!=='KONTRAKTUAL' AND $row->LONGSORAN!=='KONTRAKTUAL' AND $row->TERSUMBAT!=='KONTRAKTUAL' AND $row->RETAK!=='KONTRAKTUAL' AND $row->PINTU_RUSAK!=='KONTRAKTUAL' AND $row->SEDIMEN!=='KONTRAKTUAL') {
 			  					# code...
 			  					$style='style="display:none"';
 			  				}else{

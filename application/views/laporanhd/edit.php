@@ -152,6 +152,17 @@
 
 			<hr/>
 
+	
+			<label>Tampilkan Per : 
+				<select id="list" name="list" class="form-control col-sm-12">
+					<option>20</option>
+					<option>50</option>
+					<option>100</option>
+					<option value="5000">ALL</option>
+				</select>
+			</label>
+		
+
 		
 			<div id="dataLaporan">
 				
@@ -185,9 +196,17 @@
 <?php else: ?>
 			<script type="text/javascript">
 
+				$("#list").change(function(e){
+					$("#loader").show();
+					e.preventDefault();
+					var list = $(this).val();
+					getDataDetail('<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>/'+list);
+				})
+
 				$("#loader").fadeIn('fast');
-		
-				getDataDetail('<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>');
+
+				var list = 20;
+				getDataDetail('<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>/'+list);
 			</script>
 <?php endif ?>
 

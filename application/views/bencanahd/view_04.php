@@ -64,17 +64,20 @@ error_reporting(0);
 	<?php
 			  				$BIAYA = 0;
 			  				$JUMLAH = 0;
-	$no=0;
+			  				$BIAYA_ESTIMASI=0;
+							$no=0;
 			  				foreach($lamp04->result() as $row):
 			  				$no++;
 
 
 			  			
-							if ($row->BOCORAN==='KONTRAKTUAL' AND $row->RUSAK==='KONTRAKTUAL' AND $row->LONGSORAN==='KONTRAKTUAL' AND $row->TERSUMBAT==='KONTRAKTUAL' AND $row->RETAK==='KONTRAKTUAL' AND $row->PINTU_RUSAK==='KONTRAKTUAL' AND $row->SEDIMEN==='KONTRAKTUAL') {
+							if ($row->BOCORAN!=='SWAKELOLA' AND $row->RUSAK!=='SWAKELOLA' AND $row->LONGSORAN!=='SWAKELOLA' AND $row->TERSUMBAT!=='SWAKELOLA' AND $row->RETAK!=='SWAKELOLA' AND $row->PINTU_RUSAK!=='SWAKELOLA' AND $row->SEDIMEN!=='SWAKELOLA') {
 										  					# code...
 			  					$style='style="display:none"';
 			  				}else{
 			  					$style='';
+			  					
+								$BIAYA_ESTIMASI +=$row->JUMLAH;
 			  					
 			  				}
 
@@ -92,6 +95,7 @@ error_reporting(0);
 			if ($row->BOCORAN==='SWAKELOLA' AND $row->BOCORAN_M > 0) {
 				echo "BOCORAN";
 				$JUMLAH += $row->BOCORAN_B;
+
 			}else{
 			
 				echo "";
@@ -149,7 +153,7 @@ error_reporting(0);
 				echo "";
 			}
 
-
+			$BIAYA +=$JUMLAH;
 
 
 			?>
@@ -211,13 +215,18 @@ error_reporting(0);
 				echo "";
 			}
 
-			$BIAYA +=$JUMLAH;
+
+		
 
 			?>
 		</td>
 		<td><?php echo number_format($row->UPAH) ?></td>
 		<td><?php echo number_format($row->BAHAN) ?></td>
-		<td><?php echo number_format($JUMLAH) ?></td>
+		<td>
+			
+			<?php echo number_format($row->JUMLAH) ?><br/>
+			<!-- <?php echo number_format($JUMLAH) ?> (DARI ESTIMASI BIAYA) -->
+		</td>
 		<td>
 			<center>
 			<?php echo tglIndonesia($row->TANGGAL_AWAL) ?> sd <?php echo tglIndonesia($row->TANGGAL_AKHIR) ?>
@@ -243,7 +252,11 @@ error_reporting(0);
 	<tr>
 		<th colspan="8"></th>
 
-		<th><?php echo number_format($BIAYA) ?></th>
+		<th>
+			
+			<!-- <?php echo number_format($BIAYA) ?><br/> -->
+			<?php echo number_format($BIAYA_ESTIMASI) ?>
+		</th>
 		<th colspan="2"></th>
 	</tr>
 <tr>

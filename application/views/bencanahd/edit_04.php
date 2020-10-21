@@ -73,7 +73,7 @@ $dataLamp04 = $lamp04->result();
 			  				foreach($lamp04->result() as $row):
 			  				$no++;
 
-					if ($row->BOCORAN==='KONTRAKTUAL' AND $row->RUSAK==='KONTRAKTUAL' AND $row->LONGSORAN==='KONTRAKTUAL' AND $row->TERSUMBAT==='KONTRAKTUAL' AND $row->RETAK==='KONTRAKTUAL' AND $row->PINTU_RUSAK==='KONTRAKTUAL' AND $row->SEDIMEN==='KONTRAKTUAL') {
+					if ($row->BOCORAN!=='SWAKELOLA' AND $row->RUSAK!=='SWAKELOLA' AND $row->LONGSORAN!=='SWAKELOLA' AND $row->TERSUMBAT!=='SWAKELOLA' AND $row->RETAK!=='SWAKELOLA' AND $row->PINTU_RUSAK!=='SWAKELOLA' AND $row->SEDIMEN!=='SWAKELOLA') {
 										  					# code...
 			  					$style='style="display:none"';
 			  				}else{
@@ -226,7 +226,7 @@ $dataLamp04 = $lamp04->result();
 
 		</td>
 		<td>
-			<?php echo number_format($JUMLAH) ?>
+			<?php echo number_format($row->JUMLAH) ?>
 		<!-- 	<label>
 			<br/>(ESTIMASI PERBAIKAN)
 		   </label>

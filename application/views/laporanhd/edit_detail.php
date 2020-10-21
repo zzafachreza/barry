@@ -111,8 +111,12 @@
 											<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 											<input type="hidden" name="KOLOM" value="BOCORAN_B">
 
-											<?php if ($row->BOCORAN_M > 0 ): ?>
+											<?php if ($row->BOCORAN_M >0 ): ?>
 											<input value="<?php echo $row->BOCORAN_B ?>" id="<?php echo $row->ID_LAPORANDT; ?>BOCORAN_B" onChange="editDataBiaya('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN_B','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="BOCORAN_B" class="form-control" style="width: 90px;">
+											<?php endif ?>
+
+											<?php if ($row->BOCORAN_M == 0): ?>
+											<input value="<?php echo $row->BOCORAN_B ?>" id="<?php echo $row->ID_LAPORANDT; ?>BOCORAN_B" onChange="editDataBiaya('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN_B','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="hidden"  name="BOCORAN_B" class="form-control" style="width: 90px;">
 											<?php endif ?>
 										</form>
 								<?php endif ?>
@@ -123,7 +127,7 @@
 									<form class="FORM_BOCORAN" id="FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 									<input type="hidden" name="KOLOM" value="BOCORAN">
-									<?php if ($row->BOCORAN_M > 0 AND $row->BOCORAN_T !=="R"): ?>
+									<?php if ($row->BOCORAN_M > 0 AND $row->BOCORAN_T !=="Z"): ?>
 									<select  required="required" style="width: 200px" class="form-control CEK_KOSONG" name="BOCORAN"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 										<option></option>
 										<option <?php echo $row->BOCORAN==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
@@ -190,6 +194,10 @@
 											<?php if ($row->RUSAK_M > 0 ): ?>
 											<input value="<?php echo $row->RUSAK_B ?>" id="<?php echo $row->ID_LAPORANDT; ?>RUSAK_B" onChange="editDataBiaya('FORM<?php echo $row->ID_LAPORANDT; ?>RUSAK_B','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="RUSAK_B" class="form-control" style="width: 90px;">
 											<?php endif ?>
+
+												<?php if ($row->RUSAK_M == 0): ?>
+											<input value="<?php echo $row->RUSAK_B ?>" id="<?php echo $row->ID_LAPORANDT; ?>RUSAK_B" onChange="editDataBiaya('FORM<?php echo $row->ID_LAPORANDT; ?>RUSAK_B','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="hidden" name="RUSAK_B" class="form-control" style="width: 90px;">
+											<?php endif ?>
 										</form>
 								<?php endif ?>
 
@@ -199,7 +207,7 @@
 									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>RUSAK" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 									<input type="hidden" name="KOLOM" value="RUSAK">
-									<?php if ($row->RUSAK_M > 0  AND $row->RUSAK_T !=="R" ): ?>
+									<?php if ($row->RUSAK_M > 0  AND $row->RUSAK_T !=="Z" ): ?>
 									<select style="width: 200px" class="form-control" name="RUSAK"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 										<option></option>
 										<option <?php echo $row->RUSAK==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
@@ -256,6 +264,11 @@
 											<?php if ($row->LONGSORAN_M > 0 ): ?>
 											<input value="<?php echo $row->LONGSORAN_B ?>" id="<?php echo $row->ID_LAPORANDT; ?>LONGSORAN_B" onChange="editDataBiaya('FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN_B','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="LONGSORAN_B" class="form-control" style="width: 90px;">
 											<?php endif ?>
+
+											<?php if ($row->LONGSORAN_M == 0): ?>
+											<input value="<?php echo $row->LONGSORAN_B ?>" id="<?php echo $row->ID_LAPORANDT; ?>LONGSORAN_B" onChange="editDataBiaya('FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN_B','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="hidden" name="LONGSORAN_B" class="form-control" style="width: 90px;">
+											<?php endif ?>
+
 										</form>
 								<?php endif ?>
 
@@ -265,7 +278,7 @@
 									<input type="hidden" name="KOLOM" value="LONGSORAN">
 
 
-									<?php if ($row->LONGSORAN_M > 0 AND $row->LONGSORAN_T !=="R"  ): ?>
+									<?php if ($row->LONGSORAN_M > 0 AND $row->LONGSORAN_T !=="Z"  ): ?>
 										<select style="width: 200px" class="form-control" name="LONGSORAN"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 										<option></option>
 										<option <?php echo $row->LONGSORAN==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
@@ -321,6 +334,10 @@
 											<?php if ($row->TERSUMBAT_M > 0 ): ?>
 											<input value="<?php echo $row->TERSUMBAT_B ?>" id="<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT_B" onChange="editDataBiaya('FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT_B','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="TERSUMBAT_B" class="form-control" style="width: 90px;">
 											<?php endif ?>
+
+											<?php if ($row->TERSUMBAT_M == 0): ?>
+											<input value="<?php echo $row->TERSUMBAT_B ?>" id="<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT_B" onChange="editDataBiaya('FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT_B','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="hidden" name="TERSUMBAT_B" class="form-control" style="width: 90px;">
+											<?php endif ?>
 										</form>
 								<?php endif ?>
 
@@ -330,7 +347,7 @@
 									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 									<input type="hidden" name="KOLOM" value="TERSUMBAT">
-									<?php if ($row->TERSUMBAT_M > 0 AND $row->TERSUMBAT_T !=="R" ): ?>
+									<?php if ($row->TERSUMBAT_M > 0 AND $row->TERSUMBAT_T !=="Z" ): ?>
 									<select style="width: 200px" class="form-control" name="TERSUMBAT"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 										<option></option>
 										<option <?php echo $row->TERSUMBAT==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
@@ -382,6 +399,10 @@
 											<?php if ($row->RETAK_M > 0 ): ?>
 											<input value="<?php echo $row->RETAK_B ?>" id="<?php echo $row->ID_LAPORANDT; ?>RETAK_B" onChange="editDataBiaya('FORM<?php echo $row->ID_LAPORANDT; ?>RETAK_B','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="RETAK_B" class="form-control" style="width: 90px;">
 											<?php endif ?>
+
+											<?php if ($row->RETAK_M == 0): ?>
+											<input value="<?php echo $row->RETAK_B ?>" id="<?php echo $row->ID_LAPORANDT; ?>RETAK_B" onChange="editDataBiaya('FORM<?php echo $row->ID_LAPORANDT; ?>RETAK_B','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="hidden" name="RETAK_B" class="form-control" style="width: 90px;">
+											<?php endif ?>
 										</form>
 								<?php endif ?>
 
@@ -391,7 +412,7 @@
 									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>RETAK" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RETAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 									<input type="hidden" name="KOLOM" value="RETAK">
-									<?php if ($row->RETAK_M > 0  AND $row->RETAK_T !=="R" ): ?>
+									<?php if ($row->RETAK_M > 0  AND $row->RETAK_T !=="Z" ): ?>
 									<select style="width: 200px" class="form-control" name="RETAK"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RETAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 										<option></option>
 										<option <?php echo $row->RETAK==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
@@ -443,6 +464,10 @@
 											<?php if ($row->PINTU_RUSAK_M > 0 ): ?>
 											<input value="<?php echo $row->PINTU_RUSAK_B ?>" id="<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK_B" onChange="editDataBiaya('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK_B','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="PINTU_RUSAK_B" class="form-control" style="width: 90px;">
 											<?php endif ?>
+
+											<?php if ($row->PINTU_RUSAK_M == 0): ?>
+											<input value="<?php echo $row->PINTU_RUSAK_B ?>" id="<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK_B" onChange="editDataBiaya('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK_B','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="hidden" name="PINTU_RUSAK_B" class="form-control" style="width: 90px;">
+											<?php endif ?>
 										</form>
 								<?php endif ?>
 
@@ -451,7 +476,7 @@
 									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 									<input type="hidden" name="KOLOM" value="PINTU_RUSAK">
-									<?php if ($row->PINTU_RUSAK_M > 0 AND $row->PINTU_RUSAK_T !=="R" ): ?>
+									<?php if ($row->PINTU_RUSAK_M > 0 AND $row->PINTU_RUSAK_T !=="Z" ): ?>
 									<select style="width: 200px" class="form-control" name="PINTU_RUSAK"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 										<option></option>
 										<option <?php echo $row->PINTU_RUSAK==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
@@ -501,6 +526,10 @@
 											<?php if ($row->SEDIMEN_M > 0 ): ?>
 											<input value="<?php echo $row->SEDIMEN_B ?>" id="<?php echo $row->ID_LAPORANDT; ?>SEDIMEN_B" onChange="editDataBiaya('FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN_B','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="text" name="SEDIMEN_B" class="form-control" style="width: 90px;">
 											<?php endif ?>
+
+											<?php if ($row->SEDIMEN_M == 0): ?>
+											<input value="<?php echo $row->SEDIMEN_B ?>" id="<?php echo $row->ID_LAPORANDT; ?>SEDIMEN_B" onChange="editDataBiaya('FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN_B','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;" type="hidden" name="SEDIMEN_B" class="form-control" style="width: 90px;">
+											<?php endif ?>
 										</form>
 								<?php endif ?>
 
@@ -510,7 +539,7 @@
 									<form id="FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 									<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 									<input type="hidden" name="KOLOM" value="SEDIMEN">
-									<?php if ($row->SEDIMEN_M > 0 AND $row->SEDIMEN_T !=="R" ): ?>
+									<?php if ($row->SEDIMEN_M > 0 AND $row->SEDIMEN_T !=="Z" ): ?>
 									<select style="width: 200px" class="form-control" name="SEDIMEN"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 										<option></option>
 										<option <?php echo $row->SEDIMEN==='SWAKELOLA'?'selected="selected"':'' ?>>SWAKELOLA</option>
