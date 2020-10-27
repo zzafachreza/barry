@@ -143,15 +143,20 @@ function notify(text,type){
 
 
 
-function getDataDetail(url){
-	$("#loader").fadeIn();
+function getDataDetail(url,start){
+	$("#loader2").fadeIn();
+
 	// alert(url);
 	$.ajax({
 	url:url,
 	success:function(html){
-		$("#loader").fadeOut();
+		$("#loader2").fadeOut();
+
+		
+		
 		// console.log(html);
-		$("#dataLaporan").html(html)
+		$("#dataLaporan").html(html);
+
 			$('#dtHorizontalVerticalExample').DataTable({
 			"scrollX": true,
 			"scrollY": 500,
@@ -176,25 +181,12 @@ function cekList(ID_LAPORANHD,ID_LAPORANDT,FIELD,FIELD_ASAL,url){
 
 	var FIELD = FIELD;
 	
-	if ($("#"+ID_LAPORANDT+FIELD_ASAL).is(':checked')) {
+	
 		$("#"+ID_LAPORANDT+FIELD).val("").focus();
-		// $("#"+ID_LAPORANDT+FIELD).focus();
-	}else{
 
-		$.ajax({
-		url:url,
-		type:'POST',
-		data:{
-			ID_LAPORANDT:ID_LAPORANDT,
-			KOLOM:FIELD,
-			TIPE:'DELETE'
-		},
-		success:function(data){
-			console.log(data);
-			}
-		})
-		$("#"+ID_LAPORANDT+FIELD).val("");
-	}
+		// alert("#"+ID_LAPORANDT+FIELD)
+		// $("#"+ID_LAPORANDT+FIELD).focus();
+	
 
 
 	

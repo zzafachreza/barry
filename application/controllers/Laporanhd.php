@@ -197,7 +197,11 @@ class Laporanhd extends CI_Controller{
 		$id	= $this->uri->segment(3);
 		$data['ID_LAPORANHD'] = $id;
 		$list = $this->uri->segment(4);
-		$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id,$list);
+		$start = $this->uri->segment(5);
+		$data['laporandt_jml'] = $this->Laporanhd_model->getDataDetailAll($id);
+		$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id,$list,$start);
+		$data['start'] = $start;
+
 		$this->load->view($this->dataTable.'/edit_detail',$data);
 	}
 
@@ -206,6 +210,7 @@ class Laporanhd extends CI_Controller{
 		$id	= $this->uri->segment(3);
 		$data['ID_LAPORANHD'] = $id;
 		$data['laporandt'] = $this->Laporanhd_model->getDataDetail3($id);
+
 		$this->load->view($this->dataTable.'/edit_detail',$data);
 	}
 

@@ -10,8 +10,36 @@
 		$CekDisable ='';
 	}
 
+
+
+$jumlah_semua = $laporandt_jml->num_rows();
+$jumlah_per = $laporandt->num_rows();
+$jumlah_halaman = ceil($jumlah_semua/$jumlah_per);
+$start;
+
 ?>
 
+<nav aria-label="...">
+  <ul class="pagination">
+
+   <?php
+
+   for ($i=0; $i <$jumlah_halaman ; $i++) { 
+   	# code...
+   
+
+   ?>
+
+   	 <li id="HALAMAN<?php echo $i ?>" class="page-item <?php echo $i==$start?'active':'' ?>" ><a class="page-link" onclick="getHalaman('<?php echo $jumlah_per ?>','<?php echo $i ?>')" ><?php echo $i+1 ?></a></li>
+
+   <?php
+}
+
+   ?>
+  
+  
+  </ul>
+</nav>
 <style type="text/css">
  	#dtHorizontalVerticalExample th, td { white-space: nowrap; }
  </style>
@@ -82,7 +110,7 @@
 					<tbody>
 
 						 <?php
-			  				$no=0;
+			  				$no=($jumlah_per*$start);
 			  				foreach($laporandt->result() as $row):
 			  				$no++;
 
@@ -138,15 +166,12 @@
 								<?php endif ?>
 
 
-							<label>
-									<input <?php echo $CekDisable." ".$formDisable; ?> <?php echo $row->BOCORAN_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','BOCORAN_M','BOCORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>BOCORAN" class="form-control" type="checkbox" name="BOCORAN" style="width: 50px;">
-							</label>
-
+		
 								<form  id="FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN_T" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 											<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 											<input type="hidden" name="KOLOM" value="BOCORAN_T">
 									
-											<select <?php echo $CekDisable." ".$formDisable; ?> style="width: 90px;margin-top: 3%" class="form-control" name="BOCORAN_T"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+											<select id="<?php echo $row->ID_LAPORANDT; ?>BOCORAN_T" <?php echo $CekDisable." ".$formDisable; ?> style="width: 90px;margin-top: 3%" class="form-control" name="BOCORAN_T"  onChange="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','BOCORAN_M','BOCORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');editData('FORM<?php echo $row->ID_LAPORANDT; ?>BOCORAN_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 												<option></option>
 												<option <?php echo $row->BOCORAN_T==='R'?'selected="selected"':'' ?>>R</option>
 												<option <?php echo $row->BOCORAN_T==='S'?'selected="selected"':'' ?>>S</option>
@@ -217,11 +242,7 @@
 								</form>
 								<?php endif ?>
 
-							<label>
-									<input <?php echo $CekDisable." ".$formDisable; ?> <?php echo $row->RUSAK_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','RUSAK_M','RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>RUSAK" class="form-control" type="checkbox" name="RUSAK" style="width: 50px;">
-
-
-							</label>
+					
 
 
 
@@ -229,7 +250,7 @@
 											<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 											<input type="hidden" name="KOLOM" value="RUSAK_T">
 									
-											<select  <?php echo $CekDisable." ".$formDisable; ?> style="width: 90px;margin-top: 3%" class="form-control" name="RUSAK_T"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RUSAK_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+											<select <?php echo $CekDisable." ".$formDisable; ?> style="width: 90px;margin-top: 3%" class="form-control" name="RUSAK_T"  onChange="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','RUSAK_M','RUSAK_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');editData('FORM<?php echo $row->ID_LAPORANDT; ?>RUSAK_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 												<option></option>
 												<option <?php echo $row->RUSAK_T==='R'?'selected="selected"':'' ?>>R</option>
 												<option <?php echo $row->RUSAK_T==='S'?'selected="selected"':'' ?>>S</option>
@@ -291,15 +312,12 @@
 
 
 
-							<label>
-									<input <?php echo $CekDisable." ".$formDisable; ?> <?php echo $row->LONGSORAN_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','LONGSORAN_M','LONGSORAN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>LONGSORAN" class="form-control" type="checkbox" name="LONGSORAN" style="width: 50px;">
-							</label>
-
+						
 								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN_T" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 											<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 											<input type="hidden" name="KOLOM" value="LONGSORAN_T">
 									
-											<select  <?php echo $CekDisable." ".$formDisable; ?> style="width: 90px;margin-top: 3%" class="form-control" name="LONGSORAN_T"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+											<select  <?php echo $CekDisable." ".$formDisable; ?> style="width: 90px;margin-top: 3%" class="form-control" name="LONGSORAN_T"  onChange="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','LONGSORAN_M','LONGSORAN_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');editData('FORM<?php echo $row->ID_LAPORANDT; ?>LONGSORAN_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 												<option></option>
 												<option <?php echo $row->LONGSORAN_T==='R'?'selected="selected"':'' ?>>R</option>
 												<option <?php echo $row->LONGSORAN_T==='S'?'selected="selected"':'' ?>>S</option>
@@ -358,14 +376,12 @@
 								<?php endif ?>
 
 
-							<label>
-									<input <?php echo $CekDisable." ".$formDisable; ?> <?php echo $row->TERSUMBAT_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','TERSUMBAT_M','TERSUMBAT','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT" class="form-control" type="checkbox" name="TERSUMBAT" style="width: 50px;">
-							</label>
+							
 							<form id="FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT_T" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 											<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 											<input type="hidden" name="KOLOM" value="TERSUMBAT_T">
 									
-											<select  <?php echo $CekDisable." ".$formDisable; ?> style="width: 90px;margin-top: 3%" class="form-control" name="TERSUMBAT_T"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+											<select  <?php echo $CekDisable." ".$formDisable; ?> style="width: 90px;margin-top: 3%" class="form-control" name="TERSUMBAT_T"  onChange="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','TERSUMBAT_M','TERSUMBAT_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');editData('FORM<?php echo $row->ID_LAPORANDT; ?>TERSUMBAT_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 												<option></option>
 												<option <?php echo $row->TERSUMBAT_T==='R'?'selected="selected"':'' ?>>R</option>
 												<option <?php echo $row->TERSUMBAT_T==='S'?'selected="selected"':'' ?>>S</option>
@@ -423,15 +439,13 @@
 								<?php endif ?>
 
 
-							<label>
-									<input <?php echo $CekDisable." ".$formDisable; ?> <?php echo $row->RETAK_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','RETAK_M','RETAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>RETAK" class="form-control" type="checkbox" name="RETAK" style="width: 50px;">
-							</label>
+							
 
 							<form id="FORM<?php echo $row->ID_LAPORANDT; ?>RETAK_T" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RETAK_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 											<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 											<input type="hidden" name="KOLOM" value="RETAK_T">
 									
-											<select  <?php echo $CekDisable." ".$formDisable; ?> style="width: 90px;margin-top: 3%" class="form-control" name="RETAK_T"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>RETAK_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+											<select  <?php echo $CekDisable." ".$formDisable; ?> style="width: 90px;margin-top: 3%" class="form-control" name="RETAK_T"  onChange="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','RETAK_M','RETAK_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');editData('FORM<?php echo $row->ID_LAPORANDT; ?>RETAK_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 												<option></option>
 												<option <?php echo $row->RETAK_T==='R'?'selected="selected"':'' ?>>R</option>
 												<option <?php echo $row->RETAK_T==='S'?'selected="selected"':'' ?>>S</option>
@@ -486,14 +500,12 @@
 								</form>
 								<?php endif ?>
 
-							<label>
-									<input <?php echo $CekDisable." ".$formDisable; ?> <?php echo $row->PINTU_RUSAK_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','PINTU_RUSAK_M','PINTU_RUSAK','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK" class="form-control" type="checkbox" name="PINTU_RUSAK" style="width: 50px;">
-							</label>
-	<form id="FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK_T" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
+						
+								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK_T" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 											<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 											<input type="hidden" name="KOLOM" value="PINTU_RUSAK_T">
 									
-											<select  <?php echo $CekDisable." ".$formDisable; ?> style="width: 90px;margin-top: 3%" class="form-control" name="PINTU_RUSAK_T"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+											<select  <?php echo $CekDisable." ".$formDisable; ?> style="width: 90px;margin-top: 3%" class="form-control" name="PINTU_RUSAK_T"  onChange="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','PINTU_RUSAK_M','PINTU_RUSAK_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');editData('FORM<?php echo $row->ID_LAPORANDT; ?>PINTU_RUSAK_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 												<option></option>
 												<option <?php echo $row->PINTU_RUSAK_T==='R'?'selected="selected"':'' ?>>R</option>
 												<option <?php echo $row->PINTU_RUSAK_T==='S'?'selected="selected"':'' ?>>S</option>
@@ -549,16 +561,14 @@
 								</form>
 								<?php endif ?>
 
-							<label>
-									<input <?php echo $CekDisable." ".$formDisable; ?> <?php echo $row->SEDIMEN_M !=0?"checked='checked'":"" ?> onclick="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','SEDIMEN_M','SEDIMEN','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>')" id="<?php echo $row->ID_LAPORANDT; ?>SEDIMEN" class="form-control" type="checkbox" name="SEDIMEN" style="width: 50px;">
-							</label>
+							
 
 							
 								<form id="FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN_T" onSubmit="editData('FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>'); return false;">
 											<input type="hidden" name="ID_LAPORANDT" value="<?php echo $row->ID_LAPORANDT; ?>">
 											<input type="hidden" name="KOLOM" value="SEDIMEN_T">
 									
-											<select  <?php echo $CekDisable." ".$formDisable; ?> style="width: 90px;margin-top: 3%" class="form-control" name="SEDIMEN_T"  onChange="editData('FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
+											<select  <?php echo $CekDisable." ".$formDisable; ?> style="width: 90px;margin-top: 3%" class="form-control" name="SEDIMEN_T"  onChange="cekList('<?php echo $ID_LAPORANHD; ?>','<?php echo $row->ID_LAPORANDT; ?>','SEDIMEN_M','SEDIMEN_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');editData('FORM<?php echo $row->ID_LAPORANDT; ?>SEDIMEN_T','<?php echo base_url().'/laporanhd/update_detail/'.$row->ID_LAPORANHD ?>');">
 												<option></option>
 												<option <?php echo $row->SEDIMEN_T==='R'?'selected="selected"':'' ?>>R</option>
 												<option <?php echo $row->SEDIMEN_T==='S'?'selected="selected"':'' ?>>S</option>

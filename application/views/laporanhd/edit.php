@@ -155,6 +155,7 @@
 	
 			<label>Tampilkan Per : 
 				<select id="list" name="list" class="form-control col-sm-12">
+					<option>10</option>
 					<option>20</option>
 					<option>50</option>
 					<option>100</option>
@@ -163,8 +164,12 @@
 			</label>
 		
 
-		
+		<div id="loader2">
+		  <img src="<?php echo site_url()?>/assets/images/loader.gif" width="200">
+		</div>
 			<div id="dataLaporan">
+
+
 				
 			</div>
 
@@ -197,16 +202,27 @@
 			<script type="text/javascript">
 
 				$("#list").change(function(e){
-					$("#loader").show();
+					$("#loader2").show();
 					e.preventDefault();
 					var list = $(this).val();
-					getDataDetail('<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>/'+list);
+					var start =0;
+					getDataDetail('<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>/'+list+'/'+start);
 				})
 
-				$("#loader").fadeIn('fast');
+				// $("#loader").fadeIn('fast');
 
-				var list = 20;
-				getDataDetail('<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>/'+list);
+				var start=0;
+				var list = 10;
+				getDataDetail('<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>/'+list+'/'+start);
+
+
+				function getHalaman(list,start){
+
+					$("#loader2").fadeIn('fast');
+					// $("#HALAMAN"+start).addClass("active");
+
+					getDataDetail('<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>/'+list+'/'+start+'',start);
+				}
 			</script>
 <?php endif ?>
 

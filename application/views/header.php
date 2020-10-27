@@ -12,7 +12,7 @@
     <link href="<?php echo site_url() ?>assets/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo site_url() ?>assets/css/fixedColumns.dataTables.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo site_url() ?>assets/css/selectize.css" rel="stylesheet" type="text/css" />
-    <link href="<?php echo site_url() ?>assets/css/app.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo site_url() ?>assets/css/app201027.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo site_url() ?>assets/css/flaticon/flaticon.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo site_url() ?>assets/css/flaticon2/flaticon.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo site_url() ?>assets/css/bootstrap-datepicker.css" rel="stylesheet" type="text/css" />
@@ -45,7 +45,7 @@
 
   <script type="text/javascript" src="<?php echo site_url() ?>assets/js/chart.js"></script>
 
-  <script type="text/javascript" src="<?php echo site_url() ?>assets/js/app.js"></script>
+  <script type="text/javascript" src="<?php echo site_url() ?>assets/js/app201027.js"></script>
     
 
     <link rel="manifest" href="<?php echo site_url() ?>manifest.json">
