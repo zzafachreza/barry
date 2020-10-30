@@ -7,7 +7,23 @@ header("Expires: 0");
 
 error_reporting(0);
 
+function tglIndonesia2($tanggal){
+  $namaBln = array("01" => "Januari", "02" => "Februari", "03" => "Maret", "04" => "April", "05" => "Mei", "06" => "Juni", 
+           "07" => "Juli", "08" => "Agustus", "09" => "September", "10" => "Oktober", "11" => "November", "12" => "Desember");
+           
+  $tgl=substr($tanggal,8,2);
+  $bln=substr($tanggal,5,2);
+  $thn=substr($tanggal,0,4);
+  $tanggal ="$tgl ".$namaBln[$bln]." $thn";
+  return $tanggal;
+}
+
 ?>
+<style type="text/css">
+	.navbar{
+		display: none;
+	}
+</style>
 
 
 
@@ -16,46 +32,46 @@ error_reporting(0);
               border="1">
 					<thead>
 					 <tr>
-              				<td colspan="14" border="0">
+              				<th colspan="14" border="0">
 		              			<center>
 									<h1>LAPORAN KERUSAKAN JARINGAN IRIGASI</h1>
-									<?php   $TGL = explode("-", $laporanhd['TANGGAL']) ?>
-									<h3>Inspeksi Rutin <?php echo $TGL[2] ?> Tanggal  Bulan <?php echo $TGL[1] ?> Tahun <?php echo $TGL[0] ?></h2>
+									
+									<h3>Inspeksi Rutin  Tanggal <?php echo tglIndonesia2($laporanhd['TANGGAL'])  ?></h2>
 								</center>
-								</td>
-							<td colspan="2" border="0">
+								</th>
+							<th colspan="2" border="0">
 			              			<center>
 										<h2>Blanko 01 - P</h2>
 									</center>
-							</td>
+							</th>
 		            </tr>
 
 		            <tr>
-		            	<td border="0" colspan="4">DAERAH IRIGASI</td>
-		            	<td border="0" colspan="8">: <?php echo $laporanhd['DAERAH_IRIGASI'] ?></td>
+		            	<th border="0" colspan="4">DAERAH IRIGASI</th>
+		            	<th border="0" colspan="8">: <?php echo $laporanhd['DAERAH_IRIGASI'] ?></th>
 
-		            	<td border="0" colspan="2">KABUPATEN</td>
-		            	<td border="0" colspan="2">: <?php echo $laporanhd['KABUPATEN'] ?></td>
+		            	<th border="0" colspan="2">KABUPATEN</th>
+		            	<th border="0" colspan="2">: <?php echo $laporanhd['KABUPATEN'] ?></th>
 		            </tr>
 		             <tr>
-		            	<td border="0" colspan="4">TOTAL LUAS AREAL DI</td>
-		            	<td border="0" colspan="8">: <?php echo $laporanhd['LUAS_AREA_IRIGASI'] ?> Ha</td>
+		            	<th border="0" colspan="4">TOTAL LUAS AREAL DI</th>
+		            	<th border="0" colspan="8">: <?php echo $laporanhd['LUAS_AREA_IRIGASI'] ?> Ha</th>
 
-		            	<td border="0" colspan="2">PENGAMAT/RANTING</td>
-		            	<td border="0" colspan="2">: <?php echo $laporanhd['RANTING'] ?></td>
+		            	<th border="0" colspan="2">PENGAMAT/RANTING</th>
+		            	<th border="0" colspan="2">: <?php echo $laporanhd['RANTING'] ?></th>
 		            </tr>
 		             <tr>
-		            	<td border="0" colspan="4">TINGKATAN DI : T / ST / SD</td>
-		            	<td border="0" colspan="8">: <?php echo $laporanhd['TINGKATAN_IRIGASI'] ?></td>
+		            	<th border="0" colspan="4">TINGKATAN DI : T / ST / SD</th>
+		            	<th border="0" colspan="8">: <?php echo $laporanhd['TINGKATAN_IRIGASI'] ?></th>
 
-		            	<td border="0" colspan="2">JURU/MANTRI</td>
-		            	<td border="0" colspan="2">: <?php echo $laporanhd['MANTRI'] ?></td>
+		            	<th border="0" colspan="2">JURU/MANTRI</th>
+		            	<th border="0" colspan="2">: <?php echo $laporanhd['MANTRI'] ?></th>
 		            </tr>
 		       
 		            <tr>
-		            	<td colspan="16">
+		            	<th colspan="16">
 		            		&nbsp;
-		            	</td>
+		            	</th>
 		            </tr>
 					<tr>
 						<th rowspan="2">NO</th>
@@ -80,22 +96,22 @@ error_reporting(0);
 						<th>USULAN TINDAK LANJUT</th>
 					</tr>
 					<tr style="text-align: center;">
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
-						<td>10</td>
-						<td>11</td>
-						<td>12</td>
-						<td>13</td>
-						<td>14</td>
-						<td>15</td>
-						<td>16</td>
+						<th>1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>5</th>
+						<th>6</th>
+						<th>7</th>
+						<th>8</th>
+						<th>9</th>
+						<th>10</th>
+						<th>11</th>
+						<th>12</th>
+						<th>13</th>
+						<th>14</th>
+						<th>15</th>
+						<th>16</th>
 
 
 					</tr>
@@ -110,23 +126,39 @@ error_reporting(0);
 				  			<td ><?php echo $no ?></td>
 				  			<td><?php echo $row->nama_ruas; ?></td>
 				  			<td><?php echo $row->nama_bangunan; ?></td>
-							<td><?php echo $row->BOCORAN_M; ?></td>
-							<td><?php echo $row->RUSAK_M; ?></td>
-							<td><?php echo $row->LONGSORAN_M; ?></td>
-							<td><?php echo $row->TERSUMBAT_M; ?></td>
-							<td><?php echo $row->RETAK_M; ?></td>
-							<td><?php echo $row->RETAK_M; ?></td>
-							<td><?php echo $row->SEDIMEN_M; ?></td>
+							<td><?php echo $row->BOCORAN_M; ?><br/>
+								<?php echo $row->BOCORAN_M>0 ? '( '.$row->BOCORAN_T.' )':''; ?>
+							</td>
+							<td><?php echo $row->RUSAK_M; ?><br/>
+								<?php echo $row->RUSAK_M>0 ? '( '.$row->RUSAK_T.' )':''; ?>
+							</td>
+							<td><?php echo $row->LONGSORAN_M; ?><br/>
+								<?php echo $row->LONGSORAN_M>0 ? '( '.$row->LONGSORAN_T.' )':''; ?>
+							</td>
+							<td><?php echo $row->TERSUMBAT_M; ?><br/>
+								<?php echo $row->TERSUMBAT_M>0 ? '( '.$row->TERSUMBAT_T.' )':''; ?>
+							</td>
+							<td><?php echo $row->RETAK_M; ?><br/>
+								<?php echo $row->RETAK_M>0 ? '( '.$row->RETAK_T.' )':''; ?>
+							</td>
+							<td><?php echo $row->PINTU_RUSAK_M; ?><br/>
+								<?php echo $row->PINTU_RUSAK_M>0 ? '( '.$row->PINTU_RUSAK_T.' )':''; ?>
+							</td>
+							<td><?php echo $row->SEDIMEN_M; ?><br/>
+								<?php echo $row->SEDIMEN_M>0 ? '( '.$row->SEDIMEN_T.' )':''; ?>
+							</td>
 							<td><?php echo $row->LAIN_LAIN; ?></td>
 							<td><?php echo $row->DIKERJAKAN; ?></td>
 							<td><?php echo $row->USULAN; ?></td>
 							<td><?php echo $row->AREA_BAWAH; ?></td>
 							<td><?php echo $row->DESA; ?></td>
-							<td>
-								<?php if (isset($row->FOTO_BEFORE)): ?>
+							<td>	
+								<?php $gambar = $row->FOTO_BEFORE; ?>
+								<?php if (strlen($row->$gambar) > 0 ): ?>
 									<center>
-										<img height="100" src="<?php echo site_url().'upload/'.$row->FOTO_BEFORE; ?>">
+										<img height="100" src="<?php echo site_url().'upload/'.$row->$gambar; ?>">
 									</center>
+
 								<?php endif ?>
 								
 							</td>
@@ -154,20 +186,21 @@ error_reporting(0);
 							</td>
 							<td colspan="3">
 								<center>
+									<strong><?php echo $laporanhd['KABUPATEN'] ?>, <?php echo tglIndonesia2($laporanhd['TANGGAL'])  ?></strong>
 									<h2>Juru/Mantri Cimandiri</h2>
 									<br/>
 									<br/>
 									<br/>
 									<br/>
-									<br/>
-									<br/>
 									<p style="font-weight: bold;font-size: x-large;"><u><?php echo $_SESSION['nama_lengkap'] ?></u></p>
-
+									<p style="margin-top: 0%;font-size: large;">NIP : <?php echo $_SESSION['nip'] ?> </p>
 								</center>
-											<p style="margin-top: 0%;font-size: large;">NIP : <?php echo $_SESSION['nip'] ?></p></p>
+											
 							</td>
 						</tr>
 					</tbody>
+	
+
 				</table>
 
 

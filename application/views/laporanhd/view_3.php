@@ -121,36 +121,37 @@ error_reporting(0);
 				  			<td><?php echo $row->nama_bangunan; ?></td>
 							<td><?php echo $row->BOCORAN_M; ?><br/>
 								<?php echo $row->BOCORAN_M>0 ? '( '.$row->BOCORAN_T.' )':''; ?><br/>
-								<?php echo $row->BOCORAN_M>0 ? '( '.$row->BOCORAN_B.' )':''; ?><br/>
+								<?php echo $row->BOCORAN_M>0 ? '( '.number_format($row->BOCORAN_B).' )':''; ?><br/>
 								<strong><?php echo $row->BOCORAN_M>0 ?$row->BOCORAN:''; ?></strong>
 							</td>
 							<td><?php echo $row->RUSAK_M; ?><br/>
 								<?php echo $row->RUSAK_M>0 ? '( '.$row->RUSAK_T.' )':''; ?><br/>
-								<?php echo $row->RUSAK_M>0 ? '( '.$row->RUSAK_B.' )':''; ?><br/>
+								<?php echo $row->RUSAK_M>0 ? '( '.number_format($row->RUSAK_B).' )':''; ?><br/>
 								<strong><?php echo $row->RUSAK_M>0 ?$row->RUSAK:''; ?></strong>
 							</td>
 							<td><?php echo $row->LONGSORAN_M; ?><br/>
 								<?php echo $row->LONGSORAN_M>0 ? '( '.$row->LONGSORAN_T.' )':''; ?><br/>
-								<?php echo $row->LONGSORAN_M>0 ? '( '.$row->LONGSORAN_B.' )':''; ?><br/>
+								<?php echo $row->LONGSORAN_M>0 ? '( '.number_format($row->LONGSORAN_B).' )':''; ?><br/>
 								<strong><?php echo $row->LONGSORAN_M>0 ?$row->LONGSORAN:''; ?></strong>
 							</td>
 							<td><?php echo $row->TERSUMBAT_M; ?><br/>
 								<?php echo $row->TERSUMBAT_M>0 ? '( '.$row->TERSUMBAT_T.' )':''; ?><br/>
-								<?php echo $row->TERSUMBAT_M>0 ? '( '.$row->TERSUMBAT_B.' )':''; ?><br/>
+								<?php echo $row->TERSUMBAT_M>0 ? '( '.number_format($row->TERSUMBAT_B).' )':''; ?><br/>
 								<strong><?php echo $row->TERSUMBAT_M>0 ?$row->TERSUMBAT:''; ?></strong>
 							</td>
 							<td><?php echo $row->RETAK_M; ?><br/>
-								<?php echo $row->RETAK_M>0 ?$row->RETAK_T:''; ?><br/>
+								<?php echo $row->RETAK_M>0 ?'( '.$row->RETAK_T.' )':''; ?><br/>
+								<?php echo $row->RETAK_M>0 ? '( '.number_format($row->RETAK_B).' )':''; ?><br/>
 								<strong><?php echo $row->RETAK_M>0 ? $row->RETAK:''; ?></strong>
 							</td>
 							<td><?php echo $row->PINTU_RUSAK_M; ?><br/>
-								<?php echo $row->PINTU_RUSAK_M>0 ? $row->PINTU_RUSAK_T:''; ?><br/>
-								<?php echo $row->PINTU_RUSAK_M>0 ? $row->PINTU_RUSAK_B:''; ?><br/>
+								<?php echo $row->PINTU_RUSAK_M>0 ? '( '.$row->PINTU_RUSAK_T.' )':''; ?><br/>
+								<?php echo $row->PINTU_RUSAK_M>0 ? '( '.number_format($row->PINTU_RUSAK_B).' )':''; ?><br/>
 								<strong><?php echo $row->PINTU_RUSAK_M>0 ?$row->PINTU_RUSAK:''; ?></strong>
 							</td>
 							<td><?php echo $row->SEDIMEN_M; ?><br/>
 								<?php echo $row->SEDIMEN_M>0 ? '( '.$row->SEDIMEN_T.' )':''; ?><br/>
-								<?php echo $row->SEDIMEN_M>0 ? '( '.$row->SEDIMEN_B.' )':''; ?><br/>
+								<?php echo $row->SEDIMEN_M>0 ? '( '.number_format($row->SEDIMEN_B).' )':''; ?><br/>
 								<strong><?php echo $row->SEDIMEN_M>0 ? $row->SEDIMEN:''; ?></strong>
 							</td>
 							<td><?php echo $row->LAIN_LAIN; ?></td>

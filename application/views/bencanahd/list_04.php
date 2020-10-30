@@ -54,6 +54,8 @@
 		  				<td>
 		  					<a href="<?php echo site_url('bencanahd/view_lampiran04/'.$row->ID_LAPORANHD	) ?>" class="btn btn-primary btn-sm"><i class="flaticon-eye"></i></a>
 
+		  					<a href="<?php echo site_url('bencanahd/view_lampiran04_pdf/'.$row->ID_LAPORANHD	) ?>" class="btn btn-danger btn-sm">PDF</a>
+
 		  					<?php if ($row->STATUS_SWAKELOLA!=='DONE' OR $_SESSION['level']==='ADMIN'): ?>
 		  							<a href="<?php echo site_url('bencanahd/edit_lampiran04/'.$row->ID_LAPORANHD	) ?>" class="btn btn-success btn-sm"><i class="flaticon-edit"></i> 04 P</a>
 		  								<a onclick="return confirm('Apakah Anda yakin akan hapus ini ?')" href="<?php echo site_url('bencanahd/delete_swakelola/'.$row->ID_LAPORANHD) ?>" class="btn btn-danger btn-sm"><i class="flaticon-delete"></i></a>	

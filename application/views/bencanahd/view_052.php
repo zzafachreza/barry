@@ -219,7 +219,6 @@ error_reporting(0);
 			}else{
 				echo "";
 			}
-
 			$BIAYA += $ESTIMASI_PERBAIKAN;
 
 			?>

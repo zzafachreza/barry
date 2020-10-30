@@ -8,6 +8,17 @@
 $mpdf = new \Mpdf\Mpdf(['format' => 'Legal-L']);
 $TGL = explode("-", $laporanhd['TANGGAL']);
 
+function tglIndonesia2($tanggal){
+  $namaBln = array("01" => "Januari", "02" => "Februari", "03" => "Maret", "04" => "April", "05" => "Mei", "06" => "Juni", 
+           "07" => "Juli", "08" => "Agustus", "09" => "September", "10" => "Oktober", "11" => "November", "12" => "Desember");
+           
+  $tgl=substr($tanggal,8,2);
+  $bln=substr($tanggal,5,2);
+  $thn=substr($tanggal,0,4);
+  $tanggal ="$tgl ".$namaBln[$bln]." $thn";
+  return $tanggal;
+}
+
 
 
 $html = '<table style="width: 100%" style="font-size: small;border:1px solid;border-collapse: collapse"><th style="border:1px solid;text-align:center"ead><tr>
@@ -16,7 +27,7 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 		              			<center>
 									<h1>LAPORAN KERUSAKAN JARINGAN IRIGASI</h1>
 				
-									<h3>Inspeksi Rutin '. $TGL[2] .' Tanggal  Bulan '. $TGL[1] .' Tahun '. $TGL[0] .'</h2>
+									<h3>Inspeksi Rutin  Tanggal '.tglIndonesia2($laporanhd['TANGGAL']).'</h3>
 								</center>
 								</td>
 							<td style="border:1px solid;text-align:center" colspan="2" border="0">
@@ -70,7 +81,7 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 						<th style="border:1px solid;text-align:center">LONGSORAN/TONJOLAN(M\')</th>
 						<th style="border:1px solid;text-align:center">TERSUMBAT(M\'/BH)</th>
 						<th style="border:1px solid;text-align:center">RETAK(M\')</th>
-						<th style="border:1px solid;text-align:center">PINTU RUSAK (BH)</th>
+						<th style="border:1px solid;text-align:center">PINTU_RUSAK (BH)</th>
 						<th style="border:1px solid;text-align:center">SEDIMEN/WALED (H)</th>
 						<th style="border:1px solid;text-align:center">MASUKAN LAIN - LAIN</th>
 
@@ -104,40 +115,63 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 
 
 			  				$no=0;
+			  				$ESTIMASI_PERBAIKAN_TOTAL=0;
+			  				$ESTIMASI_RUGI_TOTAL=0;
+
 			  				foreach($laporandt->result() as $row){
 			  				$no++;
 
 			  				if ($row->ID_LAPORANHD !== $laporanhd['ID_LAPORANHD']) {
 			  					# code...
 			  					
-
 			  				}else{
+
+
+			  					$ESTIMASI_PERBAIKAN_TOTAL += $row->ESTIMASI_PERBAIKAN;
+			  					$ESTIMASI_RUGI_TOTAL += $row->ESTIMASI_RUGI;
+
+			  				$BOCORAN_T = $row->BOCORAN_M>0 ? '<br/>( '.$row->BOCORAN_T.' )':'';
+			  				$RUSAK_T = $row->RUSAK_M>0 ? '<br/>( '.$row->RUSAK_T.' )':'';
+			  				$LONGSORAN_T = $row->LONGSORAN_M>0 ? '<br/>( '.$row->LONGSORAN_T.' )':'';
+			  				$TERSUMBAT_T = $row->TERSUMBAT_M>0 ? '<br/>( '.$row->TERSUMBAT_T.' )':'';
+			  				$RETAK_T = $row->RETAK_M>0 ? '<br/>( '.$row->RETAK_T.' )':'';
+			  				$PINTU_RUSAK_T= $row->PINTU_RUSAK_M>0 ? '<br/>( '.$row->PINTU_RUSAK_T.' )':'';
+			  				$SEDIMEN_T = $row->SEDIMEN_M>0 ? '<br/>( '.$row->SEDIMEN_T.' )':'';
+
+			  				$BOCORAN_B = $row->BOCORAN_M>0 ? '<br/>( '.number_format($row->BOCORAN_B).' )':'';
+			  				$RUSAK_B = $row->RUSAK_M>0 ? '<br/>( '.number_format($row->RUSAK_B).' )':'';
+			  				$LONGSORAN_B = $row->LONGSORAN_M>0 ? '<br/>( '.number_format($row->LONGSORAN_B).' )':'';
+			  				$TERSUMBAT_B = $row->TERSUMBAT_M>0 ? '<br/>( '.number_format($row->TERSUMBAT_B).' )':'';
+			  				$RETAK_B = $row->RETAK_M>0 ? '<br/>( '.number_format($row->RETAK_B).' )':'';
+			  				$PINTU_RUSAK_B= $row->PINTU_RUSAK_M>0 ? '<br/>( '.number_format($row->PINTU_RUSAK_B).' )':'';
+			  				$SEDIMEN_B = $row->SEDIMEN_M>0 ? '<br/>( '.number_format($row->SEDIMEN_B).' )':'';
+
 
 				  		
 				  		$html .='<tr style="height:100px;text-align: center;">
 				  			<td style="border:1px solid;text-align:center" >'. $no .'</td>
 				  			<td style="border:1px solid;text-align:center">'. $row->nama_ruas.'</td>
 				  			<td style="border:1px solid;text-align:center">'. $row->nama_bangunan .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->BOCORAN_M .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->RUSAK_M .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->LONGSORAN_M .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->TERSUMBAT_M .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->RETAK_M .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->RETAK_M .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->SEDIMEN_M .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->BOCORAN_M.$BOCORAN_T.$BOCORAN_B .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->RUSAK_M.$RUSAK_T.$RUSAK_B .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->LONGSORAN_M.$LONGSORAN_T.$LONGSORAN_B .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->TERSUMBAT_M.$TERSUMBAT_T.$TERSUMBAT_B .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->RETAK_M.$RETAK_T.$RETAK_B .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->RETAK_M.$PINTU_RUSAK_T.$PINTU_RUSAK_B .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->SEDIMEN_M.$SEDIMEN_T.$SEDIMEN_B .'</td>
 							<td style="border:1px solid;text-align:center">'. $row->LAIN_LAIN .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->ESTIMASI_RUGI .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->ESTIMASI_PERBAIKAN .'</td>
+							<td style="border:1px solid;text-align:center">'. number_format($row->ESTIMASI_RUGI) .'</td>
+							<td style="border:1px solid;text-align:center">'. number_format($row->ESTIMASI_PERBAIKAN) .'</td>
 							<td style="border:1px solid;text-align:center">'. $row->PRIORITAS .'</td>
 							<td style="border:1px solid;text-align:center">'. $row->AREA_BAWAH .'</td>
 							<td style="border:1px solid;text-align:center">'. $row->DESA .'</td>
 							<td style="border:1px solid;text-align:center">';
 
-							 if (isset($row->FOTO_BEFORE)){
+								 $gambar =$row->FOTO_BEFORE;
+							 if (strlen($row->FOTO_BEFORE) > 0){
 
-							 	$html .='
-								<center>
-										<img height="100" src="'. site_url().'upload/'.$row->FOTO_BEFORE .'">
+							 	$html .='<center>
+										<img height="100" src="'. site_url().'upload/'.$row->$gambar .'">
 									</center>';
 							 }
 							 	
@@ -146,9 +180,17 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 								
 				  $html.='</tr>';
 
+
+				 
+
 					}
 
 				}
+				 $html.='<tr style="text-align: center;">
+							<td  style="border:1px solid;text-align:center" colspan="11">Total</td>
+							<td style="border:1px solid;text-align:center"><h3>'.number_format($ESTIMASI_RUGI_TOTAL).'</h3></td>
+							<td style="border:1px solid;text-align:center"><h3>'.number_format($ESTIMASI_PERBAIKAN_TOTAL).'</h3></td>
+							<td colspan="4"></td></tr>';
 
 				$html .='<tr>
 							<td style="border:1px solid;text-align:left" colspan="14">
@@ -170,19 +212,23 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 							</td>
 							<td style="border:1px solid;text-align:center" colspan="3">
 						
-								<center>
-									<h3>'. $laporanhd['KABUPATEN'].", ".$TGL[2]."/".$TGL[1]."/".$TGL[0].'<br/>
-										Pengamat/Ranting/UPTD/SUP<br/>'.$laporanhd['RANTING'].'</h3>
-									<br/>
-									<br/>
-									<br/>
-									<br/>
-									<br/>
-									<p style="font-weight: bold;font-size: x-large;"><u>'.$_SESSION['nama_lengkap'].'</u></p>
-									</center>
+							<center>
+									<h6>
+										<strong>'.$laporanhd['KABUPATEN'].', '.tglIndonesia2($laporanhd['TANGGAL']).'</strong><br/>
+										Pengamat/Ranting/UPTD/SUP<br/>'.$laporanhd['RANTING'].'
+									</h6>
 
-							
-								<p style="margin-top: 0%;font-size: large;">NIP : '.$_SESSION['nip'] .'</p>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+
+									<p style=";font-weight: bold;font-size: x-large;"><u>'.$_SESSION['nama_lengkap'].'</u></p>
+									<p style="margin-top: 0%;font-size: large;">NIP : '. $_SESSION['nip'].'</p>
+
+								</center>
+
 							</td>
 						</tr>';
 

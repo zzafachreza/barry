@@ -4,14 +4,28 @@ header("Content-type: application/octet-stream");
 header("Content-Disposition: attachment; filename=Blanko 03 - P.xls");//ganti nama sesuai keperluan
 header("Pragma: no-cache");
 header("Expires: 0");
-error_reporting(0);
-// print_r($laporanhd);
-// // print_r($laporandt);
 
+function tglIndonesia2($tanggal){
+  $namaBln = array("01" => "Januari", "02" => "Februari", "03" => "Maret", "04" => "April", "05" => "Mei", "06" => "Juni", 
+           "07" => "Juli", "08" => "Agustus", "09" => "September", "10" => "Oktober", "11" => "November", "12" => "Desember");
+           
+  $tgl=substr($tanggal,8,2);
+  $bln=substr($tanggal,5,2);
+  $thn=substr($tanggal,0,4);
+  $tanggal ="$tgl ".$namaBln[$bln]." $thn";
+  return $tanggal;
+}
+
+
+
+error_reporting(0);
 
 ?>
-
-
+<style type="text/css">
+	.navbar{
+		display: none;
+	}
+</style>
 
 
 
@@ -22,14 +36,13 @@ error_reporting(0);
 					 <tr>
               				<td colspan="15" border="0">
 		              			<center>
-									<h1>LAPORAN KERUSAKAN AKIBAT BENCANA ALAM</h1>
-									<?php   $TGL = explode("-", $laporanhd['TANGGAL']) ?>
-									<h3>Tanggal Kejadian <?php echo $TGL[2] ?>  Bulan <?php echo $TGL[1] ?> Tahun <?php echo $TGL[0] ?></h2>
+									<h1>LAPORAN KERUSAKAN JARINGAN IRIGASI</h1>
+									<h3>Inspeksi Rutin  Tanggal <?php echo tglIndonesia2($laporanhd['TANGGAL'])  ?></h3>
 								</center>
 								</td>
 							<td colspan="2" border="0">
 			              			<center>
-										<h2>Blanko 03 - P</h2>
+										<h2>Blanko 01 - P</h2>
 									</center>
 							</td>
 		            </tr>
@@ -50,9 +63,10 @@ error_reporting(0);
 		            </tr>
 		             <tr>
 		            	<td border="0" colspan="4">TINGKATAN DI : T / ST / SD</td>
-		            	<td border="0" colspan="13">: <?php echo $laporanhd['TINGKATAN_IRIGASI'] ?></td>
+		            	<td border="0" colspan="9">: <?php echo $laporanhd['TINGKATAN_IRIGASI'] ?></td>
 
-		            	
+		            	<td border="0" colspan="2">JURU/MANTRI</td>
+		            	<td border="0" colspan="2">: <?php echo $laporanhd['MANTRI'] ?></td>
 		            </tr>
 		       
 		            <tr>
@@ -60,42 +74,28 @@ error_reporting(0);
 		            		&nbsp;
 		            	</td>
 		            </tr>
-
-		            <tr>
-		            	<th rowspan="3">NO</th>
-						<th rowspan="3">NAMA SALURAN /
-						BANGUNAN DAN LOKASI
-						Hm, DESA DAN KECAMATAN
-						</th>
-						<th rowspan="3">PENYEBAB KERUSAKAN</th>
-						<th rowspan="3">JENIS KERUSAKAN</th>
-						<th colspan="7">PERINCIAN KERUSAKAN</th>
-						<th colspan="2">TANGGAP DARURAT</th>
-						<th colspan="2">PERBAIKAN YANG DIPERLUKAN</th>
-						<th colspan="2">DOKUMENTASI</th>
-		            </tr>
-
-
-					
-					<tr>	
-						
-						<th rowspan="2">TANAH (M)</th>
-						<th colspan="2">PASANGAN</th>
-						<th  rowspan="2">PINTU_AIR (B/BH)</th>
-						<th  rowspan="2">GORONG_GORONG (D/L)</th>
-						<th  rowspan="2">LAIN - LAIN</th>
-						<th  rowspan="2">LUAS TERANCAM DIBAWAHNYA (Ha)</th>
-						<th  rowspan="2">TINDAKAN PERBAIKAN YANG TELAH DIKERJAKAN</th>
-						<th  rowspan="2">BIAYA_PERBAIKAN</th>
-						<th  rowspan="2">YANG AKAN DIKERJAKAN OLEH IP3A/GP3A DAN PEKARYA</th>
-						<th  rowspan="2">YANG DIUSULKAN UNTUK DIKERJAKAN DI TINGKAT YANG LEBIH ATAS</th>
-						<th  rowspan="2">FOTO BEFORE</th>
-						<th  rowspan="2">FOTO AFTER</th>
-						
+					<tr>
+						<th rowspan="2">NO</th>
+						<th rowspan="2">NAMA RUAS SALURAN</th>
+						<th rowspan="2">NAMA BAGUNAN DAN TIPENYA</th>
+						<th colspan="8">KEADAAN</th>
+						<th colspan="2">TINDAKAN</th>
+						<th rowspan="2">AREAL LAYANAN DI BAWAHNYA</th>
+						<th rowspan="2">DESA / KECAMATAN</th>
+						<th rowspan="2">FOTO_BEFORE</th>
+						<th rowspan="2">FOTO_AFTER</th>
 					</tr>
 					<tr>
-						<th>BATU (M³)</th>
-						<th>BETON (M³)</th>
+						<th>BOCORAN (M'/BH)</th>
+						<th>RUSAK/PUTUS (M')</th>
+						<th>LONGSORAN/TONJOLAN(M')</th>
+						<th>TERSUMBAT(M'/BH)</th>
+						<th>RETAK(M')</th>
+						<th>PINTU RUSAK (BH)</th>
+						<th>SEDIMEN/WALED (H)</th>
+						<th>MASUKAN LAIN - LAIN</th>
+						<th>DIKERJAKAN</th>
+						<th>USULAN TINDAK LANJUT</th>
 					</tr>
 					<tr style="text-align: center;">
 						<td>1</td>
@@ -124,79 +124,119 @@ error_reporting(0);
 			  				$no=0;
 			  				foreach($laporandt->result() as $row):
 			  				$no++;
-			  				
-			  				if ($row->ID_LAPORANHD !== $laporanhd['ID_LAPORANHD']) {
-			  					# code...
-			  					$splitya = 'style="display:none"';
-			  				}else{
-			  					$splitya = '';
-			  				}
-				  		?>
-				  		<tr <?php echo $splitya; ?>>
-				  			<td ><?php echo $no ?></td>
-				  			<td><?php echo $row->nama_bangunan; ?>
-				  				<?php echo $row->nama_ruas; ?>
-				  				<?php echo $row->DESA; ?>
-				  			</td>
-				  			<td><?php echo $row->PENYEBAB_KERUSAKAN ?></th>
-							<td><?php echo $row->JENIS_KERUSAKAN ?></th>
-							<td><?php echo $row->TANAH ?></th>
-							<td><?php echo $row->BATU ?></th>
-							<td><?php echo $row->BETON ?></th>
-							<td><?php echo $row->PINTU_AIR ?></th>
-							<td><?php echo $row->GORONG_GORONG ?></th>
-							<td><?php echo $row->LAIN_LAIN_KERUSAKAN ?></th>
-							<td><?php echo $row->LUAS_TERANCAM ?></th>
-							<td><?php echo $row->TINDAKAN_PERBAIKAN ?></th>
-							<td><?php echo $row->BIAYA_PERBAIKAN ?></th>
-							<td><?php echo $row->DIKERJAKAN_OLEH ?></th>
-							<td><?php echo $row->DIUSULKAN_OLEH ?></th>
 
+			  				if ($laporanhd['ID_LAPORANHD']!==$row->ID_LAPORANHD) {
+			  					# code...
+			  					$style='style="display:none"';
+			  				}else{
+			  					$style='style="height:100px;text-align: center;"';
+			  				}
+
+				  		?>
+				  		<tr <?php echo $style ?> >
+				  			<td ><?php echo $no ?></td>
+				  			<td><?php echo $row->nama_ruas; ?>
+		
+				  			</td>
+				  			<td><?php echo $row->nama_bangunan; ?></td>
+							<td><?php echo $row->BOCORAN_M; ?><br/>
+								<?php echo $row->BOCORAN_M>0 ? '( '.$row->BOCORAN_T.' )':''; ?><br/>
+								<?php echo $row->BOCORAN_M>0 ? number_format($row->BOCORAN_B):''; ?><br/>
+								<strong><?php echo $row->BOCORAN_M>0 ?$row->BOCORAN:''; ?></strong>
+							</td>
+							<td><?php echo $row->RUSAK_M; ?><br/>
+								<?php echo $row->RUSAK_M>0 ? '( '.$row->RUSAK_T.' )':''; ?><br/>
+								<?php echo $row->RUSAK_M>0 ? number_format($row->RUSAK_B):''; ?><br/>
+								<strong><?php echo $row->RUSAK_M>0 ?$row->RUSAK:''; ?></strong>
+							</td>
+							<td><?php echo $row->LONGSORAN_M; ?><br/>
+								<?php echo $row->LONGSORAN_M>0 ? '( '.$row->LONGSORAN_T.' )':''; ?><br/>
+								<?php echo $row->LONGSORAN_M>0 ? number_format($row->LONGSORAN_B):''; ?><br/>
+								<strong><?php echo $row->LONGSORAN_M>0 ?$row->LONGSORAN:''; ?></strong>
+							</td>
+							<td><?php echo $row->TERSUMBAT_M; ?><br/>
+								<?php echo $row->TERSUMBAT_M>0 ? '( '.$row->TERSUMBAT_T.' )':''; ?><br/>
+								<?php echo $row->TERSUMBAT_M>0 ? number_format($row->TERSUMBAT_B):''; ?><br/>
+								<strong><?php echo $row->TERSUMBAT_M>0 ?$row->TERSUMBAT:''; ?></strong>
+							</td>
+							<td><?php echo $row->RETAK_M; ?><br/>
+								<?php echo $row->RETAK_M>0 ? '( '.$row->RETAK_T.' )':''; ?><br/>
+								<?php echo $row->RETAK_M>0 ? number_format($row->RETAK_B):''; ?><br/>
+								<strong><?php echo $row->RETAK_M>0 ? $row->RETAK:''; ?></strong>
+							</td>
+							<td><?php echo $row->PINTU_RUSAK_M; ?><br/>
+								<?php echo $row->PINTU_RUSAK_M>0 ?  '( '.$row->PINTU_RUSAK_T.' )':''; ?><br/>
+								<?php echo $row->PINTU_RUSAK_M>0 ? number_format($row->PINTU_RUSAK_B):''; ?><br/>
+								<strong><?php echo $row->PINTU_RUSAK_M>0 ?$row->PINTU_RUSAK:''; ?></strong>
+							</td>
+							<td><?php echo $row->SEDIMEN_M; ?><br/>
+								<?php echo $row->SEDIMEN_M>0 ? '( '.$row->SEDIMEN_T.' )':''; ?><br/>
+								<?php echo $row->SEDIMEN_M>0 ?number_format($row->SEDIMEN_B):''; ?><br/>
+								<strong><?php echo $row->SEDIMEN_M>0 ? $row->SEDIMEN:''; ?></strong>
+							</td>
+							<td><?php echo $row->LAIN_LAIN; ?></td>
+							<td><?php echo $row->DIKERJAKAN; ?></td>
+							<td><?php echo $row->USULAN; ?></td>
+							<td><?php echo $row->AREA_BAWAH; ?></td>
+							<td><?php echo $row->DESA; ?></td>
 							<td>
-								<?php if (isset($row->FOTO_BEFORE)): ?>
+								<?php $gambar =$row->FOTO_BEFORE; ?>
+								<?php if (strlen($row->FOTO_BEFORE) > 0 ): ?>
 									<center>
-										<img height="100" src="<?php echo site_url().'upload/'.$row->FOTO_BEFORE; ?>">
+										<img height="100" src="<?php echo site_url().'upload/'.$row->$gambar; ?>">
 									</center>
+
 								<?php endif ?>
 								
 							</td>
 							<td>
-								<?php if (isset($row->FOTO_AFTER)): ?>
-									<center><img height="100" src="<?php echo site_url().'upload/'.$row->FOTO_AFTER; ?>"></td></center>
+								<?php $gambar2 =$row->FOTO_AFTER; ?>
+								<?php if (strlen($row->FOTO_AFTER) > 0 ): ?>
+									<center>
+										<img height="100" src="<?php echo site_url().'upload/'.$row->$gambar2; ?>">
+									</center>
+
 								<?php endif ?>
+								
+							</td>
+						
+			
 								
 				  		</tr>
 						<?php endforeach; ?>
-
-							<tr>
+						<tr>
 							<td colspan="14">
 								<p>Penjelasan : </p>
 								<ol>
-									<li>Kolom 8 : b lebar pintu (m) ; jumlah (bh)</li>
-									<li>Kolom 9 : d diameter (m), panjang (m)</li>
-									<li>Kolom 12 dan 13 keterangan diisi jenis perkiraan kerugian dan perbaikannya</li>
-									<li>Perlu dilampiri gambar sketsa<br/>
-Dicatat di Buku Catatan Pemeliharaan CD/CS/UPT/Pengamat Pengairan/SUP<br/><br/><br/>
-	<strong><i>Laporan bulanan : Ranting/Pengamat/UPTD/SUP→ Dinas Pengairan Kabupaten/Balai PSDA</i></strong>
+									<li>Diserahkan tiap tanggal 25 bulan ybs, walaupun tidak terjadi kerusakan pada bulan ybs</li>
+									<li>Kolom 4 s/d 11 diisi salah satu tingkat kerusakan dan volumenya yang paling tepat <br>
+										R = Kerusakan ringan (M', BH, M³……) (Kerusakan yang dapat diatasi sendiri oleh pengelola jaringan irigasi)<br/>
+										S = Kerusakan sedang (M', BH, M³ ……..) (Kerusakan yang tidak dapat diatasi sendiri, perlu bantuan bahan)<br/>
+										B = Kerusakan Berat (M', BH, M³ ………..) (Kerusakan yang tidak bisa diatasi sendiri, perlu bantuan bahan dan tenaga)<br/>
+										dan harus dilaporkan apabila ada kerusakan baru atau kerusakan lama (yang pernah dilaporkan) berubah lagi.
 
 									</li>
-								
+									<li>Kolom 12 dan 13 keterangan diisi jenis kerusakan yang sudah dikerjakan dan diusulkan</li>
+									<li>Kolom 14 diisi luas areal layanan dibawah/dihilir lokasi kerusakan yang menjadi oncorannya</li>
+									<li>Laporan bulanan : Mantri/Juru → Ranting/Pengamat/UPTD/SUP</li>
 								</ol>
-			
 							</td>
 							<td colspan="3">
 								<center>
-									<h3>
-										<?php echo $laporanhd['KABUPATEN'].", ".$TGL[2]."/".$TGL[1]."/".$TGL[0] ?><br/>
-										Pengamat/Ranting/UPTD/SUP<br/>
-										<?php echo $laporanhd['RANTING'] ?>
-									</h3>
-
-									<p style="margin-top: 40%;font-weight: bold;font-size: x-large;"><u><?php echo $_SESSION['nama_lengkap'] ?></u></p>
-
+									<strong><?php echo $laporanhd['KABUPATEN'] ?>, <?php echo tglIndonesia2($laporanhd['TANGGAL'])  ?></strong>
+									<h2>Juru/Mantri Cimandiri</h2>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+									<p style="font-weight: bold;font-size: x-large;"><u><?php echo $_SESSION['nama_lengkap'] ?></u></p>
+									<p style="margin-top: 0%;font-size: large;">NIP : <?php echo $_SESSION['nip'] ?> </p>
 								</center>
-											<p style="margin-top: 0%;font-size: large;">NIP : <?php echo $_SESSION['nip'] ?></p></p>
+											
 							</td>
 						</tr>
 					</tbody>
 				</table>
+
+
+

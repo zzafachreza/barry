@@ -27,7 +27,7 @@ error_reporting(0);
 									<h3>Tanggal Kejadian <?php echo tglIndonesia2($bencanahd['TANGGAL'])  ?></h2>
 								</center>
 								</td>
-							<td colspan="2" border="0">
+							<td colspan="3" border="0">
 			              			<center>
 										<h2>Blanko 03 - P</h2>
 									</center>
@@ -39,24 +39,24 @@ error_reporting(0);
 		            	<td border="0" colspan="7">: <?php echo $bencanahd['DAERAH_IRIGASI'] ?></td>
 
 		            	<td border="0" colspan="2">KABUPATEN</td>
-		            	<td border="0" colspan="2">: <?php echo $bencanahd['KABUPATEN'] ?></td>
+		            	<td border="0" colspan="3">: <?php echo $bencanahd['KABUPATEN'] ?></td>
 		            </tr>
 		             <tr>
 		            	<td border="0" colspan="4">TOTAL LUAS AREAL DI</td>
 		            	<td border="0" colspan="7">: <?php echo $bencanahd['LUAS_AREA_IRIGASI'] ?> Ha</td>
 
 		            	<td border="0" colspan="2">PENGAMAT/RANTING</td>
-		            	<td border="0" colspan="2">: <?php echo $bencanahd['RANTING'] ?></td>
+		            	<td border="0" colspan="3">: <?php echo $bencanahd['RANTING'] ?></td>
 		            </tr>
 		             <tr>
 		            	<td border="0" colspan="4">TINGKATAN DI : T / ST / SD</td>
-		            	<td border="0" colspan="11">: <?php echo $bencanahd['TINGKATAN_IRIGASI'] ?></td>
+		            	<td border="0" colspan="12">: <?php echo $bencanahd['TINGKATAN_IRIGASI'] ?></td>
 
 		            	
 		            </tr>
 		       
 		            <tr>
-		            	<td colspan="17">
+		            	<td colspan="16">
 		            		&nbsp;
 		            	</td>
 		            </tr>
@@ -72,6 +72,7 @@ error_reporting(0);
 						<th colspan="7">PERINCIAN KERUSAKAN</th>
 						<th colspan="2">TANGGAP DARURAT</th>
 						<th colspan="2">PERBAIKAN YANG DIPERLUKAN</th>
+						<th></th>
 				
 		            </tr>
 
@@ -89,6 +90,7 @@ error_reporting(0);
 						<th  rowspan="2">BIAYA_PERBAIKAN</th>
 						<th  rowspan="2">YANG AKAN DIKERJAKAN OLEH IP3A/GP3A DAN PEKARYA</th>
 						<th  rowspan="2">YANG DIUSULKAN UNTUK DIKERJAKAN DI TINGKAT YANG LEBIH ATAS</th>
+						<th  rowspan="2">FOTO</th>
 
 						
 					</tr>
@@ -112,6 +114,7 @@ error_reporting(0);
 						<td>13</td>
 						<td>14</td>
 						<td>15</td>
+						<td>16</td>
 				
 
 
@@ -158,12 +161,22 @@ error_reporting(0);
 							<td><?php echo $row->LUAS_TERANCAM ?><br/>
 								<strong> <?php echo number_format($row->LUAS_TERANCAM_B) ?> </strong>
 							</th>
-							<td><?php echo $row->TINDAKAN_PERBAIKAN ?><br/>
-								<strong> <?php echo number_format($row->TINDAKAN_PERBAIKAN_B) ?> </strong>
+							<td><?php echo $row->TINDAKAN_PERBAIKAN ?>
 							</th>
 							<td><?php echo number_format($row->BIAYA_PERBAIKAN) ?></th>
 							<td><?php echo $row->DIKERJAKAN_OLEH ?></th>
 							<td><?php echo $row->DIUSULKAN_OLEH ?></th>
+									<td>
+								<?php $gambar =$row->FOTO_BENCANA; ?>
+								<?php if (strlen($row->FOTO_BENCANA) > 0 ): ?>
+									<center>
+										<img height="100" src="<?php echo site_url().'upload/'.$row->$gambar; ?>">
+									</center>
+
+								<?php endif ?>
+
+
+							</td>
 
 							
 								

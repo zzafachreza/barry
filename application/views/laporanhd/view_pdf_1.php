@@ -4,19 +4,36 @@
 // echo $vendor = site_url().'assets/vendor/autoload.php';
 // include_once ('assets/vendor/autoload.php');
 
-
 $mpdf = new \Mpdf\Mpdf(['format' => 'Legal-L']);
+
+function tglIndonesia2($tanggal){
+  $namaBln = array("01" => "Januari", "02" => "Februari", "03" => "Maret", "04" => "April", "05" => "Mei", "06" => "Juni", 
+           "07" => "Juli", "08" => "Agustus", "09" => "September", "10" => "Oktober", "11" => "November", "12" => "Desember");
+           
+  $tgl=substr($tanggal,8,2);
+  $bln=substr($tanggal,5,2);
+  $thn=substr($tanggal,0,4);
+  $tanggal ="$tgl ".$namaBln[$bln]." $thn";
+  return $tanggal;
+}
+
+
+
+
 $TGL = explode("-", $laporanhd['TANGGAL']);
 
 
 
-$html = '<table style="width: 100%" style="font-size: small;border:1px solid;border-collapse: collapse"><th style="border:1px solid;text-align:center"ead><tr>
+$html = '<table style="width: 100%" style="font-size: small;border:1px solid;border-collapse: collapse">
+<thead>
+<th style="border:1px solid;text-align:center"ead>
+<tr>
 
 <td style="border:1px solid;text-align:center" colspan="14" style="border:1px solid;text-align:center">
 		              			<center>
 									<h1>LAPORAN KERUSAKAN JARINGAN IRIGASI</h1>
 				
-									<h3>Inspeksi Rutin '. $TGL[2] .' Tanggal  Bulan '. $TGL[1] .' Tahun '. $TGL[0] .'</h2>
+									<h3>Inspeksi Rutin  Tanggal '.tglIndonesia2($laporanhd['TANGGAL']) .'</h3>
 								</center>
 								</td>
 							<td style="border:1px solid;text-align:center" colspan="2" border="0">
@@ -103,18 +120,26 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 			  				foreach($laporandt->result() as $row){
 			  				$no++;
 
+			  				$BOCORAN_T = $row->BOCORAN_M>0 ? '<br/>( '.$row->BOCORAN_T.' )':'';
+
+			  				$RUSAK_T = $row->RUSAK_M>0 ? '<br/>( '.$row->RUSAK_T.' )':'';
+			  				$LONGSORAN_T = $row->LONGSORAN_M>0 ? '<br/>( '.$row->LONGSORAN_T.' )':'';
+			  				$TERSUMBAT_T = $row->TERSUMBAT_M>0 ? '<br/>( '.$row->TERSUMBAT_T.' )':'';
+			  				$RETAK_T = $row->RETAK_M>0 ? '<br/>( '.$row->RETAK_T.' )':'';
+			  				$PINTU_RUSAK_T= $row->PINTU_RUSAK_M>0 ? '<br/>( '.$row->PINTU_RUSAK_T.' )':'';
+			  				$SEDIMEN_T = $row->SEDIMEN_M>0 ? '<br/>( '.$row->SEDIMEN_T.' )':'';
 				  		
 				  		$html .='<tr style="height:100px;text-align: center;">
 				  			<td style="border:1px solid;text-align:center" >'. $no .'</td>
 				  			<td style="border:1px solid;text-align:center">'. $row->nama_ruas.'</td>
 				  			<td style="border:1px solid;text-align:center">'. $row->nama_bangunan .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->BOCORAN_M .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->RUSAK_M .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->LONGSORAN_M .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->TERSUMBAT_M .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->RETAK_M .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->RETAK_M .'</td>
-							<td style="border:1px solid;text-align:center">'. $row->SEDIMEN_M .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->BOCORAN_M.$BOCORAN_T .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->RUSAK_M.$RUSAK_T .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->LONGSORAN_M.$LONGSORAN_T .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->TERSUMBAT_M.$TERSUMBAT_T .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->RETAK_M.$RETAK_T .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->PINTU_RUSAK_M.$PINTU_RUSAK_T .'</td>
+							<td style="border:1px solid;text-align:center">'. $row->SEDIMEN_M.$SEDIMEN_T .'</td>
 							<td style="border:1px solid;text-align:center">'. $row->LAIN_LAIN .'</td>
 							<td style="border:1px solid;text-align:center">'. $row->DIKERJAKAN .'</td>
 							<td style="border:1px solid;text-align:center">'. $row->USULAN .'</td>
@@ -122,11 +147,12 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 							<td style="border:1px solid;text-align:center">'. $row->DESA .'</td>
 							<td style="border:1px solid;text-align:center">';
 
-							 if (isset($row->FOTO_BEFORE)){
+							$gambar = $row->FOTO_BEFORE;
+							 if (strlen($row->$gambar) > 0){
 
 							 	$html .='
 								<center>
-										<img height="100" src="'. site_url().'upload/'.$row->FOTO_BEFORE .'">
+										<img height="100" src="'. site_url().'upload/'.$row->$gambar .'">
 									</center>';
 							 }
 							 	
@@ -154,20 +180,19 @@ $html = '<table style="width: 100%" style="font-size: small;border:1px solid;bor
 									<li>Laporan bulanan : Mantri/Juru → Ranting/Pengamat/UPTD/SUP</li>
 								</ol>
 							</td>
-							<td style="border:1px solid;text-align:center" colspan="3">
-						
+							<td colspan="3">
 								<center>
+									<strong>
+									'.$laporanhd['KABUPATEN'].', '.tglIndonesia2($laporanhd['TANGGAL']).'</strong>
 									<h2>Juru/Mantri Cimandiri</h2>
 									<br/>
 									<br/>
 									<br/>
 									<br/>
-									<br/>
-									<p style="font-weight: bold;font-size: x-large;"><u>'.$_SESSION['nama_lengkap'].'</u></p>
-									</center>
-
-							
-								<p style="margin-top: 0%;font-size: large;">NIP : '.$_SESSION['nip'] .'</p>
+									<p style="font-weight: bold;font-size: x-large;"><u>'.$_SESSION['nama_lengkap'] .'</u></p>
+									<p style="margin-top: 0%;font-size: large;">NIP : '. $_SESSION['nip'] .' </p>
+								</center>
+											
 							</td>
 						</tr>';
 

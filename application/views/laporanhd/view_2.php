@@ -25,7 +25,7 @@ error_reporting(0);
 		              			<center>
 									<h1>LAPORAN KERUSAKAN JARINGAN IRIGASI</h1>
 									
-										<h3>Inspeksi Rutin  Tanggal <?php echo tglIndonesia2($laporanhd['TANGGAL'])  ?></h2>
+										<h3>Inspeksi Rutin  Tanggal <?php echo tglIndonesia2($laporanhd['TANGGAL'])  ?></h3>
 								</center>
 								</td>
 							<td colspan="3" border="0">
@@ -79,7 +79,7 @@ error_reporting(0);
 						<th>LONGSORAN/TONJOLAN(M')</th>
 						<th>TERSUMBAT(M'/BH)</th>
 						<th>RETAK(M')</th>
-						<th>PINTU RUSAK (BH)</th>
+						<th>PINTU_RUSAK (BH)</th>
 						<th>SEDIMEN/WALED (H)</th>
 						<th>MASUKAN LAIN - LAIN</th>
 
@@ -175,15 +175,13 @@ error_reporting(0);
 				
 				  		</tr>
 						<?php endforeach; ?>
+						
 						<tr style="text-align: center;">
-						<td colspan="11">Total</td>
-
-						<td><h6><?php echo number_format($ESTIMASI_RUGI_TOTAL) ?></h6></td>
-						<td><h6><?php echo number_format($ESTIMASI_PERBAIKAN_TOTAL) ?></h6></td>
-						<td colspan="4"></td>
-
-
-					</tr>
+							<td colspan="11">Total</td>
+							<td><h6><?php echo number_format($ESTIMASI_RUGI_TOTAL) ?></h6></td>
+							<td><h6><?php echo number_format($ESTIMASI_PERBAIKAN_TOTAL) ?></h6></td>
+							<td colspan="4"></td>
+						</tr>
 
 							<tr>
 							<td colspan="14">

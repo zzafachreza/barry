@@ -128,19 +128,45 @@
 		  				<td><?php echo  isset($row->TANGGAL_2) ? tglIndonesia($row->TANGGAL_2) : ''; ?></td>
 		  				<td><?php echo  isset($row->TANGGAL_3) ? tglIndonesia($row->TANGGAL_3) : ''; ?></td> -->
 		  				<td>
-		  					<a href="<?php echo site_url('laporanhd/detail/'.$row->ID_LAPORANHD) ?>" class="btn btn-primary btn-sm "><i class="flaticon-eye"></i></a>
+		  					
 
-		  					<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/edit/'.$row->ID_LAPORANHD.'/'.$p3) ?>" class=" btn-sm btn btn-secondary"><i class="flaticon-edit"></i> EDIT</a>
+		  				
 
-		  					<?php if ($_SESSION['level']==='ADMIN'): ?>
-		  						<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/delete/'.$row->ID_LAPORANHD.'') ?>" class=" btn-sm btn btn-danger"><i class="flaticon-delete"></i></a>	
+		  				
+
+
+		  				
+		  					<div class="btn-group dropup">
+								  <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								    <i class="flaticon-imac"></i> ACTION
+								  </button>
+								  <div class="dropdown-menu" style="padding: 5%">
+								  	<a href="<?php echo site_url('laporanhd/detail/'.$row->ID_LAPORANHD) ?>" class="btn btn-primary col-sm-12"><i class="flaticon-eye"></i> Lihat</a>
+
+								  	 <div class="dropdown-divider"></div>
+
+								  		<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/edit/'.$row->ID_LAPORANHD.'/'.$p3) ?>" class="btn btn-secondary col-sm-12"><i class="flaticon-edit"></i> Edit</a>
+
+									  <div class="dropdown-divider"></div>
+
+
+		  				<a href="<?php echo site_url('laporanhd/detail_pdf/'.$row->ID_LAPORANHD) ?>" class="btn btn-danger col-sm-12"><i class="flaticon-file"></i> PDF </a>
+		  					<div class="dropdown-divider"></div>
+
+		  					<a href="<?php echo site_url('laporanhd/detail_excel/'.$row->ID_LAPORANHD) ?>" class="btn btn-success col-sm-12"><i class="flaticon-file"></i> Excel </a>
+
+
+								<div class="dropdown-divider"></div>
+
+
+
+									  	<?php if ($_SESSION['level']==='ADMIN'): ?>
+		  						<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/delete/'.$row->ID_LAPORANHD.'') ?>" class="dropdown-item"><i class="flaticon-delete"></i></a>	
 
 		  					<?php endif ?>
+								  </div>
+								</div>
 
-
-		  				<!-- 	<a href="<?php echo site_url('laporanhd/detail_pdf/'.$row->ID_LAPORANHD) ?>" class="btn btn-danger"><i class="flaticon-file"></i> PDF </a>
-
-		  					<a href="<?php echo site_url('laporanhd/detail_excel/'.$row->ID_LAPORANHD) ?>" class="btn btn-success"><i class="flaticon-file"></i> Excel </a> -->
 
 		  					
 

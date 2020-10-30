@@ -44,7 +44,7 @@ class Laporanhd extends CI_Controller{
 		switch ($_SESSION['level']) {
 			case 'MANTRI':
 				# code...
-			$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetailAll($id);
 			$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view_1',$data);
 				break;
@@ -77,7 +77,7 @@ class Laporanhd extends CI_Controller{
 		switch ($_SESSION['level']) {
 			case 'MANTRI':
 				# code...
-			$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetailAll($id);
 		$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view_pdf_1',$data);
 				break;
@@ -109,8 +109,9 @@ class Laporanhd extends CI_Controller{
 		switch ($_SESSION['level']) {
 			case 'MANTRI':
 				# code...
-			$data['laporandt'] = $this->Laporanhd_model->getDataDetail($id);
-		$data[$this->dataTable] = $hasil->row_array();
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetailAll($id);
+			$data[$this->dataTable] = $hasil->row_array();
+			
 			$this->load->view($this->dataTable.'/view_excel_1',$data);
 				break;
 			case 'SUP':

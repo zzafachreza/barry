@@ -5,26 +5,22 @@ header("Content-Disposition: attachment; filename=Blanko 02 - P.xls");//ganti na
 header("Pragma: no-cache");
 header("Expires: 0");
 error_reporting(0);
-// print_r($laporanhd);
-// // print_r($laporandt);
+
+function tglIndonesia2($tanggal){
+  $namaBln = array("01" => "Januari", "02" => "Februari", "03" => "Maret", "04" => "April", "05" => "Mei", "06" => "Juni", 
+           "07" => "Juli", "08" => "Agustus", "09" => "September", "10" => "Oktober", "11" => "November", "12" => "Desember");
+           
+  $tgl=substr($tanggal,8,2);
+  $bln=substr($tanggal,5,2);
+  $thn=substr($tanggal,0,4);
+  $tanggal ="$tgl ".$namaBln[$bln]." $thn";
+  return $tanggal;
+}
 
 
 ?>
 
 
-
-<?php
-
-// header("Content-type: application/octet-stream");
-// header("Content-Disposition: attachment; filename=LAPORAN.xls");//ganti nama sesuai keperluan
-// header("Pragma: no-cache");
-// header("Expires: 0");
-error_reporting(0);
-// print_r($laporanhd);
-// // print_r($laporandt);
-
-
-?>
 
 
 
@@ -36,8 +32,8 @@ error_reporting(0);
               				<td colspan="14" border="0">
 		              			<center>
 									<h1>LAPORAN KERUSAKAN JARINGAN IRIGASI</h1>
-									<?php   $TGL = explode("-", $laporanhd['TANGGAL']) ?>
-									<h3>Inspeksi Rutin <?php echo $TGL[2] ?> Tanggal  Bulan <?php echo $TGL[1] ?> Tahun <?php echo $TGL[0] ?></h2>
+					
+									<h3>Inspeksi Rutin  Tanggal <?php echo tglIndonesia2($laporanhd['TANGGAL'])  ?></h3>
 								</center>
 								</td>
 							<td colspan="3" border="0">
@@ -124,6 +120,8 @@ error_reporting(0);
 					<tbody>
 						 <?php
 			  				$no=0;
+			  				$ESTIMASI_PERBAIKAN_TOTAL =0;
+			  				$ESTIMASI_RUGI_TOTAL=0;
 			  				foreach($laporandt->result() as $row):
 			  				$no++;
 				  		if ($row->ID_LAPORANHD !== $laporanhd['ID_LAPORANHD']) {
@@ -131,36 +129,68 @@ error_reporting(0);
 			  					$splitya = 'style="display:none"';
 			  				}else{
 			  					$splitya = '';
+			  					$ESTIMASI_PERBAIKAN_TOTAL += $row->ESTIMASI_PERBAIKAN;
+			  					$ESTIMASI_RUGI_TOTAL += $row->ESTIMASI_RUGI;
 			  				}
 				  		?>
 				  		<tr <?php echo $splitya; ?>>
 				  			<td ><?php echo $no ?></td>
 				  			<td><?php echo $row->nama_ruas; ?></td>
 				  			<td><?php echo $row->nama_bangunan; ?></td>
-							<td><?php echo $row->BOCORAN_M; ?></td>
-							<td><?php echo $row->RUSAK_M; ?></td>
-							<td><?php echo $row->LONGSORAN_M; ?></td>
-							<td><?php echo $row->TERSUMBAT_M; ?></td>
-							<td><?php echo $row->RETAK_M; ?></td>
-							<td><?php echo $row->RETAK_M; ?></td>
-							<td><?php echo $row->SEDIMEN_M; ?></td>
+							<td><?php echo $row->BOCORAN_M; ?><br/>
+								<?php echo $row->BOCORAN_M>0 ? '( '.$row->BOCORAN_T.' )':''; ?><br/>
+								<strong><?php echo $row->BOCORAN_M>0 ? number_format($row->BOCORAN_B):''; ?></strong>
+							</td>
+							<td><?php echo $row->RUSAK_M; ?><br/>
+								<?php echo $row->RUSAK_M>0 ? '( '.$row->RUSAK_T.' )':''; ?><br/>
+								<strong><?php echo $row->RUSAK_M>0 ? number_format($row->RUSAK_B):''; ?></strong>
+							</td>
+							<td><?php echo $row->LONGSORAN_M; ?><br/>
+								<?php echo $row->LONGSORAN_M>0 ? '( '.$row->LONGSORAN_T.' )':''; ?><br/>
+								<strong><?php echo $row->LONGSORAN_M>0 ? number_format($row->LONGSORAN_B):''; ?></strong>
+							</td>
+							<td><?php echo $row->TERSUMBAT_M; ?><br/>
+								<?php echo $row->TERSUMBAT_M>0 ? '( '.$row->TERSUMBAT_T.' )':''; ?><br/>
+								<strong><?php echo $row->TERSUMBAT_M>0 ? number_format($row->TERSUMBAT_B):''; ?></strong>
+							</td>
+							<td><?php echo $row->RETAK_M; ?><br/>
+								<?php echo $row->RETAK_M>0 ? '( '.$row->RETAK_T.' )':''; ?><br/>
+									<strong><?php echo $row->RETAK_M>0 ? number_format($row->RETAK_B):''; ?></strong>
+							</td>
+							<td><?php echo $row->PINTU_RUSAK_M; ?><br/>
+								<?php echo $row->PINTU_RUSAK_M>0 ? '( '.$row->PINTU_RUSAK_T.' )':''; ?><br/>
+								<strong><?php echo $row->PINTU_RUSAK_M>0 ? number_format($row->PINTU_RUSAK_B):''; ?></strong>
+							</td>
+							<td><?php echo $row->SEDIMEN_M; ?><br/>
+								<?php echo $row->SEDIMEN_M>0 ? '( '.$row->SEDIMEN_T.' )':''; ?><br/>
+								<strong><?php echo $row->SEDIMEN_M>0 ? number_format($row->SEDIMEN_B):''; ?></strong>
+							</td>
 							<td><?php echo $row->LAIN_LAIN; ?></td>
-							<td><?php echo $row->ESTIMASI_RUGI; ?></td>
-							<td><?php echo $row->ESTIMASI_PERBAIKAN; ?></td>
+							<td><?php echo number_format($row->ESTIMASI_RUGI); ?></td>
+							<td><?php echo number_format($row->ESTIMASI_PERBAIKAN); ?></td>
 							<td><?php echo $row->PRIORITAS; ?></td>
 							<td><?php echo $row->AREA_BAWAH; ?></td>
 							<td><?php echo $row->DESA; ?></td>
-							<td>
-								<?php if (isset($row->FOTO_BEFORE)): ?>
+						<td>	
+								<?php $gambar = $row->FOTO_BEFORE; ?>
+								<?php if (strlen($row->FOTO_BEFORE) > 0 ): ?>
 									<center>
-										<img height="100" src="<?php echo site_url().'upload/'.$row->FOTO_BEFORE; ?>">
+										<img height="100" src="<?php echo site_url().'upload/'.$row->$gambar; ?>">
 									</center>
+
 								<?php endif ?>
 								
 							</td>
 				
 				  		</tr>
 						<?php endforeach; ?>
+
+							<tr style="text-align: center;">
+							<td colspan="11">Total</td>
+							<td><h3><?php echo number_format($ESTIMASI_RUGI_TOTAL) ?></h3></td>
+							<td><h3><?php echo number_format($ESTIMASI_PERBAIKAN_TOTAL) ?></h3></td>
+							<td colspan="4"></td>
+						</tr>
 
 							<tr>
 							<td colspan="14">
@@ -177,21 +207,28 @@ error_reporting(0);
 									<li>Kolom 12 dan 13 keterangan diisi jenis perkiraan kerugian dan perbaikannya</li>
 									<li>Kolom 14 diisi dengan skala prioritasnya 1, 2 atau 3 (1 = segera; 2 = perlu; 3 = dapat ditangguhkan)</li>
 									<li>Kolom 15 diisi luas areal layanan dibawah/dihilir lokasi kerusakan yang menjadi daerah layanannya<br/>
-									Laporan bulanan : Ranting/Pengamat/UPTD/SUP→ Dinas Pengairan Kabupaten/Balai PSDA</li>
+									</li>
 								</ol>
 							</td>
 							<td colspan="3">
 								<center>
-									<h3>
-										<?php echo $laporanhd['KABUPATEN'].", ".$TGL[2]."/".$TGL[1]."/".$TGL[0] ?><br/>
+									<h6>
+										<strong><?php echo $laporanhd['KABUPATEN'] ?>, <?php echo tglIndonesia2($laporanhd['TANGGAL'])  ?></strong><br/>
 										Pengamat/Ranting/UPTD/SUP<br/>
 										<?php echo $laporanhd['RANTING'] ?>
-									</h3>
+									</h6>
 
-									<p style="margin-top: 40%;font-weight: bold;font-size: x-large;"><u><?php echo $_SESSION['nama_lengkap'] ?></u></p>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+
+									<p style=";font-weight: bold;font-size: x-large;"><u><?php echo $_SESSION['nama_lengkap'] ?></u></p>
+									<p style="margin-top: 0%;font-size: large;">NIP : <?php echo $_SESSION['nip'] ?></p>
 
 								</center>
-											<p style="margin-top: 0%;font-size: large;">NIP : <?php echo $_SESSION['nip'] ?></p></p>
+											
 							</td>
 						</tr>
 					</tbody>

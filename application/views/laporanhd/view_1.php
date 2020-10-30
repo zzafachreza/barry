@@ -14,46 +14,46 @@ error_reporting(0);
 <table class="table table-bordered table-reponsive">
 					<thead>
 					 <tr>
-              				<td colspan="14" border="0">
+              				<th colspan="14" border="0">
 		              			<center>
 									<h1>LAPORAN KERUSAKAN JARINGAN IRIGASI</h1>
 									
 									<h3>Inspeksi Rutin  Tanggal <?php echo tglIndonesia2($laporanhd['TANGGAL'])  ?></h2>
 								</center>
-								</td>
-							<td colspan="2" border="0">
+								</th>
+							<th colspan="2" border="0">
 			              			<center>
 										<h2>Blanko 01 - P</h2>
 									</center>
-							</td>
+							</th>
 		            </tr>
 
 		            <tr>
-		            	<td border="0" colspan="4">DAERAH IRIGASI</td>
-		            	<td border="0" colspan="8">: <?php echo $laporanhd['DAERAH_IRIGASI'] ?></td>
+		            	<th border="0" colspan="4">DAERAH IRIGASI</th>
+		            	<th border="0" colspan="8">: <?php echo $laporanhd['DAERAH_IRIGASI'] ?></th>
 
-		            	<td border="0" colspan="2">KABUPATEN</td>
-		            	<td border="0" colspan="2">: <?php echo $laporanhd['KABUPATEN'] ?></td>
+		            	<th border="0" colspan="2">KABUPATEN</th>
+		            	<th border="0" colspan="2">: <?php echo $laporanhd['KABUPATEN'] ?></th>
 		            </tr>
 		             <tr>
-		            	<td border="0" colspan="4">TOTAL LUAS AREAL DI</td>
-		            	<td border="0" colspan="8">: <?php echo $laporanhd['LUAS_AREA_IRIGASI'] ?> Ha</td>
+		            	<th border="0" colspan="4">TOTAL LUAS AREAL DI</th>
+		            	<th border="0" colspan="8">: <?php echo $laporanhd['LUAS_AREA_IRIGASI'] ?> Ha</th>
 
-		            	<td border="0" colspan="2">PENGAMAT/RANTING</td>
-		            	<td border="0" colspan="2">: <?php echo $laporanhd['RANTING'] ?></td>
+		            	<th border="0" colspan="2">PENGAMAT/RANTING</th>
+		            	<th border="0" colspan="2">: <?php echo $laporanhd['RANTING'] ?></th>
 		            </tr>
 		             <tr>
-		            	<td border="0" colspan="4">TINGKATAN DI : T / ST / SD</td>
-		            	<td border="0" colspan="8">: <?php echo $laporanhd['TINGKATAN_IRIGASI'] ?></td>
+		            	<th border="0" colspan="4">TINGKATAN DI : T / ST / SD</th>
+		            	<th border="0" colspan="8">: <?php echo $laporanhd['TINGKATAN_IRIGASI'] ?></th>
 
-		            	<td border="0" colspan="2">JURU/MANTRI</td>
-		            	<td border="0" colspan="2">: <?php echo $laporanhd['MANTRI'] ?></td>
+		            	<th border="0" colspan="2">JURU/MANTRI</th>
+		            	<th border="0" colspan="2">: <?php echo $laporanhd['MANTRI'] ?></th>
 		            </tr>
 		       
 		            <tr>
-		            	<td colspan="20">
+		            	<th colspan="20">
 		            		&nbsp;
-		            	</td>
+		            	</th>
 		            </tr>
 					<tr>
 						<th rowspan="2">NO</th>
@@ -78,22 +78,22 @@ error_reporting(0);
 						<th>USULAN TINDAK LANJUT</th>
 					</tr>
 					<tr style="text-align: center;">
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
-						<td>10</td>
-						<td>11</td>
-						<td>12</td>
-						<td>13</td>
-						<td>14</td>
-						<td>15</td>
-						<td>16</td>
+						<th>1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>5</th>
+						<th>6</th>
+						<th>7</th>
+						<th>8</th>
+						<th>9</th>
+						<th>10</th>
+						<th>11</th>
+						<th>12</th>
+						<th>13</th>
+						<th>14</th>
+						<th>15</th>
+						<th>16</th>
 
 
 					</tr>

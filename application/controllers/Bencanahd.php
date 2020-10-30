@@ -306,6 +306,7 @@ class Bencanahd extends CI_Controller{
 		$hasil = $this->Bencanahd_model->getId($id);
 
 		$data['bencanadt'] = $this->Bencanahd_model->getDataDetail($id);
+		$data['title']='SI JUET | '.$this->judulHalaman;
 
 $this->load->view('header',$data);
 
@@ -314,6 +315,19 @@ $this->load->view('header',$data);
 		$this->load->view($this->dataTable.'/view',$data);
 	
 
+
+	}
+
+
+	function detail_pdf(){
+
+		$id =  $this->uri->segment(3);
+		$hasil = $this->Bencanahd_model->getId($id);
+		$data['bencanadt'] = $this->Bencanahd_model->getDataDetail($id);
+		$data['title']='SI JUET | '.$this->judulHalaman;
+		$data[$this->dataTable] = $hasil->row_array();
+	
+		$this->load->view($this->dataTable.'/view_pdf',$data);
 
 	}
 
@@ -518,6 +532,23 @@ $this->load->view('header',$data);
 
 	}
 
+
+		function view_lampiran05_pdf(){
+
+		$id =  $this->uri->segment(3);
+		$hasil = $this->Bencanahd_model->getId($id);
+
+		$data['lamp05'] = $this->Bencanahd_model->getDataDetail05($id);
+
+	
+		$data['title']='SI JUET | Detail 05 P';
+		$data[$this->dataTable] = $hasil->row_array();
+	
+		$this->load->view($this->dataTable.'/view_pdf_05',$data);
+	
+
+	}
+
 	function lampiran04(){
 
 		$data['title']='SI JUET | 04 P SWAKELOLA';
@@ -543,6 +574,21 @@ $this->load->view('header',$data);
 	
 
 	}
+
+
+	function view_lampiran04_pdf(){
+
+		$id =  $this->uri->segment(3);
+		$hasil = $this->Bencanahd_model->getId($id);
+		$data['lamp04'] = $this->Bencanahd_model->getDataDetail04($id);
+		$data['title']='SI JUET | Detail 04 P';
+		$data[$this->dataTable] = $hasil->row_array();
+		$this->load->view($this->dataTable.'/view_pdf_04',$data);
+	
+
+	}
+
+
 
 
 	function edit_lampiran04(){
@@ -619,6 +665,21 @@ $this->load->view('header',$data);
 		$data[$this->dataTable] = $hasil->row_array();
 	
 		$this->load->view($this->dataTable.'/view_052',$data);
+	
+
+	}
+
+		function view_lampiran052_pdf(){
+
+		$id =  $this->uri->segment(3);
+		$hasil = $this->Bencanahd_model->getId($id);
+
+		$data['lamp052'] = $this->Bencanahd_model->getDataDetail052($id);
+
+		$data['title']='SI JUET | Detail 05 P';
+		$data[$this->dataTable] = $hasil->row_array();
+	
+		$this->load->view($this->dataTable.'/view_pdf_052',$data);
 	
 
 	}
