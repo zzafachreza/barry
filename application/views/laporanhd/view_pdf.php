@@ -22,8 +22,8 @@ function tglIndonesia2($tanggal){
 
 
 
-$html = '<table style="width: 100%" style="font-size: small;border:1px solid;border-collapse: collapse"><th style="border:1px solid black" style="border:1px solid;text-align:center"ead><tr>
-	<th style="border:1px solid black"ead>
+$html = '<table style="width: 100%" style="font-size:x-small;border:1px solid;border-collapse: collapse">
+<thead>
 					 <tr>
               				<td style="border:1px solid black" colspan="15" border="0">
 		              			<center>

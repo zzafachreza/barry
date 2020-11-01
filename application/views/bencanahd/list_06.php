@@ -66,6 +66,9 @@
 		  				<td>
 		  					<a href="<?php echo site_url('bencanahd/view_lampiran06/'.$row->ID_LAPORANHD	) ?>" class="btn btn-primary btn-sm"><i class="flaticon-eye"></i></a>
 
+
+		  						<a href="<?php echo site_url('bencanahd/view_lampiran06_pdf/'.$row->ID_LAPORANHD	) ?>" class="btn btn-danger btn-sm">PDF</a>
+
 		  					<?php if ($row->STATUS_LAPORANHD ==='OKE' OR $_SESSION['level']==='ADMIN'): ?>
 		  							<a href="<?php echo site_url('bencanahd/edit_lampiran06/'.$row->ID_LAPORANHD	) ?>" class="btn btn-warning btn-sm"><i class="flaticon-edit"></i> Lamp 06 P</a>
 

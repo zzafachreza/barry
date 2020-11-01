@@ -65,10 +65,13 @@
 		<th>11</th>
 	</tr>
 <?php
-
+	
+	$TOTAL =0;
 	$no=0;
 			  				foreach($data->result() as $row):
 			  				$no++;
+
+			  				$TOTAL +=$row->BIAYA_PERBAIKAN;
 
 			  			
 				  		?>
@@ -89,6 +92,14 @@
 	</tr>
 
 			<?php endforeach; ?>
+
+
+			<tr>
+				<td colspan="8"></td>
+				
+				<td><?php echo number_format($TOTAL) ?></td>
+				<td colspan="2"></td>
+			</tr>
 
 			<tr>
 							<td colspan="9">

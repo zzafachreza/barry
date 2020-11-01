@@ -110,8 +110,14 @@ class Laporanhd_model extends CI_Model{
 		return $data;
 	}
 
-	function getDataDetail3($id){
-		 $sql="SELECT*FROM `data_laporanhd` INNER JOIN `data_laporandt` ON (`data_laporanhd`.`ID_LAPORANHD` = `data_laporandt`.`ID_LAPORANHD`) INNER JOIN `data_bangunan` ON (`data_laporandt`.`ID_BANGUNAN` = `data_bangunan`.`id_bangunan`) INNER JOIN `data_ruas` ON (`data_bangunan`.`id_ruas` = `data_ruas`.`id_ruas`) WHERE data_laporandt.ID_LAPORANHD='$id' AND BOCORAN_M > 0 OR RUSAK_M >0 OR LONGSORAN_M > 0 OR TERSUMBAT_M > 0 OR RETAK_M > 0 OR PINTU_RUSAK_M > 0 OR SEDIMEN_M > 0 limit 1000;";
+	function getDataDetail3All($id){
+		 $sql="SELECT*FROM `data_laporanhd` INNER JOIN `data_laporandt` ON (`data_laporanhd`.`ID_LAPORANHD` = `data_laporandt`.`ID_LAPORANHD`) INNER JOIN `data_bangunan` ON (`data_laporandt`.`ID_BANGUNAN` = `data_bangunan`.`id_bangunan`) INNER JOIN `data_ruas` ON (`data_bangunan`.`id_ruas` = `data_ruas`.`id_ruas`) WHERE data_laporandt.ID_LAPORANHD='$id' AND BOCORAN_M > 0 OR RUSAK_M >0 OR LONGSORAN_M > 0 OR TERSUMBAT_M > 0 OR RETAK_M > 0 OR PINTU_RUSAK_M > 0 OR SEDIMEN_M > 0;";
+		$data = $this->db->query($sql);
+		return $data;
+	}
+
+	function getDataDetail3($id,$list,$start){
+		 $sql="SELECT*FROM `data_laporanhd` INNER JOIN `data_laporandt` ON (`data_laporanhd`.`ID_LAPORANHD` = `data_laporandt`.`ID_LAPORANHD`) INNER JOIN `data_bangunan` ON (`data_laporandt`.`ID_BANGUNAN` = `data_bangunan`.`id_bangunan`) INNER JOIN `data_ruas` ON (`data_bangunan`.`id_ruas` = `data_ruas`.`id_ruas`) WHERE data_laporandt.ID_LAPORANHD='$id' AND BOCORAN_M > 0 OR RUSAK_M >0 OR LONGSORAN_M > 0 OR TERSUMBAT_M > 0 OR RETAK_M > 0 OR PINTU_RUSAK_M > 0 OR SEDIMEN_M > 0 limit $start,$list;";
 		$data = $this->db->query($sql);
 		return $data;
 	}

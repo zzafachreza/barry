@@ -457,6 +457,23 @@ $this->load->view('header',$data);
 
 	}
 
+		function view_lampiran06_pdf(){
+
+		$id =  $this->uri->segment(3);
+		$hasil = $this->Bencanahd_model->getId($id);
+
+		$data['data'] = $this->Bencanahd_model->getDataDetail($id);
+
+		$data['title']='SI JUET | Detail Lampiran 06';
+
+	
+		$data[$this->dataTable] = $hasil->row_array();
+	
+		$this->load->view($this->dataTable.'/view_pdf_06',$data);
+
+	}
+
+
 
 
 	function lampiran05(){

@@ -90,19 +90,23 @@ $html .='<tbody>';
 												'. $row->KABUPATEN.'</td>
 											<td style="border:1px solid black;text-align:center">'. $row->BANYAKNYA_PEKERJAAN .'</td>
 											<td style="border:1px solid black;text-align:center">'. number_format($row->BIAYA) .'</td>
-											<td style="border:1px solid black;text-align:center"><center>'. tglIndonesia2($row->TANGGAL_AWAL) .' sd '. tglIndonesia2($row->TANGGAL_AKHIR) .'<br/><strong>';
+											
+
+											<td style="border:1px solid black;text-align:center">'. tglIndonesia2($row->TANGGAL_AWAL) .' sd '. tglIndonesia2($row->TANGGAL_AKHIR) .'<br/>';
 
 												$tgl1 = new DateTime($row->TANGGAL_AWAL);
 												$tgl2 = new DateTime($row->TANGGAL_AKHIR);
 												$d = $tgl2->diff($tgl1)->days + 1;
 
-												$hml .= $d." Hari";
+												$html .= '<strong>'.$d." Hari".'</strong>';
 
 
-												$hml .='</strong></center>
-											</td>
-											<td style="border:1px solid black;text-align:center">'. $row->KETERANGAN .'</td>
-										</tr>';
+												$html .='</td>';
+
+
+
+										
+										$html .='<td style="border:1px solid black;text-align:center">'. $row->KETERANGAN .'</td></tr>';
 
 
 
@@ -119,7 +123,7 @@ $html .='<tbody>';
 									</tr>';
 
 									$html.='<tr>
-							<td style="border:1px solid black;text-align:center" colspan="6">
+							<td style="border:1px solid black;text-align:left" colspan="6">
 								<p>Penjelasan : </p>
 								<ol>
 									<li>Lampiran dikirim setelah DSP (Blanko O&P disetujui</li>

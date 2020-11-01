@@ -193,8 +193,30 @@
 
 <?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='SUP'): ?>
 	<script type="text/javascript">
+
+
+				$("#list").change(function(e){
+					$("#loader2").show();
+					e.preventDefault();
+					var list = $(this).val();
+					var start =0;
+					getDataDetail('<?php echo site_url()."/laporanhd/edit_detail3/".$ID_LAPORANHD ?>/'+list+'/'+start);
+				})
+
+
+
 		
-				getDataDetail('<?php echo site_url()."/laporanhd/edit_detail3/".$ID_LAPORANHD ?>');
+				var start=0;
+				var list = 10;
+				getDataDetail('<?php echo site_url()."/laporanhd/edit_detail3/".$ID_LAPORANHD ?>/'+list+'/'+start);
+
+				function getHalaman(list,start){
+
+					$("#loader2").fadeIn('fast');
+					// $("#HALAMAN"+start).addClass("active");
+
+					getDataDetail('<?php echo site_url()."/laporanhd/edit_detail3/".$ID_LAPORANHD ?>/'+list+'/'+start);
+				}
 				
 			</script>
 	
@@ -221,7 +243,7 @@
 					$("#loader2").fadeIn('fast');
 					// $("#HALAMAN"+start).addClass("active");
 
-					getDataDetail('<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>/'+list+'/'+start+'',start);
+					getDataDetail('<?php echo site_url()."/laporanhd/edit_detail/".$ID_LAPORANHD ?>/'+list+'/'+start);
 				}
 			</script>
 <?php endif ?>

@@ -50,14 +50,14 @@ class Laporanhd extends CI_Controller{
 				break;
 			case 'SUP':
 				# code...
-			$data['laporandt'] = $this->Laporanhd_model->getDataDetail3($id);
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetail3All($id);
 			$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view_2',$data);
 				break;
 			
 			default:
 				# code...
-			$data['laporandt'] = $this->Laporanhd_model->getDataDetail3($id);
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetail3All($id);
 			$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view_3',$data);
 				break;
@@ -83,14 +83,14 @@ class Laporanhd extends CI_Controller{
 				break;
 			case 'SUP':
 				# code...
-			$data['laporandt'] = $this->Laporanhd_model->getDataDetail3($id);
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetail3All($id);
 		$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view_pdf_2',$data);
 				break;
 			
 			default:
 				# code...
-			$data['laporandt'] = $this->Laporanhd_model->getDataDetail3($id);
+			$data['laporandt'] = $this->Laporanhd_model->getDataDetail3All($id);
 		$data[$this->dataTable] = $hasil->row_array();
 			$this->load->view($this->dataTable.'/view_pdf',$data);
 				break;
@@ -210,7 +210,11 @@ class Laporanhd extends CI_Controller{
 
 		$id	= $this->uri->segment(3);
 		$data['ID_LAPORANHD'] = $id;
-		$data['laporandt'] = $this->Laporanhd_model->getDataDetail3($id);
+		$list = $this->uri->segment(4);
+		$start = $this->uri->segment(5);
+		$data['laporandt_jml'] = $this->Laporanhd_model->getDataDetail3All($id);
+		$data['laporandt'] = $this->Laporanhd_model->getDataDetail3($id,$list,$start);
+		$data['start'] = $start;
 
 		$this->load->view($this->dataTable.'/edit_detail',$data);
 	}

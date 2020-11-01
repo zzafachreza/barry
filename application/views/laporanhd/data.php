@@ -153,7 +153,7 @@
 		  				<a href="<?php echo site_url('laporanhd/detail_pdf/'.$row->ID_LAPORANHD) ?>" class="btn btn-danger col-sm-12"><i class="flaticon-file"></i> PDF </a>
 		  					<div class="dropdown-divider"></div>
 
-		  					<a href="<?php echo site_url('laporanhd/detail_excel/'.$row->ID_LAPORANHD) ?>" class="btn btn-success col-sm-12"><i class="flaticon-file"></i> Excel </a>
+		  	<!-- 				<a href="<?php echo site_url('laporanhd/detail_excel/'.$row->ID_LAPORANHD) ?>" class="btn btn-success col-sm-12"><i class="flaticon-file"></i> Excel </a> -->
 
 
 								<div class="dropdown-divider"></div>
@@ -161,7 +161,7 @@
 
 
 									  	<?php if ($_SESSION['level']==='ADMIN'): ?>
-		  						<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/delete/'.$row->ID_LAPORANHD.'') ?>" class="dropdown-item"><i class="flaticon-delete"></i></a>	
+		  						<a <?php echo $STATUS_AKSI ?> href="<?php echo site_url('laporanhd/delete/'.$row->ID_LAPORANHD.'') ?>" class="dropdown-item btn btn-danger"><i class="flaticon-delete"></i>HAPUS</a>	
 
 		  					<?php endif ?>
 								  </div>
