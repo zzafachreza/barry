@@ -46,6 +46,13 @@
   <script type="text/javascript" src="<?php echo site_url() ?>assets/js/chart.js"></script>
 
   <script type="text/javascript" src="<?php echo site_url() ?>assets/js/app201027.js"></script>
+
+          <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+
+        <!-- Add Firebase products that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-storage.js"></script>
     
 
     <link rel="manifest" href="<?php echo site_url() ?>manifest.json">
@@ -98,8 +105,7 @@ function tglIndonesia2($tanggal){
 ?>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img src="<?php echo site_url() ?>assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-    SI JUET
+    <img src="<?php echo site_url() ?>assets/images/logo.svg" width="350" class="d-inline-block align-top" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -118,54 +124,18 @@ function tglIndonesia2($tanggal){
           Master Data
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="<?php echo site_url('ruas') ?>">Data Ruas Saluran</a>
 
-          <a class="dropdown-item" href="<?php echo site_url('bangunan') ?>">Data Bangunan dan Tipenya</a>
-          <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="<?php echo site_url('users') ?>">Data Users</a>
-          <a class="dropdown-item" href="<?php echo site_url('riwayat') ?>">Riwayat Perubahan Data</a>
+
         </div>
       </li>
     <?php endif ?>
     
 
       <li class="nav-item <?php echo $menu=="laporanhd" ? "active":"" ?>">
-        <a class="nav-link" href="<?php echo site_url('laporanhd') ?>">Laporan Kerusakan Irigasi <span class="sr-only">(current)</span></a>
-      </li>
-            <?php if ($_SESSION['level']==='SEKSI IRIGASI' OR $_SESSION['level']==='ADMIN'): ?>
-<li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran052" ? "active":"" ?>">
-          <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran052') ?>">List 05 P  <br/>(DARI KERUSAKAN IRIGASI) <span class="sr-only">(current)</span></a>
-        </li>
-
-         <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran04" ? "active":"" ?>">
-          <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran04') ?>">List 04 P <span class="sr-only">(current)</span></a>
-        </li>
-
-   
-
-
-       <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=='' ? "active":"" ?>">
-        <a class="nav-link" href="<?php echo site_url('bencanahd') ?>">Laporan Bencana Alam <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<?php echo site_url('laporan') ?>">Laporan Observasi<span class="sr-only">(current)</span></a>
       </li>
 
-       
-
-        <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran05" ? "active":"" ?>">
-          <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran05') ?>">List 05 P <br/>(DARI BENCANA ALAM) <span class="sr-only">(current)</span></a>
-        </li>
-
-      
-        
-      <?php endif ?>
-
-
-      <?php if ($_SESSION['level']==='BIDANG PERENCANAAN' OR $_SESSION['level']==='ADMIN'):  ?>
-
-         <li class="nav-item <?php echo $menu=="bencanahd" && $menu_detail=="lampiran06"  ? "active":"" ?>">
-          <a class="nav-link" href="<?php echo site_url('bencanahd/lampiran06') ?>">List Lamp 06 P <span class="sr-only">(current)</span></a>
-        </li>
-        
-      <?php endif ?>
 
     </ul>
     <ul class="navbar-nav ml-auto">

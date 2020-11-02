@@ -11,7 +11,7 @@ class Home extends CI_Controller{
 		if (!isset($_SESSION['username'])) {
 			redirect('login');
 		}else{
-			$data['title']='SI JUET | Home';
+			$data['title']='BARRY CALLEBAUT | Home';
 			$this->load->view('header',$data);
 			$this->load->view('home');
 			$this->load->view('footer');

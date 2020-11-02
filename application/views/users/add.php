@@ -44,10 +44,7 @@
 			    <label for="Level">Level</label>
 			    <select name="level" class="form-control  selectza" style="outline: none;">
 			    	<option>ADMIN</option>
-			    	<option>MANTRI</option>
-			    	<option>SUP</option>
-			    	<option>SEKSI IRIGASI</option>
-			    	<option>BIDANG PERENCANAAN</option>
+			    	<option>MEMBER</option>
 
 
 			    </select>

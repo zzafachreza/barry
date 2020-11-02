@@ -47,10 +47,7 @@
 			    <label for="Level">Level</label>
 			    <select name="level" class="form-control  selectza" style="outline: none;">
 			    	<option <?php echo $users['level']=='ADMIN' ? 'selected="selected"':'' ?>>ADMIN</option>
-			    	<option <?php echo $users['level']=='MANTRI' ? 'selected="selected"':'' ?>>MANTRI</option>
-			    	<option <?php echo $users['level']=='SUP' ? 'selected="selected"':'' ?>>SUP</option>
-			    	<option <?php echo $users['level']=='SEKSI IRIGASI' ? 'selected="selected"':'' ?>>SEKSI IRIGASI</option>
-			    	<option <?php echo $users['level']=='BIDANG PERENCANAAN' ? 'selected="selected"':'' ?>>BIDANG PERENCANAAN</option>
+			    	<option <?php echo $users['level']=='MEMBER' ? 'selected="selected"':'' ?>>MEMBER</option>
 			    </select>
 			  </div>
 			</form>

@@ -10,7 +10,7 @@ class Users extends CI_Controller{
 
 	function index(){
 
-		$data['title']='SI JUET | Master Users';
+		$data['title']='BARRY CALLEBAUTT | Master Users';
 		$data['users'] = $this->Users_model->getData();
 		$this->load->view('header',$data);
 		$this->load->view('users/data');
@@ -19,7 +19,7 @@ class Users extends CI_Controller{
 
 
 	function add(){
-		$data['title']='SI JUET | Master Users - Add';
+		$data['title']='BARRY CALLEBAUT | Master Users - Add';
 		$this->load->view('header',$data);
 		$this->load->view('users/add');
 		$this->load->view('footer');
@@ -48,7 +48,7 @@ class Users extends CI_Controller{
 
 		$id	= $this->uri->segment(3);
 
-		$data['title']='SI JUET | Master User - Edit';
+		$data['title']='BARRY CALLEBAUT | Master User - Edit';
 		$hasil = $this->Users_model->getId($id);
 
 		$data['users'] = $hasil->row_array();
@@ -60,7 +60,7 @@ class Users extends CI_Controller{
 
 	function detail(){
 		$id	= $this->uri->segment(3);
-		$data['title']='SI JUET | Master User - Detail';
+		$data['title']='BARRY CALLEBAUT | Master User - Detail';
 		$hasil = $this->Users_model->getId($id);
 
 		$data['users'] = $hasil->row_array();

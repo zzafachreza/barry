@@ -9,7 +9,7 @@ class Login extends CI_Controller{
 
     function index(){
 
-        $data['title'] = 'SI JUET | Login';
+        $data['title'] = 'BARRY CALLEBAUT | Login';
         $this->load->view('header',$data);
         $this->load->view('login');
         
@@ -61,7 +61,7 @@ class Login extends CI_Controller{
     }
 
     function ubah(){
-           $data['title'] = 'SI JUET | Pengaturan User';
+           $data['title'] = 'BARRY CALLEBAUT | Pengaturan User';
             $this->load->view('header',$data);
             $this->load->view('ubah');
     }

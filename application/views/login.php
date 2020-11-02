@@ -7,15 +7,12 @@
 
  <div class="row justify-content-md-center" style="margin:0%">
         <div class="col-sm-4" >
-                <div class="container" style="background-color: #FFF;opacity: 0.9;margin-top: 10%" >
+                <div class="container" style="border-radius:20px;background-color: #FFF;border:5px solid #763b21;opacity: 0.9;margin-top: 30%" >
             
           <div class="row">
 
 
-               <blockquote class="blockquote" style="margin: 5%">
-                   <h1>SI JUET</h1>
-                  <footer class="blockquote-footer">Aplikasi berbasis web yang dapat melakukan Integrasi Pelaporan Data Pemeliharaan Irigasi</footer>
-                </blockquote>
+            
 
             <div class="col col-sm-12" style="padding: 5%">
               <form id="dataFormLogin" >
@@ -32,7 +29,7 @@
                 </div>
            <div class="form-group col-sm-12">
                
-                  <button type="SUBMIT" class="AppButton-primary col-sm-12">Sign In</button>
+                  <button type="SUBMIT" class="btn btn-danger col-sm-12">Sign In</button>
               </div>
 
               </form> 
